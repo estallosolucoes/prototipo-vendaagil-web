@@ -1,0 +1,116 @@
+/* Overrides globais de formulário — Venda Ágil protótipos.
+   Foco elegante: borda na cor de ação + halo suave, sem contorno azul do navegador. */
+.va-inputwrap, .va-textarea { transition: border-color 120ms ease, box-shadow 120ms ease; background: #FFFFFF; }
+.va-inputwrap:focus-within,
+.va-textarea:focus-visible {
+  border-color: #78A614 !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #78A614 18%, transparent) !important;
+  outline: none !important;
+}
+.va-input:focus, .va-input:focus-visible, .va-select:focus, .va-select:focus-visible { outline: none !important; }
+/* Campos com erro mantêm o vermelho por cima do foco */
+.va-inputwrap[data-invalid="true"]:focus-within {
+  border-color: var(--border-error) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #B3202F 15%, transparent) !important;
+}
+/* Prefixo/sufixo (R$, %) alinhados e sem sobreposição */
+.va-input[data-numeric="true"] { text-align: right; font-variant-numeric: tabular-nums; }
+/* Inputs soltos de protótipo (ex.: preço em linha na tabela) */
+input.preco { transition: border-color 120ms ease, box-shadow 120ms ease; }
+input.preco:focus { outline: none !important; border-color: #78A614; box-shadow: 0 0 0 3px color-mix(in srgb, #78A614 18%, transparent); }
+/* Busca global do topo */
+header input:focus { outline: none; }
+
+/* PADRÃO DO PROJETO: a página nunca tem scroll horizontal.
+   Drawers/painéis que deslizam de fora da tela não podem alargar o documento.
+   Scroll lateral só é permitido DENTRO de um contêiner explícito (ex.: tabela larga com overflow-x:auto). */
+html, body { overflow-x: clip; max-width: 100%; }
+
+/* ===== Mobile global (≤760px) =====
+   Rails laterais somem (Sidebar vira barra inferior), o conteúdo ocupa a largura toda
+   e deixa 96px livres no rodapé para a barra de navegação. */
+@media (max-width: 760px) {
+  main { padding: 20px 16px 104px 16px !important; }
+}
+/* Grids de conteúdo colapsam para 1 coluna em telas estreitas */
+@media (max-width: 560px) {
+  [data-va-kpis], [data-va-cols], [data-va-half], [data-va-kanban] { grid-template-columns: minmax(0,1fr) !important; }
+}
+/* Grids inline leêm estas variáveis (var(--va-gN, fallback)) e colapsam sozinhos */
+@media (max-width: 900px) {
+  :root { --va-g4: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 760px) {
+  :root { --va-g3: minmax(0,1fr); --va-g4: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 560px) {
+  :root { --va-g2: minmax(0,1fr); --va-g4: minmax(0,1fr); }
+}
+/* Campos do DS podem encolher dentro de grids/flex — sem isso, 1fr resolve para
+   minmax(auto,1fr) e o min-content do campo estoura o contêiner (ex.: drawer de filtros). */
+.va-field, .va-inputwrap, .va-select { min-width: 0; }
+
+/* Ícones Lucide: após createIcons o <i> vira <svg data-lucide> com width/height 24 fixos —
+   isso estoura chips e tags. Regra global: o ícone sempre respeita o font-size do contexto. */
+svg[data-lucide]{width:1em !important;height:1em !important;stroke-width:1.75;flex:none;display:inline-block;vertical-align:middle}
+i[data-lucide]{display:inline-flex;align-items:center;justify-content:center}
+i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}
+
+/* Conteúdo claro sobre o verde de ação — padrão do projeto */
+.va-btn--primary{color:#F3F3F3 !important}
+/* Checks brancos sobre o verde — vale para o site inteiro.
+   1) Checkboxes nativos dos protótipos (todos usam accent-color inline) */
+input[type="checkbox"][style*="accent-color"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;margin:0;border:1.5px solid #98A2B3;border-radius:2px;background:#FFFFFF;cursor:pointer;display:inline-grid;place-items:center;transition:background-color 100ms ease,border-color 100ms ease}
+input[type="checkbox"][style*="accent-color"]:hover{border-color:#5B6678}
+input[type="checkbox"][style*="accent-color"]:checked{background:#78A614;border-color:#628A11}
+input[type="checkbox"][style*="accent-color"]:checked::after{content:"";width:12px;height:12px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') center/contain no-repeat}
+input[type="checkbox"][style*="accent-color"]:focus-visible{outline:2px solid #021226;outline-offset:2px}
+/* 2) Checkbox e Radio do Design System */
+.va-check input:checked+.va-check__box{color:#FFFFFF}
+.va-check__dot{background:#FFFFFF !important}
+/* 3) Radios nativos dos protótipos — bolinha branca sobre verde */
+input[type="radio"][style*="accent-color"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;margin:0;border:1.5px solid #98A2B3;border-radius:999px;background:#FFFFFF;cursor:pointer;display:inline-grid;place-items:center;transition:background-color 100ms ease,border-color 100ms ease}
+input[type="radio"][style*="accent-color"]:hover{border-color:#5B6678}
+input[type="radio"][style*="accent-color"]:checked{background:#78A614;border-color:#628A11}
+input[type="radio"][style*="accent-color"]:checked::after{content:"";width:7px;height:7px;border-radius:999px;background:#FFFFFF}
+input[type="radio"][style*="accent-color"]:focus-visible{outline:2px solid #021226;outline-offset:2px}
+/* Stepper de quantidade: o "+" não pode vazar do contorno quando a célula aperta */
+.va-stepper-qty{flex:none;min-width:0}
+.va-stepper-qty button{flex:none;width:26px}
+.va-stepper-qty input{flex:1 1 auto;min-width:0;width:40px}
+
+/* Barras de ação sticky não podem ficar atrás da navegação inferior do mobile */
+@media (max-width: 760px) {
+  [data-va-dock] { bottom: 78px !important; }
+  [data-va-bulk] { bottom: 96px !important; }
+}
+
+/* ===== Auditoria mobile (ago/2026) ===== */
+@media (max-width: 760px) {
+  /* Hierarquia: título de página menor em telas pequenas */
+  main h1 { font-size: 21px !important; }
+  /* Alvo de toque: botões do DS e botões-ícone dos protótipos */
+  .va-btn { min-height: 40px; }
+  main button[style*="width:32px"] { width: 40px !important; height: 40px !important; }
+  main button[style*="width:26px"] { width: 34px !important; height: 34px !important; }
+  /* iOS não dá zoom no foco quando o campo tem 16px */
+  main input:not([type="checkbox"]):not([type="radio"]), main textarea, .va-input, .va-textarea { font-size: 16px !important; }
+  /* Toast: largura total, acima da navegação inferior */
+  div[style*="position:fixed"][style*="bottom:24px"][style*="right:24px"] { left: 16px !important; right: 16px !important; bottom: 88px !important; }
+}
+@media (max-width: 560px) {
+  /* Cabeçalhos de página empilham: título em cima, ações embaixo, sem aperto */
+  main > div:first-of-type { flex-wrap: wrap; }
+}
+@media (max-width: 560px) {
+  /* CEP / Endereço / Número empilham */
+  .g-cep { grid-template-columns: 1fr 1fr !important; }
+  .g-cep > *:nth-child(2) { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  /* Histórico de faturas vira 2 colunas (mês+valor / situação+ação) */
+  .g-fatura { grid-template-columns: minmax(0,1fr) auto !important; gap: 4px 12px !important; }
+}
+@media (max-width: 560px) {
+  .g-origem { grid-template-columns: 1fr !important; }
+}

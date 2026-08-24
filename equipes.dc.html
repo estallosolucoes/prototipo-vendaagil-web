@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="EQP-02 Equipes" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="equipes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Equipes</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">3 equipes por região de atendimento</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar equipe</x-import>
+</div>
+<div data-va-kpis="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+<sc-for list="{{ equipes }}" as="e" hint-placeholder-count="3">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">{{ e.nome }}</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ e.regiao }}</span>
+</div>
+<button onClick="{{ e.editar }}" aria-label="Editar equipe" title="Editar equipe" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i></button>
+</div>
+<div style="display:flex;align-items:center">
+<sc-for list="{{ e.membros }}" as="m" hint-placeholder-count="3">
+<span style="{{ m.style }}">{{ m.iniciais }}</span>
+</sc-for>
+<span style="margin-left:10px;font:400 13px/1 'IBM Plex Sans';color:#5B6678">{{ e.qtd }}</span>
+</div>
+<div style="display:grid;gap:8px;border-top:1px solid #EDF0F5;padding-top:14px">
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Vendido no mês</span><span style="font:600 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ e.vendido }}</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Meta da equipe</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ e.meta }}</span></div>
+<div style="display:flex;align-items:center;gap:8px">
+<div style="flex:1;height:6px;border-radius:999px;background:#E4E8EF;overflow:hidden"><span style="{{ e.barStyle }}"></span></div>
+<span style="font:600 12px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ e.pct }}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ formOpen }}" onClose="{{ fechar }}" title="{{ formTitulo }}" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da equipe" placeholder="Ex.: Serra Gaúcha" value="{{ formNome }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Região de atendimento" placeholder="Ex.: Caxias do Sul e vale dos Sinos" value="{{ formRegiao }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Meta mensal" prefix="R$" numeric="{{ true }}" placeholder="0,00" value="{{ formMeta }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Supervisor" options="Sem supervisor|Carlos Rezende|Ana Prado|Renata Cruz" value="{{ formSupervisor }}" help="Vê os pedidos e as metas de toda a equipe" hint-size="100%,88px"></x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Membros</span>
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ formMembros }}" as="fm" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:8px 4px;border-bottom:1px solid #EDF0F5">
+<span style="width:32px;height:32px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 11px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ fm.iniciais }}</span>
+<span style="display:flex;align-items:center;gap:8px;flex:1;min-width:0"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ fm.nome }}</span><sc-if value="{{ fm.sup }}" hint-placeholder-val="{{ false }}"><span style="height:20px;display:inline-flex;align-items:center;gap:4px;padding:0 8px;border-radius:999px;background:#EDF0F5;color:#454F5E;font:600 11px/1 'IBM Plex Sans'"><i data-lucide="shield-check" style="font-size:11px"></i>supervisor</span></sc-if></span>
+<button onClick="{{ fm.tirar }}" aria-label="Remover {{ fm.nome }} da equipe" title="Remover da equipe" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="user-round-minus" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:end;gap:8px">
+<div style="flex:1"><x-import component-from-global-scope="va-select" label="Adicionar vendedor" options="Jorge Tanaka|Paulo Siqueira|Renata Cruz" value="Jorge Tanaka" help="Só vendedores sem equipe aparecem" hint-size="100%,88px"></x-import></div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="user-round-plus" onClick="{{ addMembro }}" hint-size="auto,40px">Adicionar</x-import>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar equipe</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { formOpen: false, edit: null, membros: [{ iniciais: 'CR', nome: 'Carlos Rezende', sup: true }, { iniciais: 'AP', nome: 'Ana Prado', sup: false }] };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const av = (i) => "width:32px;height:32px;border-radius:999px;background:#E4E8EF;border:2px solid #FFFFFF;display:grid;place-items:center;font:600 11px/1 'IBM Plex Sans';color:#454F5E" + (i > 0 ? ';margin-left:-8px' : '');
+    const bar = (p, cor) => 'display:block;height:100%;width:' + Math.min(p, 100) + '%;border-radius:999px;background:' + cor;
+    const defs = [
+      { nome: 'Serra Gaúcha', regiao: 'Caxias do Sul e vale dos Sinos', membros: ['CR', 'AP'], qtd: '2 vendedores', vendido: 'R$ 167.600', meta: 'R$ 190.000', p: 88, metaRaw: '190.000,00' },
+      { nome: 'Litoral Norte', regiao: 'Tramandaí a Torres', membros: ['JT', 'MF'], qtd: '2 vendedores', vendido: 'R$ 44.850', meta: 'R$ 70.000', p: 64, metaRaw: '70.000,00' },
+      { nome: 'Grande POA', regiao: 'Porto Alegre e região metropolitana', membros: ['RC', 'PS'], qtd: '2 vendedores', vendido: 'R$ 71.250', meta: 'R$ 135.000', p: 53, metaRaw: '135.000,00' },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      formOpen: this.state.formOpen,
+      formTitulo: this.state.edit ? 'Editar equipe' : 'Criar equipe',
+      formNome: this.state.edit ? this.state.edit.nome : '',
+      formRegiao: this.state.edit ? this.state.edit.regiao : '',
+      formMeta: this.state.edit ? this.state.edit.metaRaw : '',
+      formSupervisor: this.state.edit ? 'Carlos Rezende' : 'Sem supervisor',
+      formMembros: this.state.membros.map(m => ({
+        ...m,
+        tirar: () => this.setState(s => ({ membros: s.membros.filter(x => x.nome !== m.nome) })),
+      })),
+      addMembro: () => this.setState(s => (s.membros.some(x => x.nome === 'Jorge Tanaka') ? {} : { membros: s.membros.concat([{ iniciais: 'JT', nome: 'Jorge Tanaka', sup: false }]) })),
+      abrirNova: () => this.setState({ formOpen: true, edit: null }),
+      fechar: () => this.setState({ formOpen: false }),
+      equipes: defs.map(e => ({
+        ...e,
+        pct: e.p + '%',
+        barStyle: bar(e.p, e.p >= 80 ? '#78A614' : e.p >= 50 ? '#E0A526' : '#C6501F'),
+        membros: e.membros.map((m, i) => ({ iniciais: m, style: av(i) })),
+        editar: () => this.setState({ formOpen: true, edit: e }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

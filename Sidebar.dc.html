@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+.va-bottomnav{display:none}
+.va-menu-sheet{display:none}
+@media (max-width:760px){
+  .va-rail{display:none !important}
+  .va-bottomnav{display:grid !important}
+  .va-menu-sheet{display:block !important}
+}</style>
+</helmet>
+<div style="display:contents">
+<div class="va-rail" style="position:fixed;left:28px;top:96px;bottom:12px;z-index:41;display:flex;align-items:flex-start;pointer-events:none;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<aside ref="{{ asideRef }}" onMouseEnter="{{ enter }}" onMouseLeave="{{ leave }}" style="{{ asideStyle }}">
+<nav style="overflow-y:auto;overflow-x:hidden;padding:12px;display:flex;flex-direction:column;gap:4px;min-height:0">
+<sc-for list="{{ mods }}" as="m" hint-placeholder-count="8">
+<div style="display:flex;flex-direction:column">
+<sc-if value="{{ m.isLink }}" hint-placeholder-val="{{ true }}">
+<a href="{{ m.href }}" title="{{ m.label }}" style="{{ m.rowStyle }}" style-hover="background:#EDF0F5;color:#021226"><span style="{{ m.markerStyle }}"></span><span style="width:24px;display:grid;place-items:center;flex:none"><i data-lucide="{{ m.icon }}" style="font-size:19px"></i></span><span style="{{ labelStyle }}"><span style="font:500 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ m.label }}</span></span></a>
+</sc-if>
+<sc-if value="{{ m.isGroup }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ m.toggle }}" title="{{ m.label }}" style="{{ m.rowStyle }}" style-hover="background:#EDF0F5;color:#021226"><span style="{{ m.markerStyle }}"></span><span style="width:24px;display:grid;place-items:center;flex:none"><i data-lucide="{{ m.icon }}" style="font-size:19px"></i></span><span style="{{ labelStyle }}"><span style="display:flex;align-items:center;gap:8px;white-space:nowrap;font:500 13.5px/1 'IBM Plex Sans'">{{ m.label }}<sc-if value="{{ m.badge }}" hint-placeholder-val="{{ false }}"><span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ m.badge }}</span></sc-if></span></span><span style="{{ m.chevWrapStyle }}"><i data-lucide="chevron-down" style="font-size:15px;color:#7A8699"></i></span></button>
+<sc-if value="{{ m.showItems }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:1px;padding:2px 0 4px 34px">
+<sc-for list="{{ m.items }}" as="it" hint-placeholder-count="3">
+<a href="{{ it.href }}" style="{{ it.style }}" style-hover="background:#EDF0F5;color:#021226"><span style="white-space:nowrap">{{ it.label }}</span><sc-if value="{{ it.badge }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ it.badge }}</span></sc-if></a>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+</div>
+</sc-for>
+</nav>
+</aside>
+</div>
+<div class="va-rail" style="{{ footWrapStyle }}">
+<aside onMouseEnter="{{ enterF }}" onMouseLeave="{{ leaveF }}" style="{{ footStyle }}">
+<div style="padding:12px;display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ footer }}" as="f" hint-placeholder-count="3">
+<a href="{{ f.href }}" title="{{ f.label }}" style="{{ f.rowStyle }}" style-hover="background:#EDF0F5;color:#021226"><span style="{{ f.markerStyle }}"></span><span style="width:24px;display:grid;place-items:center;flex:none"><i data-lucide="{{ f.icon }}" style="font-size:19px"></i></span><span style="{{ labelStyleF }}"><span style="font:500 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ f.label }}</span></span></a>
+</sc-for>
+<sc-if value="{{ expandedF }}" hint-placeholder-val="{{ false }}">
+<div style="margin:4px 4px 0;padding:10px 12px;border-radius:6px;background:#F2F4F7;display:flex;flex-direction:column;gap:2px;overflow:hidden">
+<span style="font:600 12px/1.3 'IBM Plex Sans';color:#021226;white-space:nowrap">Plano Completo</span>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678;white-space:nowrap">Avaliação: 9 dias restantes</span>
+</div>
+</sc-if>
+</div>
+</aside>
+</div>
+<nav class="va-bottomnav" aria-label="Navegação principal" style="position:fixed;left:0;right:0;bottom:0;z-index:45;grid-template-columns:repeat(5,1fr);align-items:stretch;height:68px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:#FFFFFF;box-shadow:0 -2px 12px rgba(2,18,38,.10);font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-for list="{{ bottomItems }}" as="b" hint-placeholder-count="5">
+<a href="{{ b.href }}" onClick="{{ b.click }}" aria-label="{{ b.label }}" style="{{ b.style }}"><sc-if value="{{ b.primary }}" hint-placeholder-val="{{ false }}"><span style="width:44px;height:44px;border-radius:999px;background:#78A614;color:#F3F3F3;display:grid;place-items:center;box-shadow:0 2px 8px rgba(2,18,38,.18)"><i data-lucide="{{ b.icon }}" style="font-size:21px"></i></span></sc-if><sc-if value="{{ b.regular }}" hint-placeholder-val="{{ true }}"><i data-lucide="{{ b.icon }}" style="font-size:21px"></i><span style="font:500 10.5px/1 'IBM Plex Sans'">{{ b.label }}</span></sc-if></a>
+</sc-for>
+</nav>
+<div class="va-menu-sheet">
+<sc-if value="{{ menuAberto }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ fecharMenu }}" style="position:fixed;inset:0;background:rgba(2,18,38,.55);z-index:46"></div>
+<div role="dialog" aria-label="Menu completo" style="position:fixed;left:0;right:0;bottom:0;z-index:47;background:#FFFFFF;border-radius:16px 16px 0 0;box-shadow:0 -8px 32px rgba(2,18,38,.24);max-height:72vh;display:flex;flex-direction:column;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 15px/1 'IBM Plex Sans';color:#021226">Todos os módulos</span>
+<button onClick="{{ fecharMenu }}" aria-label="Fechar menu" style="width:40px;height:40px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#454F5E"><i data-lucide="x" style="font-size:18px"></i></button>
+</div>
+<div style="overflow:auto;padding:10px 14px calc(16px + env(safe-area-inset-bottom))">
+<sc-for list="{{ menuGrupos }}" as="g" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:10px">
+<span style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:6px 6px 4px">{{ g.titulo }}</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+<sc-for list="{{ g.links }}" as="l" hint-placeholder-count="3">
+<a href="{{ l.href }}" style="{{ l.style }}"><i data-lucide="{{ l.icon }}" style="font-size:17px;color:#5B6678;flex:none"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.label }}</span></a>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:300,&quot;height&quot;:900},&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;inicio&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { expanded: false, expandedF: false, open: null, touched: false, asideH: 400, vh: 900, menuAberto: false };
+  asideRef = window.React ? window.React.createRef() : { current: null };
+  componentDidMount() {
+    this.paint();
+    this._measure = () => {
+      const el = this.asideRef.current;
+      const vh = window.innerHeight;
+      const h = el ? el.offsetHeight : this.state.asideH;
+      if (h !== this.state.asideH || vh !== this.state.vh) this.setState({ asideH: h, vh });
+    };
+    this._measure();
+    window.addEventListener('resize', this._measure);
+    if (this.asideRef.current && window.ResizeObserver) {
+      this._ro = new ResizeObserver(this._measure);
+      this._ro.observe(this.asideRef.current);
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._measure);
+    if (this._ro) this._ro.disconnect();
+  }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const P = {
+      pedidos: 'vendas', clientes: 'vendas', catalogo: 'vendas',
+      representadas: 'cadastros', produtos: 'cadastros', tabelas: 'cadastros', condicoes: 'cadastros', transportadoras: 'cadastros', auxiliares: 'cadastros',
+      faturamento: 'financeiro', comissoes: 'financeiro', receber: 'financeiro',
+      vendedores: 'equipe', equipes: 'equipe', metas: 'equipe',
+      negocios: 'crm', contatos: 'crm', conversas: 'crm', tarefas: 'crm', crmconfig: 'crm',
+    };
+    const active = this.props.active || '';
+    const activeMod = P[active] || active;
+    const exp = this.state.expanded;
+    const expF = this.state.expandedF;
+    const open = this.state.touched ? this.state.open : activeMod;
+    // Centraliza o card na faixa entre a topbar e o rail de rodapé; se não couber,
+    // encosta no topo (96px) e, só quando de fato invadiria o rodapé, o afasta.
+    const vh = this.state.vh, hNav = this.state.asideH;
+    const short = vh < 860;
+    const rowH = short ? 34 : 40;
+    const subH = short ? 28 : 32;
+    const footH = 24 + 3 * rowH;
+    const centro = (vh - 206) / 2;
+    const mt = Math.max(0, Math.min(centro - hNav / 2, vh - 12 - hNav) - 96);
+    const footerTop = vh - 120 - footH;
+    const push = exp && (96 + mt + hNav > footerTop - 8);
+    const card = (w, lifted) =>
+      'width:' + w + 'px;background:#FFFFFF;border-radius:16px;display:flex;flex-direction:column;transition:width 150ms ease;overflow:hidden;pointer-events:auto;box-shadow:' +
+      (lifted ? '0 8px 24px rgba(2,18,38,.16)' : '0 2px 8px rgba(2,18,38,.08)');
+    const row = (isActive) =>
+      'position:relative;display:flex;align-items:center;gap:12px;height:' + rowH + 'px;padding:0 20px 0 8px;border:0;border-radius:6px;text-decoration:none;cursor:pointer;background:' +
+      (isActive ? '#F2F8D4' : 'transparent') + ';color:' + (isActive ? '#021226' : '#454F5E') +
+      ';font:' + (isActive ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';text-align:left;width:100%";
+    const marker = (isActive) =>
+      'position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 2px 2px 0;background:' + (isActive ? '#628A11' : 'transparent');
+    const sub = (isActive) =>
+      'display:flex;align-items:center;gap:8px;height:' + subH + 'px;padding:0 10px;border-radius:6px;text-decoration:none;color:' +
+      (isActive ? '#021226' : '#454F5E') + ';background:' + (isActive ? '#F2F8D4' : 'transparent') +
+      ';font:' + (isActive ? '600' : '400') + " 13px/1 'IBM Plex Sans'";
+    const label = (on) => 'overflow:hidden;transition:opacity 120ms;opacity:' + (on ? 1 : 0) + ';width:' + (on ? 'auto' : '0');
+    const defs = [
+      { id: 'inicio', icon: 'house', label: 'Início', href: 'inicio.dc.html' },
+      { id: 'painel', icon: 'layout-dashboard', label: 'Painel', href: 'painel.dc.html' },
+      { id: 'vendas', icon: 'clipboard-list', label: 'Vendas', badge: 3, items: [
+        { id: 'pedidos', label: 'Pedidos', href: 'pedidos.dc.html', badge: 3 },
+        { id: 'clientes', label: 'Clientes', href: 'clientes.dc.html' },
+        { id: 'catalogo', label: 'Catálogo B2B', href: 'catalogo.dc.html' } ] },
+      { id: 'cadastros', icon: 'package', label: 'Cadastros', items: [
+        { id: 'representadas', label: 'Representadas', href: 'representadas.dc.html' },
+        { id: 'produtos', label: 'Produtos', href: 'produtos.dc.html' },
+        { id: 'tabelas', label: 'Tabelas de preço', href: 'tabelas-preco.dc.html' },
+        { id: 'condicoes', label: 'Condições de pagamento', href: 'condicoes-pagamento.dc.html' },
+        { id: 'transportadoras', label: 'Transportadoras', href: 'transportadoras.dc.html' },
+        { id: 'auxiliares', label: 'Cadastros auxiliares', href: 'cadastros-auxiliares.dc.html' } ] },
+      { id: 'financeiro', icon: 'receipt', label: 'Financeiro', items: [
+        { id: 'faturamento', label: 'Faturamento', href: 'faturamento.dc.html' },
+        { id: 'comissoes', label: 'Comissões', href: 'comissoes.dc.html' },
+        { id: 'receber', label: 'Contas a receber', href: 'contas-receber.dc.html' } ] },
+      { id: 'equipe', icon: 'users-round', label: 'Equipe', items: [
+        { id: 'vendedores', label: 'Vendedores', href: 'vendedores.dc.html' },
+        { id: 'equipes', label: 'Equipes', href: 'equipes.dc.html' },
+        { id: 'metas', label: 'Metas', href: 'metas.dc.html' } ] },
+      { id: 'crm', icon: 'kanban', label: 'CRM', badge: 5, items: [
+        { id: 'negocios', label: 'Negócios', href: 'crm-negocios.dc.html' },
+        { id: 'contatos', label: 'Contatos', href: 'crm-contatos.dc.html' },
+        { id: 'conversas', label: 'Conversas', href: 'crm-conversas.dc.html', badge: 5 },
+        { id: 'tarefas', label: 'Tarefas', href: 'crm-tarefas.dc.html' },
+        { id: 'crmconfig', label: 'Configurações do CRM', href: 'crm-configuracoes.dc.html' } ] },
+      { id: 'relatorios', icon: 'bar-chart-3', label: 'Relatórios', href: 'relatorios.dc.html' },
+    ];
+    const footerDefs = [
+      { id: 'importacoes', icon: 'upload', label: 'Importações', href: 'importacoes.dc.html' },
+      { id: 'configuracoes', icon: 'settings', label: 'Configurações', href: 'configuracoes.dc.html' },
+      { id: 'plano', icon: 'wallet', label: 'Conta e plano', href: 'conta-plano.dc.html' },
+    ];
+    const mods = defs.map(m => {
+      const isGroup = !!m.items;
+      const isOpen = isGroup && open === m.id && exp;
+      const isActive = isGroup ? activeMod === m.id : active === m.id;
+      return {
+        icon: m.icon, label: m.label, href: m.href || '#',
+        isLink: !isGroup, isGroup,
+        badge: !exp || isOpen ? 0 : (m.badge || 0),
+        showItems: isOpen,
+        rowStyle: row(isActive),
+        markerStyle: marker(isActive),
+        chevWrapStyle: 'margin-left:auto;display:grid;place-items:center;transition:transform 150ms;transform:rotate(' + (isOpen ? '180deg' : '0deg') + ');opacity:' + (exp ? 1 : 0),
+        toggle: () => this.setState(s => ({ touched: true, open: (s.touched ? s.open : activeMod) === m.id ? null : m.id, expanded: true })),
+        items: (m.items || []).map(it => ({ label: it.label, href: it.href, badge: it.badge || 0, style: sub(active === it.id) })),
+      };
+    });
+    return {
+      asideStyle: card(exp ? 248 : 64, exp) + ';max-height:' + (exp ? 'calc(100vh - 108px)' : 'calc(100vh - ' + (96 + footH + 140) + 'px)') + ';margin-top:' + mt + 'px;transition:width 150ms ease, margin-top 160ms ease',
+      footStyle: card(expF ? 248 : 64, expF),
+      footWrapStyle: "position:fixed;left:28px;z-index:40;font-family:'IBM Plex Sans',system-ui,sans-serif;transition:bottom 160ms ease;bottom:" + (push ? '12px' : '120px'),
+      asideRef: this.asideRef,
+      labelStyle: label(exp),
+      labelStyleF: label(expF),
+      expandedF: expF,
+      mods,
+      footer: footerDefs.map(f => ({ ...f, rowStyle: row(active === f.id), markerStyle: marker(active === f.id) })),
+      enter: () => this.setState({ expanded: true }),
+      leave: () => this.setState({ expanded: false }),
+      enterF: () => this.setState({ expandedF: true }),
+      leaveF: () => this.setState({ expandedF: false }),
+      bottomItems: [
+        { id: 'inicio', icon: 'house', label: 'Início', href: 'inicio.dc.html' },
+        { id: 'painel', icon: 'layout-dashboard', label: 'Painel', href: 'painel.dc.html' },
+        { id: 'emitir', icon: 'file-plus-2', label: 'Emitir pedido', href: 'pedidos-novo.dc.html', primary: true },
+        { id: 'pedidos', icon: 'clipboard-list', label: 'Pedidos', href: 'pedidos.dc.html' },
+        { id: 'menu', icon: 'menu', label: 'Menu', href: '#' },
+      ].map(b => ({
+        ...b,
+        primary: !!b.primary, regular: !b.primary,
+        click: b.id === 'menu' ? (e) => { e.preventDefault(); this.setState(s => ({ menuAberto: !s.menuAberto })); } : undefined,
+        style: 'display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:44px;border-radius:8px;text-decoration:none;color:' +
+          (active === b.id ? '#365E10' : '#5B6678') + (active === b.id ? ';font-weight:600' : ''),
+      })),
+      menuAberto: this.state.menuAberto,
+      fecharMenu: () => this.setState({ menuAberto: false }),
+      menuGrupos: (() => {
+        const linkStyle = (on) => "display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;border-radius:6px;text-decoration:none;font:" + (on ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:#021226;background:" + (on ? '#F2F8D4' : 'transparent') + ';min-width:0';
+        return defs.filter(m => m.items).map(m => ({
+          titulo: m.label,
+          links: m.items.map(it => ({ label: it.label, href: it.href, icon: m.icon, style: linkStyle(active === it.id) })),
+        })).concat([{
+          titulo: 'Mais',
+          links: [{ label: 'Relatórios', href: 'relatorios.dc.html', icon: 'bar-chart-3', style: linkStyle(active === 'relatorios') }]
+            .concat(footerDefs.map(f => ({ label: f.label, href: f.href, icon: f.icon, style: linkStyle(active === f.id) }))),
+        }]);
+      })(),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="REL-02 Venda por cliente — Curva ABC" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="relatorios" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="relatorios.dc.html" style="text-decoration:none">Relatórios</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Venda por cliente — Curva ABC</span></nav>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Venda por cliente — Curva ABC</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Este mês · todas as representadas · 148 clientes, 62 com compra</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="bookmark" onClick="{{ abrirSalvar }}" hint-size="auto,40px">Salvar filtro</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="calendar-clock" onClick="{{ abrirAgendar }}" hint-size="auto,40px">Agendar envio</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ abrirExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar</x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;margin-bottom:16px;display:flex;gap:12px;align-items:end;flex-wrap:wrap">
+<x-import component-from-global-scope="va-select" label="Período" options="Este mês|Mês passado|Últimos 90 dias|Este ano" value="Este mês" hint-size="170px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas" hint-size="200px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="180px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Agrupar por" options="Cliente|Cidade|Rota|Segmento" value="Cliente" hint-size="160px,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="rotate-cw" hint-size="auto,40px">Atualizar</x-import>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:760px;display:grid;grid-template-columns:44px 1fr 110px 130px 110px 90px;gap:12px;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Curva</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Pedidos</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Vendido</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">% do total</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Acum.</span>
+</div>
+<sc-for list="{{ linhas }}" as="l" hint-placeholder-count="8">
+<div style="min-width:760px;display:grid;grid-template-columns:44px 1fr 110px 130px 110px 90px;gap:12px;align-items:center;padding:11px 20px;border-bottom:1px solid #EDF0F5">
+<span style="{{ l.curvaStyle }}">{{ l.curva }}</span>
+<a href="cliente-360.dc.html" style="font:500 13.5px/1.3 'IBM Plex Sans';text-decoration:none;color:#021226" style-hover="color:#365E10">{{ l.cliente }}</a>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.pedidos }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.vendido }}</span>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.pct }}</span>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#5B6678">{{ l.acum }}</span>
+</div>
+</sc-for>
+<div style="min-width:760px;display:flex;justify-content:space-between;padding:14px 20px;background:#FAFBFC;font:600 13.5px/1 'IBM Plex Sans'"><span>62 clientes com compra</span><span style="font-variant-numeric:tabular-nums">R$ 596.803,30</span></div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Concentração da carteira</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" height="{{ 180 }}" hint-size="100%,180px"></x-import>
+<span style="font:400 13px/1.6 'IBM Plex Sans';color:#454F5E">A curva A — <strong style="color:#021226">9 clientes</strong> — responde por <strong style="color:#021226">68%</strong> da venda do mês. Perder um deles custa em média R$ 45 mil/ano.</span>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fechar }}" title="Exportar relatório" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF — retrato|PDF — paisagem" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Incluir gráfico de concentração" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar relatório</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ salvarOpen }}" onClose="{{ fechar }}" title="Salvar filtro" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do filtro" placeholder="Ex.: ABC do mês — todas" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar filtro</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ agendarOpen }}" onClose="{{ fechar }}" title="Agendar envio por e-mail" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Frequência" options="Toda segunda, 07h|Todo dia 1º, 07h|Todo dia útil, 07h" value="Toda segunda, 07h" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Destinatários" value="carlos@ribeiroprado.com.br" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="calendar-clock" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Agendar envio</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { expOpen: false, salvarOpen: false, agendarOpen: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const curva = (c) => {
+      const cores = { A: ['#F2F8D4', '#365E10'], B: ['#FFF7E6', '#855507'], C: ['#EDF0F5', '#5B6678'] };
+      return "width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font:600 12.5px/1 'IBM Plex Sans';background:" + cores[c][0] + ';color:' + cores[c][1];
+    };
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      linhas: [
+        { curva: 'A', cliente: 'Depósito São Jorge', pedidos: 6, vendido: 'R$ 86.412,00', pct: '14,5%', acum: '14,5%' },
+        { curva: 'A', cliente: 'Casa & Construção Delta', pedidos: 5, vendido: 'R$ 71.980,00', pct: '12,1%', acum: '26,6%' },
+        { curva: 'A', cliente: 'Central do Construtor', pedidos: 4, vendido: 'R$ 58.240,00', pct: '9,8%', acum: '36,4%' },
+        { curva: 'A', cliente: 'Armazém Boa Vista', pedidos: 4, vendido: 'R$ 52.360,00', pct: '8,8%', acum: '45,2%' },
+        { curva: 'B', cliente: 'Materiais Pinheiro', pedidos: 3, vendido: 'R$ 31.320,00', pct: '5,2%', acum: '50,4%' },
+        { curva: 'B', cliente: 'Ferragens Colombo', pedidos: 3, vendido: 'R$ 24.216,00', pct: '4,1%', acum: '54,5%' },
+        { curva: 'B', cliente: 'Comercial Andrade', pedidos: 2, vendido: 'R$ 18.410,00', pct: '3,1%', acum: '57,6%' },
+        { curva: 'C', cliente: 'Depósito Bela Vista', pedidos: 1, vendido: 'R$ 6.180,00', pct: '1,0%', acum: '58,6%' },
+      ].map(l => ({ ...l, curvaStyle: curva(l.curva) })),
+      barras: [
+        { label: 'A · 9', value: 68 },
+        { label: 'B · 21', value: 24 },
+        { label: 'C · 32', value: 8 },
+      ],
+      expOpen: this.state.expOpen,
+      salvarOpen: this.state.salvarOpen,
+      agendarOpen: this.state.agendarOpen,
+      abrirExportar: () => this.setState({ expOpen: true }),
+      abrirSalvar: () => this.setState({ salvarOpen: true }),
+      abrirAgendar: () => this.setState({ agendarOpen: true }),
+      fechar: () => this.setState({ expOpen: false, salvarOpen: false, agendarOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Venda Ágil — GRADE, BREAKPOINTS E SHELL.
+   Os cortes vêm de aparelhos e mesas reais, não de números redondos. */
+
+:root{
+  --bp-xs:360px;  /* celular pequeno — o Moto G do vendedor de equipe */
+  --bp-sm:480px;  /* celular grande em pé */
+  --bp-md:768px;  /* tablet / celular deitado no balcão */
+  --bp-lg:1024px; /* notebook do representante autônomo */
+  --bp-xl:1440px; /* monitor do escritório — Persona 2 */
+  --bp-2xl:1920px;/* monitor grande / duas telas */
+
+  --grid-columns:12; /* @kind other */
+  --grid-gutter-xs:12px; --grid-margin-xs:16px;
+  --grid-gutter-md:16px; --grid-margin-md:24px;
+  --grid-gutter-lg:24px; --grid-margin-lg:32px;
+  --grid-gutter-xl:24px; --grid-margin-xl:40px;
+
+  --content-max-reading:720px; /* formulário, leitura, configuração */
+  /* lista, tabela, dashboard: ocupa o monitor */
+  --content-max-data:none; /* @kind other */
+  --content-max-data-cap:1920px;
+
+  --shell-sidebar-width:248px;
+  --shell-sidebar-collapsed:64px;
+  --shell-topbar-height:64px;
+  --shell-context-panel:380px;   /* painel lateral direito de detalhe */
+  --shell-context-panel-wide:520px;
+  --shell-content-padding:var(--space-6);
+  --shell-bottombar-height:56px; /* celular */
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+input.cel{height:36px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font:500 13px/1 'IBM Plex Sans';color:#021226;width:100%;min-width:0;font-variant-numeric:tabular-nums}
+input.cel:focus{outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)}</style>
+</helmet>
+<div data-screen-label="PED-04 Alterar pedido emitido" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="pedidos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1180px;margin:0 auto;padding:44px 32px 120px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="pedidos.dc.html" style="text-decoration:none">Pedidos</a><i data-lucide="chevron-right" style="font-size:13px"></i><a href="pedido-detalhe.dc.html" style="text-decoration:none">Pedido 4.812</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Alterar</span></nav>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Alterar pedido 4.812</h1>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="pedido" hint-size="auto,22px"></x-import>
+</div>
+<span style="display:block;font:400 14px/1.55 'IBM Plex Sans';color:#454F5E;margin-bottom:16px">Depósito São Jorge · Móveis Vale · emitido hoje às 10:24 · ainda não enviado à indústria</span>
+<div style="display:flex;gap:10px;padding:12px 16px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF;color:#8A5B00;margin-bottom:20px;max-width:760px">
+<i data-lucide="triangle-alert" style="font-size:18px;margin-top:1px;flex:none"></i>
+<span style="font:400 13px/1.55 'IBM Plex Sans';color:#021226">O pedido já foi emitido. A alteração gera uma nova versão, registrada no histórico — se ele já foi enviado à Móveis Vale, reenvie a cópia depois de salvar.</span>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto;margin-bottom:16px">
+<div style="min-width:900px;display:grid;grid-template-columns:1fr 120px 130px 110px 140px 44px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Item</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Preço un.</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Quantidade</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Desconto</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Total</span>
+<span></span>
+</div>
+<sc-for list="{{ itens }}" as="it" hint-placeholder-count="3">
+<div style="min-width:900px;display:grid;grid-template-columns:1fr 120px 130px 110px 140px 44px;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ it.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ it.codigo }} · {{ it.emb }}</span></span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ it.preco }}</span>
+<input class="cel" type="number" min="0" value="{{ it.qtd }}" onInput="{{ it.setQtd }}" aria-label="Quantidade de {{ it.nome }}" style="text-align:center">
+<input class="cel" value="{{ it.desc }}" onInput="{{ it.setDesc }}" aria-label="Desconto de {{ it.nome }}" style="text-align:center">
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ it.total }}</span>
+<button onClick="{{ it.remover }}" aria-label="Remover item" title="Remover item" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+<div style="padding:12px 20px">
+<a href="pedidos-novo.dc.html" style="display:inline-flex;align-items:center;gap:6px;font:500 13px/1 'IBM Plex Sans';text-decoration:none"><i data-lucide="plus" style="font-size:14px"></i>Adicionar item</a>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;margin-bottom:16px">
+<x-import component-from-global-scope="va-select" label="Condição de pagamento" options="30/60/90 · boleto|28 dias · boleto|À vista · PIX|30/60 · boleto" value="30/60/90 · boleto" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Transportadora" options="Expresso Serrano|TransVale Cargas|Rodoviário Planalto|LogSul Transportes|Cliente retira" value="Expresso Serrano" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Motivo da alteração" rows="{{ 2 }}" placeholder="Cliente pediu para trocar 4 cadeiras pela cor grafite" help="Sai no histórico do pedido, para a equipe e a representada" hint-size="100%,110px"></x-import>
+</div>
+<div data-va-dock="" style="position:sticky;bottom:0;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;gap:16px;z-index:20;flex-wrap:wrap">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Total do pedido</span><span style="font:600 20px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ totalPedido }}</span></span>
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Diferença</span><span style="{{ difStyle }}">{{ diferenca }}</span></span>
+<span style="flex:1"></span>
+<a href="pedido-detalhe.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" hint-size="auto,40px">Descartar alterações</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ salvar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar nova versão</x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ sucessoOpen }}" onClose="{{ voltar }}" title="Versão 2 do pedido salva" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:44px;height:44px;border-radius:999px;background:#E8F7F0;color:#0A6244;display:grid;place-items:center;flex:none"><i data-lucide="circle-check" style="font-size:22px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">A alteração ficou registrada no histórico. Reenvie a cópia do pedido à Móveis Vale para valer a nova versão.</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ voltar }}" hint-size="auto,40px">Voltar ao pedido</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="mail" onClick="{{ voltar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Reenviar por e-mail</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    sucessoOpen: false,
+    rows: [
+      { qtd: 12, desc: '8%' },
+      { qtd: 4, desc: '0%' },
+      { qtd: 6, desc: '5%' },
+    ],
+  };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
+  renderVals() {
+    const DEFS = [
+      { nome: 'Cadeira Operacional Vale — preta', codigo: 'MV-1180', emb: 'cx 4 un', valor: 298.5 },
+      { nome: 'Cadeira Diretor Vale — nogueira', codigo: 'MV-1204', emb: 'cx 2 un', valor: 486 },
+      { nome: 'Mesa reta 1,60 m — nogueira', codigo: 'MV-2011', emb: 'un', valor: 712 },
+    ];
+    const ORIGINAL = 9296.6;
+    const rows = this.state.rows;
+    const totais = DEFS.map((d, i) => {
+      const pct = parseFloat(String(rows[i].desc).replace('%', '').replace(',', '.')) || 0;
+      return (rows[i].qtd || 0) * d.valor * (1 - pct / 100);
+    });
+    const total = totais.reduce((a, b) => a + b, 0);
+    const dif = total - ORIGINAL;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      itens: DEFS.map((d, i) => ({
+        ...d,
+        preco: this.brl(d.valor),
+        qtd: rows[i].qtd, desc: rows[i].desc,
+        total: this.brl(totais[i]),
+        setQtd: (e) => this.setState(s => ({ rows: s.rows.map((r, j) => j === i ? { ...r, qtd: Math.max(0, parseInt(e.target.value, 10) || 0) } : r) })),
+        setDesc: (e) => this.setState(s => ({ rows: s.rows.map((r, j) => j === i ? { ...r, desc: e.target.value } : r) })),
+        remover: () => this.setState(s => ({ rows: s.rows.map((r, j) => j === i ? { ...r, qtd: 0 } : r) })),
+      })),
+      totalPedido: this.brl(total),
+      diferenca: (dif >= 0 ? '+' : '−') + ' ' + this.brl(Math.abs(dif)) + ' vs. versão 1',
+      difStyle: "font:600 14px/1.2 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:" + (dif > 0 ? '#0E7D57' : dif < 0 ? '#B3202F' : '#454F5E'),
+      salvar: () => this.setState({ sucessoOpen: true }),
+      sucessoOpen: this.state.sucessoOpen,
+      voltar: () => { location.href = 'pedido-detalhe.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="REP-01 Representadas" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="representadas" hint-size="0px,0px"></dc-import>
+<main style="max-width:1440px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Representadas</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">4 indústrias na sua pasta · 540 produtos no total</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ goNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar representada</x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:980px;display:grid;grid-template-columns:56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span></span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Código</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Produtos</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Pedidos no mês</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Vendido no mês</span>
+<span></span>
+</div>
+<sc-for list="{{ reps }}" as="r" hint-placeholder-count="4">
+<div style="min-width:980px;display:grid;grid-template-columns:56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC" onClick="{{ r.open }}">
+<span style="width:40px;height:40px;border-radius:6px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans'">{{ r.sigla }}</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ r.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ r.segmento }}</span></span>
+<span style="font:400 13px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ r.codigo }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ r.produtos }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ r.pedidos }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ r.vendido }}</span>
+<button onClick="{{ r.askDelete }}" aria-label="Excluir representada" title="Excluir representada" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:16px"></i></button>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ delOpen }}" onClose="{{ closeDel }}" title="Excluir representada" destructive="{{ true }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Excluir <strong style="color:#021226">{{ delNome }}</strong> apaga também os produtos, tabelas de preço e o histórico de comissão dela. Os pedidos emitidos permanecem no arquivo. Esta ação não pode ser desfeita.</p>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Digite o nome da representada para confirmar" placeholder="{{ delNome }}" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ closeDel }}" hint-size="auto,40px">Manter representada</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" onClick="{{ closeDel }}" hint-size="auto,40px">Excluir definitivamente</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { delOpen: false, delNome: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const data = [
+      { sigla: 'MV', nome: 'Móveis Vale', segmento: 'Móveis corporativos · Caxias do Sul, RS', codigo: 'MV-01', produtos: 84, pedidos: 46, vendido: 'R$ 248.312,90' },
+      { sigla: 'CA', nome: 'Cerâmica Atlas', segmento: 'Revestimentos · Criciúma, SC', codigo: 'CA-02', produtos: 212, pedidos: 31, vendido: 'R$ 186.420,00' },
+      { sigla: 'MH', nome: 'Metalúrgica Horizonte', segmento: 'Ferragens e fixação · Joinville, SC', codigo: 'MH-03', produtos: 148, pedidos: 22, vendido: 'R$ 97.860,40' },
+      { sigla: 'TI', nome: 'Tecelagem Iguaçu', segmento: 'Cama, mesa e banho · Blumenau, SC', codigo: 'TI-04', produtos: 96, pedidos: 17, vendido: 'R$ 64.210,00' },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      reps: data.map(r => ({
+        ...r,
+        open: () => { location.href = 'representada-detalhe.dc.html'; },
+        askDelete: (e) => { e.stopPropagation(); this.setState({ delOpen: true, delNome: r.nome }); },
+      })),
+      delOpen: this.state.delOpen,
+      delNome: this.state.delNome,
+      closeDel: () => this.setState({ delOpen: false }),
+      goNova: () => { location.href = 'representada-cadastro.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

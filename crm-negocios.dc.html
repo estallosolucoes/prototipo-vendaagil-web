@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<script src="va-tarefas.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CRM-01 Negócios" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="negocios" hint-size="0px,0px"></dc-import>
+<main style="max-width:none;margin:0;padding:44px 24px 56px 112px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Negócios</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">{{ subtitulo }}</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
+<a href="crm-configuracoes.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="settings-2" hint-size="auto,40px">Configurar CRM</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar negócio</x-import>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+<div style="display:flex;gap:4px;background:#FFFFFF;border-radius:8px;padding:4px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto;max-width:100%">
+<sc-for list="{{ funis }}" as="f" hint-placeholder-count="4">
+<button onClick="{{ f.ir }}" style="{{ f.style }}">{{ f.nome }}<span style="{{ f.badgeStyle }}">{{ f.n }}</span></button>
+</sc-for>
+</div>
+<span style="flex:1"></span>
+<div style="display:flex;border:1px solid #CFD6E1;border-radius:6px;overflow:hidden;height:40px">
+<button onClick="{{ verKanban }}" aria-label="Ver em kanban" title="Ver em kanban" style="{{ kanbanBtnStyle }}"><i data-lucide="kanban" style="font-size:17px"></i></button>
+<button onClick="{{ verLista }}" aria-label="Ver em lista" title="Ver em lista" style="{{ listaBtnStyle }}"><i data-lucide="list" style="font-size:17px"></i></button>
+</div>
+<button onClick="{{ toggleFiltros }}" aria-expanded="{{ filtrosAbertos }}" style="{{ filtroBtnStyle }}"><i data-lucide="sliders-horizontal" style="font-size:16px"></i>Filtros<sc-if value="{{ temFiltros }}" hint-placeholder-val="{{ false }}"><span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#78A614;color:#F3F3F3;font:700 11px/1 'IBM Plex Sans'">{{ nFiltros }}</span></sc-if></button>
+</div>
+<sc-if value="{{ filtrosAbertos }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 18px;margin-bottom:18px;display:flex;flex-direction:column;gap:12px">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Vendedor responsável" options="Todos os vendedores|Carlos Rezende|Ana Paula Vieira|Renata Cruz|Jorge Tomasi|Paulo Selau" value="Todos os vendedores" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Etapa atual" options="{{ filtroEtapas }}" value="Todas as etapas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Data de criação" options="Qualquer data|Hoje|Últimos 7 dias|Últimos 30 dias|Este mês" value="Qualquer data" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Data de fechamento (compra)" options="Qualquer data|Hoje|Últimos 7 dias|Últimos 30 dias|Este mês" value="Qualquer data" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Motivo de perda" options="Todos os motivos|Preço acima do concorrente|Sem estoque na indústria|Cliente sem crédito|Perdeu o prazo de entrega|Desistiu da compra" value="Todos os motivos" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Etiqueta" options="Todas as etiquetas|Cliente novo|Reativação|Promoção|Urgente" value="Todas as etiquetas" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Tempo na etapa</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ prazos }}" as="pz" hint-placeholder-count="3">
+<button onClick="{{ pz.pegar }}" aria-pressed="{{ pz.on }}" style="{{ pz.style }}"><span style="{{ pz.iconeStyle }}"><i data-lucide="{{ pz.icone }}" style="font-size:14px"></i></span>{{ pz.nome }} ({{ pz.n }})</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #EDF0F5;padding-top:12px">
+<button onClick="{{ limparFiltros }}" style="border:0;background:transparent;color:#5B6678;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:8px" style-hover="color:#021226">Limpar filtros</button>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="check" onClick="{{ aplicarFiltros }}" dc-props="{{ btnProps }}" hint-size="auto,32px">Aplicar filtros</x-import>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ modoKanban }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:14px;align-items:flex-start;overflow-x:auto;padding-bottom:16px">
+<sc-for list="{{ colunas }}" as="col" hint-placeholder-count="5">
+<div style="width:284px;flex:none;background:#E9EDF3;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px;align-self:stretch;min-height:340px">
+<div style="display:flex;flex-direction:column;gap:8px;padding:6px 6px 2px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span style="{{ col.tituloStyle }}">{{ col.titulo }}</span>
+<span style="font:500 12px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#5B6678;white-space:nowrap">{{ col.resumo }}</span>
+</div>
+<span style="{{ col.linhaStyle }}"></span>
+</div>
+<sc-for list="{{ col.cards }}" as="c" hint-placeholder-count="2">
+<div onClick="{{ c.abrir }}" style="{{ c.cardStyle }}" style-hover="box-shadow:0 3px 8px rgba(2,18,38,.12)">
+<span style="font:600 14px/1.35 'IBM Plex Sans'">{{ c.titulo }}</span>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">{{ c.cliente }}</span>
+<sc-if value="{{ c.temTags }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:4px;flex-wrap:wrap">
+<sc-for list="{{ c.tags }}" as="t" hint-placeholder-count="1"><span style="{{ t.style }}">{{ t.nome }}</span></sc-for>
+</div>
+</sc-if>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 15px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ c.valor }}</span>
+<span style="{{ c.idadeStyle }}"><i data-lucide="clock-3" style="font-size:12px"></i>{{ c.idade }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px;border-top:1px solid #EDF0F5;padding-top:8px">
+<span style="width:24px;height:24px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ c.dono }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699;flex:1">{{ c.proximo }}</span>
+<button onClick="{{ c.conversar }}" aria-label="Conversar com o cliente" title="Conversar com o cliente" style="width:28px;height:28px;flex:none;border:0;border-radius:999px;background:#EAF4FD;color:#176FBC;display:grid;place-items:center;cursor:pointer" style-hover="background:#CDE5FA"><i data-lucide="message-circle" style="font-size:15px"></i></button>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{ col.vazia }}" hint-placeholder-val="{{ false }}">
+<div style="border:1.5px dashed #C4CCD8;border-radius:10px;padding:18px 14px;text-align:center;font:400 12.5px/1.5 'IBM Plex Sans';color:#7A8699">Nenhum negócio nesta etapa</div>
+</sc-if>
+<sc-if value="{{ col.temCards }}" hint-placeholder-val="{{ true }}">
+<span style="text-align:center;font:400 12px/1 'IBM Plex Sans';color:#98A2B3;padding:4px 0 6px">Fim da lista</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ modoLista }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:920px;display:grid;grid-template-columns:1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Negócio</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Etapa</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Valor</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Na etapa há</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Etiquetas</span>
+</div>
+<sc-for list="{{ listaLinhas }}" as="l" hint-placeholder-count="8">
+<div onClick="{{ l.abrir }}" style="min-width:920px;display:grid;grid-template-columns:1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.titulo }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ l.cliente }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ l.etapa }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.valor }}</span>
+<span style="{{ l.idadeStyle }}">{{ l.idade }}</span>
+<span style="display:flex;gap:4px;flex-wrap:wrap"><sc-for list="{{ l.tags }}" as="t" hint-placeholder-count="1"><span style="{{ t.style }}">{{ t.nome }}</span></sc-for></span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ escolhaOpen }}" onClose="{{ fecharEscolha }}" title="Escolha o funil para começar" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Os quatro funis já vêm prontos com as etapas do dia a dia da representação. Você pode ajustar as etapas depois, em Configurar CRM.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:10px">
+<sc-for list="{{ escolhas }}" as="e" hint-placeholder-count="4">
+<button onClick="{{ e.pegar }}" style="display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px;border:1px solid #D6DCE5;border-radius:10px;background:#FFFFFF;cursor:pointer" style-hover="border-color:#628A11;background:#FBFDF4">
+<span style="display:flex;align-items:center;gap:8px;font:600 14px/1.3 'IBM Plex Sans';color:#021226"><i data-lucide="{{ e.icone }}" style="font-size:18px;color:#628A11"></i>{{ e.nome }}</span>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">{{ e.sub }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ perdaOpen }}" onClose="{{ fecharPerda }}" title="Por que este negócio foi perdido?" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">O motivo é obrigatório — ele alimenta o relatório de perdas por motivo.</span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ motivos }}" as="m" hint-placeholder-count="5">
+<button onClick="{{ m.pegar }}" style="{{ m.style }}">{{ m.nome }}</button>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Anotação (opcional)" rows="{{ 2 }}" placeholder="Perdeu para a tabela da concorrente regional" hint-size="100%,92px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharPerda }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="thumbs-down" disabled="{{ semMotivo }}" onClick="{{ confirmarPerda }}" hint-size="auto,40px">Mover para Perdidos</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novoOpen }}" onClose="{{ fechar }}" title="Criar negócio" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Título" placeholder="Ex.: Reposição linha de cadeiras" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Cliente ou contato" options="Depósito São Jorge|Casa &amp; Lar Móveis|Lojas Pinheiral|Comercial Vitória|Bazar Monte Alto (contato)" value="Depósito São Jorge" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor estimado" prefix="R$" numeric="{{ true }}" placeholder="0,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Funil" options="Venda|Acompanhamento|Lista de espera|SAC / Cobrança" value="{{ funilAtivoNome }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Etapa" options="{{ etapasOpcoes }}" value="{{ primeiraEtapa }}" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar negócio</x-import>
+</div>
+</div>
+</x-import>
+<dc-import name="NegocioDrawer" open="{{ detOpen }}" on-close="{{ fecharDet }}" cliente="{{ detCliente }}" negocio="{{ detTitulo }}" valor="{{ detValor }}" etapa="{{ detEtapa }}" funil="{{ funilId }}" hint-size="0,0"></dc-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:{{ toastRight }};z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fecharExportar }}" title="Exportar negócios" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Colunas</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px">
+<sc-for list="{{ expColunas }}" as="ec" hint-placeholder-count="6">
+<button onClick="{{ ec.toggle }}" role="checkbox" aria-checked="{{ ec.on }}" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F2F4F7">
+<span style="{{ ec.boxStyle }}"><sc-if value="{{ ec.on }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></span>
+<span style="font:400 13.5px/1.2 'IBM Plex Sans';color:#021226">{{ ec.nome }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharExportar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fecharExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar 24 negócios</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    funil: 'venda', modo: 'kanban',
+    escolhaOpen: !localStorage.getItem('va-crm-funil-escolhido'),
+    novoOpen: false, perdaOpen: false, motivoSel: null,
+    detOpen: false, det: null, toast: '', prazoFiltro: null, filtrosAbertos: false, filtrosAplicados: 0,
+  };
+  componentDidMount() { this.paint(); }
+  componentWillUnmount() { clearTimeout(this._t); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const TAG = {
+      'Cliente novo': '#0C477B|#EAF4FD', 'Reativação': '#8A5B00|#FCF3DF', 'Promoção': '#365E10|#F2F8D4', 'Urgente': '#85202C|#FDF0F1',
+    };
+    const tag = (nome) => { const [c, b] = (TAG[nome] || '#454F5E|#EDF0F5').split('|'); return { nome, style: "display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font:600 11px/1 'IBM Plex Sans';color:" + c + ';background:' + b }; };
+    const ok = "display:inline-flex;align-items:center;gap:4px;font:500 11px/1 'IBM Plex Sans';color:#7A8699";
+    const parado = "display:inline-flex;align-items:center;gap:4px;font:600 11px/1 'IBM Plex Sans';color:#85202C";
+    const card = (t, cli, v, idade, lenta, dono, prox, tags) => ({ titulo: t, cliente: cli, valor: v, idade, idadeStyle: lenta ? parado : ok, dono, proximo: prox, tags: (tags || []).map(tag), temTags: !!(tags || []).length });
+    const FUNIS = {
+      venda: { nome: 'Venda', etapas: [
+        { titulo: 'Cadastro do cliente', cards: [card('Primeira compra — colchões', 'Bazar Monte Alto', 'R$ 6.800', '5 dias', false, 'AP', 'Aguardando CNPJ do comprador', ['Cliente novo'])] },
+        { titulo: 'Primeiro contato', cards: [card('Mix de lançamento 2027', 'Depósito São Jorge', 'R$ 12.400', '2 dias', false, 'CR', 'Ligar quinta de manhã'), card('Reativação após 180 dias', 'Móveis Baltazar', 'R$ 9.100', '12 dias', true, 'JT', 'Visita na rota de terça', ['Reativação'])] },
+        { titulo: 'Apresentação do mix', cards: [card('Linha de poltronas', 'Móveis Guarani', 'R$ 11.100', '6 dias', false, 'AP', 'Mandar catálogo em PDF')] },
+        { titulo: 'Proposta enviada', cards: [card('Reposição linha operacional', 'Casa & Lar Móveis', 'R$ 15.200', '3 dias', false, 'CR', 'Cobrar retorno amanhã'), card('Gaveteiros — promoção', 'Lojas Pinheiral', 'R$ 7.300', '15 dias', true, 'PS', 'Proposta vence sexta', ['Promoção'])] },
+        { titulo: 'Negociação', cards: [card('Pedido trimestral', 'Depósito São Jorge', 'R$ 21.500', '4 dias', false, 'CR', 'Fechar desconto com gestor', ['Urgente'])] },
+        { titulo: 'Pedido emitido', cards: [card('Kit escritório completo', 'Comercial Vitória', 'R$ 18.700', '1 dia', false, 'RC', 'Enviar à representada')] },
+        { titulo: 'Aguardando aprovação', cards: [] },
+        { titulo: 'Enviado à indústria', cards: [card('Mesas de reunião', 'Comercial Vitória', 'R$ 9.800', '2 dias', false, 'RC', 'Aguarda confirmação da Vale')] },
+        { titulo: 'Faturado parcial', cards: [] },
+        { titulo: 'Perdidos', perdidos: true, cards: [card('Cadeiras gamer — teste', 'Bazar Monte Alto', 'R$ 4.200', '—', false, 'AP', 'Preço acima do concorrente')] },
+        { titulo: 'Ganhos', ganhos: true, cards: [card('Cadeiras fixas — reposição', 'Casa & Lar Móveis', 'R$ 6.500', '—', false, 'CR', 'Pedido 4.786 faturado')] },
+      ]},
+      acompanhamento: { nome: 'Acompanhamento', etapas: [
+        { titulo: 'Aguardando retorno indústria', cards: [card('Pedido 4.810 — Casa & Lar', 'Casa & Lar Móveis', 'R$ 3.120', '3 dias', false, 'CR', 'Cobrar a Vale por e-mail')] },
+        { titulo: 'Em produção', cards: [card('Pedido 4.806 — Ferragens', 'Ferragens Colombo', 'R$ 11.240', '6 dias', false, 'JT', 'Previsão de coleta: 20/08')] },
+        { titulo: 'Faturado parcial', cards: [card('Pedido 4.797 — Vitória', 'Comercial Vitória', 'R$ 12.450', '9 dias', false, 'RC', 'Corte de 8% — avisar cliente')] },
+        { titulo: 'Em transporte', cards: [] },
+        { titulo: 'Pedido faturado total', cards: [card('Pedido 4.786 — São Jorge', 'Depósito São Jorge', 'R$ 9.640', '—', false, 'CR', 'Comissão lançada')] },
+      ]},
+      espera: { nome: 'Lista de espera', etapas: [
+        { titulo: 'Entrou na lista', cards: [card('Cadeira diretor preta ×12', 'Depósito São Jorge', 'R$ 5.830', '2 dias', false, 'CR', 'Reposição prevista: setembro')] },
+        { titulo: 'Aguardando estoque', cards: [card('Poltrona espera — 8 un', 'Lojas Pinheiral', 'R$ 6.100', '11 dias', true, 'PS', 'Sem previsão da indústria')] },
+        { titulo: 'Estoque disponível', cards: [] },
+        { titulo: 'Cliente avisado', cards: [card('Mesa 1,80 m nogueira ×4', 'Móveis Guarani', 'R$ 4.900', '1 dia', false, 'AP', 'Aguardando confirmação')] },
+        { titulo: 'Perdidos', perdidos: true, cards: [] },
+        { titulo: 'Ganhos', ganhos: true, cards: [] },
+      ]},
+      sac: { nome: 'SAC / Cobrança', etapas: [
+        { titulo: 'Em tratativa — SAC', cards: [card('Avaria na entrega — 2 cadeiras', 'Comercial Vitória', 'R$ 970', '1 dia', false, 'RC', 'Foto enviada à transportadora')] },
+        { titulo: 'Em tratativa — Cobrança', cards: [card('Título 88.298 vencido', 'Armazém Boa Vista', 'R$ 2.208', '5 dias', true, 'CR', 'Combinar novo boleto')] },
+        { titulo: 'Resolvido', cards: [card('Troca de tampo riscado', 'Casa & Lar Móveis', 'R$ 480', '—', false, 'CR', 'Reposição entregue')] },
+        { titulo: 'Não resolvido', perdidos: true, cards: [] },
+      ]},
+    };
+    const f = FUNIS[this.state.funil];
+    const tabStyle = (on) => 'display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;border:0;border-radius:6px;cursor:pointer;white-space:nowrap;font:' + (on ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';background:" + (on ? '#021226' : 'transparent') + ';color:' + (on ? '#F3F3F3' : '#454F5E');
+    const segBtn = (on) => 'width:44px;border:0;cursor:pointer;display:grid;place-items:center;background:' + (on ? '#F2F8D4' : '#FFFFFF') + ';color:' + (on ? '#365E10' : '#5B6678');
+    const nNeg = (fx) => fx.etapas.reduce((a, e) => a + e.cards.length, 0);
+    const motivosDefs = ['Preço acima do concorrente', 'Sem estoque na indústria', 'Cliente sem crédito', 'Perdeu o prazo de entrega', 'Desistiu da compra'];
+    const det = this.state.det || { titulo: '', cliente: '', valor: '', etapa: '', tags: [] };
+    const tiposDefs = [ { nome: 'Visita', icone: 'map-pin' }, { nome: 'Ligação', icone: 'phone' }, { nome: 'WhatsApp', icone: 'message-circle' }, { nome: 'E-mail', icone: 'mail' } ];
+    const chip = (on) => "display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;cursor:pointer;font:" + (on ? '600' : '500') + " 13px/1 'IBM Plex Sans';border:1px solid " + (on ? '#628A11' : '#D6DCE5') + ';background:' + (on ? '#F2F8D4' : '#FFFFFF') + ';color:' + (on ? '#365E10' : '#454F5E');
+    const abrirDet = (c, etapa) => () => this.setState({ detOpen: true, det: { ...c, etapa } });
+    const totalAberto = f.etapas.filter(e => !e.perdidos && !e.ganhos).reduce((a, e) => a + e.cards.length, 0);
+
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      expOpen: !!this.state.expOpen,
+      abrirExportar: () => this.setState({ expOpen: true }),
+      fecharExportar: () => this.setState({ expOpen: false }),
+      expColunas: (this.state.expCols || [{ nome: 'Negócio', on: true }, { nome: 'Cliente', on: true }, { nome: 'Etapa', on: true }, { nome: 'Valor', on: true }, { nome: 'Responsável', on: true }, { nome: 'Dias na etapa', on: true }, { nome: 'Próxima ação', on: true }, { nome: 'Etiquetas', on: true }]).map((c, i, arr) => ({
+        nome: c.nome, on: c.on,
+        boxStyle: 'width:18px;height:18px;border-radius:2px;flex:none;border:1px solid ' + (c.on ? '#78A614' : '#B9C1CE') + ';background:' + (c.on ? '#78A614' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center',
+        toggle: () => this.setState({ expCols: arr.map((x, j) => j === i ? { nome: x.nome, on: !x.on } : x) }),
+      })),
+
+      subtitulo: totalAberto + ' negócios em aberto no funil ' + f.nome + ' · ' + f.etapas.length + ' etapas',
+      funis: Object.keys(FUNIS).map(id => ({
+        nome: FUNIS[id].nome, n: nNeg(FUNIS[id]),
+        style: tabStyle(this.state.funil === id),
+        badgeStyle: "min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;font:600 11px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;background:" + (this.state.funil === id ? 'rgba(255,255,255,.18)' : '#EDF0F5') + ';color:' + (this.state.funil === id ? '#F3F3F3' : '#5B6678'),
+        ir: () => this.setState({ funil: id }),
+      })),
+      filtroEtapas: ['Todas as etapas'].concat(f.etapas.map(e => e.titulo)).join('|'),
+      filtrosAbertos: this.state.filtrosAbertos,
+      toggleFiltros: () => this.setState(s => ({ filtrosAbertos: !s.filtrosAbertos })),
+      filtroBtnStyle: "display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';border:1px solid " + (this.state.filtrosAbertos || this.state.filtrosAplicados ? '#628A11' : '#CFD6E1') + ';background:' + (this.state.filtrosAbertos ? '#F2F8D4' : '#FFFFFF') + ';color:' + (this.state.filtrosAbertos || this.state.filtrosAplicados ? '#365E10' : '#454F5E'),
+      temFiltros: this.state.filtrosAplicados > 0,
+      nFiltros: this.state.filtrosAplicados,
+      aplicarFiltros: () => { this.setState({ filtrosAbertos: false, filtrosAplicados: 2 }); this.avisar('Filtros aplicados ao funil'); },
+      limparFiltros: () => { this.setState({ filtrosAplicados: 0 }); this.avisar('Filtros limpos'); },
+      prazos: [
+        { id: 'ok', nome: 'No prazo', n: 2, icone: 'circle-check', c: '#0E7D57' },
+        { id: 'atencao', nome: 'Em atenção', n: 3, icone: 'triangle-alert', c: '#8A5B00' },
+        { id: 'atrasado', nome: 'Atrasados', n: 22, icone: 'octagon-x', c: '#B3202F' },
+      ].map(p => {
+        const on = this.state.prazoFiltro === p.id;
+        return {
+          ...p, on,
+          style: "display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;cursor:pointer;font:" + (on ? '600' : '500') + " 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;border:1px solid " + (on ? '#021226' : '#CFD6E1') + ';border-radius:6px;background:' + (on ? '#EDF0F5' : '#FFFFFF') + ';color:#021226',
+          iconeStyle: 'display:inline-flex;color:' + p.c,
+          pegar: () => this.setState(s => ({ prazoFiltro: s.prazoFiltro === p.id ? null : p.id })),
+        };
+      }),
+      modoKanban: this.state.modo === 'kanban',
+      modoLista: this.state.modo === 'lista',
+      kanbanBtnStyle: segBtn(this.state.modo === 'kanban') + ';border-right:1px solid #CFD6E1',
+      listaBtnStyle: segBtn(this.state.modo === 'lista'),
+      verKanban: () => this.setState({ modo: 'kanban' }),
+      verLista: () => this.setState({ modo: 'lista' }),
+      colunas: f.etapas.map((e, ei) => {
+        const CORES = ['#4A90D9', '#8B5CB8', '#D9822B', '#2AA1A8', '#C2537A', '#628A11', '#5B6ECC', '#B8860B', '#3E8E5A'];
+        const cor = e.perdidos ? '#B3202F' : e.ganhos ? '#0E7D57' : CORES[ei % CORES.length];
+        return {
+          titulo: e.titulo,
+          tituloStyle: "font:600 13.5px/1.25 'IBM Plex Sans';letter-spacing:.02em;color:#021226",
+          linhaStyle: 'display:block;height:3px;border-radius:999px;background:' + cor,
+          resumo: e.cards.length + (e.cards.length === 1 ? ' negócio' : ' negócios'),
+          vazia: !e.cards.length,
+          temCards: !!e.cards.length,
+          cards: e.cards.map(c => ({
+            ...c,
+            cardStyle: 'background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);border-bottom:3px solid ' + cor + ';padding:14px 16px;display:flex;flex-direction:column;gap:8px;cursor:pointer',
+            abrir: abrirDet(c, e.titulo),
+            conversar: (ev) => { ev.stopPropagation(); if (window.VAChat) window.VAChat.abrir(c.cliente, c.titulo); },
+            perder: (ev) => { ev.stopPropagation(); this.setState({ perdaOpen: true, motivoSel: null }); },
+          })),
+        };
+      }),
+      listaLinhas: f.etapas.flatMap(e => e.cards.map(c => ({
+        ...c, etapa: e.titulo,
+        idadeStyle: c.idadeStyle + ';font-variant-numeric:tabular-nums',
+        abrir: abrirDet(c, e.titulo),
+      }))),
+      escolhaOpen: this.state.escolhaOpen,
+      escolhas: [
+        { nome: 'Venda', icone: 'trending-up', sub: '11 etapas, do cadastro do cliente até Ganhos — o funil principal' },
+        { nome: 'Acompanhamento', icone: 'package-search', sub: '5 etapas para seguir o pedido dentro da indústria até faturar' },
+        { nome: 'Lista de espera', icone: 'clock-3', sub: '6 etapas para produto sem estoque, do aviso à venda' },
+        { nome: 'SAC / Cobrança', icone: 'life-buoy', sub: 'Tratativas de reclamação e título vencido até resolver' },
+      ].map((e, i) => ({
+        ...e,
+        pegar: () => { localStorage.setItem('va-crm-funil-escolhido', '1'); this.setState({ escolhaOpen: false, funil: ['venda', 'acompanhamento', 'espera', 'sac'][i] }); },
+      })),
+      fecharEscolha: () => { localStorage.setItem('va-crm-funil-escolhido', '1'); this.setState({ escolhaOpen: false }); },
+      perdaOpen: this.state.perdaOpen,
+      motivos: motivosDefs.map(m => ({
+        nome: m,
+        style: "text-align:left;height:40px;padding:0 14px;border-radius:6px;cursor:pointer;font:" + (this.state.motivoSel === m ? '600' : '400') + " 13.5px/1 'IBM Plex Sans';border:1px solid " + (this.state.motivoSel === m ? '#B3202F' : '#D6DCE5') + ';background:' + (this.state.motivoSel === m ? '#FDF0F1' : '#FFFFFF') + ';color:' + (this.state.motivoSel === m ? '#85202C' : '#021226'),
+        pegar: () => this.setState({ motivoSel: m }),
+      })),
+      semMotivo: !this.state.motivoSel,
+      confirmarPerda: () => { this.setState({ perdaOpen: false }); this.avisar('Negócio movido para Perdidos — motivo: ' + this.state.motivoSel); },
+      fecharPerda: () => this.setState({ perdaOpen: false }),
+      novoOpen: this.state.novoOpen,
+      abrirNovo: () => this.setState({ novoOpen: true }),
+      fechar: () => this.setState({ novoOpen: false }),
+      funilAtivoNome: f.nome,
+      etapasOpcoes: f.etapas.map(e => e.titulo).join('|'),
+      primeiraEtapa: f.etapas[0].titulo,
+      funilId: this.state.funil,
+      detOpen: this.state.detOpen,
+      detTitulo: det.titulo || 'Negócio',
+      detCliente: det.cliente, detValor: det.valor, detEtapa: det.etapa,
+      fecharDet: () => this.setState({ detOpen: false }),
+      toastRight: (window.VAChat && window.VAChat.visivel()) ? '96px' : '24px',
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

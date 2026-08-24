@@ -1,0 +1,77 @@
+/* Venda Ágil — feedback, status e estados de conteúdo.
+   Derivação: FZ.2 §6 (nenhum estado só por cor: todo bloco traz ícone e
+   texto) e §2 (cápsula = estado, retângulo = superfície). */
+
+/* ── BADGE / STATUS — cápsula com ponto + texto ───────────────────────── */
+.va-badge{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 var(--space-2) 0 var(--space-2);border-radius:var(--radius-full);font:var(--fw-medium) var(--type-label-sm-size)/1 var(--font-ui);border:1px solid transparent;white-space:nowrap}
+.va-badge--lg{height:26px;font-size:var(--type-label-md-size)}
+.va-badge__dot{width:6px;height:6px;border-radius:var(--radius-full);background:currentColor;flex:0 0 auto}
+.va-badge svg{width:13px;height:13px}
+.va-badge--neutral{background:var(--status-neutral-bg);color:var(--status-neutral-text);border-color:var(--status-neutral-border)}
+.va-badge--success{background:var(--status-success-bg);color:var(--status-success-text);border-color:var(--status-success-border)}
+.va-badge--warning{background:var(--status-warning-bg);color:var(--status-warning-text);border-color:var(--status-warning-border)}
+.va-badge--danger{background:var(--status-danger-bg);color:var(--status-danger-text);border-color:var(--status-danger-border)}
+.va-badge--info{background:var(--status-info-bg);color:var(--status-info-text);border-color:var(--status-info-border)}
+.va-badge--accent{background:var(--accent-subtle);color:var(--accent-text);border-color:var(--accent-muted)}
+.va-badge--solid{background:var(--solid-default);color:var(--text-inverse)}
+.va-badge--count{min-width:20px;height:20px;padding:0 6px;justify-content:center;font-variant-numeric:tabular-nums}
+
+/* ── TAG / CHIP — filtro ativo, etiqueta de negócio ───────────────────── */
+.va-tag{display:inline-flex;align-items:center;gap:var(--space-1);height:26px;padding:0 var(--space-2);border-radius:var(--radius-xs);background:var(--background-sunken);color:var(--text-secondary);font:var(--fw-medium) var(--type-label-md-size)/1 var(--font-ui);border:1px solid var(--border-subtle)}
+.va-tag--removable{padding-right:var(--space-1)}
+.va-tag__remove{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:0;background:transparent;color:inherit;border-radius:var(--radius-xs);cursor:pointer}
+.va-tag__remove:hover{background:var(--surface-active);color:var(--text-primary)}
+
+/* ── SPINNER / CARREGAMENTO ──────────────────────────────────────────── */
+.va-spinner{display:inline-block;width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:var(--radius-full);animation:va-spin 800ms linear infinite}
+.va-spinner--lg{width:24px;height:24px;border-width:2.5px}
+@keyframes va-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.va-spinner{animation-duration:1600ms}}
+
+.va-skeleton{background:var(--background-sunken);border-radius:var(--radius-xs);position:relative;overflow:hidden}
+.va-skeleton::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:va-shimmer var(--skeleton-shimmer-duration) var(--ease-standard) infinite}
+[data-theme="dark"] .va-skeleton::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+@keyframes va-shimmer{to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.va-skeleton::after{animation:none}}
+
+.va-progressbar{height:6px;border-radius:var(--radius-full);background:var(--background-sunken);overflow:hidden}
+.va-progressbar__fill{height:100%;border-radius:var(--radius-full);background:var(--accent-default);transition:width var(--duration-deliberate) var(--ease-entrada)}
+.va-progressbar--indeterminate .va-progressbar__fill{width:35%;animation:va-indet 1200ms var(--ease-standard) infinite}
+@keyframes va-indet{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+
+/* ── ALERTA EM LINHA (banner) ─────────────────────────────────────────── */
+.va-alert{display:flex;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);border:1px solid;font-size:var(--type-body-md-size)}
+.va-alert__icon{flex:0 0 auto;margin-top:1px}
+.va-alert__body{flex:1 1 auto;display:flex;flex-direction:column;gap:var(--space-1)}
+.va-alert__title{font-weight:var(--fw-semibold)}
+.va-alert__actions{display:flex;gap:var(--space-2);margin-top:var(--space-2)}
+.va-alert--info{background:var(--status-info-bg);border-color:var(--status-info-border);color:var(--status-info-text)}
+.va-alert--success{background:var(--status-success-bg);border-color:var(--status-success-border);color:var(--status-success-text)}
+.va-alert--warning{background:var(--status-warning-bg);border-color:var(--status-warning-border);color:var(--status-warning-text)}
+.va-alert--danger{background:var(--status-danger-bg);border-color:var(--status-danger-border);color:var(--status-danger-text)}
+.va-alert p{color:var(--text-primary)}
+
+/* ── TOAST ───────────────────────────────────────────────────────────── */
+.va-toaster{position:fixed;right:var(--space-6);bottom:var(--space-6);z-index:var(--z-toast);display:flex;flex-direction:column;gap:var(--space-2);width:380px;max-width:calc(100vw - var(--space-8))}
+.va-toast{display:flex;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--background-raised);border:1px solid var(--border-subtle);border-left:var(--border-width-marker) solid var(--status-neutral-solid);border-radius:var(--radius-sm);box-shadow:var(--elevation-5);animation:va-toast-in var(--duration-standard) var(--ease-entrada)}
+.va-toast--success{border-left-color:var(--status-success-solid)}
+.va-toast--danger{border-left-color:var(--status-danger-solid)}
+.va-toast--warning{border-left-color:var(--status-warning-solid)}
+.va-toast--info{border-left-color:var(--status-info-solid)}
+.va-toast__body{flex:1 1 auto;display:flex;flex-direction:column;gap:2px;font-size:var(--type-body-md-size)}
+.va-toast__title{font-weight:var(--fw-semibold);color:var(--text-primary)}
+.va-toast__text{color:var(--text-secondary);font-size:var(--type-body-sm-size)}
+@keyframes va-toast-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:767px){.va-toaster{left:var(--space-4);right:var(--space-4);bottom:auto;top:var(--space-4);width:auto}}
+
+/* ── TOOLTIP ─────────────────────────────────────────────────────────── */
+.va-tooltip{position:relative;display:inline-flex}
+.va-tooltip__bubble{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);z-index:var(--z-tooltip);background:var(--navy-950);color:#fff;padding:6px var(--space-2);border-radius:var(--radius-xs);font:var(--fw-regular) var(--type-caption-size)/1.35 var(--font-ui);white-space:nowrap;box-shadow:var(--elevation-3);pointer-events:none}
+[data-theme="dark"] .va-tooltip__bubble{background:var(--neutral-0);color:var(--navy-950)}
+
+/* ── ESTADO VAZIO ────────────────────────────────────────────────────── */
+.va-empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-3);padding:var(--space-12) var(--space-6);max-width:440px;margin:0 auto}
+.va-empty__art{color:var(--accent-text);opacity:.9}
+.va-empty__title{font:var(--fw-semibold) var(--type-heading-sm-size)/1.3 var(--font-ui);color:var(--text-primary)}
+.va-empty__text{font-size:var(--type-body-md-size);color:var(--text-secondary);text-wrap:pretty}
+.va-empty__actions{display:flex;gap:var(--space-2);margin-top:var(--space-2);flex-wrap:wrap;justify-content:center}

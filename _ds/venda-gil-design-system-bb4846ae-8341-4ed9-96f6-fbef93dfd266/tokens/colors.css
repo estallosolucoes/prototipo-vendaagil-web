@@ -1,0 +1,108 @@
+/* Venda Ágil — PRIMITIVOS DE COR (camada 1 de 2).
+   Nenhum componente pode consumir estes tokens diretamente.
+   Componente → tokens/semantic.css → aqui → valor.
+   Derivação (FZ.2 §6 linguagem dos estados / §10 linguagem dos números):
+   escalas completas 50–950 existem para que estado e dado tenham degraus
+   suficientes sem inventar cor nova em 2036. */
+
+:root{
+  /* ── BRAND / NAVY — âncora #021226 (hsl 213 90% 8%) ───────────────── */
+  --navy-50:#EEF2F8;   /* hsl(214 45% 95%) */
+  --navy-100:#DCE4EF;  /* hsl(214 42% 90%) */
+  --navy-200:#B7C6DD;  /* hsl(214 39% 79%) */
+  --navy-300:#8CA3C4;  /* hsl(215 33% 66%) */
+  --navy-400:#5F7CA6;  /* hsl(215 28% 51%) */
+  --navy-500:#3D5B85;  /* hsl(214 37% 38%) */
+  --navy-600:#2B4468;  /* hsl(215 42% 29%) */
+  --navy-700:#1D3150;  /* hsl(217 47% 21%) */
+  --navy-800:#12213A;  /* hsl(216 53% 15%) */
+  --navy-900:#06182F;  /* hsl(217 78% 11%) */
+  --navy-950:#021226;  /* MARCA — azul-noite institucional */
+
+  /* ── ACCENT / GREEN — âncora #78A614 (hsl 76 78% 36%) ─────────────
+     A matiz esquenta conforme clareia (76°→66°), como na própria marca.
+     400 = #C3D91E (limão), 500 = #9BBF17 (verde médio), 600 = #78A614
+     (verde principal), 800 = #4F7010 (único degrau aprovado para texto). */
+  --green-50:#FAFCEE;  /* hsl(72 67% 96%) */
+  --green-100:#F2F8D4; /* hsl(73 68% 90%) */
+  --green-200:#E3F0A8; /* hsl(72 69% 80%) */
+  --green-300:#D4E75E; /* hsl(69 75% 64%) */
+  --green-400:#C3D91E; /* MARCA — verde claro / limão */
+  --green-500:#9BBF17; /* MARCA — verde médio */
+  --green-600:#78A614; /* MARCA — verde principal */
+  --green-700:#628A11; /* hsl(76 78% 30%) */
+  --green-800:#4F7010; /* hsl(76 75% 25%) — texto/link verde (5,8:1 no branco) */
+  --green-900:#3A520C; /* hsl(76 74% 19%) */
+  --green-950:#232F07; /* hsl(77 74% 11%) */
+
+  /* ── NEUTRAL — viés cromático deliberado rumo ao azul-noite.
+     Todos os degraus em hsl(214–216, 10–24%). Cinza puro é proibido:
+     o #F3F3F3 do manual institucional foi deslocado para #F2F4F7
+     (hsl 214 27% 96%) — desvio registrado no readme. */
+  --neutral-0:#FFFFFF;
+  --neutral-50:#F8F9FB;  /* hsl(220 27% 98%) */
+  --neutral-100:#F2F4F7; /* hsl(214 27% 96%) — fundo da aplicação */
+  --neutral-200:#E4E8EF; /* hsl(217 27% 92%) */
+  --neutral-300:#CFD6E1; /* hsl(215 24% 85%) */
+  --neutral-400:#A3AEC0; /* hsl(217 19% 70%) */
+  --neutral-500:#7A8699; /* hsl(219 13% 54%) */
+  --neutral-600:#5B6678; /* hsl(219 14% 41%) */
+  --neutral-700:#454F5E; /* hsl(218 16% 32%) */
+  --neutral-800:#2F3745; /* hsl(218 19% 23%) */
+  --neutral-900:#1E2531; /* hsl(219 24% 15%) */
+  --neutral-950:#131821; /* hsl(219 26% 10%) */
+
+  /* ── SUCCESS — verde-teal, perceptivelmente distinto do verde-oliva
+     da marca: Δmatiz 86° (76°→162°), mais frio e mais escuro. */
+  --success-50:#E8F7F0;
+  --success-100:#C9EEDE;
+  --success-200:#93DCBE;
+  --success-300:#4FC599;
+  --success-400:#1FA97A;
+  --success-500:#158E66;
+  --success-600:#0E7D57; /* hsl(162 80% 27%) — 5,3:1 no branco */
+  --success-700:#0A6244;
+  --success-800:#084C36;
+  --success-900:#063827;
+  --success-950:#032018;
+
+  /* ── WARNING — âmbar (hsl 38) */
+  --warning-50:#FFF7E6;
+  --warning-100:#FFEBC2;
+  --warning-200:#FFD787;
+  --warning-300:#FBBF45;
+  --warning-400:#EDA412;
+  --warning-500:#C9860A;
+  --warning-600:#A66C08; /* 4,8:1 no branco */
+  --warning-700:#855507;
+  --warning-800:#653F06;
+  --warning-900:#472C04;
+  --warning-950:#291903;
+
+  /* ── DANGER — vermelho dessaturado (hsl 355 55%), para não gritar
+     numa tabela de 40 linhas de inadimplência. */
+  --danger-50:#FDF0F1;
+  --danger-100:#FAD9DC;
+  --danger-200:#F3B0B7;
+  --danger-300:#E7808B;
+  --danger-400:#D65462;
+  --danger-500:#BE3746;
+  --danger-600:#A32836; /* 6,1:1 no branco */
+  --danger-700:#85202C;
+  --danger-800:#661922;
+  --danger-900:#48121A;
+  --danger-950:#290A0F;
+
+  /* ── INFO — azul luminoso, separado do navy institucional */
+  --info-50:#EAF4FD;
+  --info-100:#CDE5FA;
+  --info-200:#9CCBF5;
+  --info-300:#62ABEB;
+  --info-400:#2E8ADB;
+  --info-500:#176FBC;
+  --info-600:#0F5A9C; /* 6,4:1 no branco */
+  --info-700:#0C477B;
+  --info-800:#09365D;
+  --info-900:#06263F;
+  --info-950:#031524;
+}

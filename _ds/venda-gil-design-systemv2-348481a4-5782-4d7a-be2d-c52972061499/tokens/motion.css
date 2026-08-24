@@ -1,0 +1,34 @@
+/* Venda Ágil — MOTION. FZ.2 §11: movimento é gramática de causa e efeito.
+   Regra de ouro: nada repetido >20×/dia passa de 150ms. */
+
+:root{
+  --duration-instant:100ms; /* @kind other */ /* hover, foco, marcação de linha */
+  --duration-fast:150ms; /* @kind other */    /* dropdown, chip, item adicionado ao pedido */
+  --duration-standard:200ms; /* @kind other *//* popover, toast, aba, acordeão */
+  --duration-slow:300ms; /* @kind other */    /* drawer, modal, painel de contexto */
+  --duration-deliberate:500ms; /* @kind other */ /* barra de meta preenchendo, contador de comissão */
+
+  --ease-standard:cubic-bezier(.2,0,0,1); /* @kind other */  /* movimento dentro da tela */
+  --ease-entrada:cubic-bezier(0,0,.2,1); /* @kind other */   /* algo aparece — desacelera */
+  --ease-saida:cubic-bezier(.4,0,1,1); /* @kind other */     /* algo some — acelera e sai */
+  --ease-enfase:cubic-bezier(.3,0,.1,1); /* @kind other */   /* mudança de número/estado que precisa ser notada */
+
+  --skeleton-shimmer-duration:1200ms; /* @kind other */
+}
+
+@media (prefers-reduced-motion:reduce){
+  :root{
+    --duration-instant:1ms; /* @kind other */
+    --duration-fast:1ms; /* @kind other */
+    --duration-standard:80ms; /* @kind other */
+    --duration-slow:80ms; /* @kind other */
+    --duration-deliberate:80ms; /* @kind other */
+    --ease-standard:linear; /* @kind other */
+    --ease-entrada:linear; /* @kind other */
+    --ease-saida:linear; /* @kind other */
+    --ease-enfase:linear; /* @kind other */
+    --skeleton-shimmer-duration:0ms; /* @kind other */
+  }
+  /* alternativa, não desligamento: translação vira opacidade curta */
+  *,*::before,*::after{animation-iteration-count:1!important;scroll-behavior:auto!important}
+}

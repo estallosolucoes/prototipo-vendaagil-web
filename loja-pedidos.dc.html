@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/v2-ajustes.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/styles.css">
+<script src="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="LOJA-05 Meus pedidos" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<header style="position:sticky;top:0;z-index:300;background:#FFFFFF;box-shadow:0 1px 3px rgba(2,18,38,.08)">
+<div style="max-width:860px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 20px">
+<a href="loja.dc.html" aria-label="Voltar ao catálogo" style="width:40px;height:40px;border-radius:6px;border:1px solid #D6DCE5;background:#FFFFFF;display:grid;place-items:center;color:#021226;text-decoration:none;flex:none" style-hover="background:#F2F4F7"><i data-lucide="arrow-left" style="font-size:20px"></i></a>
+<div style="flex:1;display:flex;flex-direction:column">
+<span style="font:600 15px/1.2 'IBM Plex Sans'">Meus pedidos</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">Márcia Fontana · Depósito São Jorge</span>
+</div>
+<span style="width:36px;height:36px;border-radius:6px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:700 13px/1 'IBM Plex Sans';flex:none">VO</span>
+</div>
+</header>
+<main style="max-width:860px;margin:0 auto;width:100%;padding:20px;display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ pedidos }}" as="p" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 14.5px/1.3 'IBM Plex Sans'">Pedido de {{ p.quando }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.itens }} itens · enviado às {{ p.hora }}</span></span>
+<span style="{{ p.stStyle }}"><i data-lucide="{{ p.stIcone }}" style="font-size:13px"></i>{{ p.st }}</span>
+</div>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">{{ p.resumo }}</span>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #EDF0F5;padding-top:10px;flex-wrap:wrap">
+<span style="font:600 17px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ p.total }}</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-if value="{{ p.temCopia }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ p.copia }}" style="display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;color:#454F5E;font:500 13.5px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:#F2F4F7"><i data-lucide="file-down" style="font-size:16px"></i>Cópia em PDF</button>
+</sc-if>
+<button onClick="{{ p.repetir }}" style="display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border-radius:6px;border:0;background:#78A614;color:#F3F3F3;font:600 13.5px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:#628A11"><i data-lucide="rotate-ccw" style="font-size:16px"></i>Repetir pedido</button>
+</div>
+</div>
+</div>
+</sc-for>
+<span style="text-align:center;font:400 12.5px/1.5 'IBM Plex Sans';color:#7A8699;padding:8px 0 24px">Pedidos dos últimos 12 meses. Dúvidas? <a href="https://wa.me/5554998124407" style="font-weight:500;text-decoration:none">Fale com o representante</a>.</span>
+</main>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans';white-space:nowrap"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { toast: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const ST = {
+      analise: { st: 'Em análise', stIcone: 'clock', stStyle: "display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';background:#FCF3DF;color:#8A5B00;flex:none" },
+      emitido: { st: 'Emitido', stIcone: 'circle-check', stStyle: "display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';background:#E8F7F0;color:#0A6244;flex:none" },
+      faturado: { st: 'Faturado', stIcone: 'circle-check', stStyle: "display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';background:#E8F7F0;color:#0A6244;flex:none" },
+    };
+    const defs = [
+      { quando: 'hoje', hora: '09:12', itens: 9, resumo: 'Cadeira Operacional ×12, Gaveteiro móvel ×4 e mais 3 produtos', total: 'R$ 6.480,00', sit: 'analise', temCopia: false },
+      { quando: '03/08', hora: '10:21', itens: 11, resumo: 'Mesa reta 1,60 m ×4, Cadeira Diretor ×6 e mais 4 produtos', total: 'R$ 8.115,00', sit: 'emitido', temCopia: true },
+      { quando: '18/07', hora: '14:50', itens: 6, resumo: 'Armário alto 2 portas ×2, Cadeira fixa ×8', total: 'R$ 4.930,00', sit: 'faturado', temCopia: true },
+      { quando: '02/07', hora: '11:08', itens: 8, resumo: 'Cadeira Operacional ×16, Apoio de pés ×6', total: 'R$ 5.870,00', sit: 'faturado', temCopia: true },
+    ];
+    return {
+      pedidos: defs.map(p => ({
+        ...p, ...ST[p.sit],
+        copia: () => this.avisar('Cópia do pedido baixada em PDF'),
+        repetir: () => this.avisar('Itens adicionados ao carrinho com os preços de hoje'),
+      })),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

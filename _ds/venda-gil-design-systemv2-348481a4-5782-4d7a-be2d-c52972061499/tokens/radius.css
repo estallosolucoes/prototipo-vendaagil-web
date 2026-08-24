@@ -1,0 +1,18 @@
+/* Venda Ágil — RAIO. FZ.2 §2 formas predominantes:
+   o repertório é retângulo (ação e entrada), retângulo brando (superfície)
+   e cápsula (status). O raio DECLARA a natureza do elemento; por isso a
+   escala é curta e cada degrau tem dono. Raio uniforme é proibido. */
+
+:root{
+  --radius-none:0px;    /* linha de tabela, célula, cabeçalho fixo */
+  --radius-xs:2px;      /* checkbox, marcador de gráfico, tag inline */
+  --radius-sm:6px;      /* botão, campo, select, item de menu — precisão */
+  --radius-md:10px;     /* card, painel interno, popover */
+  --radius-lg:16px;     /* modal, drawer, card de destaque, cartão VISA */
+  --radius-xl:20px;     /* superfície de tela do catálogo B2B */
+  --radius-full:9999px; /* badge, pill, avatar, barra de progresso, switch */
+
+  --border-width-hairline:1px;
+  --border-width-strong:2px;    /* borda de erro e de seleção por borda em tabela */
+  --border-width-marker:3px;    /* marcador de item ativo na sidebar */
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="PED-05 Aprovações do catálogo" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="pedidos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1100px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="pedidos.dc.html" style="text-decoration:none">Pedidos</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Aprovações do catálogo</span></nav>
+<div style="display:flex;flex-direction:column;gap:4px;margin-bottom:24px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Aprovações do catálogo</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">{{ resumo }}</span>
+</div>
+<sc-if value="{{ temPendentes }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<sc-for list="{{ pendentes }}" as="p" hint-placeholder-count="3">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:6px;background:#F2F8D4;color:#365E10;display:grid;place-items:center;flex:none"><i data-lucide="store" style="font-size:19px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 15px/1.3 'IBM Plex Sans'">{{ p.cliente }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ p.meta }}</span></span>
+</div>
+<span style="display:flex;flex-direction:column;gap:2px;text-align:right"><span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ p.valor }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#855507">{{ p.espera }}</span></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #EDF0F5;padding-top:12px">
+<sc-for list="{{ p.itens }}" as="it" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>{{ it.nome }}</span><span style="font-variant-numeric:tabular-nums;font-weight:500">{{ it.total }}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="x" onClick="{{ p.recusar }}" hint-size="auto,40px">Recusar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="pencil" onClick="{{ goEmissao }}" hint-size="auto,40px">Aprovar com ajuste</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ p.aprovar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Aprovar pedido</x-import>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ semPendentes }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:48px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+<span style="width:48px;height:48px;border-radius:999px;background:#E8F7F0;color:#0A6244;display:grid;place-items:center"><i data-lucide="circle-check" style="font-size:24px"></i></span>
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Nenhum pedido aguardando aprovação</span>
+<span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#5B6678">Os pedidos do catálogo B2B aparecem aqui assim que o cliente fecha o carrinho.</span>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ recusaOpen }}" onClose="{{ fechar }}" title="Recusar pedido" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O cliente <strong style="color:#021226">{{ alvo }}</strong> recebe o motivo por e-mail e pode refazer o pedido no catálogo.</p>
+<x-import component-from-global-scope="va-select" label="Motivo" options="Sem estoque|Preço desatualizado|Pedido abaixo do mínimo|Cadastro pendente|Outro" value="Sem estoque" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Mensagem para o cliente" rows="{{ 3 }}" placeholder="Explique em uma frase o que fazer agora" hint-size="100%,140px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Voltar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" onClick="{{ confirmaRecusa }}" hint-size="auto,40px">Recusar pedido</x-import>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:70;display:flex;align-items:center;gap:10px;background:#021226;color:#FFFFFF;border-radius:10px;padding:14px 18px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:17px;color:#C3D91E"></i>{{ toastTexto }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    recusaOpen: false, alvo: '', toast: '',
+    pendentes: [
+      { id: 1, cliente: 'Depósito São Jorge', meta: 'Loja Móveis Vale · chegou hoje, 09:48 · condição 30/60', valor: 'R$ 6.240,00', espera: 'esperando há 5 horas', itens: [
+        { nome: '8× Cadeira Operacional Vale — preta', total: 'R$ 2.388,00' },
+        { nome: '2× Mesa executiva 1,60 m — nogueira', total: 'R$ 2.772,00' },
+        { nome: '2× Gaveteiro volante 3 gavetas', total: 'R$ 824,00' } ] },
+      { id: 2, cliente: 'Central do Construtor', meta: 'Loja Cerâmica Atlas · chegou ontem, 17:22 · condição à vista', valor: 'R$ 3.180,00', espera: 'esperando desde ontem', itens: [
+        { nome: '60 m² Porcelanato Atlas 80×80 — polar', total: 'R$ 3.180,00' } ] },
+      { id: 3, cliente: 'Armazém Boa Vista', meta: 'Loja Tecelagem Iguaçu · chegou ontem, 11:05 · condição 30/60', valor: 'R$ 1.890,00', espera: 'esperando desde ontem', itens: [
+        { nome: '30× Jogo de cama hotelaria 200 fios', total: 'R$ 1.890,00' } ] },
+    ],
+  };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  flash(msg) { this.setState({ toast: msg }); setTimeout(() => this.setState({ toast: '' }), 3200); }
+  remove(id) { this.setState(s => ({ pendentes: s.pendentes.filter(p => p.id !== id) })); }
+  renderVals() {
+    const n = this.state.pendentes.length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      resumo: n > 0 ? n + ' pedidos do catálogo B2B aguardam sua decisão — o cliente é avisado na hora' : 'Tudo em dia',
+      temPendentes: n > 0,
+      semPendentes: n === 0,
+      pendentes: this.state.pendentes.map(p => ({
+        ...p,
+        aprovar: () => { this.remove(p.id); this.flash('Pedido do ' + p.cliente + ' aprovado e numerado. O cliente recebeu a confirmação.'); },
+        recusar: () => this.setState({ recusaOpen: true, alvo: p.cliente, alvoId: p.id }),
+      })),
+      recusaOpen: this.state.recusaOpen,
+      alvo: this.state.alvo,
+      confirmaRecusa: () => { this.remove(this.state.alvoId); this.setState({ recusaOpen: false }); this.flash('Pedido recusado. O ' + this.state.alvo + ' recebeu o motivo por e-mail.'); },
+      fechar: () => this.setState({ recusaOpen: false }),
+      goEmissao: () => { location.href = 'pedidos-novo.dc.html'; },
+      toast: !!this.state.toast,
+      toastTexto: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

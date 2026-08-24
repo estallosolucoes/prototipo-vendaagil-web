@@ -1,0 +1,134 @@
+/* Venda Ágil — componentes de fundação (ação + entrada).
+   Derivação: FZ.2 §2 (retângulo 6px = ação e entrada), §6 (mecanismo de
+   estado por superfície/anel/marcador), §1 (padding na malha de 4). */
+
+/* ── BOTÃO ───────────────────────────────────────────────────────────── */
+.va-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font-ui);font-weight:var(--fw-medium);cursor:pointer;text-decoration:none;white-space:nowrap;transition:background-color var(--duration-instant) var(--ease-standard),border-color var(--duration-instant) var(--ease-standard),transform var(--duration-instant) var(--ease-standard)}
+.va-btn:active:not(:disabled){transform:translateY(1px)}
+.va-btn:disabled,.va-btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;transform:none}
+.va-btn[data-loading="true"]{cursor:progress}
+.va-btn--xs{height:var(--control-height-xs);padding:0 var(--space-2);font-size:var(--type-label-sm-size)}
+.va-btn--sm{height:var(--control-height-sm);padding:0 var(--space-3);font-size:var(--type-label-md-size)}
+.va-btn--md{height:var(--control-height-md);padding:0 var(--space-4);font-size:var(--type-label-lg-size)}
+.va-btn--lg{height:var(--control-height-lg);padding:0 var(--space-5);font-size:var(--type-body-lg-size)}
+.va-btn--full{width:100%}
+/* primário: verde de marca + texto azul-noite (6,2:1) — decisão D-03 */
+.va-btn--primary{background:var(--accent-default);color:var(--text-on-accent)}
+.va-btn--primary:hover:not(:disabled){background:var(--accent-hover)}
+.va-btn--primary:active:not(:disabled){background:var(--accent-active)}
+.va-btn--primary:focus-visible{outline-color:var(--navy-950);box-shadow:0 0 0 4px rgba(255,255,255,.9)}
+/* neutro forte: a segunda forma do botão cheio */
+.va-btn--solid{background:var(--solid-default);color:var(--text-inverse)}
+.va-btn--solid:hover:not(:disabled){background:var(--solid-hover)}
+.va-btn--solid:active:not(:disabled){background:var(--solid-active)}
+.va-btn--secondary{background:var(--surface-default);color:var(--text-primary);border-color:var(--border-default)}
+.va-btn--secondary:hover:not(:disabled){background:var(--surface-hover);border-color:var(--border-strong)}
+.va-btn--secondary:active:not(:disabled){background:var(--surface-active)}
+.va-btn--ghost{background:transparent;color:var(--text-primary)}
+.va-btn--ghost:hover:not(:disabled){background:var(--surface-hover)}
+.va-btn--ghost:active:not(:disabled){background:var(--surface-active)}
+.va-btn--danger{background:var(--status-danger-solid);color:#fff}
+.va-btn--danger:hover:not(:disabled){background:var(--danger-700)}
+.va-btn--danger:active:not(:disabled){background:var(--danger-800)}
+.va-btn--link{background:transparent;color:var(--text-link);height:auto;padding:0;text-decoration:underline;text-underline-offset:2px}
+.va-btn--link:hover:not(:disabled){color:var(--text-link-hover)}
+.va-btn__icon{display:inline-flex;flex:0 0 auto}
+.va-btn--xs .va-btn__icon svg,.va-btn--sm .va-btn__icon svg{width:16px;height:16px}
+.va-btn .va-btn__icon svg{width:20px;height:20px}
+
+.va-btn-group{display:inline-flex}
+.va-btn-group>.va-btn{border-radius:0;margin-left:-1px}
+.va-btn-group>.va-btn:first-child{border-radius:var(--radius-sm) 0 0 var(--radius-sm);margin-left:0}
+.va-btn-group>.va-btn:last-child{border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.va-btn-group>.va-btn:focus-visible{z-index:1}
+.va-split{display:inline-flex}
+.va-split>.va-btn:first-child{border-top-right-radius:0;border-bottom-right-radius:0}
+.va-split>.va-btn:last-child{border-top-left-radius:0;border-bottom-left-radius:0;padding:0 var(--space-2);border-left:1px solid rgba(2,18,38,.18)}
+
+/* ── ICON BUTTON — alvo mínimo garantido por token ────────────────────── */
+.va-iconbtn{display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;background:transparent;color:var(--text-secondary);border-radius:var(--radius-sm);cursor:pointer;transition:background-color var(--duration-instant) var(--ease-standard),color var(--duration-instant) var(--ease-standard)}
+.va-iconbtn:hover:not(:disabled){background:var(--surface-hover);color:var(--text-primary)}
+.va-iconbtn:active:not(:disabled){background:var(--surface-active)}
+.va-iconbtn:disabled{opacity:.45;cursor:not-allowed}
+.va-iconbtn--sm{width:var(--control-height-sm);height:var(--control-height-sm)}
+.va-iconbtn--md{width:var(--control-height-md);height:var(--control-height-md)}
+.va-iconbtn--lg{width:var(--control-height-lg);height:var(--control-height-lg)}
+.va-iconbtn--outline{border-color:var(--border-default);background:var(--surface-default)}
+.va-iconbtn--solid{background:var(--solid-default);color:var(--text-inverse)}
+.va-iconbtn--solid:hover:not(:disabled){background:var(--solid-hover);color:var(--text-inverse)}
+.va-iconbtn svg{width:20px;height:20px}
+.va-iconbtn--sm svg{width:16px;height:16px}
+@media (pointer:coarse){.va-iconbtn{min-width:var(--touch-target-min);min-height:var(--touch-target-min)}}
+
+/* ── CAMPO ───────────────────────────────────────────────────────────── */
+.va-field{display:flex;flex-direction:column;gap:var(--space-1)}
+.va-field__label{font:var(--fw-medium) var(--type-label-md-size)/var(--type-label-md-lh) var(--font-ui);color:var(--text-secondary)}
+.va-field__label[data-required="true"]::after{content:" *";color:var(--status-danger-icon)}
+.va-field__help{font:var(--fw-regular) var(--type-caption-size)/var(--type-caption-lh) var(--font-ui);color:var(--text-tertiary)}
+.va-field__error{display:flex;align-items:flex-start;gap:var(--space-1);font:var(--fw-regular) var(--type-caption-size)/var(--type-caption-lh) var(--font-ui);color:var(--status-danger-text)}
+.va-field__error svg{width:14px;height:14px;flex:0 0 auto;margin-top:1px}
+.va-field__counter{margin-left:auto;font-variant-numeric:tabular-nums}
+.va-field__row{display:flex;align-items:baseline;gap:var(--space-2)}
+
+.va-inputwrap{display:flex;align-items:center;gap:var(--space-2);background:var(--surface-default);border:1px solid var(--neutral-500);border-radius:var(--radius-sm);padding:0 var(--space-3);height:var(--control-height-md);color:var(--text-tertiary);transition:border-color var(--duration-instant) var(--ease-standard),box-shadow var(--duration-instant) var(--ease-standard)}
+[data-theme="dark"] .va-inputwrap{border-color:var(--border-strong)}
+.va-inputwrap--sm{height:var(--control-height-sm)}
+.va-inputwrap--lg{height:var(--control-height-lg)}
+.va-inputwrap:hover{border-color:var(--text-secondary)}
+.va-inputwrap:focus-within{border-color:var(--border-focus);box-shadow:0 0 0 2px var(--focus-ring);outline:none}
+.va-inputwrap[data-invalid="true"]{border-color:var(--border-error);border-width:2px;padding:0 calc(var(--space-3) - 1px)}
+.va-inputwrap[data-disabled="true"]{background:var(--surface-disabled);border-color:var(--border-subtle);opacity:.7;cursor:not-allowed}
+.va-inputwrap[data-readonly="true"]{background:transparent;border-color:transparent;padding-left:0}
+.va-inputwrap__affix{font:var(--fw-medium) var(--type-label-md-size)/1 var(--font-ui);color:var(--text-tertiary);flex:0 0 auto}
+.va-inputwrap svg{width:18px;height:18px;flex:0 0 auto}
+.va-input{flex:1 1 auto;min-width:0;border:0;background:transparent;outline:none;font:var(--fw-regular) var(--type-body-md-size)/1.4 var(--font-ui);color:var(--text-primary)}
+.va-input::placeholder{color:var(--text-placeholder)}
+.va-input[data-numeric="true"]{text-align:right;font-variant-numeric:tabular-nums;font-weight:var(--fw-medium)}
+.va-input[data-code="true"]{font-family:var(--font-code);font-variant-numeric:slashed-zero}
+.va-textarea{width:100%;min-height:88px;resize:vertical;background:var(--surface-default);border:1px solid var(--neutral-500);border-radius:var(--radius-sm);padding:var(--space-3);font:var(--fw-regular) var(--type-body-md-size)/1.55 var(--font-ui);color:var(--text-primary)}
+.va-textarea:focus-visible{border-color:var(--border-focus);box-shadow:0 0 0 2px var(--focus-ring);outline:none}
+
+/* ── SELECT ──────────────────────────────────────────────────────────── */
+.va-select{appearance:none;flex:1 1 auto;min-width:0;border:0;background:transparent;outline:none;font:var(--fw-regular) var(--type-body-md-size)/1.4 var(--font-ui);color:var(--text-primary);cursor:pointer;padding-right:var(--space-1)}
+
+/* ── CHECKBOX / RADIO / SWITCH ───────────────────────────────────────── */
+.va-check{display:inline-flex;align-items:flex-start;gap:var(--space-2);cursor:pointer;font:var(--fw-regular) var(--type-body-md-size)/1.4 var(--font-ui);color:var(--text-primary)}
+.va-check input{position:absolute;opacity:0;width:1px;height:1px}
+.va-check__box{width:18px;height:18px;flex:0 0 auto;margin-top:1px;border:1.5px solid var(--neutral-500);border-radius:var(--radius-xs);background:var(--surface-default);display:inline-flex;align-items:center;justify-content:center;color:var(--text-on-accent);transition:background-color var(--duration-instant) var(--ease-standard),border-color var(--duration-instant) var(--ease-standard)}
+.va-check__box--radio{border-radius:var(--radius-full)}
+.va-check:hover .va-check__box{border-color:var(--text-secondary)}
+.va-check input:checked+.va-check__box,.va-check input:indeterminate+.va-check__box{background:var(--accent-default);border-color:var(--accent-active)}
+.va-check input:focus-visible+.va-check__box{outline:2px solid var(--focus-ring);outline-offset:2px}
+.va-check input:disabled+.va-check__box{opacity:.45}
+.va-check input:disabled~.va-check__label{opacity:.45}
+.va-check__box svg{width:14px;height:14px}
+.va-check__dot{width:8px;height:8px;border-radius:var(--radius-full);background:var(--text-on-accent);display:none}
+.va-check input:checked+.va-check__box .va-check__dot{display:block}
+.va-check__label{display:flex;flex-direction:column;gap:2px}
+.va-check__desc{font:var(--fw-regular) var(--type-caption-size)/1.4 var(--font-ui);color:var(--text-tertiary)}
+
+.va-switch{display:inline-flex;align-items:center;gap:var(--space-3);cursor:pointer;font:var(--fw-regular) var(--type-body-md-size)/1.4 var(--font-ui)}
+.va-switch input{position:absolute;opacity:0;width:1px;height:1px}
+.va-switch__track{width:40px;height:22px;flex:0 0 auto;border-radius:var(--radius-full);background:var(--neutral-400);position:relative;transition:background-color var(--duration-fast) var(--ease-standard)}
+.va-switch__thumb{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:var(--radius-full);background:#fff;box-shadow:var(--elevation-1);transition:transform var(--duration-fast) var(--ease-standard)}
+.va-switch input:checked+.va-switch__track{background:var(--accent-active)}
+.va-switch input:checked+.va-switch__track .va-switch__thumb{transform:translateX(18px)}
+.va-switch input:focus-visible+.va-switch__track{outline:2px solid var(--focus-ring);outline-offset:2px}
+.va-switch input:disabled+.va-switch__track{opacity:.45}
+
+/* ── SEGMENTED CONTROL — substitui as pills da referência (D-06) ─────── */
+.va-segmented{display:inline-flex;padding:2px;gap:2px;background:var(--background-sunken);border-radius:var(--radius-sm)}
+.va-segmented__item{border:0;background:transparent;cursor:pointer;height:28px;padding:0 var(--space-3);border-radius:4px;font:var(--fw-medium) var(--type-label-md-size)/1 var(--font-ui);color:var(--text-secondary);transition:background-color var(--duration-instant) var(--ease-standard),color var(--duration-instant) var(--ease-standard)}
+.va-segmented__item:hover{color:var(--text-primary)}
+.va-segmented__item[aria-selected="true"]{background:var(--solid-default);color:var(--text-inverse)}
+
+/* ── COMBOBOX ────────────────────────────────────────────────────────── */
+.va-combobox{position:relative}
+.va-combobox__list{position:absolute;left:0;right:0;top:calc(100% + var(--space-1));z-index:var(--z-dropdown);margin:0;padding:var(--space-1);list-style:none;background:var(--background-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-md);box-shadow:var(--elevation-3);max-height:320px;overflow:auto}
+.va-combobox__item{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);cursor:pointer;font-size:var(--type-body-md-size)}
+.va-combobox__item[data-cursor="true"]{background:var(--surface-selected);box-shadow:inset var(--border-width-marker) 0 0 var(--accent-default)}
+.va-combobox__empty{padding:var(--space-3);color:var(--text-tertiary);font-size:var(--type-body-sm-size)}
+
+/* ── BUSCA ───────────────────────────────────────────────────────────── */
+.va-search{position:relative;display:flex;align-items:center}
+.va-search kbd{font:var(--fw-medium) 11px/1 var(--font-code);color:var(--text-tertiary);border:1px solid var(--border-default);border-radius:4px;padding:3px 5px;background:var(--background-base)}

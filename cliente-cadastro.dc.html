@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CLI-02 Cadastro de cliente" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="clientes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1080px;margin:0 auto;padding:44px 32px 120px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="clientes.dc.html" style="text-decoration:none">Clientes</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Cadastrar cliente</span></nav>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 24px">Cadastrar cliente</h1>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Identificação</span>
+<div style="display:flex;align-items:end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CNPJ" mask="cnpj" code="{{ true }}" required="{{ true }}" value="{{ cnpj }}" placeholder="00.000.000/0000-00" hint-size="260px,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="search" loading="{{ buscando }}" onClick="{{ buscarCnpj }}" hint-size="auto,40px">Buscar CNPJ</x-import>
+<sc-if value="{{ buscou }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;height:40px;font:400 13px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:15px"></i>Dados preenchidos pela Receita</span></sc-if>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Razão social" required="{{ true }}" value="{{ razao }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome fantasia" value="{{ fantasia }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Inscrição estadual" code="{{ true }}" value="{{ ie }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Regime tributário" options="Simples Nacional|Lucro presumido|Lucro real" value="Simples Nacional" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Endereço</span>
+<div class="g-cep" style="display:grid;grid-template-columns:180px 1fr 110px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CEP" mask="cep" code="{{ true }}" value="{{ cep }}" help="Preenche o endereço" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Endereço" value="{{ endereco }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Número" value="{{ numero }}" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr) 90px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Bairro" value="{{ bairro }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cidade" value="{{ cidade }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="UF" value="{{ uf }}" hint-size="100%,66px"></x-import>
+</div>
+<label style="display:flex;align-items:center;gap:10px;cursor:pointer;width:fit-content">
+<input type="checkbox" checked="{{ mesmoEndereco }}" onChange="{{ toggleEndereco }}" style="width:18px;height:18px;accent-color:#78A614">
+<span style="font:400 14px/1.3 'IBM Plex Sans'">O endereço de entrega é o mesmo da cobrança</span>
+</label>
+<sc-if value="{{ entregaSeparada }}" hint-placeholder-val="{{ false }}">
+<div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Endereço de entrega</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Usado no frete e na ST — a UF de entrega muda o imposto do pedido</span>
+</div>
+<div class="g-cep" style="display:grid;grid-template-columns:180px 1fr 110px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CEP" mask="cep" code="{{ true }}" value="95045-100" help="Preenche o endereço" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Endereço" value="Rua Plácido de Castro" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Número" value="655" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr) 90px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Bairro" value="São Leopoldo" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cidade" value="Caxias do Sul" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="UF" value="RS" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Referência de entrega" placeholder="Galpão dos fundos, entrada pela lateral" hint-size="100%,66px"></x-import>
+</div>
+</sc-if>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 16px/1.3 'IBM Plex Sans'">Contatos</span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" onClick="{{ abrirContato }}" hint-size="auto,32px">Adicionar contato</x-import></div>
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px">
+<span style="width:36px;height:36px;border-radius:999px;background:#EDF0F5;display:grid;place-items:center;font:600 12px/1 'IBM Plex Sans';color:#454F5E">JM</span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">Jorge Machado — comprador</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">(54) 99911-2044 · jorge@saojorge.com.br · aniversário 14/03</span></span>
+<button aria-label="Editar contato" title="Editar contato" onClick="{{ abrirContato }}" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i></button>
+</div>
+</div>
+<div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Comercial</span>
+<x-import component-from-global-scope="va-select" label="Rota" options="Serra Gaúcha|Litoral norte|Vale do Itajaí" value="Serra Gaúcha" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Segmento" options="Material de construção|Papelaria e escritório|Atacado" value="Material de construção" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Vendedor responsável" options="Carlos Rezende|Ana Paula Vieira|Jorge Tomasi" value="Carlos Rezende" help="Outros vendedores podem ser vinculados como carteira compartilhada" hint-size="100%,88px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vendedores com acesso</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ vendedores }}" as="v" hint-placeholder-count="2">
+<span style="display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12.5px/1 'IBM Plex Sans';color:#021226">{{ v.nome }}<button onClick="{{ v.tirar }}" aria-label="Desvincular {{ v.nome }}" style="border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699;padding:0" style-hover="color:#85202C"><i data-lucide="x" style="font-size:12px"></i></button></span>
+</sc-for>
+<button onClick="{{ addVendedor }}" style="display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 10px;border-radius:999px;border:1px dashed #98A2B3;background:transparent;color:#5B6678;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer" style-hover="border-color:#628A11;color:#365E10"><i data-lucide="plus" style="font-size:12px"></i>vincular</button>
+</div>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Condições de pagamento</span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ condicoes }}" as="c" hint-placeholder-count="3">
+<label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+<input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;accent-color:#78A614">
+<span style="font:400 14px/1.3 'IBM Plex Sans';flex:1">{{ c.nome }}</span>
+<sc-if value="{{ c.padrao }}" hint-placeholder-val="{{ false }}"><span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'">padrão</span></sc-if>
+</label>
+</sc-for>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Na emissão, só as condições marcadas aparecem para este cliente. Gerencie a lista em Cadastros → Condições de pagamento.</span>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 16px/1.3 'IBM Plex Sans'">Tabelas de preço</span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" hint-size="auto,32px">Vincular</x-import></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Móveis Vale</span><span style="font-weight:500">Tabela sul — varejo</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Cerâmica Atlas</span><span style="font-weight:500">Tabela geral 2026</span></div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Crédito e bloqueio</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Limite de crédito" prefix="R$" numeric="{{ true }}" value="30.000,00" help="Em aberto hoje: R$ 11.240,00 — 37% do limite" hint-size="100%,88px"></x-import>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="checkbox" checked="{{ bloqAuto }}" onChange="{{ toggleBloqAuto }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Bloquear sozinho por título vencido</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Título vencido há mais de 30 dias bloqueia a emissão; o bloqueio cai na baixa da cobrança</span></span>
+</label>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" label="Bloquear emissão de pedidos agora" hint-size="auto,24px"></x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Bloqueado, o cliente só recebe orçamento. O motivo aparece na emissão.</span>
+</div>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Referências comerciais e bancárias</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Algumas representadas exigem para aprovar a primeira compra</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" onClick="{{ addReferencia }}" hint-size="auto,32px">Adicionar referência</x-import>
+</div>
+<div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:12px">
+<sc-for list="{{ referencias }}" as="r" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px">
+<span style="width:36px;height:36px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E;flex:none"><i data-lucide="{{ r.icone }}" style="font-size:17px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ r.nome }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ r.sub }}</span></span>
+<button aria-label="Remover referência" title="Remover referência" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Observações" rows="{{ 3 }}" placeholder="Recebimento só às terças e quintas, das 8h às 11h" hint-size="100%,140px"></x-import>
+</div>
+</div>
+<div data-va-dock="" style="position:sticky;bottom:0;margin-top:24px;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;justify-content:flex-end;gap:8px;z-index:20">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ tentarSair }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ voltar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar cliente</x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ sairOpen }}" onClose="{{ ficar }}" title="Sair sem salvar?" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FCF3DF;color:#8A5B00;display:grid;place-items:center;flex:none"><i data-lucide="triangle-alert" style="font-size:20px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O cadastro tem alterações que ainda não foram salvas. Saindo agora, elas se perdem.</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ voltar }}" hint-size="auto,40px">Sair sem salvar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="pencil" onClick="{{ ficar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Continuar editando</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ contatoOpen }}" onClose="{{ fechar }}" title="Adicionar contato" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cargo" placeholder="Comprador" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Telefone" mask="telefone" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Aniversário" mask="data" placeholder="dd/mm" help="Aparece nos lembretes do CRM" hint-size="100%,88px"></x-import>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar contato</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ refOpen }}" onClose="{{ fechar }}" title="Adicionar referência" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Tipo" options="Comercial (fornecedor)|Bancária" value="Comercial (fornecedor)" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" placeholder="Distribuidora Alfa ou Banco do Brasil" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Telefone" mask="telefone" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Contato / gerente" placeholder="Quem atende a consulta" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desde" placeholder="2019" help="Há quanto tempo é cliente da referência" hint-size="100%,88px"></x-import>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar referência</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { contatoOpen: false, refOpen: false, buscando: false, buscou: false, sairOpen: false, mesmoEndereco: true, bloqAuto: true, vendedores: ['Carlos Rezende', 'Ana Paula Vieira'], conds: { 0: true, 1: true, 2: false, 3: false } };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const b = this.state.buscou;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      contatoOpen: this.state.contatoOpen,
+      buscando: this.state.buscando,
+      buscou: b,
+      cnpj: '12.448.732/0001-90',
+      razao: b ? 'São Jorge Materiais de Construção Ltda' : '',
+      fantasia: b ? 'Depósito São Jorge' : '',
+      ie: b ? '124/0087921' : '',
+      cep: b ? '95010-000' : '',
+      endereco: b ? 'Rua Sinimbu' : '',
+      numero: b ? '1840' : '',
+      bairro: b ? 'Centro' : '',
+      cidade: b ? 'Caxias do Sul' : '',
+      uf: b ? 'RS' : '',
+      buscarCnpj: () => {
+        this.setState({ buscando: true });
+        setTimeout(() => this.setState({ buscando: false, buscou: true }), 900);
+      },
+      abrirContato: () => this.setState({ contatoOpen: true }),
+      mesmoEndereco: this.state.mesmoEndereco,
+      entregaSeparada: !this.state.mesmoEndereco,
+      toggleEndereco: () => this.setState(s => ({ mesmoEndereco: !s.mesmoEndereco })),
+      bloqAuto: this.state.bloqAuto,
+      toggleBloqAuto: () => this.setState(s => ({ bloqAuto: !s.bloqAuto })),
+      vendedores: this.state.vendedores.map(nome => ({
+        nome,
+        tirar: () => this.setState(s => ({ vendedores: s.vendedores.filter(v => v !== nome) })),
+      })),
+      addVendedor: () => this.setState(s => ({ vendedores: s.vendedores.includes('Jorge Tomasi') ? s.vendedores : s.vendedores.concat(['Jorge Tomasi']) })),
+      condicoes: ['30/60/90 · boleto', '28 dias · boleto', 'À vista · PIX', '30/60 · boleto'].map((nome, i) => ({
+        nome,
+        on: !!this.state.conds[i],
+        padrao: i === 0,
+        toggle: () => this.setState(s => ({ conds: { ...s.conds, [i]: !s.conds[i] } })),
+      })),
+      referencias: [
+        { icone: 'store', nome: 'Distribuidora Alfa Ferragens', sub: 'Comercial · (51) 3222-7788 · cliente desde 2019' },
+        { icone: 'landmark', nome: 'Sicredi — agência Caxias Centro', sub: 'Bancária · gerente Fabiane · (54) 3220-4501' },
+      ],
+      addReferencia: () => this.setState({ refOpen: true }),
+      refOpen: this.state.refOpen,
+      fechar: () => this.setState({ contatoOpen: false, refOpen: false }),
+      voltar: () => { location.href = 'clientes.dc.html'; },
+      sairOpen: this.state.sairOpen,
+      tentarSair: () => this.setState({ sairOpen: true }),
+      ficar: () => this.setState({ sairOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

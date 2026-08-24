@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="SYS Telas de sistema" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:20px 24px 0">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="7">
+<button onClick="{{ a.abrir }}" style="{{ a.style }}">{{ a.nome }}</button>
+</sc-for>
+</div>
+<div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px">
+<sc-if value="{{ ehTrial }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;max-width:760px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:center;gap:14px;background:#021226;color:#FFFFFF;border-radius:10px;padding:14px 20px">
+<i data-lucide="clock-3" style="font-size:20px;color:#C3D91E"></i>
+<span style="flex:1;font:500 14px/1.5 'IBM Plex Sans'">Faltam <strong style="color:#C3D91E">9 dias</strong> do seu período de teste. Seus dados ficam guardados ao assinar.</span>
+<a href="conta-plano.dc.html" style="text-decoration:none;flex:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" dc-props="{{ btnProps }}" hint-size="auto,32px">Escolher plano</x-import></a>
+</div>
+<p style="margin:0;text-align:center;font:400 13px/1.6 'IBM Plex Sans';color:#5B6678">O banner de teste aparece fixo acima da topbar em todas as telas durante o trial.</p>
+</div>
+</sc-if>
+<sc-if value="{{ naoEhTrial }}" hint-placeholder-val="{{ true }}">
+<div style="max-width:440px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+<img src="assets/logo-light-bg.svg" alt="Venda Ágil" style="height:56px;margin-bottom:8px">
+<span style="{{ iconWrapStyle }}"><i data-lucide="{{ icone }}" style="font-size:32px"></i></span>
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="font:600 22px/1.35 'IBM Plex Sans';letter-spacing:-.01em;margin:0">{{ titulo }}</h1>
+<p style="margin:0;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">{{ texto }}</p>
+</div>
+<div style="display:flex;gap:8px">
+<a href="{{ acaoHref }}" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" dc-props="{{ btnProps }}" hint-size="auto,44px">{{ acao }}</x-import></a>
+<sc-if value="{{ temSecundaria }}" hint-placeholder-val="{{ false }}">
+<a href="{{ sec2Href }}" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" hint-size="auto,44px">{{ acaoSec }}</x-import></a>
+</sc-if>
+</div>
+<sc-if value="{{ ehOffline }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:10px;background:#FCF3DF;border-radius:8px;padding:12px 16px;color:#8A5B00">
+<i data-lucide="clipboard-check" style="font-size:18px;flex:none"></i>
+<span style="font:400 13px/1.5 'IBM Plex Sans';text-align:left">2 pedidos salvos neste aparelho sobem sozinhos quando a conexão voltar.</span>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tela: '404' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const TELAS = {
+      '404': { nome: 'Página não encontrada', icone: 'compass', tom: 'neutro', titulo: 'Esta página não existe', texto: 'O endereço pode ter mudado ou o link veio errado. Volte para o início e siga pelo menu.', acao: 'Ir para o início', acaoHref: 'inicio.dc.html' },
+      '403': { nome: 'Sem permissão', icone: 'lock', tom: 'neutro', titulo: 'Você não tem acesso a esta área', texto: 'Este conteúdo é do gestor do escritório. Se você precisa dele para trabalhar, peça a liberação a quem administra a conta.', acao: 'Voltar para o início', acaoHref: 'inicio.dc.html' },
+      '500': { nome: 'Erro do sistema', icone: 'octagon-x', tom: 'erro', titulo: 'Alguma coisa falhou do nosso lado', texto: 'Seus dados estão seguros e nada foi perdido. Tente de novo em instantes; se continuar, a equipe já foi avisada.', acao: 'Tentar de novo', acaoHref: 'sistema.dc.html' },
+      'offline': { nome: 'Sem conexão', icone: 'wifi-off', tom: 'alerta', titulo: 'O celular está sem sinal', texto: 'Você pode continuar emitindo pedidos: eles ficam salvos neste aparelho e sobem sozinhos quando a conexão voltar.', acao: 'Continuar offline', acaoHref: 'pedidos-novo.dc.html', offline: true },
+      'sessao': { nome: 'Sessão expirada', icone: 'timer-off', tom: 'neutro', titulo: 'Sua sessão expirou', texto: 'Por segurança, você foi desconectado depois de um longo período sem uso. Entre de novo para continuar de onde parou.', acao: 'Entrar de novo', acaoHref: 'entrar.dc.html' },
+      'suspensa': { nome: 'Conta suspensa', icone: 'circle-pause', tom: 'erro', titulo: 'A conta do escritório está suspensa', texto: 'O pagamento de julho não foi confirmado. Regularize a cobrança para voltar a usar; seus dados ficam guardados por 90 dias.', acao: 'Regularizar pagamento', acaoHref: 'conta-plano.dc.html', sec: 'Falar com o suporte', secHref: 'https://wa.me/5551999000000' },
+      'trial': { nome: 'Banner de teste', trial: true },
+    };
+    const on = "height:34px;padding:0 14px;border-radius:999px;border:0;background:#021226;color:#FFFFFF;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+    const off = "height:34px;padding:0 14px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    const wraps = {
+      neutro: 'width:72px;height:72px;border-radius:999px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E',
+      alerta: 'width:72px;height:72px;border-radius:999px;background:#FCF3DF;display:grid;place-items:center;color:#8A5B00',
+      erro: 'width:72px;height:72px;border-radius:999px;background:#FDF0F1;display:grid;place-items:center;color:#85202C',
+    };
+    const t = TELAS[this.state.tela];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: Object.keys(TELAS).map(k => ({
+        nome: TELAS[k].nome,
+        style: k === this.state.tela ? on : off,
+        abrir: () => this.setState({ tela: k }),
+      })),
+      ehTrial: !!t.trial,
+      naoEhTrial: !t.trial,
+      ehOffline: !!t.offline,
+      icone: t.icone || 'info',
+      iconWrapStyle: wraps[t.tom || 'neutro'],
+      titulo: t.titulo || '',
+      texto: t.texto || '',
+      acao: t.acao || '',
+      acaoHref: t.acaoHref || '#',
+      temSecundaria: !!t.sec,
+      acaoSec: t.sec || '',
+      sec2Href: t.secHref || '#',
+    };
+  }
+}
+</script>
+</body>
+</html>

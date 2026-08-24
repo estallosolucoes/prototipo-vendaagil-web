@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CAT-04 Acessos do catálogo" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="catalogo" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="catalogo.dc.html" style="text-decoration:none">Catálogo B2B</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Acessos</span></nav>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Acessos do catálogo</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Quem pode entrar, ver preço e enviar pedido pela loja</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="user-round-plus" onClick="{{ abrirLiberar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Liberar comprador</x-import>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por comprador, cliente ou e-mail" hint-size="360px,40px"></x-import>
+<x-import component-from-global-scope="va-select" label="" options="Todas as situações|Ativo|Convite pendente|Bloqueado" value="Todas as situações" hint-size="190px,40px"></x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:960px;display:grid;grid-template-columns:1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Comprador</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Último acesso</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span></span>
+</div>
+<sc-for list="{{ acessos }}" as="a" hint-placeholder-count="5">
+<div style="min-width:960px;display:grid;grid-template-columns:1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;flex-direction:column;gap:1px;min-width:0">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ a.nome }}</span>
+<span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ a.email }}</span>
+</div>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ a.cliente }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ a.acesso }}</span>
+<span style="{{ a.stStyle }}"><i data-lucide="{{ a.stIcone }}" style="font-size:13px"></i>{{ a.st }}</span>
+<div style="display:flex;gap:4px;justify-content:flex-end">
+<button onClick="{{ a.acao1 }}" aria-label="{{ a.acao1Titulo }}" title="{{ a.acao1Titulo }}" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="{{ a.acao1Icone }}" style="font-size:16px"></i></button>
+<button onClick="{{ a.acao2 }}" aria-label="{{ a.acao2Titulo }}" title="{{ a.acao2Titulo }}" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="{{ a.acao2Icone }}" style="font-size:16px"></i></button>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ liberarOpen }}" onClose="{{ fechar }}" title="Liberar comprador" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O comprador recebe um convite por e-mail, cria a senha e vê o catálogo com a tabela de preço do cliente dele.</p>
+<x-import component-from-global-scope="va-select" label="Cliente" options="Depósito São Jorge|Casa &amp; Lar Móveis|Lojas Pinheiral|Móveis Guarani|Comercial Vitória" value="Depósito São Jorge" help="O comprador só vê preços e condições deste cliente" hint-size="100%,88px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do comprador" required="{{ true }}" placeholder="Márcia Fontana" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" type="email" required="{{ true }}" placeholder="compras@saojorge.com.br" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="send" onClick="{{ convidar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Enviar convite</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ bloquearOpen }}" onClose="{{ fechar }}" title="{{ bloquearTitulo }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FDF0F1;color:#B3202F;display:grid;place-items:center;flex:none"><i data-lucide="triangle-alert" style="font-size:20px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O comprador perde o acesso na hora e não consegue mais entrar nem enviar pedido. Os pedidos já enviados ficam guardados.</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="ban" onClick="{{ bloquear }}" hint-size="auto,40px">Bloquear acesso</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { liberarOpen: false, bloquearOpen: false, alvo: null, toast: '', bloqueados: {} };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const st = {
+      ativo: { st: 'Ativo', icone: 'circle-check', style: "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244" },
+      pendente: { st: 'Convite pendente', icone: 'clock', style: "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00" },
+      bloqueado: { st: 'Bloqueado', icone: 'octagon-x', style: "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#85202C" },
+    };
+    const defs = [
+      { nome: 'Márcia Fontana', email: 'compras@saojorge.com.br', cliente: 'Depósito São Jorge', acesso: 'hoje, 09:12', sit: 'ativo' },
+      { nome: 'Paulo Siqueira', email: 'paulo@casaelar.com.br', cliente: 'Casa & Lar Móveis', acesso: 'hoje, 08:47', sit: 'ativo' },
+      { nome: 'Renata Cruz', email: 'renata.cruz@pinheiral.com.br', cliente: 'Lojas Pinheiral', acesso: 'ontem, 16:30', sit: 'ativo' },
+      { nome: 'Jorge Tanaka', email: 'compras@moveisguarani.com.br', cliente: 'Móveis Guarani', acesso: 'convite enviado 05/08', sit: 'pendente' },
+      { nome: 'Ana Beatriz Melo', email: 'ana@comercialvitoria.com.br', cliente: 'Comercial Vitória', acesso: '28/07, 15:44', sit: 'bloqueado' },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      acessos: defs.map((a, i) => {
+        const sit = this.state.bloqueados[i] ? 'bloqueado' : a.sit;
+        const s = st[sit];
+        const pend = sit === 'pendente', bloq = sit === 'bloqueado';
+        return {
+          ...a, st: s.st, stIcone: s.icone, stStyle: s.style,
+          acao1Icone: pend ? 'send' : 'key-round',
+          acao1Titulo: pend ? 'Reenviar convite' : 'Reenviar senha por e-mail',
+          acao1: () => this.avisar(pend ? 'Convite reenviado para ' + a.email : 'E-mail de redefinição enviado para ' + a.email),
+          acao2Icone: bloq ? 'rotate-ccw' : 'ban',
+          acao2Titulo: bloq ? 'Desbloquear acesso' : 'Bloquear acesso',
+          acao2: () => {
+            if (bloq) { this.setState(s2 => ({ bloqueados: { ...s2.bloqueados, [i]: false } })); this.avisar(a.nome + ' desbloqueado'); }
+            else this.setState({ bloquearOpen: true, alvo: { ...a, i } });
+          },
+        };
+      }),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+      liberarOpen: this.state.liberarOpen,
+      bloquearOpen: this.state.bloquearOpen,
+      bloquearTitulo: 'Bloquear ' + (this.state.alvo ? this.state.alvo.nome : 'comprador') + '?',
+      abrirLiberar: () => this.setState({ liberarOpen: true }),
+      convidar: () => { this.setState({ liberarOpen: false }); this.avisar('Convite enviado. O comprador aparece aqui como pendente.'); },
+      bloquear: () => {
+        const i = this.state.alvo ? this.state.alvo.i : -1;
+        this.setState(s2 => ({ bloquearOpen: false, bloqueados: { ...s2.bloqueados, [i]: true } }));
+        this.avisar('Acesso bloqueado');
+      },
+      fechar: () => this.setState({ liberarOpen: false, bloquearOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

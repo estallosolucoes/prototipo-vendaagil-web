@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/v2-ajustes.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/styles.css">
+<script src="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+[data-va-half]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+[data-va-rua]{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:12px}
+@media (max-width:560px){[data-va-half]{grid-template-columns:minmax(0,1fr)}}</style>
+</helmet>
+<div data-screen-label="LOJA-07 Entrar ou cadastrar" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<div style="background:#021226;color:#F3F3F3">
+<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 20px">
+<a href="loja.dc.html" aria-label="Voltar para a loja" style="width:40px;height:40px;border-radius:6px;border:1px solid rgba(243,243,243,.28);display:grid;place-items:center;color:#F3F3F3;text-decoration:none;flex:none" style-hover="background:rgba(243,243,243,.1);color:#FFFFFF"><i data-lucide="arrow-left" style="font-size:18px"></i></a>
+<span style="width:40px;height:40px;border-radius:8px;background:#C3D91E;color:#021226;display:grid;place-items:center;font:700 14px/1 'IBM Plex Sans';flex:none">VO</span>
+<div style="min-width:0;display:flex;flex-direction:column;gap:1px">
+<span style="font:600 16px/1.2 'IBM Plex Sans';white-space:nowrap">Vale Office</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#8FA0B8;white-space:nowrap">valeoffice.vendaagil.shop</span>
+</div>
+</div>
+</div>
+<main style="width:100%;max-width:640px;margin:0 auto;padding:32px 20px 56px;display:flex;flex-direction:column;gap:16px">
+<sc-if value="{{ logado }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+<span style="width:48px;height:48px;border-radius:999px;background:#E7F0D2;display:grid;place-items:center;color:#365E10"><i data-lucide="user-round-check" style="font-size:24px"></i></span>
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 20px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Olá, {{ userNome }}</h1>
+<span style="font:400 14px/1.5 'IBM Plex Sans';color:#454F5E">Você já está conectado na Vale Office.</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<a href="{{ hrefContinuar }}" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ labelContinuar }}</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="secondary" icon-left="log-out" onClick="{{ sair }}" hint-size="auto,40px">Sair da conta</x-import>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ deslogado }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 22px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:0">{{ titulo }}</h1>
+<span style="font:400 14px/1.5 'IBM Plex Sans';color:#454F5E">{{ subtitulo }}</span>
+</div>
+<div style="display:flex;background:#E9EDF3;border-radius:8px;padding:4px;gap:4px;align-self:flex-start">
+<button onClick="{{ abaEntrar }}" style="{{ tabEntrarStyle }}">Entrar</button>
+<button onClick="{{ abaCadastro }}" style="{{ tabCadastroStyle }}">Criar cadastro</button>
+</div>
+<sc-if value="{{ modoEntrar }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="E-mail" type="email" value="marcia.fontana@saojorge.com.br" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Senha" type="password" value="••••••••" hint-size="100%,66px"></x-import>
+<a href="#" style="font:500 13px/1.3 'IBM Plex Sans';align-self:flex-start">Esqueci minha senha</a>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ entrar }}" dc-props="{{ btnProps }}" hint-size="100%,48px">Entrar</x-import>
+</div>
+</sc-if>
+<sc-if value="{{ modoCadastro }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<h2 style="font:600 14px/1.3 'IBM Plex Sans';margin:0">Dados da conta</h2>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="E-mail" type="email" placeholder="voce@suaempresa.com.br" value="{{ cadEmail }}" onChange="{{ setCadEmail }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Nome ou Razão Social" placeholder="Ex.: Depósito São Jorge Ltda" value="{{ cadNome }}" onChange="{{ setCadNome }}" hint-size="100%,66px"></x-import>
+<div data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="CPF ou CNPJ" placeholder="00.000.000/0000-00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Telefone" placeholder="(00) 00000-0000" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<h2 style="font:600 14px/1.3 'IBM Plex Sans';margin:0">Endereço</h2>
+<div data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="CEP" placeholder="00000-000" help="Preenchemos o endereço pelo CEP" hint-size="100%,86px"></x-import>
+<div></div>
+</div>
+<div data-va-rua="">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Rua" placeholder="Ex.: Av. Independência" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Número" placeholder="000" hint-size="100%,66px"></x-import>
+</div>
+<div data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Complemento" placeholder="Sala, galpão… (opcional)" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Bairro" placeholder="Ex.: Centro" hint-size="100%,66px"></x-import>
+</div>
+<div data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Input" label="Cidade" placeholder="Ex.: Caxias do Sul" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Estado" options="AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO" value="RS" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" size="lg" full-width="{{ true }}" onClick="{{ cadastrar }}" dc-props="{{ btnProps }}" hint-size="100%,48px">Criar cadastro e continuar</x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#7A8699;text-align:center">Seus dados vão apenas para a Vale Office, para faturamento e entrega dos pedidos.</span>
+</sc-if>
+</div>
+</sc-if>
+</main>
+<footer style="padding:24px 16px 40px;text-align:center;margin-top:auto">
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#7A8699">com tecnologia Venda Ágil</span>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { aba: 'entrar', user: null, cadEmail: '', cadNome: '' };
+  user() { try { return JSON.parse(localStorage.getItem('va-loja-user')); } catch (e) { return null; } }
+  next() {
+    const n = new URLSearchParams(window.location.search).get('next');
+    return n === 'identificacao' ? 'loja-identificacao.dc.html' : 'loja.dc.html';
+  }
+  componentDidMount() { this.setState({ user: this.user() }); this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  logar(nome) {
+    try { localStorage.setItem('va-loja-user', JSON.stringify({ nome: nome })); } catch (e) {}
+    window.location.href = this.next();
+  }
+  renderVals() {
+    const u = this.state.user;
+    const paraCheckout = new URLSearchParams(window.location.search).get('next') === 'identificacao';
+    const tabOn = "height:34px;padding:0 18px;border-radius:6px;border:0;background:#FFFFFF;color:#021226;font:600 13.5px/1 'IBM Plex Sans';cursor:pointer;box-shadow:0 1px 2px rgba(2,18,38,.10);white-space:nowrap";
+    const tabOff = "height:34px;padding:0 18px;border-radius:6px;border:0;background:transparent;color:#5B6678;font:500 13.5px/1 'IBM Plex Sans';cursor:pointer;white-space:nowrap";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      logado: !!u,
+      deslogado: !u,
+      userNome: u && u.nome ? String(u.nome).split(' ')[0] : '',
+      hrefContinuar: paraCheckout ? 'loja-identificacao.dc.html' : 'loja.dc.html',
+      labelContinuar: paraCheckout ? 'Continuar o pedido' : 'Voltar para a loja',
+      sair: () => { try { localStorage.removeItem('va-loja-user'); } catch (e) {} this.setState({ user: null }); },
+      titulo: paraCheckout ? 'Identifique-se para concluir o pedido' : 'Entrar na Vale Office',
+      subtitulo: paraCheckout ? 'Entre na sua conta ou crie um cadastro rápido — o pedido continua de onde parou.' : 'Acompanhe pedidos, repita compras e feche pedidos mais rápido.',
+      modoEntrar: this.state.aba === 'entrar',
+      modoCadastro: this.state.aba === 'cadastro',
+      abaEntrar: () => this.setState({ aba: 'entrar' }),
+      abaCadastro: () => this.setState({ aba: 'cadastro' }),
+      tabEntrarStyle: this.state.aba === 'entrar' ? tabOn : tabOff,
+      tabCadastroStyle: this.state.aba === 'cadastro' ? tabOn : tabOff,
+      cadEmail: this.state.cadEmail,
+      setCadEmail: (v) => this.setState({ cadEmail: typeof v === 'string' ? v : v.target.value }),
+      cadNome: this.state.cadNome,
+      setCadNome: (v) => this.setState({ cadNome: typeof v === 'string' ? v : v.target.value }),
+      entrar: () => this.logar('Márcia Fontana'),
+      cadastrar: () => this.logar(this.state.cadNome.trim() || 'Márcia Fontana'),
+    };
+  }
+}
+</script>
+</body>
+</html>

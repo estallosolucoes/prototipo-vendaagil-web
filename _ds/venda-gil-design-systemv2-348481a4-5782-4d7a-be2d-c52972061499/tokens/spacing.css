@@ -1,0 +1,34 @@
+/* Venda Ágil — ESPAÇAMENTO. Base 4px. Unidade rítmica = 4.
+   FZ.2 §1: a razão entre níveis é 2. Interno de componente (8–12) →
+   entre componentes (16) → entre grupos (24) → entre seções (32) →
+   entre blocos de página (48–64). A distância entre seções é SEMPRE
+   maior que a maior distância interna daquela seção. */
+
+:root{
+  --space-0:0px;
+  --space-1:4px;    /* colagem: ícone↔rótulo, chip↔chip */
+  --space-2:8px;    /* interno apertado: badge, célula compacta */
+  --space-3:12px;   /* interno padrão: campo, botão md */
+  --space-4:16px;   /* entre componentes irmãos, padding de card */
+  --space-5:20px;   /* padding de card confortável */
+  --space-6:24px;   /* entre grupos de formulário, gutter de grade */
+  --space-8:32px;   /* entre seções de página */
+  --space-10:40px;
+  --space-12:48px;  /* entre blocos de página */
+  --space-16:64px;  /* respiro de tela de autenticação/vazio */
+  --space-20:80px;
+  --space-24:96px;
+  --space-32:128px;
+
+  /* densidades de linha de dado — FZ.2 §5 linguagem dos vazios.
+     A mesma tabela serve Persona 1 e Persona 2 mudando UM token. */
+  --row-height-compact:36px;
+  --row-height-default:48px;
+  --row-height-comfortable:60px;
+  --row-padding-x:var(--space-4);
+  --control-height-xs:28px;
+  --control-height-sm:32px;
+  --control-height-md:40px;
+  --control-height-lg:48px;
+  --touch-target-min:44px; /* celular; desktop 32px */
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CLI-01 Clientes" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="clientes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1440px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Clientes</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">148 na carteira · 62 positivados neste mês</span>
+</div>
+<div style="display:flex;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="upload" onClick="{{ goImportar }}" hint-size="auto,40px">Importar clientes</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="user-round-plus" onClick="{{ goNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar cliente</x-import>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por nome, fantasia ou CNPJ" hint-size="340px,40px"></x-import>
+<button onClick="{{ abrirFiltros }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="sliders-horizontal" style="font-size:16px"></i>Filtros<span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'">2</span></button>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Filtrando por <strong style="color:#021226">rota Serra Gaúcha</strong> e <strong style="color:#021226">situação ativa</strong> · <a href="#" style="font-weight:500;text-decoration:none">limpar</a></span>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:760px;display:grid;grid-template-columns:28px 1fr 170px 140px 130px 48px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ todosSel }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todos os clientes" style="width:18px;height:18px;accent-color:#78A614"></span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">CNPJ</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cidade</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span></span>
+</div>
+<sc-for list="{{ clientes }}" as="c" hint-placeholder-count="6">
+<div onClick="{{ c.abrir }}" style="min-width:760px;display:grid;grid-template-columns:28px 1fr 170px 140px 130px 48px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC">
+<span onClick="{{ c.pare }}" style="display:grid;place-items:center"><input type="checkbox" checked="{{ c.sel }}" onChange="{{ c.marcar }}" aria-label="Selecionar {{ c.nome }}" style="width:18px;height:18px;accent-color:#78A614"></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ c.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ c.meta }}</span></span>
+<span style="font:400 12.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ c.cnpj }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ c.cidade }}</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="{{ c.status }}" hint-size="auto,22px"></x-import>
+<button onClick="{{ c.prever }}" aria-label="Ver prévia do cliente" title="Ver prévia do cliente" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="panel-right-open" style="font-size:16px"></i></button>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:16px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Situação da carteira</span>
+<div style="display:flex;align-items:center;gap:20px">
+<div style="width:110px;height:110px;border-radius:999px;background:conic-gradient(#78A614 0 42%, #FFC53D 42% 68%, #E4536A 68% 89%, #7A8699 89% 100%);display:grid;place-items:center"><div style="width:74px;height:74px;border-radius:999px;background:#FFFFFF;display:grid;place-items:center"><span style="display:flex;flex-direction:column;align-items:center"><span style="font:600 20px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">148</span><span style="font:400 11px/1.4 'IBM Plex Sans';color:#5B6678">clientes</span></span></div></div>
+<div style="display:flex;flex-direction:column;gap:8px;flex:1">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.3 'IBM Plex Sans';color:#454F5E"><span style="width:8px;height:8px;border-radius:2px;background:#78A614"></span>Ativos</span><span style="font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">62</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.3 'IBM Plex Sans';color:#454F5E"><span style="width:8px;height:8px;border-radius:2px;background:#FFC53D"></span>Inativos recentes</span><span style="font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">38</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.3 'IBM Plex Sans';color:#454F5E"><span style="width:8px;height:8px;border-radius:2px;background:#E4536A"></span>Inativos antigos</span><span style="font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">31</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.3 'IBM Plex Sans';color:#454F5E"><span style="width:8px;height:8px;border-radius:2px;background:#7A8699"></span>Prospects</span><span style="font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">17</span></div>
+</div>
+</div>
+<div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:6px">
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">31 clientes sem compra há mais de 180 dias somam <strong style="color:#021226">R$ 96 mil</strong> de venda perdida por ano.</span>
+<a href="relatorios.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver relatório de inativos</a>
+</div>
+</div>
+</div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 12px 10px 16px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:22px;background:rgba(255,255,255,.2)"></span>
+<button onClick="{{ loteRota }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="route" style="font-size:15px"></i>Alterar rota</button>
+<button onClick="{{ loteSegmento }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="tags" style="font-size:15px"></i>Alterar segmento</button>
+<button onClick="{{ loteVendedor }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="user-round-plus" style="font-size:15px"></i>Vincular vendedor</button>
+<button onClick="{{ loteTabela }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="table" style="font-size:15px"></i>Vincular tabela</button>
+<button onClick="{{ loteExportar }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="download" style="font-size:15px"></i>Exportar</button>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:90;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ filtrosOpen }}" onClose="{{ fechar }}" title="Filtros avançados" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Rota" options="Serra Gaúcha|Litoral norte|Vale do Itajaí|Todas" value="Serra Gaúcha" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Segmento" options="Todos|Material de construção|Papelaria e escritório|Atacado" value="Todos" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Situação" options="Ativa|Inativo recente|Inativo antigo|Prospect|Todas" value="Ativa" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Somente clientes bloqueados" hint-size="auto,20px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Limpar filtros</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Aplicar filtros</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ prevOpen }}" onClose="{{ fechar }}" title="{{ prevNome }}" subtitle="{{ prevMeta }}" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">CNPJ</span><span style="font:500 13.5px/1.3 'IBM Plex Mono',monospace">{{ prevCnpj }}</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Telefone</span><span style="font:500 14px/1.3 'IBM Plex Sans'">(54) 3282-4410</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Ticket médio</span><span style="font:500 14px/1.3 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 8.412,00</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Última compra</span><span style="font:500 14px/1.3 'IBM Plex Sans'">22/07/2026</span></div>
+</div>
+<div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Últimos pedidos</span>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">4.812 · Móveis Vale</span><span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 24.810,00</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">4.771 · Cerâmica Atlas</span><span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 6.240,00</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">4.702 · Móveis Vale</span><span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 11.130,00</span></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="user-round" onClick="{{ goCliente }}" hint-size="auto,40px">Abrir visão 360°</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" onClick="{{ goPedido }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar pedido</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filtrosOpen: false, prevOpen: false, prev: null, sel: {}, toast: '' };
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const data = [
+      { nome: 'Depósito São Jorge', meta: 'São Jorge Materiais Ltda · rota Serra Gaúcha', cnpj: '12.448.732/0001-90', cidade: 'Caxias do Sul, RS', status: 'ativo' },
+      { nome: 'Casa & Construção Delta', meta: 'Delta Comércio de Materiais SA · rota Serra Gaúcha', cnpj: '04.812.960/0001-33', cidade: 'Bento Gonçalves, RS', status: 'ativo' },
+      { nome: 'Materiais Pinheiro', meta: 'Pinheiro & Filhos Ltda · rota Serra Gaúcha', cnpj: '08.221.407/0001-55', cidade: 'Farroupilha, RS', status: 'inativo_recente' },
+      { nome: 'Armazém Boa Vista', meta: 'Boa Vista Comercial ME · rota Serra Gaúcha', cnpj: '19.640.118/0001-02', cidade: 'Garibaldi, RS', status: 'ativo' },
+      { nome: 'Ferragens Colombo', meta: 'Colombo Ferragens Ltda · rota Serra Gaúcha', cnpj: '02.114.906/0001-71', cidade: 'Carlos Barbosa, RS', status: 'bloqueado' },
+      { nome: 'Central do Construtor', meta: 'CDC Distribuidora Ltda · rota Serra Gaúcha', cnpj: '23.507.664/0001-18', cidade: 'Flores da Cunha, RS', status: 'prospect' },
+    ];
+    const prev = this.state.prev || data[0];
+    const nSel = Object.values(this.state.sel).filter(Boolean).length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      clientes: data.map(c => ({
+        ...c,
+        sel: !!this.state.sel[c.nome],
+        pare: (e) => e.stopPropagation(),
+        marcar: () => this.setState(s => ({ sel: { ...s.sel, [c.nome]: !s.sel[c.nome] } })),
+        abrir: () => { location.href = 'cliente-360.dc.html'; },
+        prever: (e) => { e.stopPropagation(); this.setState({ prevOpen: true, prev: c }); },
+      })),
+      todosSel: data.every(c => this.state.sel[c.nome]),
+      toggleTodos: () => {
+        const on = !data.every(c => this.state.sel[c.nome]);
+        const sel = {}; data.forEach(c => { sel[c.nome] = on; });
+        this.setState({ sel });
+      },
+      temSel: nSel > 0,
+      nSel: nSel + (nSel === 1 ? ' cliente selecionado' : ' clientes selecionados'),
+      limparSel: () => this.setState({ sel: {} }),
+      loteRota: () => this.avisar('Rota alterada em ' + nSel + ' clientes'),
+      loteSegmento: () => this.avisar('Segmento alterado em ' + nSel + ' clientes'),
+      loteVendedor: () => this.avisar(nSel + ' clientes vinculados ao vendedor'),
+      loteTabela: () => this.avisar('Tabela de preço vinculada a ' + nSel + ' clientes'),
+      loteExportar: () => this.avisar(nSel + ' clientes exportados em Excel'),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+      filtrosOpen: this.state.filtrosOpen,
+      prevOpen: this.state.prevOpen,
+      prevNome: prev.nome, prevMeta: prev.meta, prevCnpj: prev.cnpj,
+      abrirFiltros: () => this.setState({ filtrosOpen: true }),
+      fechar: () => this.setState({ filtrosOpen: false, prevOpen: false }),
+      goNovo: () => { location.href = 'cliente-cadastro.dc.html'; },
+      goImportar: () => { location.href = 'importacoes.dc.html'; },
+      goCliente: () => { location.href = 'cliente-360.dc.html'; },
+      goPedido: () => { location.href = 'pedidos-novo.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

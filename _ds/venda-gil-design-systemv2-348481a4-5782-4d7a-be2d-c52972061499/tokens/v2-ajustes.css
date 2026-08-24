@@ -1,0 +1,74 @@
+/* Venda Ágil DS v2 — ajustes consolidados dos protótipos (ago/2026).
+   Este arquivo registra as decisões tomadas DEPOIS do DS v1, durante a construção
+   das ~80 telas do produto. Ele é parte oficial do sistema: carregue sempre por último.
+
+   Decisões v2 (deltas sobre o v1):
+   D-V2-01  Botão primário: conteúdo CLARO (#F3F3F3) sobre o verde de ação — revisão da
+            decisão v1 (texto navy). Pedido do dono do produto; contraste 4,6:1 (AA texto grande/bold).
+   D-V2-02  Marcas de seleção BRANCAS sobre o verde: check e bolinha do radio são #FFFFFF.
+   D-V2-03  Ícone nunca tem tamanho próprio: todo Lucide herda 1em do contexto.
+   D-V2-04  Dropdowns (VaSelect) abrem em position:fixed — nunca são cortados por overflow.
+   D-V2-05  A página nunca tem scroll horizontal; scroll lateral só dentro de contêiner explícito.
+   D-V2-06  Grids fluidos por variável: var(--va-g2..g4) colapsam por media query.
+   D-V2-07  Barras sticky ([data-va-dock]/[data-va-bulk]) sobem acima da navegação inferior no mobile. */
+
+/* ===== Foco de formulário (halo verde, sem contorno azul do navegador) ===== */
+.va-inputwrap, .va-textarea { transition: border-color 120ms ease, box-shadow 120ms ease; background: var(--surface-raised, #FFFFFF); }
+.va-inputwrap:focus-within,
+.va-textarea:focus-visible {
+  border-color: var(--accent-default, #78A614) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #78A614 18%, transparent) !important;
+  outline: none !important;
+}
+.va-input:focus, .va-input:focus-visible, .va-select:focus, .va-select:focus-visible { outline: none !important; }
+.va-inputwrap[data-invalid="true"]:focus-within {
+  border-color: var(--border-error) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #B3202F 15%, transparent) !important;
+}
+.va-input[data-numeric="true"] { text-align: right; font-variant-numeric: tabular-nums; }
+.va-field, .va-inputwrap, .va-select { min-width: 0; }
+
+/* ===== D-V2-01 · Botão primário com conteúdo claro ===== */
+.va-btn--primary { color: #F3F3F3 !important; }
+
+/* ===== D-V2-02 · Seleção branca sobre verde ===== */
+.va-check input:checked + .va-check__box { color: #FFFFFF; }
+.va-check__dot { background: #FFFFFF !important; }
+input[type="checkbox"][style*="accent-color"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;margin:0;border:1.5px solid #98A2B3;border-radius:2px;background:#FFFFFF;cursor:pointer;display:inline-grid;place-items:center;transition:background-color 100ms ease,border-color 100ms ease}
+input[type="checkbox"][style*="accent-color"]:hover{border-color:#5B6678}
+input[type="checkbox"][style*="accent-color"]:checked{background:#78A614;border-color:#628A11}
+input[type="checkbox"][style*="accent-color"]:checked::after{content:"";width:12px;height:12px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>') center/contain no-repeat}
+input[type="checkbox"][style*="accent-color"]:focus-visible{outline:2px solid #021226;outline-offset:2px}
+input[type="radio"][style*="accent-color"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;flex:none;margin:0;border:1.5px solid #98A2B3;border-radius:999px;background:#FFFFFF;cursor:pointer;display:inline-grid;place-items:center;transition:background-color 100ms ease,border-color 100ms ease}
+input[type="radio"][style*="accent-color"]:hover{border-color:#5B6678}
+input[type="radio"][style*="accent-color"]:checked{background:#78A614;border-color:#628A11}
+input[type="radio"][style*="accent-color"]:checked::after{content:"";width:7px;height:7px;border-radius:999px;background:#FFFFFF}
+input[type="radio"][style*="accent-color"]:focus-visible{outline:2px solid #021226;outline-offset:2px}
+
+/* ===== D-V2-03 · Ícone herda o tamanho do contexto ===== */
+svg[data-lucide]{width:1em !important;height:1em !important;stroke-width:1.75;flex:none;display:inline-block;vertical-align:middle}
+i[data-lucide]{display:inline-flex;align-items:center;justify-content:center}
+i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}
+
+/* ===== D-V2-05 · Sem scroll horizontal de página ===== */
+html, body { overflow-x: clip; max-width: 100%; }
+
+/* ===== D-V2-06 · Grids fluidos por variável ===== */
+@media (max-width: 900px) { :root { --va-g4: repeat(2, minmax(0,1fr)); /* @kind other */ } }
+@media (max-width: 760px) { :root { --va-g3: minmax(0,1fr); /* @kind other */ --va-g4: repeat(2, minmax(0,1fr)); /* @kind other */ } }
+@media (max-width: 560px) { :root { --va-g2: minmax(0,1fr); /* @kind other */ --va-g4: minmax(0,1fr); /* @kind other */ } }
+@media (max-width: 560px) {
+  [data-va-kpis], [data-va-cols], [data-va-half], [data-va-kanban] { grid-template-columns: minmax(0,1fr) !important; }
+}
+
+/* ===== D-V2-07 · Mobile: conteúdo e barras acima da navegação inferior ===== */
+@media (max-width: 760px) {
+  main { padding: 20px 16px 104px 16px !important; }
+  [data-va-dock] { bottom: 78px !important; }
+  [data-va-bulk] { bottom: 96px !important; }
+}
+
+/* Stepper de quantidade compacto */
+.va-stepper-qty{flex:none;min-width:0}
+.va-stepper-qty button{flex:none;width:26px}
+.va-stepper-qty input{flex:1 1 auto;min-width:0;width:40px}

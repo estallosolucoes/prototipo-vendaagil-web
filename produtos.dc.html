@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="PRO-01 Produtos" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="produtos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1440px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Produtos</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">540 produtos em 4 representadas · 6 em promoção</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<div style="position:relative">
+<button onClick="{{ toggleCols }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="columns-3" style="font-size:16px"></i>Colunas</button>
+<sc-if value="{{ colsOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:46px;right:0;z-index:120;width:264px;background:#FFFFFF;border-radius:10px;box-shadow:0 12px 32px rgba(2,18,38,.2);padding:10px;display:flex;flex-direction:column;gap:2px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:4px 6px 8px">Mostrar e ordenar colunas</span>
+<sc-for list="{{ cfgColunas }}" as="cc" hint-placeholder-count="6">
+<div draggable="true" onDragStart="{{ cc.pegar }}" onDragOver="{{ cc.sobre }}" onDragEnd="{{ cc.soltar }}" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border-radius:6px;background:{{ cc.bg }}">
+<span style="color:#B9C1CE;cursor:grab;display:grid;place-items:center"><i data-lucide="grip-vertical" style="font-size:14px"></i></span>
+<button onClick="{{ cc.alternar }}" role="checkbox" aria-checked="{{ cc.on }}" style="{{ cc.boxStyle }};border-radius:2px;cursor:pointer;padding:0"><sc-if value="{{ cc.on }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></button>
+<span style="flex:1;font:400 13.5px/1.2 'IBM Plex Sans';color:#021226">{{ cc.nome }}</span>
+</div>
+</sc-for>
+<span style="font:400 11.5px/1.5 'IBM Plex Sans';color:#7A8699;padding:8px 6px 2px;border-top:1px solid #EDF0F5;margin-top:6px">Arraste para mudar a ordem da tabela</span>
+</div>
+</sc-if>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="percent" onClick="{{ abrirReajuste }}" hint-size="auto,40px">Reajustar preços</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="images" onClick="{{ abrirFotos }}" hint-size="auto,40px">Importar fotos</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="upload" onClick="{{ goImportar }}" hint-size="auto,40px">Importar produtos</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="package-plus" onClick="{{ goNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar produto</x-import>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por código, nome, referência ou código de barras" hint-size="360px,40px"></x-import>
+<x-import component-from-global-scope="va-select" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="220px,40px"></x-import>
+<button style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="factory" style="font-size:16px"></i>Móveis Vale<i data-lucide="chevron-down" style="font-size:14px;color:#7A8699"></i></button>
+<button style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="tag" style="font-size:16px"></i>Todas as categorias<i data-lucide="chevron-down" style="font-size:14px;color:#7A8699"></i></button>
+<div style="margin-left:auto;display:inline-flex;padding:2px;gap:2px;background:#E4E8EF;border-radius:6px">
+<button onClick="{{ verGrade }}" style="{{ gradeBtn }}"><i data-lucide="layout-grid" style="font-size:15px"></i>Grade</button>
+<button onClick="{{ verTabela }}" style="{{ tabelaBtn }}"><i data-lucide="rows-3" style="font-size:15px"></i>Tabela</button>
+</div>
+</div>
+<sc-if value="{{ grade }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px">
+<sc-for list="{{ produtos }}" as="p" hint-placeholder-count="8">
+<div onClick="{{ p.abrir }}" style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;cursor:pointer;display:flex;flex-direction:column" style-hover="box-shadow:0 4px 12px rgba(2,18,38,.12)">
+<div style="position:relative;height:150px;background:#EDF0F5;display:grid;place-items:center;color:#7A8699"><i data-lucide="{{ p.icone }}" style="font-size:40px"></i>
+<sc-if value="{{ p.promo }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;background:#021226;color:#C3D91E;font:600 11px/1 'IBM Plex Sans'">Promoção</span></sc-if>
+</div>
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+<span style="font:400 11.5px/1 'IBM Plex Mono',monospace;color:#5B6678">{{ p.codigo }}</span>
+<span style="font:600 13.5px/1.35 'IBM Plex Sans';min-height:36px">{{ p.nome }}</span>
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<span style="font:600 15px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ p.preco }}</span>
+<span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">{{ p.emb }}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ tabela }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:820px;display:grid;grid-template-columns:28px 110px 1fr 140px 120px 110px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ todosSel }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todos os produtos" style="width:18px;height:18px;accent-color:#78A614"></span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Código</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Produto</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Categoria</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Embalagem</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Preço</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Comissão</span>
+</div>
+<sc-for list="{{ produtos }}" as="p" hint-placeholder-count="8">
+<div onClick="{{ p.abrir }}" style="min-width:820px;display:grid;grid-template-columns:28px 110px 1fr 140px 120px 110px 110px;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC">
+<span onClick="{{ p.pare }}" style="display:grid;place-items:center"><input type="checkbox" checked="{{ p.sel }}" onChange="{{ p.marcar }}" aria-label="Selecionar {{ p.nome }}" style="width:18px;height:18px;accent-color:#78A614"></span>
+<span style="font:400 12.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ p.codigo }}</span>
+<span style="font:500 13.5px/1.35 'IBM Plex Sans'">{{ p.nome }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.categoria }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.emb }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ p.preco }}</span>
+<span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ p.comissao }}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ reajusteOpen }}" onClose="{{ fecharModais }}" title="Reajustar preços em massa" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">O reajuste muda o preço base dos produtos. As tabelas de preço recalculam sozinhas a partir dele.</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Alcance" options="Todos os produtos (184)|Só a categoria Cadeiras e poltronas (34)|Só os em promoção (6)" value="Todos os produtos (184)" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;align-items:end;gap:12px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Reajuste" suffix="%" numeric="{{ true }}" value="{{ pct }}" onInput="{{ setPct }}" help="Use negativo para reduzir" hint-size="150px,88px"></x-import>
+<x-import component-from-global-scope="va-select" label="Arredondamento" options="Sem arredondar|Terminar em ,90|Terminar em ,00" value="Terminar em ,90" hint-size="200px,66px"></x-import>
+</div>
+<div style="background:#F7F9FB;border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Prévia — antes e depois</span>
+<sc-for list="{{ previa }}" as="pv" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+<span style="font:400 13px/1.4 'IBM Plex Sans';flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pv.nome }}</span>
+<span style="font:400 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#7A8699;text-decoration:line-through">{{ pv.antes }}</span>
+<i data-lucide="arrow-right" style="font-size:13px;color:#7A8699"></i>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:90px;text-align:right">{{ pv.depois }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharModais }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ aplicarReajuste }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ aplicarLabel }}</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ fotosOpen }}" onClose="{{ fecharModais }}" title="Importar fotos em lote" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">Nomeie cada arquivo com o código do produto — <span style="font-family:'IBM Plex Mono',monospace">MV-1180.jpg</span> — e solte tudo de uma vez. O casamento é pelo nome.</span>
+<sc-if value="{{ fotosVazio }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ soltarFotos }}" style="border:1.5px dashed #98A2B3;border-radius:10px;background:#FAFBFC;padding:36px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer" style-hover="border-color:#628A11;background:#FBFDF4">
+<i data-lucide="images" style="font-size:34px;color:#7A8699"></i>
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Solte as fotos aqui ou clique para escolher</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">JPG ou PNG, fundo claro · até 200 arquivos</span>
+</button>
+</sc-if>
+<sc-if value="{{ fotosProntas }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ fotos }}" as="f" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;padding:9px 4px;border-bottom:1px solid #EDF0F5">
+<span style="width:34px;height:34px;border-radius:6px;background:#EDF0F5;display:grid;place-items:center;color:#7A8699;flex:none"><i data-lucide="image" style="font-size:16px"></i></span>
+<span style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:0"><span style="font:500 13px/1.2 'IBM Plex Mono',monospace">{{ f.arquivo }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ f.destino }}</span></span>
+<span style="{{ f.stStyle }}"><i data-lucide="{{ f.stIcone }}" style="font-size:13px"></i>{{ f.st }}</span>
+</div>
+</sc-for>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">3 fotos casadas · 1 sem produto — corrija o nome do arquivo e solte de novo.</span>
+</sc-if>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharModais }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" disabled="{{ fotosVazio }}" onClick="{{ aplicarFotos }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Aplicar 3 fotos</x-import>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 12px 10px 16px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:22px;background:rgba(255,255,255,.2)"></span>
+<button onClick="{{ loteCategoria }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="tags" style="font-size:15px"></i>Alterar categoria</button>
+<button onClick="{{ loteCatalogo }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="eye" style="font-size:15px"></i>Exibir/ocultar no catálogo</button>
+<button onClick="{{ loteDestacar }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.1)"><i data-lucide="star" style="font-size:15px"></i>Destacar</button>
+<button onClick="{{ loteExcluir }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.25);border-radius:6px;background:transparent;color:#F7B2BB;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:rgba(228,83,106,.18)"><i data-lucide="trash-2" style="font-size:15px"></i>Excluir</button>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:90;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ prevOpen }}" onClose="{{ closePrev }}" title="{{ prevNome }}" subtitle="Móveis Vale · prévia do produto" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="height:200px;background:#EDF0F5;border-radius:10px;display:grid;place-items:center;color:#7A8699"><i data-lucide="image" style="font-size:40px"></i></div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Código</span><span style="font:500 14px/1.3 'IBM Plex Mono',monospace">{{ prevCodigo }}</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Embalagem</span><span style="font:500 14px/1.3 'IBM Plex Sans'">{{ prevEmb }}</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">NCM</span><span style="font:500 14px/1.3 'IBM Plex Mono',monospace">9403.30.00</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">IPI</span><span style="font:500 14px/1.3 'IBM Plex Sans';font-variant-numeric:tabular-nums">5,00%</span></div>
+</div>
+<div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Preço por tabela</span>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Tabela sul — varejo</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ prevPreco }}</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Tabela sul — atacado</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ prevPrecoAtac }}</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Catálogo B2B</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ prevPreco }}</span></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="pencil" onClick="{{ goNovo }}" hint-size="auto,40px">Editar produto</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" onClick="{{ goPedido }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Adicionar a um pedido</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fecharExportar }}" title="Exportar produtos" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Colunas</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px">
+<sc-for list="{{ expColunas }}" as="ec" hint-placeholder-count="6">
+<button onClick="{{ ec.toggle }}" role="checkbox" aria-checked="{{ ec.on }}" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F2F4F7">
+<span style="{{ ec.boxStyle }}"><sc-if value="{{ ec.on }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></span>
+<span style="font:400 13.5px/1.2 'IBM Plex Sans';color:#021226">{{ ec.nome }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharExportar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fecharExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar 219 produtos</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { grade: true, prevOpen: false, prev: null, sel: {}, toast: '', reajusteOpen: false, fotosOpen: false, fotosSoltas: false, pct: '6,50' };
+  brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const segOn = "height:30px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;border-radius:4px;border:0;background:#021226;color:#FFFFFF;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    const segOff = "height:30px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;border-radius:4px;border:0;background:transparent;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    const data = [
+      { codigo: 'MV-1204', nome: 'Cadeira Diretor Vale — nogueira', categoria: 'Cadeiras', emb: 'cx c/ 2', preco: 'R$ 486,00', precoAtac: 'R$ 442,90', comissao: '5,00%', icone: 'armchair', promo: true },
+      { codigo: 'MV-1180', nome: 'Cadeira Operacional Vale — preta', categoria: 'Cadeiras', emb: 'cx c/ 4', preco: 'R$ 298,50', precoAtac: 'R$ 271,00', comissao: '5,00%', icone: 'armchair', promo: false },
+      { codigo: 'MV-2310', nome: 'Mesa de reunião 2,40 m — carvalho', categoria: 'Mesas', emb: 'unidade', preco: 'R$ 2.140,00', precoAtac: 'R$ 1.980,00', comissao: '4,50%', icone: 'table-2', promo: false },
+      { codigo: 'MV-2288', nome: 'Mesa executiva 1,60 m — nogueira', categoria: 'Mesas', emb: 'unidade', preco: 'R$ 1.386,00', precoAtac: 'R$ 1.270,00', comissao: '4,50%', icone: 'table-2', promo: true },
+      { codigo: 'MV-3402', nome: 'Armário alto 2 portas — grafite', categoria: 'Armários', emb: 'unidade', preco: 'R$ 968,00', precoAtac: 'R$ 890,00', comissao: '5,00%', icone: 'archive', promo: false },
+      { codigo: 'MV-3418', nome: 'Gaveteiro volante 3 gavetas', categoria: 'Armários', emb: 'cx c/ 2', preco: 'R$ 412,00', precoAtac: 'R$ 379,00', comissao: '5,00%', icone: 'archive', promo: false },
+      { codigo: 'MV-4102', nome: 'Estação em L 1,50 × 1,50 m', categoria: 'Estações', emb: 'unidade', preco: 'R$ 1.720,00', precoAtac: 'R$ 1.590,00', comissao: '4,00%', icone: 'layout-panel-left', promo: false },
+      { codigo: 'MV-4150', nome: 'Plataforma dupla 1,40 m c/ divisória', categoria: 'Estações', emb: 'unidade', preco: 'R$ 2.860,00', precoAtac: 'R$ 2.640,00', comissao: '4,00%', icone: 'layout-panel-left', promo: false },
+    ];
+    const prev = this.state.prev || data[0];
+    const nSel = Object.values(this.state.sel).filter(Boolean).length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      expOpen: !!this.state.expOpen,
+      abrirExportar: () => this.setState({ expOpen: true }),
+      fecharExportar: () => this.setState({ expOpen: false }),
+      expColunas: (this.state.expCols || [{ nome: 'Código', on: true }, { nome: 'Produto', on: true }, { nome: 'Categoria', on: true }, { nome: 'Preço de venda', on: true }, { nome: 'Promoção', on: true }, { nome: 'Comissão', on: true }, { nome: 'Situação', on: true }]).map((c, i, arr) => ({
+        nome: c.nome, on: c.on,
+        boxStyle: 'width:18px;height:18px;border-radius:2px;flex:none;border:1px solid ' + (c.on ? '#78A614' : '#B9C1CE') + ';background:' + (c.on ? '#78A614' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center',
+        toggle: () => this.setState({ expCols: arr.map((x, j) => j === i ? { nome: x.nome, on: !x.on } : x) }),
+      })),
+      colsOpen: !!this.state.colsOpen,
+      toggleCols: () => this.setState(s => ({ colsOpen: !s.colsOpen })),
+      cfgColunas: (this.state.cfgCols || [{ nome: 'Código', on: true }, { nome: 'Produto', on: true }, { nome: 'Categoria', on: true }, { nome: 'Preço de venda', on: true }, { nome: 'Promoção', on: true }, { nome: 'Comissão', on: true }, { nome: 'Situação', on: true }]).map((c, i, arr) => ({
+        nome: c.nome, on: c.on,
+        bg: this.state.dragIdx === i ? '#F2F8D4' : 'transparent',
+        boxStyle: 'width:18px;height:18px;border-radius:2px;flex:none;border:1px solid ' + (c.on ? '#78A614' : '#B9C1CE') + ';background:' + (c.on ? '#78A614' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center',
+        alternar: () => this.setState({ cfgCols: arr.map((x, j) => j === i ? { nome: x.nome, on: !x.on } : x) }),
+        pegar: () => this.setState({ cfgCols: arr, dragIdx: i }),
+        sobre: (e) => { e.preventDefault(); const d = this.state.dragIdx; if (d == null || d === i) return; const l = (this.state.cfgCols || arr).slice(); const mv = l.splice(d, 1)[0]; l.splice(i, 0, mv); this.setState({ cfgCols: l, dragIdx: i }); },
+        soltar: () => this.setState({ dragIdx: null }),
+      })),
+
+      grade: this.state.grade,
+      tabela: !this.state.grade,
+      gradeBtn: this.state.grade ? segOn : segOff,
+      tabelaBtn: !this.state.grade ? segOn : segOff,
+      verGrade: () => this.setState({ grade: true }),
+      verTabela: () => this.setState({ grade: false }),
+      produtos: data.map(p => ({
+        ...p,
+        sel: !!this.state.sel[p.codigo],
+        pare: (e) => e.stopPropagation(),
+        marcar: () => this.setState(s => ({ sel: { ...s.sel, [p.codigo]: !s.sel[p.codigo] } })),
+        abrir: () => this.setState({ prevOpen: true, prev: p }),
+      })),
+      todosSel: data.every(p => this.state.sel[p.codigo]),
+      toggleTodos: () => {
+        const on = !data.every(p => this.state.sel[p.codigo]);
+        const sel = {}; data.forEach(p => { sel[p.codigo] = on; });
+        this.setState({ sel });
+      },
+      temSel: nSel > 0,
+      nSel: nSel + (nSel === 1 ? ' produto selecionado' : ' produtos selecionados'),
+      limparSel: () => this.setState({ sel: {} }),
+      loteCategoria: () => this.avisar('Categoria alterada em ' + nSel + ' produtos'),
+      loteCatalogo: () => this.avisar('Visibilidade no catálogo alterada em ' + nSel + ' produtos'),
+      loteDestacar: () => this.avisar(nSel + ' produtos destacados na vitrine'),
+      loteExcluir: () => { this.avisar(nSel + ' produtos excluídos'); this.setState({ sel: {} }); },
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+      reajusteOpen: this.state.reajusteOpen,
+      fotosOpen: this.state.fotosOpen,
+      abrirReajuste: () => this.setState({ reajusteOpen: true }),
+      abrirFotos: () => this.setState({ fotosOpen: true, fotosSoltas: false }),
+      fecharModais: () => this.setState({ reajusteOpen: false, fotosOpen: false }),
+      pct: this.state.pct,
+      setPct: (e) => this.setState({ pct: e.target.value }),
+      ...(() => {
+        const fator = 1 + (parseFloat(String(this.state.pct).replace(',', '.')) || 0) / 100;
+        const arred = (v) => Math.max(0, Math.floor(v * fator) + 0.9);
+        const base = [
+          { nome: 'Cadeira Operacional Vale — preta', v: 298.5 },
+          { nome: 'Cadeira Diretor Vale — nogueira', v: 486 },
+          { nome: 'Mesa reta 1,60 m — nogueira', v: 712 },
+        ];
+        return {
+          previa: base.map(b => ({ nome: b.nome, antes: this.brl(b.v), depois: this.brl(arred(b.v)) })),
+          aplicarLabel: 'Reajustar 184 produtos',
+          aplicarReajuste: () => { this.setState({ reajusteOpen: false }); this.avisar('184 preços reajustados em ' + this.state.pct + '% — as tabelas recalcularam'); },
+        };
+      })(),
+      fotosVazio: !this.state.fotosSoltas,
+      fotosProntas: this.state.fotosSoltas,
+      soltarFotos: () => this.setState({ fotosSoltas: true }),
+      fotos: [
+        { arquivo: 'MV-1180.jpg', destino: 'Cadeira Operacional Vale — preta', ok: true },
+        { arquivo: 'MV-1204.jpg', destino: 'Cadeira Diretor Vale — nogueira', ok: true },
+        { arquivo: 'MV-2011.jpg', destino: 'Mesa reta 1,60 m — nogueira', ok: true },
+        { arquivo: 'MV-9999.jpg', destino: 'Nenhum produto com este código', ok: false },
+      ].map(f => ({
+        ...f,
+        st: f.ok ? 'Casada' : 'Sem produto',
+        stIcone: f.ok ? 'circle-check' : 'octagon-x',
+        stStyle: "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';flex:none;color:" + (f.ok ? '#0A6244' : '#85202C'),
+      })),
+      aplicarFotos: () => { this.setState({ fotosOpen: false }); this.avisar('3 fotos aplicadas aos produtos — já aparecem no catálogo'); },
+      prevOpen: this.state.prevOpen,
+      prevNome: prev.nome, prevCodigo: prev.codigo, prevEmb: prev.emb, prevPreco: prev.preco, prevPrecoAtac: prev.precoAtac,
+      closePrev: () => this.setState({ prevOpen: false }),
+      goNovo: () => { location.href = 'produto-cadastro.dc.html'; },
+      goImportar: () => { location.href = 'importacoes.dc.html'; },
+      goPedido: () => { location.href = 'pedidos-novo.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

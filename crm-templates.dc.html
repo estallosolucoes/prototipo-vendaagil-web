@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:900px){.tp-row{grid-template-columns:minmax(0,1fr) 120px 44px !important}.tp-row .tp-cell-extra{display:none !important}.tp-min{min-width:0 !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CRM-07 Modelos de mensagem" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="crmconfig" hint-size="0px,0px"></dc-import>
+<main style="max-width:1180px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="crm-negocios.dc.html" style="text-decoration:none">Negócios</a><i data-lucide="chevron-right" style="font-size:13px"></i><a href="crm-configuracoes.dc.html" style="text-decoration:none">Configurações do CRM</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Modelos de mensagem</span></nav>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 20px">Configurações do CRM</h1>
+<div style="display:flex;gap:4px;border-bottom:1px solid #CFD6E1;margin-bottom:20px;overflow-x:auto;overflow-y:hidden">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="6"><a href="{{ a.href }}" style="{{ a.style }}">{{ a.label }}</a></sc-for>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start;margin-bottom:24px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Modelos rápidos</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Na conversa, digite / para inserir. As variáveis são preenchidas na hora.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ novoModelo }}" hint-size="auto,32px">Novo modelo</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ modelos }}" as="m" hint-placeholder-count="4">
+<button onClick="{{ m.ir }}" style="{{ m.style }}">
+<span style="display:flex;flex-direction:column;gap:2px;text-align:left;flex:1;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">/{{ m.atalho }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.previa }}</span></span>
+<i data-lucide="chevron-right" style="font-size:15px;color:#7A8699"></i>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Editar /{{ modeloAtalho }}</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="" rows="{{ 6 }}" value="{{ modeloTexto }}" hint-size="100%,160px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Variáveis</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{nome}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{empresa}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{pedido}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{vendedor}</span>
+</div>
+</div>
+<div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Prévia</span>
+<span style="font:400 13.5px/1.55 'IBM Plex Sans'">{{ modeloPrevia }}</span>
+</div>
+<div style="display:flex;justify-content:flex-end"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="check" onClick="{{ salvarModelo }}" dc-props="{{ btnProps }}" hint-size="auto,32px">Salvar modelo</x-import></div>
+</div>
+</div>
+<sc-if value="{{ semCloud }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px">
+<span style="width:48px;height:48px;border-radius:999px;background:#EAF4FD;color:#0C477B;display:grid;place-items:center"><i data-lucide="badge-check" style="font-size:24px"></i></span>
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Templates da Cloud API</span>
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#5B6678;max-width:520px">Templates aprovados pela Meta permitem iniciar conversa com o cliente — inclusive com imagem, vídeo e carrossel. Eles exigem uma conexão Cloud API oficial, que você ainda não tem.</span>
+<a href="configuracoes-canais.dc.html" style="font:500 14px/1 'IBM Plex Sans'">Ativar uma conexão em Canais de WhatsApp</a>
+</div>
+</sc-if>
+<sc-if value="{{ comCloud }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:20px 20px 14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Templates da Cloud API</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Aprovados pela Meta, iniciam conversa com o cliente. Conexão: Cloud oficial · (54) 3282-9001</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<x-import component-from-global-scope="va-select" label="" options="Todas as situações|Aprovado|Pendente|Recusado|Pausado" value="{{ filtroSit }}" onChange="{{ setFiltro }}" hint-size="170px,36px"></x-import>
+<a href="crm-template-novo.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="plus" dc-props="{{ btnProps }}" hint-size="auto,32px">Novo template</x-import></a>
+</div>
+</div>
+<div style="overflow-x:auto">
+<div class="tp-min" style="min-width:940px">
+<div class="tp-row" style="display:grid;grid-template-columns:minmax(150px,1.4fr) 96px 92px 76px minmax(110px,1fr) 112px 96px 108px;gap:10px;align-items:center;padding:10px 20px;border-top:1px solid #E4E8EF;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Nome</span>
+<span class="tp-cell-extra" style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Formato</span>
+<span class="tp-cell-extra" style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Categoria</span>
+<span class="tp-cell-extra" style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Idioma</span>
+<span class="tp-cell-extra" style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Conexão</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span class="tp-cell-extra" style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Último uso</span>
+<span></span>
+</div>
+<sc-for list="{{ templates }}" as="t" hint-placeholder-count="5">
+<div class="tp-row" role="button" tabindex="0" onClick="{{ t.abrir }}" style="{{ t.rowStyle }}" style-hover="background:#FAFBFC">
+<span style="font:500 13.5px/1.3 'IBM Plex Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.nome }}</span>
+<span class="tp-cell-extra" style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E;display:flex;align-items:center;gap:6px"><i data-lucide="{{ t.fmtIcone }}" style="font-size:14px;color:#7A8699"></i>{{ t.formato }}</span>
+<span class="tp-cell-extra" style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ t.categoria }}</span>
+<span class="tp-cell-extra" style="font:400 13px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ t.idioma }}</span>
+<span class="tp-cell-extra" style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.conexao }}</span>
+<span style="{{ t.sitStyle }}"><i data-lucide="{{ t.sitIcone }}" style="font-size:13px"></i>{{ t.sit }}</span>
+<span class="tp-cell-extra" style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ t.uso }}</span>
+<span style="display:flex;gap:2px;justify-content:flex-end">
+<button onClick="{{ t.duplicar }}" aria-label="Duplicar template" title="Duplicar" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:15px"></i></button>
+<button onClick="{{ t.editar }}" aria-label="Editar template" title="Editar" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:15px"></i></button>
+<button onClick="{{ t.excluir }}" aria-label="Excluir template" title="Excluir" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</span>
+</div>
+</sc-for>
+<sc-if value="{{ listaVazia }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px 20px;text-align:center;font:400 13.5px/1.5 'IBM Plex Sans';color:#5B6678">Nenhum template com essa situação. Você está filtrando por <strong>{{ filtroSit }}</strong>.</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ fecharDrawer }}" style="position:fixed;inset:0;background:rgba(2,18,38,.55);z-index:300"></div>
+<div role="dialog" aria-label="Motivo da recusa" style="position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);background:#FFFFFF;z-index:310;box-shadow:-8px 0 32px rgba(2,18,38,.2);border-radius:16px 0 0 16px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 24px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 17px/1.3 'IBM Plex Sans'">Template recusado</span>
+<button onClick="{{ fecharDrawer }}" aria-label="Fechar" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="x" style="font-size:17px"></i></button>
+</div>
+<div style="flex:1;overflow:auto;padding:20px 24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Template</span>
+<span style="font:500 14px/1.3 'IBM Plex Mono',monospace">{{ recNome }}</span>
+</div>
+<div style="display:flex;gap:12px;align-items:flex-start;background:#FDF0F1;border-radius:6px;padding:14px">
+<i data-lucide="octagon-x" style="font-size:18px;color:#B3202F;flex:none;margin-top:1px"></i>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 13.5px/1.4 'IBM Plex Sans';color:#85202C">Por que a Meta recusou</span>
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#5C2228">{{ recMotivo }}</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Trecho com problema</span>
+<div style="background:#F7F9FB;border-radius:6px;padding:14px;font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">{{ recAntes }}<mark style="background:#FBE3B9;color:#5C3D00;border-radius:3px;padding:1px 3px">{{ recTrecho }}</mark>{{ recDepois }}</div>
+</div>
+<span style="font:400 12.5px/1.6 'IBM Plex Sans';color:#5B6678">Corrija o texto e reenvie — o template volta para a fila da Meta como <strong>pendente</strong>.</span>
+</div>
+<div style="display:flex;gap:8px;padding:16px 24px;border-top:1px solid #E4E8EF">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="pencil" onClick="{{ corrigir }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Corrigir e reenviar</x-import>
+<button onClick="{{ excluirRecusado }}" style="height:40px;padding:0 16px;border:1px solid #E8C7CA;border-radius:6px;background:#FFFFFF;color:#85202C;font:600 14px/1 'IBM Plex Sans';cursor:pointer;display:inline-flex;align-items:center;gap:8px" style-hover="background:#FDF0F1"><i data-lucide="trash-2" style="font-size:15px"></i>Excluir</button>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;conexaoCloud&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  state = { modelo: 0, filtro: 'Todas as situações', drawer: null, toast: '', excluidos: [] };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2800);
+  }
+  renderVals() {
+    const st = this.state;
+    const conexao = this.props.conexaoCloud ?? true;
+    const tabStyle = (on) => "display:inline-flex;align-items:center;height:42px;padding:0 16px;text-decoration:none;white-space:nowrap;font:" + (on ? '600' : '500') + " 14px/1 'IBM Plex Sans';color:" + (on ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (on ? '#628A11' : 'transparent') + ';margin-bottom:-1px';
+    const chip = (b, c) => "height:24px;display:inline-flex;align-items:center;gap:5px;padding:0 9px;border-radius:999px;font:600 12px/1 'IBM Plex Sans';width:fit-content;background:" + b + ';color:' + c;
+    const SIT = {
+      'Pendente': { icone: 'clock', style: chip('#FCF3DF', '#8A5B00') },
+      'Aprovado': { icone: 'circle-check', style: chip('#E8F7F0', '#0A6244') },
+      'Recusado': { icone: 'octagon-x', style: chip('#FDF0F1', '#85202C') },
+      'Pausado': { icone: 'circle-pause', style: chip('#EDF0F5', '#5B6678') },
+    };
+    const MODELOS = [
+      { atalho: 'tabela', texto: 'Oi {nome}! Segue a tabela de preço atualizada da {empresa}. Qualquer dúvida me chama por aqui.', previa: 'Oi Márcia! Segue a tabela de preço atualizada da Móveis Vale. Qualquer dúvida me chama por aqui.' },
+      { atalho: 'pedido', texto: '{nome}, seu pedido {pedido} foi emitido! Te aviso assim que a indústria confirmar o faturamento.', previa: 'Márcia, seu pedido 4.813 foi emitido! Te aviso assim que a indústria confirmar o faturamento.' },
+      { atalho: 'visita', texto: 'Oi {nome}, tudo bem? Estarei na sua região terça. Posso passar na {empresa} de manhã?', previa: 'Oi Márcia, tudo bem? Estarei na sua região terça. Posso passar na Depósito São Jorge de manhã?' },
+      { atalho: 'cobranca', texto: '{nome}, o boleto do pedido {pedido} venceu ontem. Consegue verificar com o financeiro? Se precisar, reemito com nova data.', previa: 'Márcia, o boleto do pedido 4.786 venceu ontem. Consegue verificar com o financeiro? Se precisar, reemito com nova data.' },
+    ];
+    const mod = MODELOS[st.modelo];
+    const TPL = [
+      { nome: 'boas_vindas_lojista', formato: 'Texto', fmtIcone: 'text', categoria: 'Utilidade', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Aprovado', uso: 'há 3 horas' },
+      { nome: 'tabela_atualizada', formato: 'Mídia', fmtIcone: 'image', categoria: 'Utilidade', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Aprovado', uso: 'ontem' },
+      { nome: 'lancamento_colecao', formato: 'Carrossel', fmtIcone: 'gallery-horizontal', categoria: 'Marketing', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Pendente', uso: '—' },
+      { nome: 'cobranca_boleto', formato: 'Texto', fmtIcone: 'text', categoria: 'Utilidade', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Recusado', uso: '—' },
+      { nome: 'aviso_faturamento', formato: 'Texto', fmtIcone: 'text', categoria: 'Utilidade', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Aprovado', uso: 'há 6 dias' },
+      { nome: 'promo_percentual', formato: 'Mídia', fmtIcone: 'image', categoria: 'Marketing', idioma: 'pt_BR', conexao: 'Cloud oficial', sit: 'Pausado', uso: 'há 2 meses' },
+    ].filter(t => !st.excluidos.includes(t.nome));
+    const visiveis = TPL.filter(t => st.filtro === 'Todas as situações' || t.sit === st.filtro);
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: [
+        { label: 'Funis', href: 'crm-configuracoes.dc.html' }, { label: 'Motivos de perda', href: 'crm-configuracoes.dc.html' }, { label: 'Etiquetas', href: 'crm-configuracoes.dc.html' },
+        { label: 'Modelos de mensagem', href: 'crm-templates.dc.html', on: true }, { label: 'Automações e WhatsApp', href: 'crm-configuracoes.dc.html' }, { label: 'Canais de WhatsApp', href: 'configuracoes-canais.dc.html' },
+      ].map(t => ({ ...t, style: tabStyle(!!t.on) })),
+      modelos: MODELOS.map((m, i) => ({
+        ...m,
+        style: 'display:flex;align-items:center;gap:10px;width:100%;padding:12px 10px;border:0;border-bottom:1px solid #EDF0F5;border-radius:6px;background:' + (st.modelo === i ? '#F8FAF1' : '#FFFFFF') + ';cursor:pointer',
+        ir: () => this.setState({ modelo: i }),
+      })),
+      modeloAtalho: mod.atalho, modeloTexto: mod.texto, modeloPrevia: mod.previa,
+      novoModelo: () => this.avisar('Modelo criado — defina o atalho e o texto'),
+      salvarModelo: () => this.avisar('Modelo /' + mod.atalho + ' salvo'),
+      semCloud: !conexao, comCloud: conexao,
+      filtroSit: st.filtro,
+      setFiltro: (v) => this.setState({ filtro: v && v.target ? v.target.value : v }),
+      templates: visiveis.map(t => ({
+        ...t,
+        sitIcone: SIT[t.sit].icone, sitStyle: SIT[t.sit].style,
+        rowStyle: 'display:grid;grid-template-columns:minmax(150px,1.4fr) 96px 92px 76px minmax(110px,1fr) 112px 96px 108px;gap:10px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5;cursor:' + (t.sit === 'Recusado' ? 'pointer' : 'default'),
+        abrir: () => { if (t.sit === 'Recusado') this.setState({ drawer: t.nome }); },
+        duplicar: (e) => { e.stopPropagation(); this.avisar('Template duplicado como ' + t.nome + '_2 — rascunho'); },
+        editar: (e) => { e.stopPropagation(); window.location.href = 'crm-template-novo.dc.html'; },
+        excluir: (e) => { e.stopPropagation(); this.setState(s => ({ excluidos: s.excluidos.concat([t.nome]) })); this.avisar('Template ' + t.nome + ' excluído'); },
+      })),
+      listaVazia: visiveis.length === 0,
+      drawerOpen: !!st.drawer,
+      fecharDrawer: () => this.setState({ drawer: null }),
+      recNome: st.drawer || '',
+      recMotivo: 'O texto oferece desconto, o que a Meta trata como marketing — mas a categoria enviada foi Utilidade. Mensagem de cobrança pode citar valores e datas, não oferta.',
+      recAntes: '“Seu boleto do pedido {{1}} vence amanhã. Pague em dia e ',
+      recTrecho: 'ganhe 5% de desconto na próxima compra',
+      recDepois: '.”',
+      corrigir: () => { this.setState({ drawer: null }); window.location.href = 'crm-template-novo.dc.html'; },
+      excluirRecusado: () => { this.setState(s => ({ excluidos: s.excluidos.concat([s.drawer]), drawer: null })); this.avisar('Template excluído'); },
+      toast: !!st.toast, toastMsg: st.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

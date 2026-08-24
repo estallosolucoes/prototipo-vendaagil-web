@@ -1,0 +1,108 @@
+/* Venda Ágil — TEMA ESCURO. Tabela de equivalência 1:1 com semantic.css.
+   Nenhum token novo é criado aqui: só o mapeamento muda.
+   Regra do tema escuro: nunca preto puro (fadiga + halação em tela barata);
+   a base é o azul-noite da marca, e a elevação sobe por clareamento de
+   superfície, não por sombra (sombra não existe em fundo escuro). */
+
+[data-theme="dark"]{
+  --background-base:var(--navy-950);
+  --background-subtle:#04182F;
+  --background-raised:#0A2038;
+  --background-sunken:#010D1C;
+  --background-overlay:rgba(1,9,19,.7);
+  --background-inverse:var(--neutral-0);
+
+  --surface-default:#0A2038;
+  --surface-hover:#102A45;
+  --surface-active:#173352;
+  --surface-selected:#1D3A2A;
+  --surface-disabled:#08192C;
+
+  --border-subtle:#152B45;
+  --border-default:#213C5A;
+  --border-strong:#33527A;
+  --border-focus:var(--green-400);
+  --border-error:var(--danger-400);
+
+  --text-primary:#EAF0F7;   /* 15,8:1 sobre --background-base */
+  --text-secondary:#B4C2D4; /* 9,0:1 */
+  --text-tertiary:#8B9BB1;  /* 5,6:1 — piso do legível no escuro */
+  --text-placeholder:#6C7C93;
+  --text-disabled:#5A6A7F;
+  --text-inverse:var(--navy-950);
+  --text-link:var(--green-400);
+  --text-link-hover:var(--green-300);
+  --text-on-accent:var(--navy-950);
+
+  --accent-default:var(--green-500);
+  --accent-hover:var(--green-400);
+  --accent-active:var(--green-600);
+  --accent-subtle:rgba(155,191,23,.16);
+  --accent-muted:rgba(155,191,23,.28);
+  --accent-text:var(--green-400);
+  --accent-on-dark:var(--green-400);
+
+  --solid-default:var(--neutral-0);
+  --solid-hover:var(--neutral-100);
+  --solid-active:var(--neutral-200);
+
+  --status-success-bg:rgba(31,169,122,.14);
+  --status-success-border:rgba(31,169,122,.38);
+  --status-success-text:#5FD0A5;
+  --status-success-icon:#4FC599;
+  --status-success-solid:var(--success-400);
+
+  --status-warning-bg:rgba(237,164,18,.14);
+  --status-warning-border:rgba(237,164,18,.38);
+  --status-warning-text:#F5C462;
+  --status-warning-icon:var(--warning-300);
+  --status-warning-solid:var(--warning-300);
+
+  --status-danger-bg:rgba(214,84,98,.14);
+  --status-danger-border:rgba(214,84,98,.38);
+  --status-danger-text:#F0929C;
+  --status-danger-icon:var(--danger-300);
+  --status-danger-solid:var(--danger-400);
+
+  --status-info-bg:rgba(46,138,219,.14);
+  --status-info-border:rgba(46,138,219,.38);
+  --status-info-text:#7CBAF0;
+  --status-info-icon:var(--info-300);
+  --status-info-solid:var(--info-400);
+
+  --status-neutral-bg:rgba(163,174,192,.12);
+  --status-neutral-border:rgba(163,174,192,.3);
+  --status-neutral-text:#B4C2D4;
+  --status-neutral-icon:#8B9BB1;
+  --status-neutral-solid:var(--neutral-500);
+
+  --data-realized:#EAF0F7;
+  --data-forecast:#8B9BB1;
+  --data-forecast-line:#6C7C93;
+  --data-positive:#4FC599;
+  --data-negative:#E7808B;
+  --data-neutral:#B4C2D4;
+  --data-zero:#6C7C93;
+  --data-commission:var(--green-400);
+  --data-commission-bg:rgba(195,217,30,.16);
+  --data-grid:#152B45;
+  --data-axis:#8B9BB1;
+
+  --chart-1:var(--green-400);
+  --chart-2:#8CA3C4;
+  --chart-3:var(--info-300);
+  --chart-4:var(--warning-300);
+  --chart-5:#4FC599;
+  --chart-6:var(--danger-300);
+  --chart-7:#A78BE8;
+  --chart-8:#E3F0A8;
+
+  --focus-ring:var(--green-400);
+  --focus-ring-inverse:var(--navy-950);
+
+  --elevation-1:0 1px 2px rgba(0,0,0,.5);
+  --elevation-2:0 2px 6px rgba(0,0,0,.55);
+  --elevation-3:0 6px 16px rgba(0,0,0,.6);
+  --elevation-4:0 12px 32px rgba(0,0,0,.65);
+  --elevation-5:0 24px 56px rgba(0,0,0,.7);
+}

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/v2-ajustes.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/styles.css">
+<script src="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<script src="image-slot.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+[data-va-loja]{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px;align-items:start}
+[data-va-grid]{display:grid;grid-template-columns:repeat(auto-fill,minmax(224px,1fr));gap:16px}
+@media (min-width:900px){[data-va-filtro-btn]{display:none !important}[data-va-chips]{display:none !important}}
+@media (max-width:899px){[data-va-aside]{display:none !important}[data-va-loja]{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){[data-va-grid]{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}[data-va-tagline]{display:none !important}[data-va-pedidos-lbl]{display:none !important}}</style>
+</helmet>
+<div data-screen-label="LOJA-01 Vitrine do catálogo" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column;padding-bottom:96px">
+<div style="background:#021226;color:#F3F3F3">
+<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:14px 20px">
+<span style="width:40px;height:40px;border-radius:8px;background:#C3D91E;color:#021226;display:grid;place-items:center;font:700 14px/1 'IBM Plex Sans';flex:none">VO</span>
+<div style="min-width:0;display:flex;flex-direction:column;gap:1px">
+<span style="font:600 16px/1.2 'IBM Plex Sans';white-space:nowrap">Vale Office</span>
+<span data-va-tagline="" style="font:400 12px/1.3 'IBM Plex Sans';color:#8FA0B8;white-space:nowrap">valeoffice.vendaagil.shop</span>
+</div>
+<div style="flex:1"></div>
+<a href="loja-pedidos.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid rgba(243,243,243,.28);color:#F3F3F3;text-decoration:none;font:500 13.5px/1 'IBM Plex Sans';flex:none;white-space:nowrap" style-hover="background:rgba(243,243,243,.1);color:#FFFFFF"><i data-lucide="clipboard-list" style="font-size:17px"></i><span data-va-pedidos-lbl="">Meus pedidos</span></a>
+<a href="loja-carrinho.dc.html" aria-label="Ver carrinho" style="position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:6px;border:1px solid rgba(243,243,243,.28);color:#F3F3F3;text-decoration:none;flex:none" style-hover="background:rgba(243,243,243,.1);color:#FFFFFF">
+<i data-lucide="shopping-cart" style="font-size:18px"></i>
+<sc-if value="{{ temItens }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:-7px;right:-7px;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:#C3D91E;color:#021226;display:grid;place-items:center;font:700 11px/1 'IBM Plex Sans'">{{ qtdItens }}</span></sc-if>
+</a>
+<sc-if value="{{ deslogado }}" hint-placeholder-val="{{ true }}">
+<a href="loja-login.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;background:#C3D91E;color:#021226;text-decoration:none;font:600 13.5px/1 'IBM Plex Sans';flex:none;white-space:nowrap" style-hover="background:#B5CB13;color:#021226"><i data-lucide="user-round" style="font-size:16px"></i><span data-va-pedidos-lbl="">Entrar ou cadastrar</span></a>
+</sc-if>
+<sc-if value="{{ logado }}" hint-placeholder-val="{{ false }}">
+<a href="loja-login.dc.html" title="Sua conta" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid rgba(243,243,243,.28);color:#F3F3F3;text-decoration:none;font:600 13.5px/1 'IBM Plex Sans';flex:none;white-space:nowrap" style-hover="background:rgba(243,243,243,.1);color:#FFFFFF"><i data-lucide="user-round" style="font-size:16px"></i>Olá, {{ userNome }}</a>
+</sc-if>
+</div>
+</div>
+<header style="position:sticky;top:0;z-index:300;background:#FFFFFF;box-shadow:0 1px 3px rgba(2,18,38,.08)">
+<div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 20px">
+<div style="flex:1;max-width:640px"><x-import component-from-global-scope="VendaGilDesignSystem_348481.SearchField" placeholder="Buscar por nome ou código do produto" value="{{ busca }}" onChange="{{ setBusca }}" hint-size="100%,40px"></x-import></div>
+<div style="flex:1"></div>
+<div data-va-filtro-btn=""><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="secondary" icon-left="filter" onClick="{{ abrirFiltros }}" hint-size="auto,40px">Filtros</x-import></div>
+</div>
+</header>
+<main style="max-width:1200px;margin:0 auto;width:100%;padding:20px">
+<div data-va-loja="">
+<aside data-va-aside="" style="position:sticky;top:76px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 14px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Categorias</span>
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ categoriasSide }}" as="cat" hint-placeholder-count="4">
+<button onClick="{{ cat.escolher }}" style="{{ cat.style }}">{{ cat.nome }}<span style="{{ cat.qtdStyle }}">{{ cat.qtd }}</span></button>
+</sc-for>
+</div>
+<div style="border-top:1px solid #EDF0F5;padding-top:12px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Promoções</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Checkbox" label="Apenas itens em promoção" checked="{{ soPromo }}" onChange="{{ togglePromo }}" hint-size="100%,24px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:14px;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Condições</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">Pedido mínimo de <strong style="color:#021226">R$ 3.000,00</strong> · faturamento direto pela Vale Office</span>
+<a href="https://wa.me/5554998124407" style="display:inline-flex;align-items:center;gap:6px;font:600 13px/1.3 'IBM Plex Sans';text-decoration:none;margin-top:4px"><i data-lucide="message-circle" style="font-size:14px"></i>Falar com Carlos</a>
+</div>
+</aside>
+<div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+<button onClick="{{ verPromos }}" style="display:flex;align-items:center;gap:10px;background:#C3D91E;border:0;border-radius:10px;padding:13px 16px;cursor:pointer;text-align:left;color:#021226" style-hover="background:#B5CB13">
+<i data-lucide="tag" style="font-size:16px"></i>
+<span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ promoFrase }}</span>
+<span style="margin-left:auto;font:700 13px/1 'IBM Plex Sans';white-space:nowrap">Ver promoções →</span>
+</button>
+<div data-va-chips="" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px">
+<sc-for list="{{ categorias }}" as="cat" hint-placeholder-count="4">
+<button onClick="{{ cat.escolher }}" style="{{ cat.style }}">{{ cat.nome }}</button>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;align-items:baseline;gap:10px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">{{ tituloLista }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#5B6678">{{ qtdLista }}</span>
+<sc-if value="{{ soPromo }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ togglePromo }}" style="display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:600 12px/1 'IBM Plex Sans';cursor:pointer">Só promoções<i data-lucide="x" style="font-size:12px"></i></button>
+</sc-if>
+</div>
+<div style="position:relative">
+<button onClick="{{ toggleSort }}" style="display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;color:#021226;font:500 13px/1 'IBM Plex Sans';cursor:pointer" style-hover="background:#F7F9FB">
+<i data-lucide="arrow-up-down" style="font-size:14px;color:#5B6678"></i>Ordenar: <strong style="font-weight:600">{{ sortLabel }}</strong><i data-lucide="chevron-down" style="font-size:14px;color:#5B6678"></i>
+</button>
+<sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;right:0;top:42px;z-index:150;background:#FFFFFF;border:1px solid #E4E8EF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:6px;min-width:210px;display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ sortOpcoes }}" as="o" hint-placeholder-count="5">
+<button onClick="{{ o.escolher }}" style="{{ o.style }}">{{ o.nome }}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</div>
+<div data-va-grid="">
+<sc-for list="{{ produtos }}" as="p" hint-placeholder-count="8">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow 140ms ease" style-hover="box-shadow:0 8px 24px rgba(2,18,38,.14)">
+<div style="position:relative;aspect-ratio:4/3;background:#EDF0F5">
+<image-slot id="{{ p.slotId }}" shape="rect" src="{{ p.slotSrc }}" placeholder="{{ p.slotLabel }}" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+<sc-if value="{{ p.temPromo }}" hint-placeholder-val="{{ false }}">
+<span style="position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;background:#C3D91E;color:#021226;font:700 12px/1 'IBM Plex Sans';pointer-events:none"><i data-lucide="tag" style="font-size:12px"></i>{{ p.badge }}</span>
+</sc-if>
+</div>
+<div style="padding:12px 14px 0;display:flex;flex-direction:column;gap:5px;flex:1">
+<div style="display:flex;justify-content:space-between;gap:8px">
+<span style="font:400 11.5px/1.2 'IBM Plex Mono',monospace;color:#7A8699">{{ p.code }}</span>
+<span style="font:500 11px/1.2 'IBM Plex Sans';letter-spacing:.04em;text-transform:uppercase;color:#7A8699">{{ p.cat }}</span>
+</div>
+<a href="loja-produto.dc.html" style="font:600 14px/1.35 'IBM Plex Sans';color:#021226;text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px" style-hover="color:#365E10">{{ p.name }}</a>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">{{ p.packLinha }}</span>
+<div style="margin-top:auto;padding-top:8px;display:flex;flex-direction:column">
+<sc-if value="{{ p.temPromo }}" hint-placeholder-val="{{ false }}">
+<span style="font:400 12px/1.2 'IBM Plex Sans';color:#7A8699;text-decoration:line-through;font-variant-numeric:tabular-nums">{{ p.precoDe }}</span>
+</sc-if>
+<div style="display:flex;align-items:baseline;gap:6px">
+<span style="{{ p.precoStyle }}">{{ p.preco }}</span>
+<span style="font:400 11.5px/1.2 'IBM Plex Sans';color:#7A8699">/ {{ p.pack }}</span>
+</div>
+</div>
+</div>
+<div style="padding:10px 14px 14px">
+<sc-if value="{{ p.foraCarrinho }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ p.add }}" style="width:100%;height:38px;border-radius:6px;border:1px solid #78A614;background:#FFFFFF;color:#365E10;font:600 13.5px/1 'IBM Plex Sans';cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px" style-hover="background:#F2F8D4"><i data-lucide="plus" style="font-size:15px"></i>Adicionar</button>
+</sc-if>
+<sc-if value="{{ p.noCarrinho }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #78A614;border-radius:6px;overflow:hidden;background:#F8FAF1;height:38px">
+<button onClick="{{ p.menos }}" aria-label="Diminuir" style="width:38px;height:38px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#365E10" style-hover="background:#E7F0D2"><i data-lucide="minus" style="font-size:15px"></i></button>
+<div style="display:flex;align-items:center;gap:5px"><input type="number" inputmode="numeric" min="0" value="{{ p.qty }}" onInput="{{ p.setQtd }}" aria-label="Quantidade de caixas" style="width:52px;height:28px;border:1px solid #CFD6E1;border-radius:4px;text-align:center;font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#021226;background:#FFFFFF;padding:0"><span style="font:500 12px/1 'IBM Plex Sans';color:#5B6678">cx</span></div>
+<button onClick="{{ p.mais }}" aria-label="Aumentar" style="width:38px;height:38px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#365E10" style-hover="background:#E7F0D2"><i data-lucide="plus" style="font-size:15px"></i></button>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ semResultado }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+<i data-lucide="search-x" style="font-size:32px;color:#9AA4B4"></i>
+<span style="font:600 15px/1.4 'IBM Plex Sans'">Nenhum produto com esses filtros</span>
+<button onClick="{{ limparFiltros }}" style="border:0;background:transparent;color:#365E10;font:600 14px/1 'IBM Plex Sans';cursor:pointer;margin-top:4px">Limpar filtros</button>
+</div>
+</sc-if>
+</div>
+</div>
+</main>
+<footer style="padding:24px 16px 40px;text-align:center;margin-top:auto;display:flex;flex-direction:column;gap:10px;align-items:center">
+<a href="https://wa.me/5554998124407" style="display:inline-flex;align-items:center;gap:8px;font:600 14px/1 'IBM Plex Sans';text-decoration:none"><i data-lucide="message-circle" style="font-size:16px"></i>Dúvidas? Fale com a Vale Office</a>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#7A8699">com tecnologia Venda Ágil</span>
+</footer>
+<div style="position:fixed;bottom:0;left:0;right:0;background:#FFFFFF;border-top:1px solid #E4E8EF;box-shadow:0 -4px 16px rgba(2,18,38,.10);z-index:400">
+<div style="max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<div style="display:flex;flex-direction:column;flex:1">
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ resumoCarrinho }}</span>
+<span style="font:600 22px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ totalFmt }}</span>
+<sc-if value="{{ faltaMinimo }}" hint-placeholder-val="{{ false }}"><span style="font:500 12px/1.3 'IBM Plex Sans';color:#8A5B00">{{ msgFalta }}</span></sc-if>
+</div>
+<a href="loja-carrinho.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" size="lg" disabled="{{ faltaMinimo }}" dc-props="{{ btnProps }}" hint-size="auto,48px">{{ ctaLabel }}</x-import></a>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Drawer" open="{{ filtros }}" modal="{{ true }}" onClose="{{ fecharFiltros }}" title="Filtros" hint-size="0,0">
+<div style="display:grid;gap:12px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Categoria</span>
+<sc-for list="{{ categoriasDrawer }}" as="cat" hint-placeholder-count="4">
+<button onClick="{{ cat.escolher }}" style="{{ cat.style }}">{{ cat.nome }}<span style="{{ cat.qtdStyle }}">{{ cat.qtd }}</span></button>
+</sc-for>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;margin-top:8px">Promoções</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Checkbox" label="Mostrar apenas itens em promoção" checked="{{ soPromo }}" onChange="{{ togglePromo }}" hint-size="100%,24px"></x-import>
+<div style="display:flex;gap:8px;margin-top:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="ghost" onClick="{{ limparFiltros }}" hint-size="auto,40px">Limpar</x-import>
+<div style="flex:1"><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" full-width="{{ true }}" onClick="{{ fecharFiltros }}" dc-props="{{ btnProps }}" hint-size="100%,40px">Ver produtos</x-import></div>
+</div>
+</div>
+</x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { busca: '', cat: 'Todos', soPromo: false, filtros: false, sort: 'Relevância', sortOpen: false, carrinho: { 2: 4, 5: 2 } };
+  user() { try { return JSON.parse(localStorage.getItem('va-loja-user')); } catch (e) { return null; } }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const PRODUTOS = [
+      { id: 1, name: 'Cadeira Operacional Vale — preta', code: 'MV-1180', pack: 'cx 4 un', price: 298.5, unit: 74.63, cat: 'Cadeiras' },
+      { id: 2, name: 'Cadeira Diretor Executiva — preta', code: 'MV-1204', pack: 'cx 2 un', price: 289.9, promoPrice: 249.9, unit: 124.95, cat: 'Cadeiras' },
+      { id: 3, name: 'Mesa executiva 1,60 m — carvalho', code: 'MV-2310', pack: 'un', price: 1021, cat: 'Mesas' },
+      { id: 4, name: 'Mesa de reunião 6 lugares', code: 'MV-2388', pack: 'un', price: 1290, cat: 'Mesas' },
+      { id: 5, name: 'Gaveteiro 4 gavetas — branco', code: 'MV-3402', pack: 'cx 1 un', price: 439.5, promoPrice: 399, cat: 'Armários' },
+      { id: 6, name: 'Armário alto 2 portas', code: 'MV-3510', pack: 'un', price: 1120, cat: 'Armários' },
+      { id: 7, name: 'Poltrona giratória — cinza', code: 'MV-1290', pack: 'cx 1 un', price: 749.9, cat: 'Cadeiras' },
+      { id: 8, name: 'Cadeira fixa interlocutor', code: 'MV-1105', pack: 'cx 4 un', price: 189.9, unit: 47.48, cat: 'Cadeiras' },
+    ];
+    const MINIMO = 3000;
+    const brl = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const ep = (p) => p.promoPrice || p.price;
+    const carrinho = this.state.carrinho;
+    const itens = Object.entries(carrinho).map(([id, q]) => ({ ...PRODUTOS.find(p => p.id === Number(id)), qty: q }));
+    const total = itens.reduce((a, x) => a + ep(x) * x.qty, 0);
+    const falta = Math.max(MINIMO - total, 0);
+    const q = this.state.busca.trim().toLowerCase();
+    const cats = ['Todos', 'Cadeiras', 'Mesas', 'Armários'];
+    const chipOn = "flex:none;height:32px;padding:0 14px;border-radius:999px;border:0;background:#021226;color:#FFFFFF;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+    const chipOff = "flex:none;height:32px;padding:0 14px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    const rowOn = "display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:36px;padding:0 12px;border-radius:6px;border:0;background:#E7F0D2;color:#365E10;font:600 13.5px/1 'IBM Plex Sans';cursor:pointer;text-align:left";
+    const rowOff = "display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:36px;padding:0 12px;border-radius:6px;border:0;background:transparent;color:#454F5E;font:500 13.5px/1 'IBM Plex Sans';cursor:pointer;text-align:left";
+    const qtdOn = "font:600 12px/1 'IBM Plex Sans';color:#365E10;font-variant-numeric:tabular-nums";
+    const qtdOff = "font:500 12px/1 'IBM Plex Sans';color:#7A8699;font-variant-numeric:tabular-nums";
+    const filtrar = (cat) => PRODUTOS.filter(p =>
+      (!q || p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q)) &&
+      (cat === 'Todos' || p.cat === cat) &&
+      (!this.state.soPromo || p.promoPrice != null));
+    const SORTS = {
+      'Relevância': () => 0,
+      'Menor preço': (a, b) => ep(a) - ep(b),
+      'Maior preço': (a, b) => ep(b) - ep(a),
+      'Código do produto': (a, b) => a.code.localeCompare(b.code),
+      'Categoria': (a, b) => a.cat.localeCompare(b.cat) || a.name.localeCompare(b.name),
+    };
+    const lista = filtrar(this.state.cat).slice().sort(SORTS[this.state.sort]);
+    const catSide = (c) => ({
+      nome: c,
+      qtd: String(filtrar(c).length),
+      style: c === this.state.cat ? rowOn : rowOff,
+      qtdStyle: c === this.state.cat ? qtdOn : qtdOff,
+      escolher: () => this.setState({ cat: c }),
+    });
+    const setQty = (p, nq) => this.setState(s => { const c = { ...s.carrinho }; if (nq <= 0) delete c[p.id]; else c[p.id] = nq; return { carrinho: c }; });
+    const nPromo = PRODUTOS.filter(p => p.promoPrice != null).length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      logado: !!this.user(),
+      deslogado: !this.user(),
+      userNome: (this.user() || {}).nome ? String(this.user().nome).split(' ')[0] : '',
+      busca: this.state.busca,
+      setBusca: (v) => this.setState({ busca: typeof v === 'string' ? v : v.target.value }),
+      filtros: this.state.filtros,
+      abrirFiltros: () => this.setState({ filtros: true }),
+      fecharFiltros: () => this.setState({ filtros: false }),
+      limparFiltros: () => this.setState({ cat: 'Todos', soPromo: false, busca: '', filtros: false }),
+      soPromo: this.state.soPromo,
+      togglePromo: () => this.setState(s => ({ soPromo: !s.soPromo })),
+      verPromos: () => this.setState({ soPromo: true, cat: 'Todos' }),
+      promoFrase: nPromo + ' produtos em promoção até 31/08 — condições especiais para reposição',
+      temItens: itens.length > 0,
+      qtdItens: String(itens.reduce((a, x) => a + x.qty, 0)),
+      categorias: cats.map(c => ({ nome: c, style: c === this.state.cat ? chipOn : chipOff, escolher: () => this.setState({ cat: c }) })),
+      categoriasSide: cats.map(catSide),
+      categoriasDrawer: cats.map(catSide),
+      tituloLista: this.state.cat === 'Todos' ? 'Todos os produtos' : this.state.cat,
+      qtdLista: lista.length + (lista.length === 1 ? ' produto' : ' produtos'),
+      semResultado: lista.length === 0,
+      sortLabel: this.state.sort,
+      sortOpen: this.state.sortOpen,
+      toggleSort: () => this.setState(s => ({ sortOpen: !s.sortOpen })),
+      sortOpcoes: Object.keys(SORTS).map(nome => ({
+        nome,
+        style: nome === this.state.sort
+          ? "display:flex;align-items:center;width:100%;padding:9px 10px;border-radius:6px;border:0;background:#78A614;color:#F3F3F3;font:600 13.5px/1.3 'IBM Plex Sans';cursor:pointer;text-align:left;white-space:nowrap"
+          : "display:flex;align-items:center;width:100%;padding:9px 10px;border-radius:6px;border:0;background:transparent;color:#021226;font:400 13.5px/1.3 'IBM Plex Sans';cursor:pointer;text-align:left;white-space:nowrap",
+        escolher: () => this.setState({ sort: nome, sortOpen: false }),
+      })),
+      produtos: lista.map(p => {
+        const qty = carrinho[p.id] || 0;
+        const promo = p.promoPrice != null;
+        return {
+          ...p,
+          slotId: 'loja-prod-' + p.code,
+          slotSrc: 'assets/loja/' + p.code + '.png',
+          slotLabel: 'Foto — ' + p.name,
+          temPromo: promo,
+          badge: promo ? '−' + Math.round((1 - p.promoPrice / p.price) * 100) + '%' : '',
+          precoDe: promo ? brl(p.price) : '',
+          preco: brl(ep(p)),
+          precoStyle: promo
+            ? "font:700 19px/1.1 'IBM Plex Sans';color:#365E10;font-variant-numeric:tabular-nums"
+            : "font:600 19px/1.1 'IBM Plex Sans';color:#021226;font-variant-numeric:tabular-nums",
+          packLinha: p.unit ? p.pack + ' · ' + brl(p.unit) + ' por unidade' : 'Vendido por ' + p.pack,
+          qty: String(qty),
+          foraCarrinho: qty === 0,
+          noCarrinho: qty > 0,
+          add: () => setQty(p, 1),
+          setQtd: (e) => { const v = parseInt(e.target.value, 10); if (!isNaN(v)) setQty(p, Math.max(0, v)); },
+          mais: () => setQty(p, qty + 1),
+          menos: () => setQty(p, qty - 1),
+        };
+      }),
+      resumoCarrinho: itens.length === 0 ? 'Carrinho vazio' : itens.length + (itens.length === 1 ? ' item no carrinho' : ' itens no carrinho'),
+      totalFmt: brl(total),
+      faltaMinimo: falta > 0,
+      msgFalta: 'Faltam ' + brl(falta) + ' para o mínimo de R$ 3.000,00',
+      ctaLabel: falta > 0 ? 'Falta o mínimo' : 'Fechar pedido',
+    };
+  }
+}
+</script>
+</body>
+</html>

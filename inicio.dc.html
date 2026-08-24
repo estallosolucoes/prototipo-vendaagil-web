@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="INI-01 Início" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,64px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="inicio" hint-size="0px,0px"></dc-import>
+<main style="max-width:1440px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Bom dia, Carlos</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Quarta-feira, 05/08/2026 · 3 pedidos emitidos ontem</span>
+</div>
+<span data-tour="emitir" style="display:inline-flex;border-radius:6px"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" onClick="{{ goNovoPedido }}" hint-size="auto,40px" dc-props="{{ btnProps }}">Emitir pedido</x-import></span>
+</div>
+<div data-tour="acoes" style="display:grid;grid-template-columns:var(--va-g3,1fr 1fr 1fr);gap:16px;margin-bottom:16px">
+<a href="pedidos-novo.dc.html" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="width:40px;height:40px;border-radius:6px;background:#F2F8D4;color:#365E10;display:grid;place-items:center;flex:none"><i data-lucide="file-plus-2" style="font-size:20px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14.5px/1.2 'IBM Plex Sans'">Emitir pedido</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Do rascunho ao envio em minutos</span></span></a>
+<a href="cliente-cadastro.dc.html" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="width:40px;height:40px;border-radius:6px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none"><i data-lucide="user-round-plus" style="font-size:20px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14.5px/1.2 'IBM Plex Sans'">Cadastrar cliente</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">O CNPJ preenche o resto</span></span></a>
+<a href="produto-cadastro.dc.html" style="display:flex;align-items:center;gap:14px;padding:18px 20px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="width:40px;height:40px;border-radius:6px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none"><i data-lucide="package-plus" style="font-size:20px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14.5px/1.2 'IBM Plex Sans'">Cadastrar produto</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Ou importe a tabela inteira</span></span></a>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start">
+<div data-tour="ultimos" style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Últimos pedidos</span>
+<a href="pedidos.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver todos</a>
+</div>
+<div style="display:flex;flex-direction:column">
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-top:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">4.812 · Depósito São Jorge</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">Móveis Vale · hoje, 10:24 · Ana Prado</span></span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="pedido" hint-size="auto,22px"></x-import><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:110px;text-align:right">R$ 24.810,00</span></a>
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-top:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">4.811 · Casa &amp; Construção Delta</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">Cerâmica Atlas · ontem, 16:02 · Carlos Ribeiro</span></span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="faturado_parcial" hint-size="auto,22px"></x-import><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:110px;text-align:right">R$ 11.980,00</span></a>
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-top:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">4.810 · Materiais Pinheiro</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">Metalúrgica Horizonte · ontem, 11:37 · Carlos Ribeiro</span></span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="orcamento" hint-size="auto,22px"></x-import><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:110px;text-align:right">R$ 7.320,00</span></a>
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-top:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">4.809 · Armazém Boa Vista</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">Tecelagem Iguaçu · segunda, 15:48 · Ana Prado</span></span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="entregue" hint-size="auto,22px"></x-import><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:110px;text-align:right">R$ 18.640,00</span></a>
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:12px;padding:12px 8px;border-top:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC"><span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">4.808 · Depósito São Jorge</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">Móveis Vale · segunda, 09:15 · Carlos Ribeiro</span></span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="cancelado" hint-size="auto,22px"></x-import><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:110px;text-align:right">R$ 3.150,00</span></a>
+</div>
+</div>
+<div style="display:grid;gap:16px">
+<div data-tour="guia" style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Guia inicial</span>
+<span style="font:500 12.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#5B6678">3 de 5</span>
+</div>
+<div style="height:6px;border-radius:999px;background:#E4E8EF;overflow:hidden;margin-bottom:14px"><span style="display:block;height:100%;width:60%;border-radius:999px;background:#78A614"></span></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:8px;font:400 13px/1.4 'IBM Plex Sans';color:#5B6678"><i data-lucide="circle-check" style="font-size:15px;color:#0E7D57"></i><span style="text-decoration:line-through">Cadastrar a primeira representada</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:400 13px/1.4 'IBM Plex Sans';color:#5B6678"><i data-lucide="circle-check" style="font-size:15px;color:#0E7D57"></i><span style="text-decoration:line-through">Importar clientes</span></div>
+<div style="display:flex;align-items:center;gap:8px;font:400 13px/1.4 'IBM Plex Sans';color:#5B6678"><i data-lucide="circle-check" style="font-size:15px;color:#0E7D57"></i><span style="text-decoration:line-through">Importar produtos</span></div>
+<a href="tabelas-preco.dc.html" style="display:flex;align-items:center;gap:8px;font:500 13px/1.4 'IBM Plex Sans';text-decoration:none;color:#021226" style-hover="color:#365E10"><i data-lucide="circle" style="font-size:15px;color:#7A8699"></i>Criar uma tabela de preço</a>
+<a href="pedidos-novo.dc.html" style="display:flex;align-items:center;gap:8px;font:500 13px/1.4 'IBM Plex Sans';text-decoration:none;color:#021226" style-hover="color:#365E10"><i data-lucide="circle" style="font-size:15px;color:#7A8699"></i>Emitir o primeiro pedido</a>
+</div>
+<div style="display:flex;align-items:center;gap:16px;margin-top:14px">
+<a href="primeiros-passos.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Abrir o guia completo</a>
+<button type="button" onClick="{{ startTour }}" style="border:none;background:none;padding:0;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#365E10">Rever o tour guiado</button>
+</div>
+</div>
+<a href="pedidos-aprovacoes.dc.html" style="display:flex;gap:12px;padding:16px;background:#FFF7E6;border:1px solid #FFD787;border-radius:10px;text-decoration:none;color:#021226"><i data-lucide="triangle-alert" style="font-size:19px;color:#855507;flex:none;margin-top:1px"></i><span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 13.5px/1.4 'IBM Plex Sans'">3 pedidos do catálogo aguardam sua aprovação</span><span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#454F5E">O mais antigo espera desde ontem. Aprove ou recuse para o cliente receber o retorno.</span></span></a>
+</div>
+</div>
+</main>
+</div>
+<sc-if value="{{ tourOpen }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Tour guiado" style="position:fixed;inset:0;z-index:1000">
+<div style="{{ tourHoleStyle }}"></div>
+<div style="{{ tourPopStyle }}">
+<span style="font:600 11px/1 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Passo {{ tourNum }} de {{ tourTotal }}</span>
+<span style="font:600 17px/1.3 'IBM Plex Sans';color:#021226">{{ tourTitle }}</span>
+<span style="font:400 13.5px/1.55 'IBM Plex Sans';color:#454F5E">{{ tourBody }}</span>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px">
+<button type="button" onClick="{{ skipTour }}" style="border:none;background:none;padding:8px 0;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#5B6678" style-hover="color:#021226">Pular tour</button>
+<div style="display:flex;gap:8px">
+<sc-if value="{{ tourHasBack }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ prevTourStep }}" style="border:1px solid #D4DAE3;background:#FFFFFF;border-radius:6px;height:36px;padding:0 14px;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#021226" style-hover="background:#F2F4F7">Voltar</button>
+</sc-if>
+<button type="button" onClick="{{ nextTourStep }}" style="border:none;background:#78A614;border-radius:6px;height:36px;padding:0 16px;cursor:pointer;font:600 13.5px/1 'IBM Plex Sans';color:#F3F3F3" style-hover="background:#679212">{{ tourNextLabel }}</button>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tourOpen: false, tourStep: 0, rect: null };
+  steps = [
+    { target: null, title: 'Bem-vindo ao Venda Ágil', body: 'Este é o seu ponto de partida. Em cinco passos rápidos, veja onde emitir pedidos, acompanhar o que foi vendido e concluir a configuração da sua conta.' },
+    { target: '[data-tour="emitir"]', title: 'Emitir pedido', body: 'A ação mais usada do sistema fica sempre aqui, no topo. Do rascunho ao envio pelo WhatsApp do comprador em minutos.' },
+    { target: '[data-tour="acoes"]', title: 'Ações rápidas', body: 'Atalhos para o dia a dia: emitir pedido, cadastrar cliente pelo CNPJ e cadastrar produto — ou importar a tabela inteira.' },
+    { target: '[data-tour="ultimos"]', title: 'Últimos pedidos', body: 'O status de cada pedido, do orçamento à entrega. Abra um pedido para ver itens, faturamento e a comissão prevista.' },
+    { target: '[data-tour="guia"]', title: 'Guia inicial', body: 'Aqui ficam os cinco primeiros passos: cadastrar a representada, importar clientes, importar produtos, criar a tabela de preço e emitir o primeiro pedido. Três já estão concluídos — vamos aos que faltam.' },
+  ];
+  componentDidMount() {
+    this.paint();
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.tourOpen) this.endTour(); };
+    this.onResize = () => { if (this.state.tourOpen) this.positionTour(); };
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('resize', this.onResize);
+    try {
+      const force = /[?&]tour=1/.test(location.search);
+      if (force || localStorage.getItem('va_tour_inicio') !== 'done') setTimeout(() => this.openTour(0), 700);
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('resize', this.onResize);
+  }
+  componentDidUpdate() { this.paint(); }
+  openTour(step) {
+    this.setState({ tourOpen: true, tourStep: step, rect: null });
+    this.positionTour(step);
+  }
+  endTour() {
+    try { localStorage.setItem('va_tour_inicio', 'done'); } catch (e) {}
+    this.posToken = (this.posToken || 0) + 1;
+    this.setState({ tourOpen: false, rect: null });
+  }
+  positionTour(step) {
+    if (step === undefined) step = this.state.tourStep;
+    const token = this.posToken = (this.posToken || 0) + 1;
+    const s = this.steps[step];
+    if (!s || !s.target) { this.setState({ rect: null }); return; }
+    const el = document.querySelector(s.target);
+    if (!el) { this.setState({ rect: null }); return; }
+    const r0 = el.getBoundingClientRect();
+    if (r0.top < 84 || r0.bottom > window.innerHeight - 40) {
+      window.scrollTo({ top: window.scrollY + r0.top - 140, behavior: 'auto' });
+    }
+    let tries = 0, last = null;
+    const poll = () => {
+      if (token !== this.posToken) return;
+      const r = el.getBoundingClientRect(), pad = 8;
+      const rect = { top: r.top - pad, left: r.left - pad, width: r.width + pad * 2, height: r.height + pad * 2 };
+      this.setState({ rect });
+      const key = [r.top, r.left, r.width, r.height].join(',');
+      if (key !== last && tries < 12) { last = key; tries++; setTimeout(poll, 100); }
+    };
+    setTimeout(poll, 30);
+  }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const { tourOpen, tourStep, rect } = this.state;
+    const total = this.steps.length, s = this.steps[tourStep] || {};
+    const shade = 'rgba(2,18,38,.55)';
+    const holeStyle = rect
+      ? { position: 'fixed', inset: 'auto', top: rect.top + 'px', left: rect.left + 'px', width: rect.width + 'px', height: rect.height + 'px', borderRadius: '10px', background: 'transparent', boxShadow: '0 0 0 9999px ' + shade, transition: 'all 180ms cubic-bezier(.2,0,.2,1)', pointerEvents: 'none' }
+      : { position: 'fixed', inset: '0', top: '0', left: '0', width: '100%', height: '100%', borderRadius: '0', background: shade, boxShadow: 'none', transition: 'none', pointerEvents: 'none' };
+    const popW = Math.min(344, window.innerWidth - 32);
+    let popStyle;
+    if (rect) {
+      const left = Math.max(16, Math.min(rect.left, window.innerWidth - popW - 16));
+      const below = rect.top + rect.height + 14;
+      const popH = 230;
+      let top;
+      if (below + popH <= window.innerHeight) top = below;
+      else if (rect.top - 14 - popH >= 16) top = rect.top - 14 - popH;
+      else top = Math.max(16, window.innerHeight - popH - 16);
+      popStyle = { position: 'fixed', top: top + 'px', left: left + 'px', transform: 'none' };
+    } else {
+      popStyle = { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' };
+    }
+    Object.assign(popStyle, { width: popW + 'px', background: '#FFFFFF', borderRadius: '16px', boxShadow: '0 12px 32px rgba(2,18,38,.24)', padding: '20px', display: 'flex', flexDirection: 'column', gap: '8px', borderLeft: '3px solid #78A614' });
+    return {
+      goNovoPedido: () => { location.href = 'pedidos-novo.dc.html'; },
+      btnProps: { style: { color: '#F3F3F3' } },
+      tourOpen, tourTotal: total, tourNum: tourStep + 1,
+      tourTitle: s.title, tourBody: s.body,
+      tourHasBack: tourStep > 0,
+      tourNextLabel: tourStep === 0 ? 'Começar' : (tourStep === total - 1 ? 'Ir aos primeiros passos' : 'Avançar'),
+      tourHoleStyle: holeStyle, tourPopStyle: popStyle,
+      startTour: () => this.openTour(0),
+      skipTour: () => this.endTour(),
+      prevTourStep: () => this.openTour(Math.max(0, tourStep - 1)),
+      nextTourStep: () => {
+        if (tourStep === total - 1) { this.endTour(); location.href = 'primeiros-passos.dc.html'; }
+        else this.openTour(tourStep + 1);
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="FIN-02 Comissões" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="comissoes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Comissões</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Fechamento por representada · agosto de 2026</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+<x-import component-from-global-scope="va-select" options="Agosto de 2026|Julho de 2026|Junho de 2026" value="Agosto de 2026" hint-size="180px,40px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
+</div>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px;align-items:start;margin-bottom:24px">
+<div style="background:#021226;color:#FFFFFF;border-radius:16px;padding:20px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E">A receber no mês</span>
+<i data-lucide="receipt" style="font-size:20px"></i>
+</div>
+<div style="display:flex;align-items:baseline;gap:4px;margin-top:16px;font-variant-numeric:tabular-nums">
+<span style="font:500 21px/1 'IBM Plex Sans';color:rgba(255,255,255,.72)">R$</span>
+<span style="font:600 34px/1.1 'IBM Plex Sans';letter-spacing:-.02em">12.405</span>
+<span style="font:500 24px/1 'IBM Plex Sans';color:rgba(255,255,255,.8)">,50</span>
+</div>
+<div style="display:grid;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14)">
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:rgba(255,255,255,.7)">Confirmada pelas indústrias</span><span style="font:600 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 8.120,30</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:rgba(255,255,255,.7)">Prevista, aguardando faturar</span><span style="font:600 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 4.285,20</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:rgba(255,255,255,.7)">Recebida no mês</span><span style="font:600 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#4FC599">R$ 6.240,00</span></div>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px">
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Comissão por mês</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Recebida, nos últimos seis meses</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" highlight="{{ destaque }}" height="{{ h }}" hint-size="100%,220px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:1000px;display:grid;grid-template-columns:1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">% média</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Faturado</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Comissão</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Previsão</span>
+<span></span>
+</div>
+<sc-for list="{{ linhas }}" as="l" hint-placeholder-count="4">
+<div style="min-width:1000px;display:grid;grid-template-columns:1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;align-items:center;gap:12px;min-width:0">
+<span style="width:36px;height:36px;border-radius:8px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';flex:none">{{ l.sigla }}</span>
+<span style="font:600 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.nome }}</span>
+</div>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.pct }}</span>
+<span style="font:400 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.faturado }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.comissao }}</span>
+<span style="{{ l.stStyle }}"><i data-lucide="{{ l.stIcone }}" style="font-size:13px"></i>{{ l.st }}</span>
+<span style="font:400 13px/1 'IBM Plex Sans';color:#454F5E">{{ l.previsao }}</span>
+<span style="text-align:right"><button onClick="{{ l.baixar }}" style="{{ l.acaoStyle }}">{{ l.acao }}</button></span>
+</div>
+</sc-for>
+</div>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:14px 4px 0">Baixar a comissão registra o recebimento e concilia com os faturamentos do período.</p>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ baixaOpen }}" onClose="{{ fechar }}" title="Baixar comissão" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Registrar o recebimento de <strong style="color:#021226">{{ alvoValor }}</strong> da <strong style="color:#021226">{{ alvoNome }}</strong>?</p>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Data do recebimento" value="06/08/2026" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Baixar comissão</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fecharExportar }}" title="Exportar comissões" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Colunas</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px">
+<sc-for list="{{ expColunas }}" as="ec" hint-placeholder-count="6">
+<button onClick="{{ ec.toggle }}" role="checkbox" aria-checked="{{ ec.on }}" style="display:flex;align-items:center;gap:8px;padding:7px 6px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F2F4F7">
+<span style="{{ ec.boxStyle }}"><sc-if value="{{ ec.on }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></span>
+<span style="font:400 13.5px/1.2 'IBM Plex Sans';color:#021226">{{ ec.nome }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharExportar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fecharExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar 12 fechamentos</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { baixaOpen: false, alvoNome: '', alvoValor: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const conf = "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244";
+    const prev = "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00";
+    const rec = "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#5B6678";
+    const btnOn = "height:32px;padding:0 12px;border-radius:6px;border:1px solid #78A614;background:#FFFFFF;color:#365E10;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+    const btnOff = "height:32px;padding:0 12px;border-radius:6px;border:1px solid #E4E8EF;background:#F7F9FB;color:#B4BCC9;font:600 13px/1 'IBM Plex Sans';cursor:default";
+    const defs = [
+      { sigla: 'MV', nome: 'Móveis Vale', pct: '5,00%', faturado: 'R$ 128.420,00', comissao: 'R$ 6.421,00', st: 'Confirmada', stIcone: 'circle-check', stStyle: conf, previsao: '15/08/2026', ativo: true },
+      { sigla: 'CA', nome: 'Colchões Andorra', pct: '6,50%', faturado: 'R$ 52.180,00', comissao: 'R$ 3.391,70', st: 'Confirmada', stIcone: 'circle-check', stStyle: conf, previsao: '20/08/2026', ativo: true },
+      { sigla: 'ER', nome: 'Estofados Rio Claro', pct: '4,00%', faturado: 'R$ 43.510,00', comissao: 'R$ 1.740,40', st: 'Prevista', stIcone: 'clock-3', stStyle: prev, previsao: '25/08/2026', ativo: false },
+      { sigla: 'MP', nome: 'Metalúrgica Precisão', pct: '3,50%', faturado: 'R$ 24.202,90', comissao: 'R$ 847,10', st: 'Recebida 01/08', stIcone: 'circle-check', stStyle: rec, previsao: '—', ativo: false },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      expOpen: !!this.state.expOpen,
+      abrirExportar: () => this.setState({ expOpen: true }),
+      fecharExportar: () => this.setState({ expOpen: false }),
+      expColunas: (this.state.expCols || [{ nome: 'Representada', on: true }, { nome: 'Percentual médio', on: true }, { nome: 'Faturado no mês', on: true }, { nome: 'Comissão', on: true }, { nome: 'Situação', on: true }, { nome: 'Previsão de recebimento', on: true }]).map((c, i, arr) => ({
+        nome: c.nome, on: c.on,
+        boxStyle: 'width:18px;height:18px;border-radius:2px;flex:none;border:1px solid ' + (c.on ? '#78A614' : '#B9C1CE') + ';background:' + (c.on ? '#78A614' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center',
+        toggle: () => this.setState({ expCols: arr.map((x, j) => j === i ? { nome: x.nome, on: !x.on } : x) }),
+      })),
+
+      h: 220, destaque: 5,
+      barras: [
+        { label: 'Mar', value: 9.2 }, { label: 'Abr', value: 11.8 }, { label: 'Mai', value: 10.4 },
+        { label: 'Jun', value: 11.1 }, { label: 'Jul', value: 11.0 }, { label: 'Ago', value: 6.2 },
+      ],
+      baixaOpen: this.state.baixaOpen,
+      alvoNome: this.state.alvoNome,
+      alvoValor: this.state.alvoValor,
+      fechar: () => this.setState({ baixaOpen: false }),
+      linhas: defs.map(l => ({
+        ...l,
+        acao: l.ativo ? 'Baixar' : (l.st.startsWith('Recebida') ? 'Recebida' : 'Aguardando'),
+        acaoStyle: l.ativo ? btnOn : btnOff,
+        baixar: l.ativo ? () => this.setState({ baixaOpen: true, alvoNome: l.nome, alvoValor: l.comissao }) : () => {},
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

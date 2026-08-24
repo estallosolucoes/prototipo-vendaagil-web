@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="IMP-01 Central de importações" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="importacoes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Importações</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Traga clientes, produtos e preços por planilha — o modelo pronto evita retrabalho</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="upload" onClick="{{ goNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Iniciar importação</x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:860px;display:grid;grid-template-columns:150px 1fr 170px 220px 140px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Data</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Arquivo</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Tipo</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Resultado</span>
+<span></span>
+</div>
+<sc-for list="{{ historico }}" as="h" hint-placeholder-count="4">
+<div style="min-width:860px;display:grid;grid-template-columns:150px 1fr 170px 220px 140px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<span style="font:400 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ h.data }}</span>
+<span style="display:flex;align-items:center;gap:8px;font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="file-spreadsheet" style="font-size:16px;color:#5B6678"></i>{{ h.arquivo }}</span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ h.tipo }}</span>
+<span style="{{ h.resStyle }}"><i data-lucide="{{ h.resIcone }}" style="font-size:14px"></i>{{ h.resultado }}</span>
+<span style="text-align:right"><sc-if value="{{ h.temErros }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="download" onClick="{{ h.baixar }}" hint-size="auto,32px">Erros</x-import></sc-if></span>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:70;display:flex;align-items:center;gap:10px;background:#021226;color:#FFFFFF;border-radius:10px;padding:14px 18px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:17px;color:#C3D91E"></i>Relatório de erros baixado. Corrija as linhas e importe de novo.</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { toast: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const ok = "display:inline-flex;align-items:center;gap:6px;font:500 13px/1.3 'IBM Plex Sans';color:#0A6244";
+    const par = "display:inline-flex;align-items:center;gap:6px;font:500 13px/1.3 'IBM Plex Sans';color:#855507";
+    const err = "display:inline-flex;align-items:center;gap:6px;font:500 13px/1.3 'IBM Plex Sans';color:#85202C";
+    const data = [
+      { data: '01/08/2026 09:12', arquivo: 'clientes-serra-2026.xlsx', tipo: 'Clientes', resultado: '142 importados', resStyle: ok, resIcone: 'circle-check', temErros: false },
+      { data: '01/08/2026 09:40', arquivo: 'produtos-moveis-vale.xlsx', tipo: 'Produtos', resultado: '84 importados · 6 com erro', resStyle: par, resIcone: 'triangle-alert', temErros: true },
+      { data: '28/07/2026 15:03', arquivo: 'precos-atlas-julho.xlsx', tipo: 'Preços', resultado: '212 atualizados', resStyle: ok, resIcone: 'circle-check', temErros: false },
+      { data: '15/07/2026 11:27', arquivo: 'faturamento-junho.xlsx', tipo: 'Faturamento', resultado: 'arquivo fora do modelo', resStyle: err, resIcone: 'octagon-x', temErros: true },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      historico: data.map(h => ({ ...h, baixar: () => { this.setState({ toast: true }); setTimeout(() => this.setState({ toast: false }), 3200); } })),
+      toast: this.state.toast,
+      goNova: () => { location.href = 'importacao-nova.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

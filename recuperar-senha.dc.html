@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="AUT-04 Esqueci a senha" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:32px 16px;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226">
+<img src="assets/logo-light-bg.svg" alt="Venda Ágil" style="width:120px">
+<div style="width:100%;max-width:400px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 3px rgba(2,18,38,.08);padding:32px 28px;display:flex;flex-direction:column;gap:16px">
+<sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font:600 20px/1.3 'IBM Plex Sans';letter-spacing:-.01em">Verifique seu e-mail</h1>
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Se existir uma conta com esse e-mail, você vai receber um link para redefinir a senha em alguns minutos.</p>
+<a href="entrar.dc.html" style="font:500 13.5px/1 'IBM Plex Sans';text-decoration:none;margin-top:8px">Voltar para o login</a>
+</div>
+</sc-if>
+<sc-if value="{{ naoEnviado }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="margin:0;font:600 20px/1.3 'IBM Plex Sans';letter-spacing:-.01em">Esqueci a senha</h1>
+<span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Informe o e-mail da conta para receber o link de redefinição</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" id="email" placeholder="voce@escritorio.com.br" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" full-width="{{ true }}" onClick="{{ enviar }}" hint-size="100%,40px">Enviar link de redefinição</x-import>
+<a href="entrar.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none;align-self:center">Voltar para o login</a>
+</div>
+</sc-if>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { enviado: false };
+  renderVals() {
+    return {
+      enviado: this.state.enviado,
+      naoEnviado: !this.state.enviado,
+      enviar: () => this.setState({ enviado: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

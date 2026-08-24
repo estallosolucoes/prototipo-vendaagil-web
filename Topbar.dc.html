@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<script src="va-tarefas.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0}@media (max-width:1220px){.tp-sync-txt{display:none}}@media (max-width:1100px){.tp-logo-txt{display:none}.tp-kbd{display:none}}
+@media (max-width:760px){
+  .tp-header{margin:10px 12px 0 !important;padding:0 12px !important;gap:6px !important;height:60px !important}
+  .tp-help{display:none !important}
+  .tp-searchpop{width:calc(100vw - 24px) !important;top:72px !important}
+  .tp-header>button{width:40px !important;height:40px !important}
+  .tp-avatarpop{position:fixed !important;top:76px !important;right:12px !important}
+}
+@media (max-width:560px){
+  .tp-search-txt,.tp-kbd{display:none !important}
+  .tp-searchbtn{flex:0 0 auto !important;min-width:40px !important;max-width:40px !important;padding:0 !important;justify-content:center !important;cursor:pointer !important}
+}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div style="position:relative;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226">
+<header class="tp-header" style="margin:16px 20px 0;height:76px;display:flex;align-items:center;gap:16px;padding:0 28px;background:#FFFFFF;border-radius:16px;box-shadow:0 2px 8px rgba(2,18,38,.08);position:relative;z-index:30">
+<a href="inicio.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:8px"><img src="assets/logo-simbolo.svg" alt="Venda Ágil" style="height:28px"><span class="tp-logo-txt" style="font:600 16px/1 'IBM Plex Sans';color:#021226;letter-spacing:-.01em;white-space:nowrap">venda ágil</span></a>
+<div style="flex:1"></div>
+<button onClick="{{ openSearch }}" class="tp-searchbtn" aria-label="Buscar" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid #CFD6E1;border-radius:6px;color:#5B6678;flex:1 1 auto;min-width:130px;max-width:380px;background:#FFFFFF;cursor:text;font-family:inherit" style-hover="border-color:#7A8699"><i data-lucide="search" style="font-size:16px;flex:none"></i><span class="tp-search-txt" style="font:400 13px/1 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Buscar cliente, pedido ou produto</span><span class="tp-kbd" style="margin-left:auto;font:500 11px/1 'IBM Plex Mono',monospace;color:#7A8699;border:1px solid #E4E8EF;border-radius:4px;padding:3px 5px;white-space:nowrap;flex:none">Ctrl K</span></button>
+<span style="display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 16px;margin:0 4px;border-radius:999px;background:#E8F7F0;border:1px solid #93DCBE;color:#0A6244;font:500 12.5px/1 'IBM Plex Sans';white-space:nowrap;flex:none"><i data-lucide="circle-check" style="font-size:15px"></i><span class="tp-sync-txt">Tudo sincronizado</span></span>
+<button onClick="{{ toggleNotif }}" aria-label="Notificações" title="Notificações" style="position:relative;width:36px;height:36px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#454F5E" style-hover="background:#EDF0F5"><i data-lucide="bell" style="font-size:19px"></i><span style="position:absolute;top:6px;right:7px;width:8px;height:8px;border-radius:999px;background:#B3202F;border:2px solid #FFFFFF"></span></button>
+<button onClick="{{ toggleAjuda }}" aria-label="Ajuda" title="Central de ajuda" class="tp-help" style="width:36px;height:36px;border:0;background:transparent;cursor:pointer;border-radius:6px;display:grid;place-items:center;color:#454F5E" style-hover="background:#EDF0F5"><i data-lucide="circle-help" style="font-size:19px"></i></button>
+<button onClick="{{ toggleAvatar }}" aria-label="Menu da conta" style="width:36px;height:36px;border-radius:999px;border:0;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:600 12px/1 'IBM Plex Sans';cursor:pointer">CR</button>
+</header>
+<sc-if value="{{ anyOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:31"></div>
+</sc-if>
+<sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+<div class="tp-searchpop" style="position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:32;width:600px;max-width:calc(100vw - 24px);background:#FFFFFF;border-radius:16px;box-shadow:0 16px 48px rgba(2,18,38,.24);overflow:hidden">
+<div style="display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #E4E8EF;color:#5B6678"><i data-lucide="search" style="font-size:18px"></i><input placeholder="Buscar cliente, pedido, produto ou contato" style="flex:1;border:0;outline:none;font:400 15px/1.4 'IBM Plex Sans';color:#021226;background:transparent"><span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#7A8699;border:1px solid #E4E8EF;border-radius:4px;padding:3px 5px">Esc</span></div>
+<div style="padding:10px 8px 12px;max-height:380px;overflow:auto">
+<div style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:6px 12px 4px">Clientes</div>
+<a href="cliente-360.dc.html" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="users" style="font-size:16px;color:#5B6678"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Depósito São Jorge</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Mono',monospace;color:#5B6678">12.448.732/0001-90</span></a>
+<a href="cliente-360.dc.html" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="users" style="font-size:16px;color:#5B6678"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Casa &amp; Construção Delta</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Mono',monospace;color:#5B6678">04.812.960/0001-33</span></a>
+<div style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:10px 12px 4px">Pedidos</div>
+<a href="pedido-detalhe.dc.html" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="clipboard-list" style="font-size:16px;color:#5B6678"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Pedido 4.812 · Depósito São Jorge</span><span style="margin-left:auto;font:500 12.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">R$ 24.810,00</span></a>
+<div style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:10px 12px 4px">Produtos</div>
+<a href="produtos.dc.html" style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="package" style="font-size:16px;color:#5B6678"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Cadeira Diretor Vale — nogueira</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Mono',monospace;color:#5B6678">MV-1204</span></a>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ avatarOpen }}" hint-placeholder-val="{{ false }}">
+<div class="tp-avatarpop" style="position:absolute;top:96px;right:40px;z-index:32;width:224px;background:#FFFFFF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:6px;display:flex;flex-direction:column;gap:1px">
+<div style="padding:8px 10px 10px;border-bottom:1px solid #E4E8EF;margin-bottom:4px"><div style="font:600 13.5px/1.3 'IBM Plex Sans';color:#021226">Carlos Ribeiro</div><div style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">Ribeiro &amp; Prado Representações</div></div>
+<a href="conta-perfil.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:6px;text-decoration:none;color:#454F5E;font:500 13px/1 'IBM Plex Sans'" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="user-round" style="font-size:16px"></i>Meu perfil</a>
+<a href="configuracoes.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:6px;text-decoration:none;color:#454F5E;font:500 13px/1 'IBM Plex Sans'" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="settings" style="font-size:16px"></i>Configurações</a>
+<a href="conta-plano.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:6px;text-decoration:none;color:#454F5E;font:500 13px/1 'IBM Plex Sans'" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="wallet" style="font-size:16px"></i>Conta e plano</a>
+<a href="entrar.dc.html" style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:6px;text-decoration:none;color:#85202C;font:500 13px/1 'IBM Plex Sans'" style-hover="background:#FDF0F1"><i data-lucide="log-out" style="font-size:16px"></i>Sair</a>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ ajudaOpen }}" onClose="{{ closeAll }}" title="Ajuda" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;align-items:center;gap:10px;height:44px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;color:#5B6678"><i data-lucide="search" style="font-size:17px"></i><input placeholder="O que você precisa fazer?" style="flex:1;border:0;outline:none;font:400 14px/1.4 'IBM Plex Sans';color:#021226;background:transparent"></div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:4px 0 6px">Guias desta tela</span>
+<a href="#" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="play-circle" style="font-size:17px;color:#628A11"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Como emitir o primeiro pedido</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Sans';color:#7A8699">2 min</span></a>
+<a href="#" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="book-open" style="font-size:17px;color:#628A11"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Faixas de desconto e aprovação</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Sans';color:#7A8699">leitura</span></a>
+<a href="#" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><i data-lucide="book-open" style="font-size:17px;color:#628A11"></i><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Lançar faturamento e ver a comissão</span><span style="margin-left:auto;font:400 12px/1 'IBM Plex Sans';color:#7A8699">leitura</span></a>
+</div>
+<div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Falar com uma pessoa</span>
+<a href="https://wa.me/5551999990000" style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;text-decoration:none;color:#021226;border:1px solid #E4E8EF" style-hover="background:#F7F9FB"><i data-lucide="message-circle" style="font-size:17px;color:#628A11"></i><span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Suporte no WhatsApp</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">Seg a sex, 8h às 18h — responde em minutos</span></span></a>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ notifOpen }}" onClose="{{ closeAll }}" title="Notificações" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:2px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-if value="{{ temTarefas }}" hint-placeholder-val="{{ true }}">
+<span style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:4px 12px 6px">Tarefas de hoje e atrasadas</span>
+<sc-for list="{{ tarefasNotif }}" as="tn" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;padding:10px 12px;border-radius:6px;align-items:flex-start" style-hover="background:#F7F9FB">
+<button onClick="{{ tn.alternar }}" role="checkbox" aria-checked="{{ tn.feita }}" title="Marcar como concluída" style="{{ tn.boxStyle }}"><sc-if value="{{ tn.feita }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></button>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0">
+<span style="{{ tn.tituloStyle }}">{{ tn.titulo }}</span>
+<span style="display:flex;align-items:center;gap:6px;font:400 12px/1.3 'IBM Plex Sans';color:#5B6678;flex-wrap:wrap">{{ tn.sub }}<sc-if value="{{ tn.atrasada }}" hint-placeholder-val="{{ false }}"><span style="height:17px;display:inline-flex;align-items:center;padding:0 6px;border-radius:999px;background:#FDF0F1;color:#85202C;font:600 10.5px/1 'IBM Plex Sans'">atrasada</span></sc-if></span>
+</span>
+<span style="{{ tn.tipoStyle }}"><i data-lucide="{{ tn.icone }}" style="font-size:14px"></i></span>
+</div>
+</sc-for>
+<a href="crm-tarefas.dc.html" style="display:flex;align-items:center;gap:6px;padding:8px 12px;font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver todas as tarefas<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+<span style="height:1px;background:#E4E8EF;margin:8px 0"></span>
+<span style="font:600 10.5px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:4px 12px 6px">Avisos</span>
+</sc-if>
+<a href="pedidos-aprovacoes.dc.html" style="display:flex;gap:12px;padding:12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><span style="width:34px;height:34px;border-radius:6px;background:#F2F8D4;color:#365E10;display:grid;place-items:center;flex:none"><i data-lucide="store" style="font-size:17px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.4 'IBM Plex Sans'">Pedido novo no catálogo B2B — Depósito São Jorge, R$ 6.240,00. Aguarda aprovação.</span><span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">Há 25 minutos</span></span></a>
+<a href="metas.dc.html" style="display:flex;gap:12px;padding:12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><span style="width:34px;height:34px;border-radius:6px;background:#E8F7F0;color:#0A6244;display:grid;place-items:center;flex:none"><i data-lucide="target" style="font-size:17px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.4 'IBM Plex Sans'">Meta de agosto da Móveis Vale atingiu 70% com 11 dias úteis restantes.</span><span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">Hoje, 09:12</span></span></a>
+<a href="contas-receber.dc.html" style="display:flex;gap:12px;padding:12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><span style="width:34px;height:34px;border-radius:6px;background:#FFF7E6;color:#855507;display:grid;place-items:center;flex:none"><i data-lucide="hand-coins" style="font-size:17px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.4 'IBM Plex Sans'">2 cobranças vencem nesta semana — R$ 9.480,00 no total.</span><span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">Ontem, 17:40</span></span></a>
+<a href="pedido-detalhe.dc.html" style="display:flex;gap:12px;padding:12px;border-radius:6px;text-decoration:none;color:#021226" style-hover="background:#EDF0F5"><span style="width:34px;height:34px;border-radius:6px;background:#FDF0F1;color:#85202C;display:grid;place-items:center;flex:none"><i data-lucide="octagon-x" style="font-size:17px"></i></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.4 'IBM Plex Sans'">O pedido 4.796 não foi enviado por e-mail porque o SMTP recusou a conexão. Verifique em Configurações › E-mail.</span><span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">Ontem, 08:03</span></span></a>
+</div>
+</x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  state = { searchOpen: false, avatarOpen: false, notifOpen: false, ajudaOpen: false };
+  componentDidMount() {
+    this.paint();
+    this._key = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); this.setState({ searchOpen: true, avatarOpen: false, notifOpen: false }); }
+      if (e.key === 'Escape') this.setState({ searchOpen: false, avatarOpen: false, notifOpen: false });
+    };
+    window.addEventListener('keydown', this._key);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._key); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const s = this.state;
+    const VT = window.VATarefas;
+    const vistas = s.feitasAgora || [];
+    const fmt = (iso) => iso.slice(8, 10) + '/' + iso.slice(5, 7);
+    const notif = VT ? VT.tarefas().filter(t => { const st = VT.status(t); return st === 'hoje' || st === 'atrasada' || (t.feita && vistas.indexOf(t.id) >= 0); }).sort((a, b) => a.data < b.data ? -1 : 1) : [];
+    const tarefasNotif = notif.map(t => {
+      const tp = VT.tipoDe(t);
+      const atras = VT.status(t) === 'atrasada';
+      return {
+        titulo: t.titulo, feita: !!t.feita, atrasada: atras,
+        sub: (t.cliente || t.negocio || 'Sem vínculo') + ' · ' + (atras ? fmt(t.data) + ' ' : '') + t.hora,
+        tituloStyle: "font:500 13.5px/1.35 'IBM Plex Sans';color:" + (t.feita ? '#7A8699' : '#021226') + (t.feita ? ';text-decoration:line-through' : ''),
+        boxStyle: 'width:18px;height:18px;margin-top:1px;border-radius:4px;flex:none;cursor:pointer;border:1.5px solid ' + (t.feita ? '#0E7D57' : '#B9C1CE') + ';background:' + (t.feita ? '#0E7D57' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center;padding:0',
+        tipoStyle: 'width:26px;height:26px;border-radius:6px;flex:none;display:grid;place-items:center;color:' + tp.cor + ';background:' + tp.cor + '1A',
+        icone: tp.icone,
+        alternar: () => {
+          if (t.feita) { VT.reabrir(t.id); this.setState(x => ({ feitasAgora: (x.feitasAgora || []).filter(i => i !== t.id) })); }
+          else { VT.concluir(t.id); this.setState(x => ({ feitasAgora: (x.feitasAgora || []).concat([t.id]) })); }
+        },
+      };
+    });
+    return {
+      temTarefas: tarefasNotif.length > 0,
+      tarefasNotif,
+      searchOpen: s.searchOpen, avatarOpen: s.avatarOpen, notifOpen: s.notifOpen, ajudaOpen: s.ajudaOpen,
+      anyOpen: s.searchOpen || s.avatarOpen,
+      openSearch: () => this.setState({ searchOpen: true, avatarOpen: false, ajudaOpen: false }),
+      toggleAvatar: () => this.setState({ avatarOpen: !s.avatarOpen, searchOpen: false, ajudaOpen: false }),
+      toggleNotif: () => this.setState({ notifOpen: !s.notifOpen, searchOpen: false, avatarOpen: false, ajudaOpen: false }),
+      toggleAjuda: () => this.setState({ ajudaOpen: !s.ajudaOpen, searchOpen: false, avatarOpen: false, notifOpen: false }),
+      closeAll: () => this.setState({ searchOpen: false, avatarOpen: false, notifOpen: false, ajudaOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

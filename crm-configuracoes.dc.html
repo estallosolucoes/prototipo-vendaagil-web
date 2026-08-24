@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CRM-04 Configurações do CRM" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="crmconfig" hint-size="0px,0px"></dc-import>
+<main style="max-width:1180px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="crm-negocios.dc.html" style="text-decoration:none">Negócios</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Configurações do CRM</span></nav>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 20px">Configurações do CRM</h1>
+<div style="display:flex;gap:4px;border-bottom:1px solid #CFD6E1;margin-bottom:20px;overflow-x:auto;overflow-y:hidden">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.ir }}" style="{{ a.style }}">{{ a.label }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ ehFunis }}" hint-placeholder-val="{{ true }}">
+<div data-va-cols="" style="display:grid;grid-template-columns:280px minmax(0,1fr);gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<sc-for list="{{ listaFunis }}" as="f" hint-placeholder-count="4">
+<button onClick="{{ f.ir }}" style="{{ f.style }}">
+<span style="display:flex;flex-direction:column;gap:2px;text-align:left"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ f.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ f.sub }}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Etapas do funil {{ funilNome }}</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Arraste para reordenar. Renomeie direto no campo. Perdidos e Ganhos são fixos.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addEtapa }}" hint-size="auto,32px">Adicionar etapa</x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ etapas }}" as="e" hint-placeholder-count="6">
+<div style="{{ e.rowStyle }}">
+<span style="color:#B9C1CE;cursor:grab;display:grid;place-items:center" title="Arrastar para reordenar"><i data-lucide="grip-vertical" style="font-size:16px"></i></span>
+<span style="font:600 12px/1 'IBM Plex Mono',monospace;color:#7A8699;min-width:20px;font-variant-numeric:tabular-nums">{{ e.n }}</span>
+<span style="position:relative;display:grid;place-items:center">
+<button onClick="{{ e.abrirCor }}" aria-label="Cor da etapa" title="Cor da etapa no kanban" style="{{ e.corStyle }}"></button>
+<sc-if value="{{ e.paletaAberta }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:100%;left:0;margin-top:6px;z-index:60;background:#FFFFFF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:10px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px">
+<sc-for list="{{ e.paleta }}" as="p" hint-placeholder-count="10">
+<button onClick="{{ p.pegar }}" aria-label="Escolher cor" style="{{ p.style }}"></button>
+</sc-for>
+</div>
+</sc-if>
+</span>
+<input value="{{ e.nome }}" onInput="{{ e.renomear }}" disabled="{{ e.fixa }}" aria-label="Nome da etapa {{ e.n }}" style="flex:1;height:38px;border:1px solid transparent;border-radius:6px;padding:0 10px;font:500 14px/1 'IBM Plex Sans';color:#021226;background:transparent;min-width:0" style-hover="border-color:#CFD6E1" style-focus="border-color:#78A614;background:#FFFFFF;outline:none">
+<sc-if value="{{ e.editavel }}" hint-placeholder-val="{{ true }}">
+<span style="display:flex;align-items:center;gap:6px;flex:none">
+<span style="font:400 12.5px/1 'IBM Plex Sans';color:#5B6678;white-space:nowrap">Tempo máx. na etapa:</span>
+<input type="number" min="1" value="{{ e.tempo }}" onInput="{{ e.setTempo }}" aria-label="Tempo máximo na etapa {{ e.nome }}" style="width:56px;height:32px;border:1px solid #CFD6E1;border-radius:6px;text-align:center;font:500 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#021226">
+<x-import component-from-global-scope="va-select" label="" options="minutos|horas|dias" value="{{ e.unidade }}" hint-size="96px,32px"></x-import>
+</span>
+</sc-if>
+<sc-if value="{{ e.fixa }}" hint-placeholder-val="{{ false }}"><span style="{{ e.fixaStyle }}">{{ e.fixaRotulo }}</span></sc-if>
+<sc-if value="{{ e.removivel }}" hint-placeholder-val="{{ true }}"><button onClick="{{ e.remover }}" aria-label="Remover etapa" title="Remover etapa" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ ehMotivos }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:640px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Motivos de perda</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Obrigatórios ao mover um negócio para Perdidos ou Não resolvido</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addMotivo }}" hint-size="auto,32px">Adicionar motivo</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ motivos }}" as="m" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="flex:1;font:500 14px/1.3 'IBM Plex Sans'">{{ m.nome }}</span>
+<span style="font:400 12.5px/1 'IBM Plex Sans';color:#5B6678;font-variant-numeric:tabular-nums">{{ m.uso }}</span>
+<button onClick="{{ m.remover }}" aria-label="Excluir motivo" title="Excluir motivo" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ ehEtiquetas }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:640px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Etiquetas</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Aplicadas em contatos e negócios; viram filtro no kanban e na lista</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addEtiqueta }}" hint-size="auto,32px">Nova etiqueta</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ etiquetas }}" as="t" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="{{ t.chipStyle }}">{{ t.nome }}</span>
+<span style="flex:1"></span>
+<span style="font:400 12.5px/1 'IBM Plex Sans';color:#5B6678;font-variant-numeric:tabular-nums">{{ t.uso }}</span>
+<button aria-label="Editar etiqueta" title="Editar etiqueta" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:15px"></i></button>
+<button aria-label="Excluir etiqueta" title="Excluir etiqueta" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ ehTarefas }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:760px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões de tarefas por vendedor</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Controla o que cada vendedor pode fazer no módulo Tarefas. Os tipos de tarefa são cadastrados na própria tela de <a href="crm-tarefas.dc.html">Tarefas</a>.</span>
+</div>
+<div style="overflow-x:auto">
+<div style="min-width:560px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,92px);gap:8px;align-items:center;padding:0 0 10px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Vendedor</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Visualizar</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Criar</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Editar</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Excluir</span>
+</div>
+<sc-for list="{{ permLinhas }}" as="pl" hint-placeholder-count="5">
+<div style="min-width:560px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,92px);gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:28px;height:28px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10.5px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ pl.sigla }}</span><span style="font:500 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pl.nome }}</span></span>
+<sc-for list="{{ pl.cols }}" as="pc" hint-placeholder-count="4">
+<span style="display:grid;place-items:center"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ pc.on }}" onChange="{{ pc.toggle }}" aria-label="{{ pc.rotulo }}" hint-size="44px,24px"></x-import></span>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;border-top:1px solid #E4E8EF;padding-top:12px">Sem Visualizar, o módulo Tarefas some do menu do vendedor. Excluir vale só para as tarefas dele.</span>
+</div>
+</sc-if>
+<sc-if value="{{ ehModelos }}" hint-placeholder-val="{{ false }}">
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Modelos de mensagem</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Na conversa, digite / para inserir. As variáveis são preenchidas na hora.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,32px">Novo modelo</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ modelos }}" as="m" hint-placeholder-count="4">
+<button onClick="{{ m.ir }}" style="{{ m.style }}">
+<span style="display:flex;flex-direction:column;gap:2px;text-align:left;flex:1;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">/{{ m.atalho }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.previa }}</span></span>
+<i data-lucide="chevron-right" style="font-size:15px;color:#7A8699"></i>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Editar /{{ modeloAtalho }}</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="" rows="{{ 6 }}" value="{{ modeloTexto }}" hint-size="100%,160px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Variáveis</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{nome}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{empresa}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{pedido}</span>
+<span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:#EDF0F5;font:500 12px/1 'IBM Plex Mono',monospace;color:#454F5E">{vendedor}</span>
+</div>
+</div>
+<div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Prévia</span>
+<span style="font:400 13.5px/1.55 'IBM Plex Sans'">{{ modeloPrevia }}</span>
+</div>
+<div style="display:flex;justify-content:flex-end"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="check" dc-props="{{ btnProps }}" hint-size="auto,32px">Salvar modelo</x-import></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ ehAutomacoes }}" hint-placeholder-val="{{ false }}">
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 16px/1.3 'IBM Plex Sans';margin-bottom:6px">Automações</span>
+<sc-for list="{{ automacoes }}" as="a" hint-placeholder-count="7">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ a.titulo }}</span>
+<span style="font:400 13px/1.45 'IBM Plex Sans';color:#5B6678">{{ a.sub }}</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ a.on }}" onChange="{{ a.toggle }}" aria-label="{{ a.titulo }}" hint-size="44px,24px"></x-import>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">WhatsApp</span>
+<sc-if value="{{ zapConectado }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#E8F7F0;color:#0A6244;display:grid;place-items:center;flex:none"><i data-lucide="circle-check" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:1px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Conectado</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">(54) 99912-8007 · instância ativa há 12 dias</span>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="unplug" onClick="{{ desconectar }}" hint-size="100%,36px">Desconectar</x-import>
+</sc-if>
+<sc-if value="{{ zapDesconectado }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FDF0F1;color:#B3202F;display:grid;place-items:center;flex:none"><i data-lucide="octagon-x" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:1px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Desconectado</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">As conversas param de chegar até reconectar</span>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="qr-code" onClick="{{ abrirQr }}" dc-props="{{ btnProps }}" hint-size="100%,36px">Conectar com QR Code</x-import>
+</sc-if>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;border-top:1px solid #E4E8EF;padding-top:12px">O número conectado é o do escritório. Cada vendedor pode conectar o próprio número no aplicativo.</span>
+</div>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ qrOpen }}" onClose="{{ fecharQr }}" title="Conectar WhatsApp" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif;align-items:center">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E;text-align:center">No celular, abra o WhatsApp, toque em <strong>Aparelhos conectados</strong> e aponte a câmera para o código.</span>
+<div style="width:200px;height:200px;border-radius:10px;background:#FFFFFF;border:1px solid #E4E8EF;display:grid;place-items:center;position:relative">
+<sc-if value="{{ qrLendo }}" hint-placeholder-val="{{ false }}">
+<span style="display:flex;flex-direction:column;align-items:center;gap:8px;color:#0A6244"><i data-lucide="circle-check" style="font-size:40px"></i><span style="font:600 13px/1 'IBM Plex Sans'">Conectado!</span></span>
+</sc-if>
+<sc-if value="{{ qrEsperando }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:3px;width:160px;height:160px">
+<sc-for list="{{ qrCelulas }}" as="q" hint-placeholder-count="64"><span style="{{ q.style }}"></span></sc-for>
+</div>
+</sc-if>
+</div>
+<button onClick="{{ simularLeitura }}" style="border:0;background:transparent;color:#365E10;font:500 13px/1 'IBM Plex Sans';cursor:pointer;text-decoration:underline">Já apontei a câmera</button>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    aba: 'funis', funil: 'venda', modelo: 0,
+    etapasCustom: null, cores: {}, paletaAberta: null,
+    autos: { parado: true, primeiro: true, aviso: true, mover: false, aniversario: false, cobranca: true, resumo: false },
+    zap: true, qrOpen: false, qrLendo: false, toast: '',
+  };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  etapasDe(funil) {
+    const BASE = {
+      venda: ['Cadastro do cliente', 'Primeiro contato', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Pedido emitido', 'Aguardando aprovação', 'Enviado à indústria', 'Faturado parcial'],
+      acompanhamento: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Em transporte', 'Pedido faturado total'],
+      espera: ['Entrou na lista', 'Aguardando estoque', 'Estoque disponível', 'Cliente avisado'],
+      sac: ['Em tratativa — SAC', 'Em tratativa — Cobrança', 'Resolvido'],
+    };
+    if (this.state.etapasCustom && this.state.etapasCustom.funil === funil) return this.state.etapasCustom.lista;
+    return BASE[funil];
+  }
+  renderVals() {
+    const aba = this.state.aba;
+    const tabStyle = (on) => "height:42px;padding:0 16px;border:0;background:transparent;cursor:pointer;white-space:nowrap;font:" + (on ? '600' : '500') + " 14px/1 'IBM Plex Sans';color:" + (on ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (on ? '#628A11' : 'transparent') + ';margin-bottom:-1px';
+    const FUNIS = [
+      { id: 'venda', nome: 'Venda', fixos: ['Perdidos', 'Ganhos'] },
+      { id: 'acompanhamento', nome: 'Acompanhamento', fixos: [] },
+      { id: 'espera', nome: 'Lista de espera', fixos: ['Perdidos', 'Ganhos'] },
+      { id: 'sac', nome: 'SAC / Cobrança', fixos: ['Não resolvido'] },
+    ];
+    const fAtivo = FUNIS.find(f => f.id === this.state.funil);
+    const editaveis = this.etapasDe(this.state.funil);
+    const MODELOS = [
+      { atalho: 'tabela', texto: 'Oi {nome}! Segue a tabela de preço atualizada da {empresa}. Qualquer dúvida me chama por aqui.', previa: 'Oi Márcia! Segue a tabela de preço atualizada da Móveis Vale. Qualquer dúvida me chama por aqui.' },
+      { atalho: 'pedido', texto: '{nome}, seu pedido {pedido} foi emitido! Te aviso assim que a indústria confirmar o faturamento.', previa: 'Márcia, seu pedido 4.813 foi emitido! Te aviso assim que a indústria confirmar o faturamento.' },
+      { atalho: 'visita', texto: 'Oi {nome}, tudo bem? Estarei na sua região terça. Posso passar na {empresa} de manhã?', previa: 'Oi Márcia, tudo bem? Estarei na sua região terça. Posso passar na Depósito São Jorge de manhã?' },
+      { atalho: 'cobranca', texto: '{nome}, o boleto do pedido {pedido} venceu ontem. Consegue verificar com o financeiro? Se precisar, reemito com nova data.', previa: 'Márcia, o boleto do pedido 4.786 venceu ontem. Consegue verificar com o financeiro? Se precisar, reemito com nova data.' },
+    ];
+    const mod = MODELOS[this.state.modelo];
+    const AUTOS = [
+      { id: 'parado', titulo: 'Avisar negócio parado', sub: 'Alerta quando um negócio fica 10 dias sem movimento na etapa' },
+      { id: 'primeiro', titulo: 'Responder primeiro contato', sub: 'Envia o modelo /tabela quando um contato novo chama no WhatsApp' },
+      { id: 'aviso', titulo: 'Avisar faturamento ao cliente', sub: 'Manda mensagem quando o pedido do negócio é faturado' },
+      { id: 'mover', titulo: 'Mover ao emitir pedido', sub: 'Negócio vai sozinho para a etapa Pedido emitido' },
+      { id: 'aniversario', titulo: 'Lembrar aniversário do contato', sub: 'Cria tarefa no dia, com modelo de mensagem pronto' },
+      { id: 'cobranca', titulo: 'Abrir tratativa de cobrança', sub: 'Título vencido há 5 dias cria negócio no funil SAC / Cobrança' },
+      { id: 'resumo', titulo: 'Resumo semanal por e-mail', sub: 'Toda segunda, 7h: negócios parados, ganhos e perdidos da semana' },
+    ];
+    const qrSeed = [1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,1,0,1,1,0,0,1,0,0,1,0,1,1,0,1,1,1,0,0,1,0,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,1,0,1,0,0,1,0,1,1];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: [
+        { id: 'funis', label: 'Funis' }, { id: 'motivos', label: 'Motivos de perda' }, { id: 'etiquetas', label: 'Etiquetas' }, { id: 'tarefas', label: 'Tarefas' }, { id: 'modelos', label: 'Modelos de mensagem' }, { id: 'automacoes', label: 'Automações e WhatsApp' },
+      ].map(t => ({ ...t, style: tabStyle(aba === t.id), ir: () => { if (t.id === 'modelos') { window.location.href = 'crm-templates.dc.html'; return; } this.setState({ aba: t.id }); } })).concat([
+        { label: 'Canais de WhatsApp', style: tabStyle(false), ir: () => { window.location.href = 'configuracoes-canais.dc.html'; } },
+      ]),
+      ehFunis: aba === 'funis', ehMotivos: aba === 'motivos', ehEtiquetas: aba === 'etiquetas', ehTarefas: aba === 'tarefas', ehModelos: aba === 'modelos', ehAutomacoes: aba === 'automacoes',
+      permLinhas: ['Carlos Rezende', 'Ana Paula Vieira', 'Renata Cruz', 'Jorge Tomasi', 'Paulo Selau'].map(nome => {
+        const sigla = nome.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
+        const padrao = { Visualizar: true, Criar: true, Editar: ['Carlos Rezende', 'Ana Paula Vieira'].indexOf(nome) >= 0, Excluir: nome === 'Carlos Rezende' };
+        return {
+          nome, sigla,
+          cols: ['Visualizar', 'Criar', 'Editar', 'Excluir'].map(acao => {
+            const k = nome + '|' + acao;
+            const on = (this.state.permsT || {})[k] !== undefined ? this.state.permsT[k] : padrao[acao];
+            return { on, rotulo: acao + ' tarefas — ' + nome, toggle: () => this.setState(s => ({ permsT: { ...(s.permsT || {}), [k]: !on } })) };
+          }),
+        };
+      }),
+      listaFunis: FUNIS.map(f => ({
+        nome: f.nome,
+        sub: (this.state.funil === f.id ? editaveis.length + f.fixos.length : ({ venda: 11, acompanhamento: 5, espera: 6, sac: 4 })[f.id]) + ' etapas',
+        style: 'display:flex;width:100%;padding:14px 16px;border:0;border-bottom:1px solid #EDF0F5;border-left:3px solid ' + (this.state.funil === f.id ? '#78A614' : 'transparent') + ';background:' + (this.state.funil === f.id ? '#F8FAF1' : '#FFFFFF') + ';cursor:pointer',
+        ir: () => this.setState({ funil: f.id }),
+      })),
+      funilNome: fAtivo.nome,
+      etapas: editaveis.map((nome, i) => ({
+        n: String(i + 1).padStart(2, '0'),
+        nome, fixa: false, editavel: true, removivel: editaveis.length > 2,
+        tempo: (this.state.tempos || {})[this.state.funil + i] || [3, 5, 2, 4, 7, 2, 3, 5, 10][i % 9],
+        unidade: 'dias',
+        setTempo: (e) => this.setState(s => ({ tempos: { ...(s.tempos || {}), [this.state.funil + i]: e.target.value } })),
+        rowStyle: 'display:flex;align-items:center;gap:10px;padding:4px 8px;border-radius:8px;background:#FAFBFC;flex-wrap:wrap',
+        corStyle: 'width:22px;height:22px;border-radius:999px;border:2px solid #FFFFFF;box-shadow:0 0 0 1px #CFD6E1;cursor:pointer;background:' + (this.state.cores[this.state.funil + i] || ['#4A90D9', '#8B5CB8', '#D9822B', '#2AA1A8', '#C2537A', '#628A11', '#5B6ECC', '#B8860B', '#3E8E5A'][i % 9]),
+        abrirCor: () => this.setState(s => ({ paletaAberta: s.paletaAberta === this.state.funil + i ? null : this.state.funil + i })),
+        paletaAberta: this.state.paletaAberta === this.state.funil + i,
+        paleta: ['#4A90D9', '#8B5CB8', '#D9822B', '#2AA1A8', '#C2537A', '#628A11', '#5B6ECC', '#B8860B', '#3E8E5A', '#B3202F'].map(cor => ({
+          style: 'width:24px;height:24px;border-radius:999px;border:0;cursor:pointer;background:' + cor,
+          pegar: () => { this.setState(s => ({ cores: { ...s.cores, [this.state.funil + i]: cor }, paletaAberta: null })); this.avisar('Cor da etapa atualizada no kanban'); },
+        })),
+        renomear: (e) => {
+          const lista = editaveis.slice(); lista[i] = e.target.value;
+          this.setState({ etapasCustom: { funil: this.state.funil, lista } });
+        },
+        remover: () => {
+          const lista = editaveis.filter((_, j) => j !== i);
+          this.setState({ etapasCustom: { funil: this.state.funil, lista } });
+          this.avisar('Etapa removida do funil ' + fAtivo.nome);
+        },
+      })).concat(fAtivo.fixos.map((nome, i) => ({
+        n: String(editaveis.length + i + 1).padStart(2, '0'),
+        nome, fixa: true, editavel: false, removivel: false,
+        rowStyle: 'display:flex;align-items:center;gap:10px;padding:4px 8px;border-radius:8px;background:#F2F4F7',
+        fixaRotulo: 'fixa',
+        fixaStyle: "height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:#E4E8EF;color:#5B6678;font:600 11px/1 'IBM Plex Sans'",
+      }))),
+      addEtapa: () => {
+        this.setState({ etapasCustom: { funil: this.state.funil, lista: editaveis.concat(['Nova etapa']) } });
+      },
+      motivos: ['Preço acima do concorrente', 'Sem estoque na indústria', 'Cliente sem crédito', 'Perdeu o prazo de entrega', 'Desistiu da compra'].map(nome => ({
+        nome, uso: ({ 'Preço acima do concorrente': '14 negócios', 'Sem estoque na indústria': '8 negócios', 'Cliente sem crédito': '5 negócios', 'Perdeu o prazo de entrega': '3 negócios', 'Desistiu da compra': '9 negócios' })[nome],
+        remover: () => this.avisar('Motivo excluído — os negócios antigos guardam o texto'),
+      })),
+      addMotivo: () => this.avisar('Motivo adicionado à lista'),
+      etiquetas: [
+        { nome: 'Cliente novo', c: '#0C477B', b: '#EAF4FD', uso: '6 aplicações' },
+        { nome: 'Reativação', c: '#8A5B00', b: '#FCF3DF', uso: '4 aplicações' },
+        { nome: 'Promoção', c: '#365E10', b: '#F2F8D4', uso: '9 aplicações' },
+        { nome: 'Urgente', c: '#85202C', b: '#FDF0F1', uso: '2 aplicações' },
+      ].map(t => ({ ...t, chipStyle: "display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font:600 12px/1 'IBM Plex Sans';color:" + t.c + ';background:' + t.b })),
+      addEtiqueta: () => this.avisar('Etiqueta criada — escolha nome e cor'),
+      modelos: MODELOS.map((m, i) => ({
+        ...m,
+        style: 'display:flex;align-items:center;gap:10px;width:100%;padding:12px 10px;border:0;border-bottom:1px solid #EDF0F5;border-radius:6px;background:' + (this.state.modelo === i ? '#F8FAF1' : '#FFFFFF') + ';cursor:pointer',
+        ir: () => this.setState({ modelo: i }),
+      })),
+      modeloAtalho: mod.atalho,
+      modeloTexto: mod.texto,
+      modeloPrevia: mod.previa,
+      automacoes: AUTOS.map(a => ({
+        ...a, on: this.state.autos[a.id],
+        toggle: () => this.setState(s => ({ autos: { ...s.autos, [a.id]: !s.autos[a.id] } })),
+      })),
+      zapConectado: this.state.zap,
+      zapDesconectado: !this.state.zap,
+      desconectar: () => { this.setState({ zap: false }); this.avisar('WhatsApp desconectado'); },
+      abrirQr: () => this.setState({ qrOpen: true, qrLendo: false }),
+      fecharQr: () => this.setState({ qrOpen: false }),
+      qrOpen: this.state.qrOpen,
+      qrLendo: this.state.qrLendo,
+      qrEsperando: !this.state.qrLendo,
+      qrCelulas: qrSeed.map(v => ({ style: 'border-radius:1px;background:' + (v ? '#021226' : 'transparent') })),
+      simularLeitura: () => {
+        this.setState({ qrLendo: true });
+        setTimeout(() => { this.setState({ qrOpen: false, zap: true }); this.avisar('WhatsApp conectado — as conversas voltaram a chegar'); }, 900);
+      },
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

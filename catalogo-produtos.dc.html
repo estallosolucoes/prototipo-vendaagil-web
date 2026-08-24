@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CAT-03 Produtos no catálogo" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="catalogo" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav aria-label="Trilha" style="display:flex;align-items:center;gap:8px;margin-bottom:16px;font:400 13px/1 'IBM Plex Sans'">
+<a href="catalogo.dc.html" style="text-decoration:none">Catálogo B2B</a>
+<i data-lucide="chevron-right" style="font-size:14px;color:#7A8699"></i>
+<span style="color:#454F5E">Produtos</span>
+</nav>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Produtos no catálogo</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">{{ resumo }}</span>
+</div>
+<a href="loja.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="external-link" hint-size="auto,40px">Ver como comprador</x-import></a>
+</div>
+<div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+<div style="flex:1;min-width:280px"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por nome ou código" value="{{ busca }}" onChange="{{ setBusca }}" hint-size="100%,40px"></x-import></div>
+<x-import component-from-global-scope="va-select" options="Todas as categorias|Cadeiras|Mesas|Armários|Gaveteiros" value="Todas as categorias" hint-size="220px,40px"></x-import>
+<x-import component-from-global-scope="va-select" options="Todos|Só visíveis|Só ocultos|Só promoções" value="Todos" hint-size="180px,40px"></x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:900px;display:grid;grid-template-columns:56px 1fr 130px 140px 140px 120px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span></span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Produto</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Embalagem</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Preço · tabela</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Preço promocional</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Destaque</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Visível</span>
+</div>
+<sc-for list="{{ produtos }}" as="p" hint-placeholder-count="8">
+<div style="{{ p.rowStyle }}">
+<span style="width:40px;height:40px;border-radius:6px;background:#F2F4F7;display:grid;place-items:center;color:#7A8699"><i data-lucide="{{ p.icone }}" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:1px;min-width:0">
+<span style="font:600 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.nome }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Mono',monospace;color:#7A8699">{{ p.codigo }}</span>
+</div>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ p.pack }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ p.preco }}</span>
+<span style="{{ p.promoStyle }}">{{ p.promo }}</span>
+<span><sc-if value="{{ p.destaque }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;background:#FCF3DF;color:#8A5B00;font:600 11px/1 'IBM Plex Sans'"><i data-lucide="star" style="font-size:12px"></i>Promoção</span></sc-if></span>
+<span style="display:flex;justify-content:flex-end"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ p.visivel }}" onChange="{{ p.toggle }}" aria-label="{{ p.nome }}" hint-size="44px,24px"></x-import></span>
+</div>
+</sc-for>
+</div>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:14px 4px 0">Produto oculto some da vitrine na hora, mas continua disponível na emissão de pedido de dentro do sistema.</p>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { busca: '', off: { 7: true, 8: true } };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const base = 'min-width:900px;display:grid;grid-template-columns:56px 1fr 130px 140px 140px 120px 110px;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid #EDF0F5';
+    const promoOn = "font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#8A5B00";
+    const promoOff = "font:400 13px/1 'IBM Plex Sans';text-align:right;color:#B4BCC9";
+    const defs = [
+      { id: 1, nome: 'Cadeira Operacional Vale — preta', codigo: 'MV-1180', icone: 'armchair', pack: 'cx 4 un', preco: 'R$ 298,50', promo: '—', destaque: false },
+      { id: 2, nome: 'Cadeira Diretor Executiva — preta', codigo: 'MV-1204', icone: 'armchair', pack: 'cx 2 un', preco: 'R$ 289,90', promo: 'R$ 249,90', destaque: true },
+      { id: 3, nome: 'Mesa executiva 1,60 m — carvalho', codigo: 'MV-2310', icone: 'table-2', pack: 'un', preco: 'R$ 1.021,00', promo: '—', destaque: false },
+      { id: 4, nome: 'Mesa de reunião 6 lugares', codigo: 'MV-2388', icone: 'table-2', pack: 'un', preco: 'R$ 1.290,00', promo: '—', destaque: false },
+      { id: 5, nome: 'Gaveteiro 4 gavetas — branco', codigo: 'MV-3402', icone: 'archive', pack: 'cx 1 un', preco: 'R$ 439,50', promo: 'R$ 399,00', destaque: true },
+      { id: 6, nome: 'Armário alto 2 portas', codigo: 'MV-3510', icone: 'archive', pack: 'un', preco: 'R$ 1.120,00', promo: '—', destaque: false },
+      { id: 7, nome: 'Poltrona giratória — cinza', codigo: 'MV-1290', icone: 'armchair', pack: 'cx 1 un', preco: 'R$ 749,90', promo: '—', destaque: false },
+      { id: 8, nome: 'Cadeira fixa interlocutor', codigo: 'MV-1105', icone: 'armchair', pack: 'cx 4 un', preco: 'R$ 189,90', promo: '—', destaque: false },
+    ];
+    const q = this.state.busca.trim().toLowerCase();
+    const lista = defs.filter(p => !q || p.nome.toLowerCase().includes(q) || p.codigo.toLowerCase().includes(q));
+    const ocultos = defs.filter(p => this.state.off[p.id]).length;
+    return {
+      busca: this.state.busca,
+      setBusca: (v) => this.setState({ busca: typeof v === 'string' ? v : v.target.value }),
+      resumo: (defs.length - ocultos) + ' visíveis de ' + defs.length + ' produtos da tabela Varejo Sul 2026 · 2 em promoção',
+      produtos: lista.map(p => {
+        const on = !this.state.off[p.id];
+        return {
+          ...p,
+          visivel: on,
+          rowStyle: base + (on ? '' : ';opacity:.45'),
+          promoStyle: p.promo === '—' ? promoOff : promoOn,
+          toggle: () => this.setState(s => ({ off: { ...s.off, [p.id]: !s.off[p.id] } })),
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

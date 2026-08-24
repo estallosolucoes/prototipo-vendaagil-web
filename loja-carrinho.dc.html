@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/tokens/v2-ajustes.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/styles.css">
+<script src="_ds/venda-gil-design-systemv2-348481a4-5782-4d7a-be2d-c52972061499/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+[data-va-cart]{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start}
+@media (max-width:959px){[data-va-cart]{grid-template-columns:minmax(0,1fr)}[data-va-aside]{display:none !important}}
+@media (min-width:960px){[data-va-ctabar]{display:none !important}}</style>
+</helmet>
+<div data-screen-label="LOJA-03 Carrinho" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column;padding-bottom:110px">
+<header style="position:sticky;top:0;z-index:300;background:#FFFFFF;box-shadow:0 1px 3px rgba(2,18,38,.08)">
+<div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:12px 20px">
+<a href="loja.dc.html" aria-label="Voltar para a vitrine" style="width:40px;height:40px;border-radius:6px;border:1px solid #D6DCE5;background:#FFFFFF;display:grid;place-items:center;color:#021226;text-decoration:none;flex:none" style-hover="background:#F2F4F7"><i data-lucide="arrow-left" style="font-size:20px"></i></a>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<span style="font:600 15px/1.2 'IBM Plex Sans'">Seu pedido</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ subtitulo }}</span>
+</div>
+</div>
+</header>
+<main style="max-width:1100px;margin:0 auto;width:100%;padding:20px">
+<div data-va-cart="">
+<div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+<sc-if value="{{ faltaMinimo }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="VendaGilDesignSystem_348481.Alert" tone="warning" title="Ainda falta o pedido mínimo" hint-size="100%,72px">{{ msgFalta }}</x-import>
+</sc-if>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:4px 16px">
+<sc-for list="{{ itens }}" as="it" hint-placeholder-count="3">
+<div style="display:flex;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:48px;height:48px;border-radius:6px;background:#E9ECF2;display:grid;place-items:center;color:#9AA4B4;flex:none"><i data-lucide="package" style="font-size:22px"></i></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ it.nome }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ it.detalhe }}</span>
+<div style="display:flex;align-items:center;gap:10px;margin-top:6px">
+<div style="display:flex;align-items:center;border:1px solid #D6DCE5;border-radius:6px;overflow:hidden">
+<button onClick="{{ it.menos }}" aria-label="Diminuir quantidade" style="width:32px;height:32px;border:0;background:#FFFFFF;cursor:pointer;display:grid;place-items:center;color:#021226" style-hover="background:#F2F4F7"><i data-lucide="minus" style="font-size:14px"></i></button>
+<input type="number" inputmode="numeric" min="0" value="{{ it.qty }}" onInput="{{ it.setQtd }}" aria-label="Quantidade de embalagens" style="width:52px;height:32px;border:0;border-left:1px solid #EDF0F5;border-right:1px solid #EDF0F5;text-align:center;font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#021226;background:#FFFFFF;padding:0">
+<button onClick="{{ it.mais }}" aria-label="Aumentar quantidade" style="width:32px;height:32px;border:0;background:#FFFFFF;cursor:pointer;display:grid;place-items:center;color:#021226" style-hover="background:#F2F4F7"><i data-lucide="plus" style="font-size:14px"></i></button>
+</div>
+<button onClick="{{ it.remover }}" aria-label="Remover item" style="width:32px;height:32px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</div>
+<span style="font:600 15px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;flex:none">{{ it.subtotal }}</span>
+</div>
+</sc-for>
+<sc-if value="{{ vazio }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px 8px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+<i data-lucide="shopping-cart" style="font-size:32px;color:#9AA4B4"></i>
+<span style="font:600 15px/1.4 'IBM Plex Sans'">Seu carrinho está vazio</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Escolha os produtos na vitrine e ajuste a quantidade por embalagem.</span>
+<a href="loja.dc.html" style="font:600 14px/1 'IBM Plex Sans';margin-top:6px">Voltar para a vitrine</a>
+</div>
+</sc-if>
+</div>
+</div>
+<aside data-va-aside="" style="position:sticky;top:84px;display:flex;flex-direction:column;gap:12px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Produtos</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ totalFmt }}</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Pedido mínimo</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 3.000,00</span></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #E4E8EF;padding-top:10px"><span style="font:600 14px/1.4 'IBM Plex Sans'">Total do pedido</span><span style="font:600 24px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ totalFmt }}</span></div>
+<span style="font:400 12px/1.5 'IBM Plex Sans';color:#7A8699">Impostos como IPI e ST são calculados pela Vale Office na confirmação.</span>
+<sc-if value="{{ faltaMinimo }}" hint-placeholder-val="{{ false }}"><span style="font:500 12px/1.3 'IBM Plex Sans';color:#8A5B00">{{ msgFalta }}</span></sc-if>
+<a href="{{ ctaHref }}" style="text-decoration:none;margin-top:6px"><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" size="lg" full-width="{{ true }}" disabled="{{ faltaMinimo }}" dc-props="{{ btnProps }}" hint-size="100%,48px">{{ ctaLabel }}</x-import></a>
+</div>
+</aside>
+</div>
+</main>
+<div data-va-ctabar="" style="position:fixed;bottom:0;left:0;right:0;background:#FFFFFF;border-top:1px solid #E4E8EF;box-shadow:0 -4px 16px rgba(2,18,38,.10);padding:12px 16px;z-index:400">
+<sc-if value="{{ faltaMinimo }}" hint-placeholder-val="{{ false }}"><span style="display:block;font:500 12px/1.3 'IBM Plex Sans';color:#8A5B00;margin-bottom:8px;text-align:center">{{ msgFalta }}</span></sc-if>
+<a href="{{ ctaHref }}" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_348481.Button" variant="primary" size="lg" full-width="{{ true }}" disabled="{{ faltaMinimo }}" dc-props="{{ btnProps }}" hint-size="100%,48px">{{ ctaLabel }}</x-import></a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { carrinho: { 2: 6, 1: 8, 5: 3 } };
+  user() { try { return JSON.parse(localStorage.getItem('va-loja-user')); } catch (e) { return null; } }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const PRODUTOS = {
+      1: { nome: 'Cadeira Operacional Vale — preta', pack: 'cx 4 un', price: 298.5 },
+      2: { nome: 'Cadeira Diretor Executiva — preta', pack: 'cx 2 un', price: 289.9, promoPrice: 249.9 },
+      5: { nome: 'Gaveteiro 4 gavetas — branco', pack: 'cx 1 un', price: 439.5, promoPrice: 399 },
+    };
+    const MINIMO = 3000;
+    const brl = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const ids = Object.keys(this.state.carrinho);
+    const itens = ids.map(id => {
+      const p = PRODUTOS[id]; const qty = this.state.carrinho[id]; const unit = p.promoPrice || p.price;
+      return {
+        nome: p.nome, qty: String(qty),
+        detalhe: p.pack + ' · ' + brl(unit) + (p.promoPrice ? ' (promoção)' : ''),
+        subtotal: brl(unit * qty),
+        menos: () => this.mudar(id, qty - 1),
+        mais: () => this.mudar(id, qty + 1),
+        remover: () => this.mudar(id, 0),
+        setQtd: (e) => { const v = parseInt(e.target.value, 10); if (!isNaN(v)) this.mudar(id, Math.max(0, v)); },
+        _valor: unit * qty, _qty: qty,
+      };
+    });
+    const total = itens.reduce((a, x) => a + x._valor, 0);
+    const nItens = itens.reduce((a, x) => a + x._qty, 0);
+    const falta = Math.max(MINIMO - total, 0);
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      subtitulo: itens.length === 0 ? 'Nenhum item' : nItens + ' embalagens · mínimo de R$ 3.000,00',
+      itens, vazio: itens.length === 0,
+      totalFmt: brl(total),
+      faltaMinimo: falta > 0,
+      msgFalta: 'Adicione mais ' + brl(falta) + ' para poder enviar',
+      ctaLabel: falta > 0 ? 'Falta o mínimo' : (this.user() ? 'Continuar · identificação' : 'Entrar para continuar'),
+      ctaHref: this.user() ? 'loja-identificacao.dc.html' : 'loja-login.dc.html?next=identificacao',
+    };
+  }
+  mudar(id, q) {
+    this.setState(s => { const c = { ...s.carrinho }; if (q <= 0) delete c[id]; else c[id] = q; return { carrinho: c }; });
+  }
+}
+</script>
+</body>
+</html>

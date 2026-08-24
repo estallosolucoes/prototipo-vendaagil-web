@@ -1,0 +1,84 @@
+/* Venda Ágil — componentes de domínio. Aqui o sistema prova seu valor.
+   Todos compostos de primitivos; nenhum valor de cor cru. */
+
+/* ── LINHA DE ITEM DO PEDIDO ─────────────────────────────────────────── */
+.va-orderline{display:grid;grid-template-columns:44px 1fr 96px 92px 84px 108px 32px;align-items:center;gap:var(--space-3);padding:var(--space-2) var(--space-4);border-bottom:1px solid var(--border-subtle);background:var(--surface-default)}
+.va-orderline:hover{background:var(--surface-hover)}
+.va-orderline[data-new="true"]{animation:va-line-in var(--duration-fast) var(--ease-entrada)}
+.va-orderline[data-error="true"]{background:var(--status-danger-bg);box-shadow:inset var(--border-width-marker) 0 0 var(--status-danger-solid)}
+@keyframes va-line-in{from{opacity:0;transform:translateY(-4px);background:var(--accent-subtle)}to{opacity:1;transform:none}}
+.va-orderline__name{display:flex;flex-direction:column;gap:2px;min-width:0}
+.va-orderline__title{font:var(--fw-medium) var(--type-label-lg-size)/1.3 var(--font-ui);color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.va-orderline__code{font:var(--fw-regular) var(--type-code-size)/1.3 var(--font-code);font-variant-numeric:slashed-zero;color:var(--text-tertiary)}
+.va-stepper-qty{display:inline-flex;align-items:center;border:1px solid var(--neutral-500);border-radius:var(--radius-sm);height:var(--control-height-sm);overflow:hidden;background:var(--surface-default)}
+.va-stepper-qty button{width:28px;height:100%;border:0;background:transparent;cursor:pointer;color:var(--text-secondary);display:grid;place-items:center}
+.va-stepper-qty button:hover{background:var(--surface-hover);color:var(--text-primary)}
+.va-stepper-qty input{width:48px;border:0;outline:none;text-align:center;font:var(--fw-semibold) var(--type-numeric-sm-size)/1 var(--font-num);font-variant-numeric:tabular-nums;background:transparent;color:var(--text-primary)}
+@media (pointer:coarse){.va-stepper-qty{height:var(--touch-target-min)}.va-stepper-qty button{width:var(--touch-target-min)}}
+@media (max-width:767px){.va-orderline{grid-template-columns:44px 1fr auto;grid-template-areas:"foto nome total" "foto meta qtd";row-gap:var(--space-2)}}
+
+/* ── BARRA DE TOTAIS ─────────────────────────────────────────────────── */
+.va-totals{position:sticky;bottom:0;z-index:var(--z-sticky);display:flex;align-items:center;gap:var(--space-6);padding:var(--space-3) var(--space-5);background:var(--background-raised);border-top:1px solid var(--border-default);box-shadow:var(--elevation-2)}
+.va-totals__cell{display:flex;flex-direction:column;gap:2px;white-space:nowrap}
+.va-totals__label{font:var(--fw-semibold) var(--type-overline-size)/1.2 var(--font-ui);letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--text-tertiary)}
+.va-totals__grand{margin-left:auto;display:flex;align-items:baseline;gap:var(--space-3)}
+.va-commission-chip{display:inline-flex;align-items:baseline;gap:var(--space-2);padding:var(--space-1) var(--space-3);border-radius:var(--radius-sm);background:var(--data-commission-bg);color:var(--data-commission)}
+@media (max-width:767px){.va-totals{gap:var(--space-4)}.va-totals__cell{display:none}.va-totals__cell--keep{display:flex}}
+
+/* ── PAINEL DE COMISSÃO (componente-assinatura) ──────────────────────── */
+.va-commission{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-default)}
+.va-commission__state{padding:var(--space-4) var(--space-5);border-right:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:var(--space-1)}
+.va-commission__state:last-child{border-right:0}
+.va-commission__state[data-emphasis="true"]{background:var(--data-commission-bg)}
+@media (max-width:767px){.va-commission{grid-template-columns:1fr}.va-commission__state{border-right:0;border-bottom:1px solid var(--border-subtle)}}
+
+/* ── CARTÃO DE NEGÓCIO (kanban) ──────────────────────────────────────── */
+.va-deal{background:var(--surface-default);border-radius:var(--radius-md);padding:var(--space-3);box-shadow:var(--elevation-1);display:flex;flex-direction:column;gap:var(--space-2);cursor:grab}
+[data-theme="dark"] .va-deal{box-shadow:none;border:1px solid var(--border-subtle)}
+.va-deal[data-dragging="true"]{box-shadow:var(--elevation-4);transform:rotate(1deg)}
+.va-deal__foot{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);font-size:var(--type-caption-size);color:var(--text-tertiary)}
+.va-kanban{display:flex;gap:var(--space-4);overflow-x:auto;padding-bottom:var(--space-3)}
+.va-kanban__col{flex:0 0 300px;display:flex;flex-direction:column;gap:var(--space-2)}
+.va-kanban__colhead{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2);padding:var(--space-2) var(--space-1)}
+.va-kanban__coltitle{font:var(--fw-semibold) var(--type-label-lg-size)/1.2 var(--font-ui)}
+.va-kanban__colbody{display:flex;flex-direction:column;gap:var(--space-2);min-height:80px;padding:var(--space-1)}
+.va-kanban__col--closing{flex-basis:240px}
+.va-kanban__col--closing .va-kanban__colbody{background:var(--background-sunken);border-radius:var(--radius-md)}
+.va-kanban__dropzone{border:2px dashed var(--accent-default);background:var(--accent-subtle);border-radius:var(--radius-md);min-height:64px}
+
+/* ── CARD DE PRODUTO ─────────────────────────────────────────────────── */
+.va-product{background:var(--surface-default);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--elevation-1)}
+[data-theme="dark"] .va-product{box-shadow:none;border:1px solid var(--border-subtle)}
+.va-product__photo{aspect-ratio:4/3;background:var(--background-subtle);display:grid;place-items:center;position:relative;color:var(--text-placeholder)}
+.va-product__photo img{width:100%;height:100%;object-fit:contain}
+.va-product__promo{position:absolute;top:var(--space-2);left:var(--space-2);display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 var(--space-2);border-radius:var(--radius-xs);background:var(--accent-default);color:var(--text-on-accent);font:var(--fw-semibold) var(--type-label-sm-size)/1 var(--font-ui)}
+.va-product__body{padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-1);flex:1 1 auto}
+.va-product__price{display:flex;align-items:baseline;gap:var(--space-2);margin-top:auto;padding-top:var(--space-2)}
+.va-product__was{font:var(--fw-regular) var(--type-caption-size)/1 var(--font-num);color:var(--text-tertiary);text-decoration:line-through}
+
+/* ── FILTRO EM LINGUAGEM NATURAL ─────────────────────────────────────── */
+.va-nlfilter{display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap;padding:var(--space-3) var(--space-4);background:var(--surface-default);border-radius:var(--radius-md);font-size:var(--type-body-lg-size);color:var(--text-secondary);box-shadow:var(--elevation-1)}
+[data-theme="dark"] .va-nlfilter{box-shadow:none;border:1px solid var(--border-subtle)}
+.va-nlfilter__slot{border:0;background:transparent;cursor:pointer;font:var(--fw-semibold) var(--type-body-lg-size)/1.3 var(--font-ui);color:var(--text-primary);border-bottom:2px solid var(--accent-default);padding:0 2px;display:inline-flex;align-items:center;gap:4px}
+.va-nlfilter__slot:hover{background:var(--accent-subtle)}
+.va-nlfilter__slot[data-empty="true"]{color:var(--text-tertiary);border-bottom-style:dashed}
+
+/* ── SELETOR DE REPRESENTADA ─────────────────────────────────────────── */
+.va-repswitch{display:inline-flex;align-items:center;gap:var(--space-2);height:var(--control-height-md);padding:0 var(--space-3);border-radius:var(--radius-sm);border:1px solid var(--border-default);background:var(--surface-default);cursor:pointer;max-width:280px}
+.va-repswitch:hover{background:var(--surface-hover)}
+.va-repswitch__names{display:flex;flex-direction:column;gap:0;min-width:0;text-align:left}
+.va-repswitch__eyebrow{font:var(--fw-semibold) var(--type-overline-size)/1.1 var(--font-ui);letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--text-tertiary)}
+.va-repswitch__name{font:var(--fw-semibold) var(--type-label-md-size)/1.2 var(--font-ui);color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ── SINCRONIZAÇÃO ───────────────────────────────────────────────────── */
+.va-sync{display:inline-flex;align-items:center;gap:var(--space-2);height:28px;padding:0 var(--space-3);border-radius:var(--radius-full);font:var(--fw-medium) var(--type-label-sm-size)/1 var(--font-ui);border:1px solid transparent}
+.va-sync[data-state="pending"]{background:var(--status-warning-bg);color:var(--status-warning-text);border-color:var(--status-warning-border)}
+.va-sync[data-state="sending"]{background:var(--status-info-bg);color:var(--status-info-text);border-color:var(--status-info-border)}
+.va-sync[data-state="synced"]{background:var(--status-success-bg);color:var(--status-success-text);border-color:var(--status-success-border)}
+.va-sync[data-state="failed"]{background:var(--status-danger-bg);color:var(--status-danger-text);border-color:var(--status-danger-border)}
+
+/* ── FAIXA DE DESCONTO PROGRESSIVO ───────────────────────────────────── */
+.va-tier{display:flex;flex-direction:column;gap:var(--space-2);padding:var(--space-3) var(--space-4);border-radius:var(--radius-sm);background:var(--accent-subtle)}
+.va-tier__steps{display:flex;gap:2px}
+.va-tier__step{flex:1 1 0;height:6px;border-radius:var(--radius-xs);background:var(--background-sunken)}
+.va-tier__step[data-reached="true"]{background:var(--accent-default)}

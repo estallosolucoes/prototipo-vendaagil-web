@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="PRO-02 Cadastro de produto" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="produtos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1080px;margin:0 auto;padding:44px 32px 120px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="produtos.dc.html" style="text-decoration:none">Produtos</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Editar produto</span></nav>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Cadeira Diretor Vale — nogueira</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Móveis Vale · MV-1204 · última alteração em 28/07/2026</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Identificação</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" required="true" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Categoria" options="Cadeiras e poltronas|Mesas e estações|Armários e arquivos|Recepção e espera|Acessórios" value="Cadeiras e poltronas" help="Gerencie as categorias em Cadastros auxiliares" hint-size="100%,88px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do produto" required="{{ true }}" value="Cadeira Diretor Vale — nogueira" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g3,1fr 1fr 1fr);gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Código" code="{{ true }}" required="{{ true }}" value="MV-1204" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Referência" code="{{ true }}" value="DIR-NOG-22" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Código de barras" code="{{ true }}" value="7891234012045" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 16px/1.3 'IBM Plex Sans'">Fotos</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Até 5 fotos · arraste para reordenar · a primeira aparece no catálogo</span></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<div style="width:110px;height:110px;border-radius:10px;background:#EDF0F5;display:grid;place-items:center;color:#7A8699;position:relative"><i data-lucide="image" style="font-size:28px"></i><span style="position:absolute;top:6px;left:6px;height:18px;padding:0 6px;border-radius:999px;background:#021226;color:#FFFFFF;font:600 10.5px/18px 'IBM Plex Sans'">Capa</span></div>
+<div style="width:110px;height:110px;border-radius:10px;background:#EDF0F5;display:grid;place-items:center;color:#7A8699"><i data-lucide="image" style="font-size:28px"></i></div>
+<div style="width:110px;height:110px;border-radius:10px;background:#EDF0F5;display:grid;place-items:center;color:#7A8699"><i data-lucide="image" style="font-size:28px"></i></div>
+<button onClick="{{ abrirRecorte }}" style="width:110px;height:110px;border-radius:10px;border:1px dashed #7A8699;background:transparent;display:grid;place-items:center;color:#5B6678;cursor:pointer;font:500 12px/1.4 'IBM Plex Sans'" style-hover="background:#F2F4F7"><span style="display:flex;flex-direction:column;align-items:center;gap:6px"><i data-lucide="plus" style="font-size:20px"></i>Adicionar foto</span></button>
+</div>
+</div>
+<div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Embalagem</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Unidade de venda" options="Caixa|Unidade|Par" value="Caixa" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Quantidade por embalagem" numeric="{{ true }}" value="2" suffix="un" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Catálogo B2B</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" label="Exibir no catálogo" checked="{{ true }}" hint-size="auto,24px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" label="Destacar na vitrine" hint-size="auto,24px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Grade</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Com grade, a quantidade é digitada por tamanho e cor na emissão e no catálogo</span>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Grade da representada" options="Sem grade|Camisetas — malha fria|Polos bordadas|Revestimentos 20×20" value="{{ gradeSel }}" onChange="{{ setGrade }}" help="Cadastre e edite grades em Cadastros auxiliares" hint-size="100%,88px"></x-import>
+</div>
+<sc-if value="{{ temGrade }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="overflow-x:auto">
+<div style="display:inline-grid;grid-template-columns:{{ gradeCols }};gap:0;border:1px solid #E4E8EF;border-radius:10px;overflow:hidden">
+<span style="background:#F7F9FB;border-bottom:1px solid #E4E8EF;padding:8px 12px"></span>
+<sc-for list="{{ gradeTamanhos }}" as="gt" hint-placeholder-count="4">
+<span style="background:#F7F9FB;border-bottom:1px solid #E4E8EF;padding:8px 12px;text-align:center;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">{{ gt.nome }}</span>
+</sc-for>
+<sc-for list="{{ gradeCelulas }}" as="gc" hint-placeholder-count="16">
+<span style="{{ gc.style }}">{{ gc.rotulo }}</span>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:#F2F8D4;border-radius:6px;font:400 13px/1.5 'IBM Plex Sans';color:#365E10"><i data-lucide="info" style="font-size:16px;flex:none"></i>{{ gradeAviso }}</div>
+</div>
+</sc-if>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Preços e comissão</span>
+<div style="display:grid;grid-template-columns:var(--va-g3,1fr 1fr 1fr);gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Preço de venda" prefix="R$" numeric="{{ true }}" required="{{ true }}" value="486,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Preço promocional" prefix="R$" numeric="{{ true }}" value="429,00" help="Vigência: 01/08/2026 a 31/08/2026" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Comissão" suffix="%" numeric="{{ true }}" value="5,00" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:12px 14px;background:#F2F4F7;border-radius:6px;font:400 13px/1.5 'IBM Plex Sans';color:#454F5E"><i data-lucide="info" style="font-size:16px;flex:none;color:#5B6678"></i>Com a promoção ativa, o catálogo mostra o selo e o preço riscado. A comissão é calculada sobre o preço praticado.</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Tributação</span>
+<div style="display:grid;grid-template-columns:var(--va-g3,1fr 1fr 1fr);gap:12px;align-items:end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="NCM" code="{{ true }}" value="9403.30.00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="IPI" suffix="%" numeric="{{ true }}" value="5,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="map" onClick="{{ abrirSt }}" hint-size="auto,40px">ST por UF — 4 estados</x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Observação" help="Aparece na linha do item durante a emissão" rows="{{ 3 }}" value="Cor especial sob encomenda: mínimo de 10 unidades." hint-size="100%,140px"></x-import>
+</div>
+</div>
+<div data-va-dock="" style="position:sticky;bottom:0;margin-top:24px;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:20">
+<span style="display:flex;align-items:center;gap:8px;font:400 13px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:15px"></i>Alterações salvas automaticamente às 14:22</span>
+<div style="display:flex;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ voltar }}" hint-size="auto,40px">Descartar alterações</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ voltar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar produto</x-import>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ stOpen }}" onClose="{{ fechar }}" title="ST por UF" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;align-items:end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Aplicar em todos os estados" suffix="%" numeric="{{ true }}" placeholder="0,00" hint-size="220px,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" hint-size="auto,40px">Preencher</x-import>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,repeat(2,1fr));gap:8px 20px">
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EDF0F5;padding:8px 0"><span style="font:500 13.5px/1 'IBM Plex Sans'">RS</span><span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">12,00%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EDF0F5;padding:8px 0"><span style="font:500 13.5px/1 'IBM Plex Sans'">SC</span><span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">12,00%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EDF0F5;padding:8px 0"><span style="font:500 13.5px/1 'IBM Plex Sans'">PR</span><span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">14,50%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #EDF0F5;padding:8px 0"><span style="font:500 13.5px/1 'IBM Plex Sans'">SP</span><span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">18,00%</span></div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar ST</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { stOpen: false, grade: 'Sem grade' };
+  static GRADES = {
+    'Camisetas — malha fria': { tamanhos: ['P', 'M', 'G', 'GG'], cores: ['Branco', 'Preto', 'Marinho'] },
+    'Polos bordadas': { tamanhos: ['P', 'M', 'G', 'GG', 'XG'], cores: ['Branco', 'Cinza'] },
+    'Revestimentos 20×20': { tamanhos: ['Único'], cores: ['Polar', 'Areia', 'Grafite'] },
+  };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const g = Component.GRADES[this.state.grade];
+    const celulas = [];
+    if (g) g.cores.forEach((cor, ci) => {
+      celulas.push({ rotulo: cor, style: "padding:8px 12px;font:500 12.5px/1.2 'IBM Plex Sans';color:#454F5E;background:#F7F9FB;border-bottom:1px solid " + (ci < g.cores.length - 1 ? '#EDF0F5' : 'transparent') });
+      g.tamanhos.forEach(() => celulas.push({ rotulo: '·', style: "padding:8px 12px;text-align:center;font:500 13px/1.2 'IBM Plex Mono',monospace;color:#B9C1CE;border-bottom:1px solid " + (ci < g.cores.length - 1 ? '#EDF0F5' : 'transparent') }));
+    });
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      gradeSel: this.state.grade,
+      setGrade: (v) => this.setState({ grade: v && v.target ? v.target.value : v }),
+      temGrade: !!g,
+      gradeTamanhos: g ? g.tamanhos.map(nome => ({ nome })) : [],
+      gradeCols: g ? 'minmax(90px,auto) repeat(' + g.tamanhos.length + ',minmax(64px,auto))' : 'auto',
+      gradeCelulas: celulas,
+      gradeAviso: g ? 'Este produto passa a ter ' + (g.tamanhos.length * g.cores.length) + ' variações (' + g.tamanhos.length + (g.tamanhos[0] === 'Único' ? ' formato' : ' tamanhos') + ' × ' + g.cores.length + ' cores). Cada uma ganha estoque e quantidade próprios no pedido.' : '',
+      stOpen: this.state.stOpen,
+      abrirSt: () => this.setState({ stOpen: true }),
+      abrirRecorte: () => {},
+      fechar: () => this.setState({ stOpen: false }),
+      voltar: () => { location.href = 'produtos.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

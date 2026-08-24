@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="PED-03 Detalhe do pedido" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="pedidos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="pedidos.dc.html" style="text-decoration:none">Pedidos</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Pedido 4.812</span></nav>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:10px"><h1 style="font:600 24px/1.2 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Pedido 4.812</h1><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="pedido" hint-size="auto,22px"></x-import></div>
+<span style="font:400 13.5px/1.4 'IBM Plex Sans';color:#454F5E">Depósito São Jorge · Móveis Vale · emitido hoje às 10:24 por Ana Prado · 30/60/90 · boleto</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="history" onClick="{{ abrirHistorico }}" hint-size="auto,40px">Histórico</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="file-text" hint-size="auto,40px">Ver PDF</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="mail" onClick="{{ abrirEmail }}" hint-size="auto,40px">Enviar por e-mail</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="message-circle" onClick="{{ abrirWhats }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Enviar por WhatsApp</x-import>
+<div style="position:relative">
+<button onClick="{{ toggleMais }}" aria-label="Mais ações" title="Mais ações" style="width:40px;height:40px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;display:grid;place-items:center;color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="ellipsis-vertical" style="font-size:18px"></i></button>
+<sc-if value="{{ maisOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ fechar }}" style="position:fixed;inset:0;z-index:49"></div>
+<div style="position:absolute;right:0;top:46px;z-index:50;width:230px;background:#FFFFFF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:6px;display:flex;flex-direction:column;gap:1px">
+<button onClick="{{ irEditar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i>Alterar pedido</button>
+<button onClick="{{ copiarLink }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="link" style="font-size:16px"></i>Copiar link do pedido</button>
+<button onClick="{{ abrirEstagio }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="milestone" style="font-size:16px"></i>Alterar estágio</button>
+<button onClick="{{ fechar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:16px"></i>Duplicar pedido</button>
+<button onClick="{{ abrirCancelar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#85202C;text-align:left" style-hover="background:#FDF0F1"><i data-lucide="octagon-x" style="font-size:16px"></i>Cancelar pedido</button>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px 24px;margin-bottom:16px">
+<div style="display:flex;align-items:center">
+<sc-for list="{{ trilha }}" as="t" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;flex:1;gap:10px">
+<span style="{{ t.bola }}"><i data-lucide="{{ t.icone }}" style="font-size:15px"></i></span>
+<span style="display:flex;flex-direction:column;gap:1px"><span style="{{ t.nomeStyle }}">{{ t.nome }}</span><span style="font:400 11.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ t.quando }}</span></span>
+<sc-if value="{{ t.linha }}" hint-placeholder-val="{{ true }}"><span style="flex:1;height:2px;border-radius:2px;background:{{ t.linhaCor }};margin:0 12px"></span></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:680px;display:grid;grid-template-columns:1fr 90px 110px 90px 120px;gap:12px;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Item</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Qtde</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Preço</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Desc.</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Total</span>
+</div>
+<sc-for list="{{ itens }}" as="i" hint-placeholder-count="3">
+<div style="min-width:680px;display:grid;grid-template-columns:1fr 90px 110px 90px 120px;gap:12px;align-items:center;padding:11px 20px;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ i.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ i.codigo }} · {{ i.emb }}</span></span>
+<span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ i.qtde }}</span>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ i.preco }}</span>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#5B6678">{{ i.desc }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ i.total }}</span>
+</div>
+</sc-for>
+<div style="min-width:680px;display:flex;justify-content:flex-end;gap:32px;padding:14px 20px;background:#FAFBFC">
+<span style="display:flex;flex-direction:column;gap:2px;text-align:right"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Subtotal</span><span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 24.256,00</span></span>
+<span style="display:flex;flex-direction:column;gap:2px;text-align:right"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">IPI</span><span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 554,00</span></span>
+<span style="display:flex;flex-direction:column;gap:2px;text-align:right"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Total</span><span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 24.810,00</span></span>
+<span style="display:flex;flex-direction:column;gap:2px;text-align:right"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Comissão 5%</span><span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#365E10">R$ 1.240,50</span></span>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Envios</span>
+<div style="display:flex;align-items:center;gap:10px;font:400 13.5px/1.4 'IBM Plex Sans';color:#454F5E"><i data-lucide="message-circle" style="font-size:16px;color:#0A6244"></i>WhatsApp para Jorge Machado — hoje, 10:26 · <span style="color:#0A6244;font-weight:500">entregue</span></div>
+<div style="display:flex;align-items:center;gap:10px;font:400 13.5px/1.4 'IBM Plex Sans';color:#454F5E"><i data-lucide="mail" style="font-size:16px;color:#0A6244"></i>E-mail para pedidos@moveisvale.com.br — hoje, 10:26 · <span style="color:#0A6244;font-weight:500">aberto às 10:41</span></div>
+</div>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Cliente</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">Depósito São Jorge</span><span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">12.448.732/0001-90<br>Rua Sinimbu, 1840 — Centro<br>Caxias do Sul/RS · 95010-000</span></span>
+<a href="cliente-360.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Abrir visão 360°</a>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Transporte</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">Expresso Serrano</span><span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">CIF · frete da Móveis Vale<br>Coleta na fábrica</span></span>
+<a href="transportadoras.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver transportadora</a>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Anotações</span>
+<p style="margin:0;font:400 13px/1.6 'IBM Plex Sans';color:#454F5E">Entrega agendada com o Jorge para a semana do dia 17. Recebimento só às terças e quintas, das 8h às 11h.</p>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" hint-size="auto,32px">Adicionar anotação</x-import>
+</div>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ whatsOpen }}" onClose="{{ fechar }}" title="Enviar por WhatsApp" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Destinatário" options="Jorge Machado — comprador (54) 99911-2044|Rosane Silveira — financeiro (54) 3282-4410|Móveis Vale — pedidos" value="Jorge Machado — comprador (54) 99911-2044" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Mensagem" rows="{{ 4 }}" value="Jorge, segue a cópia do pedido 4.812 (R$ 24.810,00, 30/60/90). Qualquer ajuste é só me chamar por aqui." hint-size="100%,160px"></x-import>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:#F2F4F7;border-radius:6px;font:400 12.5px/1.4 'IBM Plex Sans';color:#454F5E"><i data-lucide="paperclip" style="font-size:15px;flex:none"></i>pedido-4812.pdf anexado</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="message-circle" onClick="{{ enviado }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Enviar pelo WhatsApp</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ emailOpen }}" onClose="{{ fechar }}" title="Enviar por e-mail" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Para" value="jorge@saojorge.com.br, pedidos@moveisvale.com.br" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Assunto" value="Pedido 4.812 — Depósito São Jorge × Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Mensagem" rows="{{ 4 }}" value="Segue em anexo a cópia do pedido 4.812, emitido hoje, no valor de R$ 24.810,00 com condição 30/60/90." hint-size="100%,160px"></x-import>
+<x-import component-from-global-scope="va-select" label="Remetente" options="carlos@ribeiroprado.com.br (SMTP próprio)" value="carlos@ribeiroprado.com.br (SMTP próprio)" help="Sem SMTP configurado, use o botão ao lado — a mensagem abre pronta no seu aplicativo de e-mail" hint-size="100%,88px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="external-link" onClick="{{ abrirNoApp }}" hint-size="auto,40px">Abrir no aplicativo de e-mail</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="mail" onClick="{{ enviado }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Enviar e-mail</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ estagioOpen }}" onClose="{{ fechar }}" title="Alterar estágio" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="va-select" label="Novo estágio" options="Separação|Faturamento|Entrega" value="Separação" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Data" mask="data" value="05/08/2026" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Alterar estágio</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ cancelOpen }}" onClose="{{ fechar }}" title="Cancelar pedido" destructive="{{ true }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O pedido 4.812 sai da fila da representada e a comissão prevista de R$ 1.240,50 deixa de contar. O cliente não é avisado automaticamente.</p>
+<x-import component-from-global-scope="va-select" label="Motivo" options="Cliente desistiu|Erro de digitação|Sem estoque na indústria|Crédito recusado|Outro" value="Cliente desistiu" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Manter pedido</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar pedido</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ histOpen }}" onClose="{{ fechar }}" title="Histórico do pedido" subtitle="Pedido 4.812" hint-size="0,0">
+<div style="display:flex;flex-direction:column;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-for list="{{ historico }}" as="h" hint-placeholder-count="5">
+<div style="display:flex;gap:12px;padding-bottom:18px;position:relative">
+<span style="width:28px;height:28px;border-radius:999px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none;z-index:1"><i data-lucide="{{ h.icone }}" style="font-size:14px"></i></span>
+<span style="position:absolute;left:13px;top:28px;bottom:0;width:1px;background:#E4E8EF"></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px/1.5 'IBM Plex Sans'">{{ h.texto }}</span><span style="font:400 11.5px/1 'IBM Plex Sans';color:#5B6678">{{ h.quando }}</span></span>
+</div>
+</sc-for>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:70;display:flex;align-items:center;gap:10px;background:#021226;color:#FFFFFF;border-radius:10px;padding:14px 18px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:17px;color:#C3D91E"></i>{{ toastTexto }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { maisOpen: false, whatsOpen: false, emailOpen: false, estagioOpen: false, cancelOpen: false, histOpen: false, toast: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  flash(msg) {
+    this.setState({ toast: msg, maisOpen: false, whatsOpen: false, emailOpen: false });
+    setTimeout(() => this.setState({ toast: '' }), 3200);
+  }
+  renderVals() {
+    const ok = "width:30px;height:30px;border-radius:999px;background:#78A614;color:#F3F3F3;display:grid;place-items:center;flex:none";
+    const atual = "width:30px;height:30px;border-radius:999px;background:#021226;color:#FFFFFF;display:grid;place-items:center;flex:none";
+    const off = "width:30px;height:30px;border-radius:999px;background:#E4E8EF;color:#5B6678;display:grid;place-items:center;flex:none";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      trilha: [
+        { nome: 'Emissão', quando: 'hoje, 10:24', icone: 'check', bola: ok, nomeStyle: "font:600 13px/1 'IBM Plex Sans';color:#021226", linha: true, linhaCor: '#78A614' },
+        { nome: 'Separação', quando: 'em andamento', icone: 'package', bola: atual, nomeStyle: "font:600 13px/1 'IBM Plex Sans';color:#021226", linha: true, linhaCor: '#E4E8EF' },
+        { nome: 'Faturamento', quando: 'aguardando', icone: 'file-text', bola: off, nomeStyle: "font:500 13px/1 'IBM Plex Sans';color:#5B6678", linha: true, linhaCor: '#E4E8EF' },
+        { nome: 'Entrega', quando: 'aguardando', icone: 'truck', bola: off, nomeStyle: "font:500 13px/1 'IBM Plex Sans';color:#5B6678", linha: false, linhaCor: '#E4E8EF' },
+      ],
+      itens: [
+        { nome: 'Cadeira Operacional Vale — preta', codigo: 'MV-1180', emb: 'cx 4 un', qtde: '48', preco: 'R$ 298,50', desc: '—', total: 'R$ 14.328,00' },
+        { nome: 'Mesa executiva 1,60 m — nogueira', codigo: 'MV-2288', emb: 'un', qtde: '4', preco: 'R$ 1.386,00', desc: '—', total: 'R$ 5.544,00' },
+        { nome: 'Gaveteiro volante 3 gavetas', codigo: 'MV-3418', emb: 'cx 2 un', qtde: '12', preco: 'R$ 412,00', desc: '5%', total: 'R$ 4.384,00' },
+      ],
+      historico: [
+        { icone: 'file-plus-2', texto: 'Pedido emitido por Ana Prado — R$ 24.810,00', quando: 'Hoje, 10:24' },
+        { icone: 'message-circle', texto: 'Cópia enviada por WhatsApp para Jorge Machado', quando: 'Hoje, 10:26' },
+        { icone: 'mail', texto: 'Cópia enviada por e-mail para a Móveis Vale', quando: 'Hoje, 10:26' },
+        { icone: 'eye', texto: 'E-mail aberto pela representada', quando: 'Hoje, 10:41' },
+        { icone: 'milestone', texto: 'Estágio alterado para Separação pela representada', quando: 'Hoje, 11:15' },
+      ],
+      maisOpen: this.state.maisOpen,
+      whatsOpen: this.state.whatsOpen,
+      emailOpen: this.state.emailOpen,
+      estagioOpen: this.state.estagioOpen,
+      cancelOpen: this.state.cancelOpen,
+      histOpen: this.state.histOpen,
+      toast: !!this.state.toast,
+      toastTexto: this.state.toast,
+      toggleMais: () => this.setState(s => ({ maisOpen: !s.maisOpen })),
+      abrirWhats: () => this.setState({ whatsOpen: true, maisOpen: false }),
+      abrirEmail: () => this.setState({ emailOpen: true, maisOpen: false }),
+      abrirEstagio: () => this.setState({ estagioOpen: true, maisOpen: false }),
+      abrirCancelar: () => this.setState({ cancelOpen: true, maisOpen: false }),
+      abrirHistorico: () => this.setState({ histOpen: true, maisOpen: false }),
+      irEditar: () => { location.href = 'pedido-editar.dc.html'; },
+      copiarLink: () => this.flash('Link copiado. Cole na conversa com o cliente — validade de 30 dias.'),
+      enviado: () => this.flash('Pedido 4.812 enviado. O histórico registra a entrega.'),
+      abrirNoApp: () => {
+        const to = 'jorge@saojorge.com.br,pedidos@moveisvale.com.br';
+        const subject = encodeURIComponent('Pedido 4.812 — Depósito São Jorge × Móveis Vale');
+        const body = encodeURIComponent('Segue a cópia do pedido 4.812, emitido hoje, no valor de R$ 24.810,00 com condição 30/60/90.\n\nLink do pedido: https://app.vendaagil.com.br/p/4812');
+        location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+      },
+      fechar: () => this.setState({ maisOpen: false, whatsOpen: false, emailOpen: false, estagioOpen: false, cancelOpen: false, histOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

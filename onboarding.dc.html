@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}[data-ob-shell]{grid-template-columns:minmax(0,1fr) !important}[data-ob-aside]{display:none !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="ONB-01 Primeiro acesso" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 32px">
+<img src="assets/logo-light-bg.svg" alt="Venda Ágil" style="height:40px">
+<a href="inicio.dc.html" style="font:500 14px/1 'IBM Plex Sans';text-decoration:none">Configurar depois</a>
+</header>
+<div data-ob-shell="" style="flex:1;display:grid;grid-template-columns:300px minmax(0,1fr);gap:32px;max-width:1080px;margin:0 auto;width:100%;padding:24px 32px 56px">
+<aside data-ob-aside="" style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding:0 12px 12px">Primeiros passos</span>
+<sc-for list="{{ passos }}" as="p" hint-placeholder-count="5">
+<button onClick="{{ p.ir }}" style="{{ p.style }}">
+<span style="{{ p.dotStyle }}">{{ p.dot }}</span>
+<span style="display:flex;flex-direction:column;gap:1px;text-align:left">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ p.titulo }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.sub }}</span>
+</span>
+</button>
+</sc-for>
+<div style="margin-top:20px;padding:16px;background:#021226;border-radius:10px;color:#FFFFFF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E">Por que nessa ordem</span>
+<p style="margin:8px 0 0;font:400 13px/1.6 'IBM Plex Sans';color:rgba(255,255,255,.8)">O pedido nasce da cadeia representada → cliente → tabela de preço. Com os três no lugar, você emite o primeiro pedido em menos de um minuto.</p>
+</div>
+</aside>
+<div style="min-width:0">
+<sc-if value="{{ e1 }}" hint-placeholder-val="{{ true }}">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Passo 1 de 5</span>
+<h1 style="font:600 24px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:8px 0 4px">Bem-vindo, Carlos</h1>
+<p style="margin:0 0 24px;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">Vamos montar seu escritório no Venda Ágil. São cinco passos curtos — dá para pausar e voltar quando quiser; nada se perde.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px" data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do escritório" value="Rezende Representações" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CNPJ" placeholder="00.000.000/0000-00" value="04.882.190/0001-27" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Quantas pessoas vendem" options="Só eu|2 a 5|6 a 15|Mais de 15" value="6 a 15" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Segmento principal" options="Móveis e decoração|Alimentos|Confecção|Materiais de construção|Outro" value="Móveis e decoração" hint-size="100%,66px"></x-import>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{ e2 }}" hint-placeholder-val="{{ false }}">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Passo 2 de 5</span>
+<h1 style="font:600 24px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:8px 0 4px">Cadastre a primeira representada</h1>
+<p style="margin:0 0 24px;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">A representada é a indústria cuja produção você vende. Comece pela mais importante — as outras entram depois, em Cadastros.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px" data-va-half="">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da representada" placeholder="Ex.: Móveis Vale" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CNPJ" placeholder="00.000.000/0000-00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Sua comissão média" suffix="%" numeric="{{ true }}" value="5,00" help="Dá para ajustar por produto e por tabela depois" hint-size="100%,86px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Pedido mínimo" prefix="R$" numeric="{{ true }}" value="3.000,00" hint-size="100%,66px"></x-import>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{ e3 }}" hint-placeholder-val="{{ false }}">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Passo 3 de 5</span>
+<h1 style="font:600 24px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:8px 0 4px">Traga produtos e preços</h1>
+<p style="margin:0 0 24px;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">Importe a planilha que a Móveis Vale já te manda — produtos, códigos e preços entram de uma vez. Sem planilha, cadastre alguns produtos à mão e siga.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px" data-va-half="">
+<a href="importacao-nova.dc.html" style="text-decoration:none;color:inherit;border:1px dashed #B4BCC9;border-radius:10px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center" style-hover="border-color:#78A614;background:#FBFDF4">
+<span style="width:48px;height:48px;border-radius:8px;background:#F2F8D4;display:grid;place-items:center;color:#365E10"><i data-lucide="upload" style="font-size:24px"></i></span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Importar planilha</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">XLSX ou CSV · o assistente confere as colunas antes de gravar</span>
+</a>
+<a href="produto-cadastro.dc.html" style="text-decoration:none;color:inherit;border:1px solid #E4E8EF;border-radius:10px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center" style-hover="background:#F7F9FB">
+<span style="width:48px;height:48px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="package" style="font-size:24px"></i></span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Cadastrar à mão</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Bom para começar com poucos produtos e testar o pedido</span>
+</a>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{ e4 }}" hint-placeholder-val="{{ false }}">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Passo 4 de 5</span>
+<h1 style="font:600 24px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:8px 0 4px">Traga sua carteira de clientes</h1>
+<p style="margin:0 0 24px;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">Importe a planilha de clientes ou cadastre o primeiro. Cliente com CNPJ completo já sai no PDF do pedido do jeito que a indústria exige.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px" data-va-half="">
+<a href="importacao-nova.dc.html" style="text-decoration:none;color:inherit;border:1px dashed #B4BCC9;border-radius:10px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center" style-hover="border-color:#78A614;background:#FBFDF4">
+<span style="width:48px;height:48px;border-radius:8px;background:#F2F8D4;display:grid;place-items:center;color:#365E10"><i data-lucide="upload" style="font-size:24px"></i></span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Importar planilha de clientes</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">O assistente identifica CNPJ, endereço e contato</span>
+</a>
+<a href="cliente-cadastro.dc.html" style="text-decoration:none;color:inherit;border:1px solid #E4E8EF;border-radius:10px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center" style-hover="background:#F7F9FB">
+<span style="width:48px;height:48px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="building-2" style="font-size:24px"></i></span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Cadastrar o primeiro cliente</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Só CNPJ e nome bastam para emitir o primeiro pedido</span>
+</a>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{ e5 }}" hint-placeholder-val="{{ false }}">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:32px;text-align:center">
+<span style="width:72px;height:72px;border-radius:999px;background:#E6F2ED;display:inline-grid;place-items:center;color:#0E7D57;margin-bottom:16px"><i data-lucide="circle-check" style="font-size:36px"></i></span>
+<h1 style="font:600 24px/1.3 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 8px">Tudo pronto para o primeiro pedido</h1>
+<p style="margin:0 auto 24px;max-width:440px;font:400 14px/1.65 'IBM Plex Sans';color:#454F5E">Escritório, representada, produtos e clientes no lugar. O caminho agora é o de todo dia: emitir pedido, acompanhar o faturamento e conferir a comissão.</p>
+<div style="display:flex;gap:8px;justify-content:center">
+<a href="pedidos-novo.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="lg" icon-left="file-plus-2" dc-props="{{ btnProps }}" hint-size="auto,48px">Emitir o primeiro pedido</x-import></a>
+<a href="inicio.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="lg" hint-size="auto,48px">Ir para o início</x-import></a>
+</div>
+</section>
+</sc-if>
+<sc-if value="{{ temNav }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:space-between;margin-top:16px">
+<sc-if value="{{ temVoltar }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" icon-left="arrow-left" onClick="{{ voltar }}" hint-size="auto,40px">Voltar</x-import>
+</sc-if>
+<sc-if value="{{ semVoltar }}" hint-placeholder-val="{{ true }}"><span></span></sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-right="arrow-right" onClick="{{ avancar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ avancarLabel }}</x-import>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { passo: 1, feitos: {} };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const P = this.state.passo;
+    const defs = [
+      { n: 1, titulo: 'Seu escritório', sub: 'Nome, CNPJ e tamanho' },
+      { n: 2, titulo: 'Primeira representada', sub: 'Quem você representa' },
+      { n: 3, titulo: 'Produtos e preços', sub: 'Planilha ou cadastro' },
+      { n: 4, titulo: 'Carteira de clientes', sub: 'Planilha ou primeiro cliente' },
+      { n: 5, titulo: 'Primeiro pedido', sub: 'O caminho de todo dia' },
+    ];
+    const row = (on) => "position:relative;display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:6px;border:0;width:100%;cursor:pointer;background:" + (on ? '#F2F8D4' : 'transparent');
+    const dotOn = "width:26px;height:26px;border-radius:999px;background:#78A614;color:#F3F3F3;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';flex:none";
+    const dotFeito = "width:26px;height:26px;border-radius:999px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';flex:none";
+    const dotOff = "width:26px;height:26px;border-radius:999px;background:#E4E8EF;color:#5B6678;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';flex:none";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      passos: defs.map(p => ({
+        titulo: p.titulo, sub: p.sub,
+        style: row(P === p.n),
+        dot: this.state.feitos[p.n] ? '✓' : String(p.n),
+        dotStyle: P === p.n ? dotOn : (this.state.feitos[p.n] ? dotFeito : dotOff),
+        ir: () => this.setState({ passo: p.n }),
+      })),
+      e1: P === 1, e2: P === 2, e3: P === 3, e4: P === 4, e5: P === 5,
+      temNav: P < 5,
+      temVoltar: P > 1, semVoltar: P === 1,
+      avancarLabel: P === 4 ? 'Concluir configuração' : 'Continuar',
+      voltar: () => this.setState(s => ({ passo: Math.max(1, s.passo - 1) })),
+      avancar: () => this.setState(s => ({ passo: Math.min(5, s.passo + 1), feitos: { ...s.feitos, [s.passo]: true } })),
+    };
+  }
+}
+</script>
+</body>
+</html>

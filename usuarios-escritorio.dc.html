@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CFG-05 Usuários do escritório" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="configuracoes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1080px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="configuracoes.dc.html" style="text-decoration:none">Configurações</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Usuários do escritório</span></nav>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Usuários do escritório</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Papéis administrativos: dono, gestor e financeiro. Vendedores entram por <a href="vendedores.dc.html" style="font-weight:500;text-decoration:none">Equipe → Vendedores</a>, com carteira e comissão próprias.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="user-round-plus" onClick="{{ abrirConvite }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Convidar usuário</x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto;margin-bottom:16px">
+<div style="min-width:840px;display:grid;grid-template-columns:1fr 170px 160px 150px 84px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Usuário</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Papel</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Último acesso</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span></span>
+</div>
+<sc-for list="{{ usuarios }}" as="u" hint-placeholder-count="4">
+<div style="min-width:840px;display:grid;grid-template-columns:1fr 170px 160px 150px 84px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;align-items:center;gap:12px;min-width:0">
+<span style="width:36px;height:36px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 12px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ u.iniciais }}</span>
+<span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ u.nome }}{{ u.voce }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ u.email }}</span></span>
+</div>
+<sc-if value="{{ u.dono }}" hint-placeholder-val="{{ false }}"><span style="font:500 13.5px/1 'IBM Plex Sans'">Dono</span></sc-if>
+<sc-if value="{{ u.naoDono }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="va-select" label="" options="Gestor|Financeiro" value="{{ u.papel }}" hint-size="100%,36px"></x-import></sc-if>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ u.acesso }}</span>
+<span style="{{ u.stStyle }}"><i data-lucide="{{ u.stIcone }}" style="font-size:13px"></i>{{ u.st }}</span>
+<div style="display:flex;gap:4px;justify-content:flex-end">
+<sc-if value="{{ u.pendente }}" hint-placeholder-val="{{ false }}"><button onClick="{{ u.reenviar }}" aria-label="Reenviar convite" title="Reenviar convite" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="send" style="font-size:16px"></i></button></sc-if>
+<sc-if value="{{ u.naoDono }}" hint-placeholder-val="{{ true }}"><button onClick="{{ u.remover }}" aria-label="Remover usuário" title="Remover usuário" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:16px"></i></button></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px;max-width:720px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">O que cada papel pode fazer</span>
+<sc-for list="{{ papeis }}" as="p" hint-placeholder-count="4">
+<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:36px;height:36px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E;flex:none"><i data-lucide="{{ p.icone }}" style="font-size:17px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ p.nome }}</span><span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">{{ p.desc }}</span></span>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ conviteOpen }}" onClose="{{ fechar }}" title="Convidar usuário" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">A pessoa recebe um e-mail, cria a senha e entra com o papel escolhido. Para convidar um vendedor, use Equipe → Vendedores.</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" placeholder="Helena Souza" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" type="email" required="{{ true }}" placeholder="helena@rezende.com.br" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="va-select" label="Papel" options="Gestor|Financeiro" value="Financeiro" help="Dá pra trocar depois, direto na lista" hint-size="100%,88px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="send" onClick="{{ convidar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Enviar convite</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ removerOpen }}" onClose="{{ fechar }}" title="{{ removerTitulo }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FDF0F1;color:#B3202F;display:grid;place-items:center;flex:none"><i data-lucide="triangle-alert" style="font-size:20px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">A pessoa perde o acesso na hora. O que ela criou — pedidos, lançamentos, clientes — fica no escritório.</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="user-round-x" onClick="{{ remover }}" hint-size="auto,40px">Remover usuário</x-import>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { conviteOpen: false, removerOpen: false, alvo: null, toast: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const st = {
+      ativo: { st: 'Ativo', icone: 'circle-check', style: "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244" },
+      pendente: { st: 'Convite pendente', icone: 'clock', style: "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00" },
+    };
+    const defs = [
+      { iniciais: 'RR', nome: 'Ricardo Rezende', voce: ' (você)', email: 'ricardo@rezende.com.br', papel: 'Dono', dono: true, acesso: 'agora', sit: 'ativo' },
+      { iniciais: 'MG', nome: 'Marta Gonçalves', voce: '', email: 'marta@rezende.com.br', papel: 'Financeiro', dono: false, acesso: 'ontem, 17:40', sit: 'ativo' },
+      { iniciais: 'HS', nome: 'Helena Souza', voce: '', email: 'helena@rezende.com.br', papel: 'Gestor', dono: false, acesso: 'convite enviado 11/08', sit: 'pendente' },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      usuarios: defs.map(u => {
+        const s = st[u.sit];
+        return {
+          ...u, ...s,
+          stIcone: s.icone, stStyle: s.style,
+          naoDono: !u.dono,
+          pendente: u.sit === 'pendente',
+          reenviar: () => this.avisar('Convite reenviado para ' + u.email),
+          remover: () => this.setState({ removerOpen: true, alvo: u }),
+        };
+      }),
+      papeis: [
+        { icone: 'crown', nome: 'Dono', desc: 'Tudo, incluindo plano, cobrança e remoção de usuários. Só um por escritório.' },
+        { icone: 'briefcase', nome: 'Gestor', desc: 'Aprova pedidos, gerencia equipe, metas, cadastros e o CRM. Não mexe no plano.' },
+        { icone: 'calculator', nome: 'Financeiro', desc: 'Faturamento, comissões, contas a receber e relatórios. Não emite pedido.' },
+      ],
+      conviteOpen: this.state.conviteOpen,
+      removerOpen: this.state.removerOpen,
+      removerTitulo: 'Remover ' + (this.state.alvo ? this.state.alvo.nome : 'usuário') + '?',
+      abrirConvite: () => this.setState({ conviteOpen: true }),
+      convidar: () => { this.setState({ conviteOpen: false }); this.avisar('Convite enviado — o usuário aparece como pendente'); },
+      remover: () => { this.setState({ removerOpen: false }); this.avisar('Usuário removido do escritório'); },
+      fechar: () => this.setState({ conviteOpen: false, removerOpen: false }),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

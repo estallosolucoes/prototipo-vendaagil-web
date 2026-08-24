@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CRM-05 Ficha do contato" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="contatos" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="crm-contatos.dc.html" style="text-decoration:none">Contatos</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Sérgio Baltazar</span></nav>
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+<span style="width:56px;height:56px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 18px/1 'IBM Plex Sans';color:#454F5E">SB</span>
+<div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:220px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Sérgio Baltazar</h1>
+<span style="font:400 14px/1.5 'IBM Plex Sans';color:#454F5E">Dono · Móveis Baltazar · (54) 99655-0917 · ainda não é cliente</span>
+<div style="display:flex;gap:4px;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';color:#8A5B00;background:#FCF3DF">Reativação</span>
+<button onClick="{{ addTag }}" style="display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 9px;border-radius:999px;border:1px dashed #98A2B3;background:transparent;color:#5B6678;font:500 11.5px/1 'IBM Plex Sans';cursor:pointer" style-hover="border-color:#628A11;color:#365E10"><i data-lucide="plus" style="font-size:11px"></i>etiqueta</button>
+</div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<a href="crm-conversas.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="message-circle" hint-size="auto,40px">Abrir conversa</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="user-round-check" onClick="{{ abrirConverter }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Converter em cliente</x-import>
+</div>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Empresas e CNPJs</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Um contato pode comprar por mais de uma razão social</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addCnpj }}" hint-size="auto,32px">Adicionar CNPJ</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ cnpjs }}" as="c" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #EDF0F5;flex-wrap:wrap">
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:200px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ c.razao }}</span>
+<span style="font:400 12.5px/1 'IBM Plex Mono',monospace;color:#5B6678">{{ c.cnpj }}</span>
+</span>
+<span style="{{ c.stStyle }}">{{ c.st }}</span>
+<button aria-label="Remover CNPJ" title="Remover CNPJ" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Grupo de contatos — Móveis Baltazar</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Pessoas do mesmo CNPJ ficam agrupadas; a conversa mostra o grupo inteiro</span>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ grupo }}" as="g" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:34px;height:34px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 11px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ g.iniciais }}</span>
+<span style="display:flex;flex-direction:column;gap:1px;flex:1"><span style="font:500 14px/1.3 'IBM Plex Sans'">{{ g.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ g.papel }} · {{ g.fone }}</span></span>
+<a href="crm-conversas.dc.html" aria-label="Abrir conversa" title="Abrir conversa" style="width:32px;height:32px;border-radius:6px;display:grid;place-items:center;color:#7A8699;text-decoration:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="message-circle" style="font-size:16px"></i></a>
+</div>
+</sc-for>
+</div>
+<button onClick="{{ addPessoa }}" style="display:flex;align-items:center;gap:6px;border:0;background:transparent;color:#365E10;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:4px 0;width:fit-content" style-hover="text-decoration:underline"><i data-lucide="plus" style="font-size:14px"></i>Adicionar pessoa ao grupo</button>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Histórico</span>
+<sc-for list="{{ historico }}" as="h" hint-placeholder-count="4">
+<div style="display:flex;gap:12px;padding-bottom:12px">
+<span style="display:flex;flex-direction:column;align-items:center;flex:none"><span style="width:28px;height:28px;border-radius:999px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="{{ h.icone }}" style="font-size:14px"></i></span><span style="flex:1;width:1px;background:#E4E8EF;margin-top:4px"></span></span>
+<span style="display:flex;flex-direction:column;gap:2px;padding-top:4px"><span style="font:500 13.5px/1.4 'IBM Plex Sans'">{{ h.texto }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">{{ h.quando }}</span></span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Dados do contato</span>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">WhatsApp</span><span style="font:500 14px/1.3 'IBM Plex Mono',monospace">(54) 99655-0917</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">E-mail</span><span style="font:500 14px/1.3 'IBM Plex Sans'">sergio@baltazar.com.br</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Origem</span><span style="font:500 14px/1.3 'IBM Plex Sans'">Indicação · feira Movelsul 2026</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Vendedor</span><span style="font:500 14px/1.3 'IBM Plex Sans'">Carlos Rezende</span></div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Negócios deste contato</span>
+<a href="crm-negocios.dc.html" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:6px;text-decoration:none;color:inherit;background:#FAFBFC" style-hover="background:#F2F4F7">
+<i data-lucide="trending-up" style="font-size:16px;color:#5B6678"></i>
+<span style="flex:1;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Reativação após 180 dias</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">Primeiro contato · R$ 9.100 · 12 dias parado</span></span>
+<i data-lucide="chevron-right" style="font-size:15px;color:#7A8699"></i>
+</a>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Nenhum pedido ainda — o contato vira cliente na conversão.</span>
+</div>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ converterOpen }}" onClose="{{ fechar }}" title="Converter em cliente" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Os dados do contato já vão preenchidos — nada de redigitar. Complete o que faltar no cadastro do cliente.</span>
+<div style="background:#F7F9FB;border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Razão social</span><span style="font:500 13px/1.4 'IBM Plex Sans'">Baltazar Móveis e Decorações Ltda</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">CNPJ</span><span style="font:500 13px/1 'IBM Plex Mono',monospace">28.114.507/0001-91</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Contato</span><span style="font:500 13px/1.4 'IBM Plex Sans'">Sérgio Baltazar · (54) 99655-0917</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Vendedor</span><span style="font:500 13px/1.4 'IBM Plex Sans'">Carlos Rezende</span></div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<a href="cliente-cadastro.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="user-round-check" dc-props="{{ btnProps }}" hint-size="auto,40px">Abrir cadastro preenchido</x-import></a>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { converterOpen: false, toast: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      cnpjs: [
+        { razao: 'Baltazar Móveis e Decorações Ltda', cnpj: '28.114.507/0001-91', st: 'Matriz', stStyle: "display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';color:#0C477B;background:#EAF4FD" },
+        { razao: 'Baltazar Filial Litoral Ltda', cnpj: '28.114.507/0002-72', st: 'Filial', stStyle: "display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';color:#454F5E;background:#EDF0F5" },
+      ],
+      addCnpj: () => this.avisar('Busque pelo CNPJ — os dados vêm da Receita'),
+      grupo: [
+        { iniciais: 'SB', nome: 'Sérgio Baltazar', papel: 'Dono', fone: '(54) 99655-0917' },
+        { iniciais: 'LB', nome: 'Luciana Baltazar', papel: 'Financeiro', fone: '(54) 99218-4406' },
+      ],
+      addPessoa: () => this.avisar('Pessoa adicionada ao grupo Móveis Baltazar'),
+      addTag: () => this.avisar('Escolha a etiqueta na lista'),
+      historico: [
+        { icone: 'message-circle', texto: 'WhatsApp: "vou ver com o financeiro" — sobre a proposta de reativação', quando: 'ontem, 16:02' },
+        { icone: 'map-pin', texto: 'Visita: loja em reforma, vai ampliar o setor de escritório', quando: '28/07' },
+        { icone: 'tag', texto: 'Etiqueta Reativação aplicada por Carlos', quando: '28/07' },
+        { icone: 'plus', texto: 'Contato criado a partir do WhatsApp', quando: '15/07' },
+      ],
+      converterOpen: this.state.converterOpen,
+      abrirConverter: () => this.setState({ converterOpen: true }),
+      fechar: () => this.setState({ converterOpen: false }),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

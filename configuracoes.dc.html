@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CFG-01 Configurações" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="configuracoes" hint-size="0px,0px"></dc-import>
+<main style="max-width:980px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;flex-direction:column;gap:4px;margin-bottom:24px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Configurações</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Escritório Rezende Representações</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 4px">Escritório</h2>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:0 0 16px">Dados que aparecem no PDF do pedido e nos e-mails para os clientes.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Razão social" value="Rezende Representações Ltda" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CNPJ" value="04.882.190/0001-27" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Telefone" value="(54) 3221-8007" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail do escritório" value="contato@rezende.com.br" hint-size="100%,66px"></x-import>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 4px">Regras de venda</h2>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:0 0 16px">Limites que valem para todos os vendedores. Acima disso, o pedido vai para aprovação.</p>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desconto máximo sem aprovação" suffix="%" numeric="{{ true }}" value="12,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Quem aprova exceções" options="Só o dono|Dono e gestores" value="Dono e gestores" hint-size="100%,66px"></x-import>
+</div>
+<div style="margin-top:16px;display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ regras }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ r.titulo }}</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ r.sub }}</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ r.on }}" onChange="{{ r.toggle }}" aria-label="{{ r.titulo }}" hint-size="44px,24px"></x-import>
+</div>
+</sc-for>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 4px">Notificações</h2>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:0 0 16px">O que chega para você por e-mail e no celular.</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ notifs }}" as="n" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ n.titulo }}</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ n.sub }}</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ n.on }}" onChange="{{ n.toggle }}" aria-label="{{ n.titulo }}" hint-size="44px,24px"></x-import>
+</div>
+</sc-for>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 4px">Integrações</h2>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:0 0 16px">Conexões com serviços externos.</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:40px;height:40px;border-radius:8px;background:#E8F7F0;display:grid;place-items:center;color:#0A6244"><i data-lucide="message-circle" style="font-size:20px"></i></span>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">WhatsApp Business</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#0A6244">Conectado · (54) 99912-8007</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" hint-size="auto,32px">Desconectar</x-import>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="users-round" style="font-size:20px"></i></span>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Usuários do escritório</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">3 usuários · papéis dono, gestor e financeiro</span>
+</div>
+<a href="usuarios-escritorio.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" hint-size="auto,32px">Gerenciar</x-import></a>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 0">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="mail" style="font-size:20px"></i></span>
+<div style="flex:1;display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Envio de e-mail (SMTP)</span>
+<sc-if value="{{ smtpConfigurado }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;font:400 13px/1.4 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:14px"></i>Configurado · {{ smtpHostSalvo }} · contato@rezende.com.br</span></sc-if>
+<sc-if value="{{ smtpNaoConfigurado }}" hint-placeholder-val="{{ true }}"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Sem SMTP, os pedidos saem pelo seu aplicativo de e-mail padrão</span></sc-if>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" onClick="{{ abrirSmtp }}" hint-size="auto,32px">Configurar</x-import>
+</div>
+</div>
+</section>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ salvar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ salvarLabel }}</x-import>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ smtpOpen }}" onClose="{{ fecharSmtp }}" title="Configurar envio de e-mail" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">Com o SMTP configurado, a cópia do pedido sai direto do sistema, com o seu e-mail como remetente — sem abrir outro aplicativo.</span>
+<x-import component-from-global-scope="va-select" label="Provedor" options="KingHost|Gmail / Google Workspace|Outlook / Microsoft 365|Locaweb|UOL Host|Outro" value="{{ provedor }}" help="Escolher o provedor preenche servidor e porta" hint-size="100%,88px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr) 110px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Servidor SMTP" code="{{ true }}" value="{{ smtpHost }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Segurança" options="SSL|TLS|Nenhuma" value="SSL" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Porta" code="{{ true }}" value="{{ smtpPorta }}" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Usuário" value="contato@rezende.com.br" help="Normalmente o próprio e-mail" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Senha" type="password" value="••••••••••" help="{{ dicaSenha }}" hint-size="100%,88px"></x-import>
+</div>
+<sc-if value="{{ testou }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:10px;padding:12px 14px;border-radius:6px;border:1px solid #A8DCC5;background:#E8F7F0;color:#0A6244">
+<i data-lucide="circle-check" style="font-size:18px;margin-top:1px;flex:none"></i>
+<span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#021226">Conexão feita. Um e-mail de teste foi enviado para contato@rezende.com.br — confira a caixa de entrada.</span>
+</div>
+</sc-if>
+<div style="display:flex;justify-content:space-between;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="plug-zap" loading="{{ testando }}" onClick="{{ testarSmtp }}" hint-size="auto,40px">Testar conexão</x-import>
+<div style="display:flex;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharSmtp }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ salvarSmtp }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar SMTP</x-import>
+</div>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    salvo: false, smtpOpen: false, smtpSalvo: false, testando: false, testou: false, provedor: 'KingHost',
+    regras: { bloqueado: true, minimo: true, estoque: false },
+    notifs: { pedidoCatalogo: true, aprovacao: true, faturamento: true, titulo: false },
+  };
+  componentDidMount() {
+    this.paint();
+    this._chg = (e) => {
+      const t = e.target;
+      if (t && t.tagName === 'VA-SELECT' && t.getAttribute('label') === 'Provedor' && e.detail && e.detail.value) {
+        this.setState({ provedor: e.detail.value, testou: false });
+      }
+    };
+    document.addEventListener('change', this._chg);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const regraDefs = [
+      { id: 'bloqueado', titulo: 'Bloquear pedido para cliente com título vencido', sub: 'O vendedor ainda pode emitir como orçamento' },
+      { id: 'minimo', titulo: 'Exigir pedido mínimo da representada', sub: 'Usa o mínimo definido em cada representada' },
+      { id: 'estoque', titulo: 'Avisar quando o item estiver sem estoque', sub: 'Usa o estoque da última importação de cada indústria' },
+    ];
+    const notifDefs = [
+      { id: 'pedidoCatalogo', titulo: 'Pedido recebido pelo catálogo B2B', sub: 'Na hora, por e-mail e notificação' },
+      { id: 'aprovacao', titulo: 'Pedido aguardando sua aprovação', sub: 'Na hora, por e-mail e notificação' },
+      { id: 'faturamento', titulo: 'Resumo diário de faturamentos', sub: 'Todo dia útil às 18h' },
+      { id: 'titulo', titulo: 'Título de cliente vencendo em 3 dias', sub: 'Um e-mail por cliente' },
+    ];
+    const provs = {
+      'KingHost': { host: 'smtp.kinghost.net', porta: '465', dica: 'A mesma senha do webmail' },
+      'Gmail / Google Workspace': { host: 'smtp.gmail.com', porta: '465', dica: 'Use uma senha de app, criada em conta.google.com — a senha normal não funciona' },
+      'Outlook / Microsoft 365': { host: 'smtp.office365.com', porta: '587', dica: 'A mesma senha da conta Microsoft' },
+      'Locaweb': { host: 'email-ssl.com.br', porta: '465', dica: 'A mesma senha do webmail' },
+      'UOL Host': { host: 'smtps.uhserver.com', porta: '465', dica: 'A mesma senha do webmail' },
+      'Outro': { host: '', porta: '465', dica: 'Peça os dados ao suporte do seu provedor de e-mail' },
+    };
+    const pv = provs[this.state.provedor] || provs['Outro'];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      smtpOpen: this.state.smtpOpen,
+      smtpConfigurado: this.state.smtpSalvo,
+      smtpNaoConfigurado: !this.state.smtpSalvo,
+      provedor: this.state.provedor,
+      smtpHost: pv.host, smtpPorta: pv.porta, dicaSenha: pv.dica,
+      testando: this.state.testando,
+      testou: this.state.testou,
+      abrirSmtp: () => this.setState({ smtpOpen: true }),
+      fecharSmtp: () => this.setState({ smtpOpen: false, testando: false, testou: false }),
+      testarSmtp: () => { this.setState({ testando: true }); setTimeout(() => this.setState({ testando: false, testou: true }), 1100); },
+      salvarSmtp: () => this.setState({ smtpOpen: false, smtpSalvo: true, testou: false, hostSalvo: pv.host || 'smtp.rezende.com.br' }),
+      smtpHostSalvo: this.state.hostSalvo || '',
+      salvarLabel: this.state.salvo ? 'Configurações salvas' : 'Salvar configurações',
+      salvar: () => { this.setState({ salvo: true }); setTimeout(() => this.setState({ salvo: false }), 2500); },
+      regras: regraDefs.map(r => ({
+        ...r, on: this.state.regras[r.id],
+        toggle: () => this.setState(s => ({ regras: { ...s.regras, [r.id]: !s.regras[r.id] } })),
+      })),
+      notifs: notifDefs.map(n => ({
+        ...n, on: this.state.notifs[n.id],
+        toggle: () => this.setState(s => ({ notifs: { ...s.notifs, [n.id]: !s.notifs[n.id] } })),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="REP-03 Detalhe da representada" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="representadas" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="representadas.dc.html" style="text-decoration:none">Representadas</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Móveis Vale</span></nav>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="width:52px;height:52px;border-radius:10px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:600 17px/1 'IBM Plex Sans'">MV</span>
+<div style="display:flex;flex-direction:column;gap:3px">
+<h1 style="font:600 24px/1.2 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Móveis Vale</h1>
+<span style="font:400 13.5px/1.4 'IBM Plex Sans';color:#454F5E">Móveis corporativos · Caxias do Sul, RS · código MV-01 · pedidos@moveisvale.com.br</span>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="pencil" hint-size="auto,40px">Editar cadastro</x-import>
+</div>
+<div style="display:flex;gap:2px;border-bottom:1px solid #E4E8EF;margin-bottom:24px">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.ir }}" style="{{ a.estilo }}">{{ a.rotulo }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ vConfig }}" hint-placeholder-val="{{ true }}">
+<div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Regras do pedido</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Pedido mínimo" prefix="R$" numeric="{{ true }}" value="1.500,00" help="Abaixo disso o vendedor vê um aviso e confirma para seguir" hint-size="100%,88px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Casas decimais no preço" options="2 casas — R$ 0,00|4 casas — R$ 0,0000" value="2 casas — R$ 0,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Próximo número de pedido" numeric="{{ true }}" value="4.813" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="va-select" label="Base de cálculo da comissão" options="Sobre o faturamento (recomendado)|Sobre a emissão do pedido" value="Sobre o faturamento (recomendado)" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 16px/1.3 'IBM Plex Sans'">Política comercial</span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="pencil" onClick="{{ abrirPolitica }}" hint-size="auto,32px">Editar</x-import></div>
+<p style="margin:0;font:400 13.5px/1.65 'IBM Plex Sans';color:#454F5E">Frete CIF para pedidos acima de R$ 4.000,00 na serra gaúcha. Desconto progressivo: 3% acima de R$ 8.000, 5% acima de R$ 15.000. Prazo de produção de linha: 12 dias úteis. Cor especial: +15 dias e mínimo de 10 unidades por item.</p>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Comissão padrão</span>
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 34px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;letter-spacing:-.02em">5,00%</span><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">sobre o faturamento · estações e mesas de reunião: 4,00–4,50%</span></div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ vCondicoes }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px;max-width:640px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Condições aceitas por esta representada</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="À vista (desconto 3,00%)" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="28 dias" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60/90" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60/90/120 (acréscimo 2,00%)" hint-size="auto,20px"></x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A condição desmarcada não aparece na emissão de pedido desta representada.</span>
+</div>
+</sc-if>
+<sc-if value="{{ vDesempenho }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:var(--va-g4,repeat(4,1fr));gap:16px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatCard" label="Vendido no mês" value="248312.90" delta="{{ 12.6 }}" compare="R$ 220.480,00 em julho" icon="clipboard-list" hint-size="100%,140px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatCard" label="Faturado no mês" value="228914.10" delta="{{ 8.2 }}" compare="R$ 211.560,00 em julho" icon="file-text" hint-size="100%,140px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatCard" label="Corte de pedido" value="7,8%" money="{{ false }}" delta="{{ -1.5 }}" compare="melhor que os 9,3% de julho" icon="scissors" hint-size="100%,140px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatCard" label="Comissão prevista" value="11445.70" delta="{{ 9.1 }}" compare="R$ 10.490,00 em julho" icon="receipt" hint-size="100%,140px"></x-import>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ politicaOpen }}" onClose="{{ fechar }}" title="Editar política comercial" size="lg" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Política comercial" help="Aparece para o vendedor durante a negociação do pedido" max-length="{{ 3000 }}" rows="{{ 8 }}" value="Frete CIF para pedidos acima de R$ 4.000,00 na serra gaúcha. Desconto progressivo: 3% acima de R$ 8.000, 5% acima de R$ 15.000. Prazo de produção de linha: 12 dias úteis. Cor especial: +15 dias e mínimo de 10 unidades por item." hint-size="100%,220px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar política</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { aba: 'config', politicaOpen: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const defs = [
+      { id: 'config', rotulo: 'Configurações' },
+      { id: 'condicoes', rotulo: 'Condições de pagamento' },
+      { id: 'desempenho', rotulo: 'Desempenho' },
+    ];
+    const on = "position:relative;height:40px;padding:0 16px;border:0;background:transparent;cursor:pointer;font:600 14px/1 'IBM Plex Sans';color:#021226;box-shadow:inset 0 -2px 0 #628A11";
+    const off = "height:40px;padding:0 16px;border:0;background:transparent;cursor:pointer;font:500 14px/1 'IBM Plex Sans';color:#5B6678";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: defs.map(a => ({ ...a, estilo: this.state.aba === a.id ? on : off, ir: () => this.setState({ aba: a.id }) })),
+      vConfig: this.state.aba === 'config',
+      vCondicoes: this.state.aba === 'condicoes',
+      vDesempenho: this.state.aba === 'desempenho',
+      politicaOpen: this.state.politicaOpen,
+      abrirPolitica: () => this.setState({ politicaOpen: true }),
+      fechar: () => this.setState({ politicaOpen: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

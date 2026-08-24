@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<script src="va-tarefas.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}input[type="date"],input[type="time"]{font-size:16px}</style>
+</helmet>
+<div data-screen-label="CRM-05 Tarefas" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="tarefas" hint-size="0px,0px"></dc-import>
+<main style="max-width:1400px;margin:0 auto;padding:44px 24px 56px 112px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Tarefas</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">{{ subtitulo }}</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="tag" onClick="{{ abrirTipos }}" hint-size="auto,40px">Tipos de tarefa</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Nova tarefa</x-import>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
+<div style="display:flex;gap:4px;background:#FFFFFF;border-radius:8px;padding:4px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto;max-width:100%">
+<sc-for list="{{ periodos }}" as="p" hint-placeholder-count="4">
+<button onClick="{{ p.ir }}" style="{{ p.style }}">{{ p.nome }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ ehPersonalizado }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:6px;background:#FFFFFF;border-radius:8px;padding:4px 10px;box-shadow:0 1px 2px rgba(2,18,38,.06)">
+<input type="date" value="{{ pDe }}" onChange="{{ setPDe }}" aria-label="De" style="height:34px;border:1px solid #CFD6E1;border-radius:6px;padding:0 8px;font-family:'IBM Plex Sans';color:#021226">
+<span style="font:400 13px/1 'IBM Plex Sans';color:#5B6678">até</span>
+<input type="date" value="{{ pAte }}" onChange="{{ setPAte }}" aria-label="Até" style="height:34px;border:1px solid #CFD6E1;border-radius:6px;padding:0 8px;font-family:'IBM Plex Sans';color:#021226">
+</div>
+</sc-if>
+<button onClick="{{ toggleMinhas }}" aria-pressed="{{ minhasOn }}" style="{{ minhasStyle }}"><i data-lucide="user-round" style="font-size:14px"></i>Minhas tarefas</button>
+<span style="flex:1"></span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ statusFiltros }}" as="sf" hint-placeholder-count="4">
+<button onClick="{{ sf.ir }}" aria-pressed="{{ sf.on }}" style="{{ sf.style }}">{{ sf.nome }}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x:auto;padding-bottom:16px">
+<div style="display:flex;gap:14px;align-items:stretch;min-width:max-content">
+<sc-for list="{{ colunas }}" as="col" hint-placeholder-count="4">
+<div style="flex:1;min-width:280px;background:#E9EDF3;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:10px;align-self:stretch;min-height:320px">
+<div style="display:flex;flex-direction:column;gap:8px;padding:6px 6px 2px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span style="font:600 13.5px/1.25 'IBM Plex Sans';letter-spacing:.02em;color:#021226">{{ col.titulo }}</span>
+<span style="font:500 12px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#5B6678;white-space:nowrap">{{ col.resumo }}</span>
+</div>
+<span style="{{ col.linhaStyle }}"></span>
+</div>
+<sc-for list="{{ col.cards }}" as="t" hint-placeholder-count="2">
+<div style="{{ t.cardStyle }}">
+<div style="display:flex;align-items:center;gap:8px">
+<span style="{{ t.tipoStyle }}"><i data-lucide="{{ t.icone }}" style="font-size:14px"></i></span>
+<span style="font:600 11.5px/1 'IBM Plex Sans';color:#5B6678">{{ t.tipoNome }}</span>
+<span style="{{ t.quandoStyle }}"><i data-lucide="clock-3" style="font-size:12px"></i>{{ t.quando }}</span>
+</div>
+<span style="{{ t.tituloStyle }}">{{ t.titulo }}</span>
+<sc-if value="{{ t.temNegocio }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ t.abrirNegocio }}" title="Abrir negócio" style="display:inline-flex;align-items:center;gap:6px;max-width:100%;height:24px;padding:0 8px;border:0;border-radius:999px;background:#EDF0F5;color:#454F5E;cursor:pointer;font:500 11.5px/1 'IBM Plex Sans';align-self:flex-start" style-hover="background:#E4E8EF;color:#021226"><i data-lucide="kanban" style="font-size:12px;flex:none"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.negocio }}</span></button>
+</sc-if>
+<div style="display:flex;align-items:center;gap:8px;border-top:1px solid #EDF0F5;padding-top:8px">
+<span style="width:24px;height:24px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ t.resp }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.cliente }}</span>
+<sc-if value="{{ t.aberta }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ t.concluir }}" title="Marcar como concluída" style="display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border:1px solid #CFD6E1;border-radius:999px;background:#FFFFFF;color:#454F5E;font:600 11.5px/1 'IBM Plex Sans';cursor:pointer;flex:none" style-hover="border-color:#0E7D57;color:#0E7D57;background:#E8F7F0"><i data-lucide="check" style="font-size:13px"></i>Concluir</button>
+</sc-if>
+<sc-if value="{{ t.feita }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ t.reabrir }}" title="Reabrir tarefa" style="display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border:1px solid #CFD6E1;border-radius:999px;background:#FFFFFF;color:#7A8699;font:600 11.5px/1 'IBM Plex Sans';cursor:pointer;flex:none" style-hover="color:#021226"><i data-lucide="undo-2" style="font-size:13px"></i>Reabrir</button>
+</sc-if>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{ col.vazia }}" hint-placeholder-val="{{ false }}">
+<div style="border:1.5px dashed #C4CCD8;border-radius:10px;padding:18px 14px;text-align:center;font:400 12.5px/1.5 'IBM Plex Sans';color:#7A8699">Nenhuma tarefa aqui</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaOpen }}" onClose="{{ fecharNova }}" title="Nova tarefa" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif;max-width:100%;overflow-x:hidden">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Título" value="{{ fTitulo }}" onChange="{{ setFTitulo }}" placeholder="Ex.: Ligar para cobrar retorno da proposta" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Tipo</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ fTipos }}" as="ft" hint-placeholder-count="5">
+<button onClick="{{ ft.pegar }}" aria-pressed="{{ ft.on }}" title="{{ ft.nome }}" style="{{ ft.style }}"><i data-lucide="{{ ft.icone }}" style="font-size:14px"></i>{{ ft.nome }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;gap:10px">
+<div style="display:flex;flex-direction:column;gap:6px;flex:1;width:0;min-width:0">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Data</span>
+<input type="date" value="{{ fData }}" onChange="{{ setFData }}" style="height:44px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font-family:'IBM Plex Sans';color:#021226;width:100%;min-width:0">
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;width:96px;flex:none">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Hora</span>
+<input type="time" value="{{ fHora }}" onChange="{{ setFHora }}" style="height:44px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font-family:'IBM Plex Sans';color:#021226;width:100%">
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;position:relative">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vincular a um negócio</span>
+<div style="position:relative">
+<i data-lucide="search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:#7A8699;pointer-events:none"></i>
+<input value="{{ fNegBusca }}" onInput="{{ setFNegBusca }}" onFocus="{{ focarNegBusca }}" placeholder="Buscar por negócio" aria-label="Buscar por negócio" style="width:100%;height:44px;border:1px solid #CFD6E1;border-radius:6px;padding:0 34px 0 36px;font:400 16px/1 'IBM Plex Sans';color:#021226;background:#FFFFFF" style-focus="outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)">
+<sc-if value="{{ temNegVinculado }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ limparNegocio }}" aria-label="Remover vínculo" title="Remover vínculo" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:26px;height:26px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#F2F4F7;color:#021226"><i data-lucide="x" style="font-size:14px"></i></button>
+</sc-if>
+</div>
+<sc-if value="{{ negSugestoes }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;z-index:30;background:#FFFFFF;border-radius:8px;box-shadow:0 8px 24px rgba(2,18,38,.18);overflow:hidden;max-height:220px;overflow-y:auto">
+<sc-for list="{{ negResultados }}" as="nr" hint-placeholder-count="3">
+<button onClick="{{ nr.pegar }}" style="display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:10px 12px;border:0;background:#FFFFFF;cursor:pointer" style-hover="background:#F8FAF1">
+<i data-lucide="kanban" style="font-size:14px;color:#628A11;flex:none"></i>
+<span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.2 'IBM Plex Sans';color:#021226;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ nr.nome }}</span><span style="font:400 11.5px/1.2 'IBM Plex Sans';color:#7A8699">{{ nr.cliente }}</span></span>
+</button>
+</sc-for>
+<sc-if value="{{ negSemResultado }}" hint-placeholder-val="{{ false }}">
+<span style="display:block;padding:12px;font:400 12.5px/1.4 'IBM Plex Sans';color:#7A8699;text-align:center">Nenhum negócio encontrado</span>
+</sc-if>
+</div>
+</sc-if>
+</div>
+<x-import component-from-global-scope="va-select" label="Responsável" options="Carlos Rezende|Ana Paula Vieira|Renata Cruz|Jorge Tomasi|Paulo Selau" value="Carlos Rezende" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Descrição (opcional)" rows="{{ 2 }}" placeholder="Compradora pediu retorno depois das 14h" hint-size="100%,92px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharNova }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" disabled="{{ semTitulo }}" onClick="{{ criarTarefa }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar tarefa</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ tiposOpen }}" onClose="{{ fecharTipos }}" title="Tipos de tarefa" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ listaTipos }}" as="lt" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #EDF0F5">
+<span style="{{ lt.chipStyle }}"><i data-lucide="{{ lt.icone }}" style="font-size:15px"></i></span>
+<span style="flex:1;font:500 14px/1.3 'IBM Plex Sans'">{{ lt.nome }}</span>
+<span style="font:400 12px/1 'IBM Plex Sans';color:#7A8699">{{ lt.uso }}</span>
+<button onClick="{{ lt.remover }}" aria-label="Excluir tipo" title="Excluir tipo" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:14px"></i></button>
+</div>
+</sc-for>
+</div>
+<div style="background:#F7F9FB;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 13.5px/1.3 'IBM Plex Sans'">Novo tipo</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" value="{{ tNome }}" onChange="{{ setTNome }}" placeholder="Ex.: Reunião" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Ícone</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ tIcones }}" as="ti" hint-placeholder-count="10">
+<button onClick="{{ ti.pegar }}" aria-pressed="{{ ti.on }}" aria-label="Ícone {{ ti.id }}" style="{{ ti.style }}"><i data-lucide="{{ ti.id }}" style="font-size:16px"></i></button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Cor</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ tCores }}" as="tc" hint-placeholder-count="8">
+<button onClick="{{ tc.pegar }}" aria-pressed="{{ tc.on }}" aria-label="Cor" style="{{ tc.style }}"></button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;justify-content:flex-end"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="plus" disabled="{{ semNomeTipo }}" onClick="{{ criarTipo }}" dc-props="{{ btnProps }}" hint-size="auto,32px">Adicionar tipo</x-import></div>
+</div>
+</div>
+</x-import>
+<dc-import name="NegocioDrawer" open="{{ drawerOpen }}" on-close="{{ fecharDrawer }}" cliente="{{ drawerCliente }}" contato="" negocio="{{ drawerNegocio }}" hint-size="0,0"></dc-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    periodo: 'todas', status: 'todos', pDe: '', pAte: '', minhas: false,
+    novaOpen: false, tiposOpen: false, toast: '',
+    fTitulo: '', fTipo: 'ligacao', fData: '', fHora: '09:00', fNegocio: '', fNegBusca: '', negBuscaAtiva: false,
+    tNome: '', tIcone: 'square-check', tCor: '#176FBC',
+    drawerOpen: false, drawerNegocio: '', drawerCliente: '',
+  };
+  componentDidMount() {
+    this.paint();
+    if (window.VATarefas) window.VATarefas.assinar(() => this.forceUpdate());
+    else setTimeout(() => this.forceUpdate(), 300);
+  }
+  componentDidUpdate() { this.paint(); }
+  componentWillUnmount() { clearTimeout(this._t); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const VT = window.VATarefas;
+    const hoje = VT ? VT.hoje() : '';
+    const fmt = (iso) => iso === hoje ? 'Hoje' : iso.slice(8, 10) + '/' + iso.slice(5, 7);
+    const dow = (new Date().getDay() + 6) % 7;
+    const seg = VT ? VT.dISO(-dow) : '', dom = VT ? VT.dISO(6 - dow) : '';
+    const noPeriodo = (t) => {
+      const p = this.state.periodo;
+      if (p === 'hoje') return t.data === hoje;
+      if (p === 'semana') return t.data >= seg && t.data <= dom;
+      if (p === 'perso') return (!this.state.pDe || t.data >= this.state.pDe) && (!this.state.pAte || t.data <= this.state.pAte);
+      return true;
+    };
+    const noStatus = (t) => {
+      const s = this.state.status, st = VT.status(t);
+      if (s === 'abertas') return !t.feita;
+      if (s === 'atrasadas') return st === 'atrasada';
+      if (s === 'concluidas') return t.feita;
+      return true;
+    };
+    const EU = 'CR'; // usuário logado: Carlos Rezende
+    const todas = VT ? VT.tarefas().filter(t => noPeriodo(t) && noStatus(t) && (!this.state.minhas || t.resp === EU)).sort((a, b) => (a.data + a.hora) < (b.data + b.hora) ? -1 : 1) : [];
+    const abertas = VT ? VT.tarefas().filter(t => !t.feita).length : 0;
+    const tabStyle = (on) => "display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;border:0;border-radius:6px;cursor:pointer;white-space:nowrap;font:" + (on ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';background:" + (on ? '#021226' : 'transparent') + ';color:' + (on ? '#F3F3F3' : '#454F5E');
+    const chip = (on) => "display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:6px;cursor:pointer;font:" + (on ? '600' : '500') + " 13px/1 'IBM Plex Sans';border:1px solid " + (on ? '#021226' : '#CFD6E1') + ';background:' + (on ? '#EDF0F5' : '#FFFFFF') + ';color:#021226';
+    const COLS = [
+      { id: 'atrasada', titulo: 'Atrasadas', cor: '#B3202F' },
+      { id: 'hoje', titulo: 'Hoje', cor: '#D9822B' },
+      { id: 'afazer', titulo: 'A fazer', cor: '#4A90D9' },
+      { id: 'concluida', titulo: 'Concluídas', cor: '#0E7D57' },
+    ];
+    const cardTarefa = (t, colCor) => {
+      const tp = VT.tipoDe(t);
+      return {
+        titulo: t.titulo, negocio: t.negocio, temNegocio: !!t.negocio, cliente: t.cliente || 'Sem cliente', resp: t.resp || '—',
+        aberta: !t.feita, feita: !!t.feita,
+        icone: tp.icone, tipoNome: tp.nome,
+        tipoStyle: 'width:26px;height:26px;border-radius:6px;flex:none;display:grid;place-items:center;color:' + tp.cor + ';background:' + tp.cor + '1A',
+        quando: fmt(t.data) + ' · ' + t.hora,
+        quandoStyle: "margin-left:auto;display:inline-flex;align-items:center;gap:4px;font:" + (VT.status(t) === 'atrasada' ? "600 11px/1 'IBM Plex Sans';color:#85202C" : "500 11px/1 'IBM Plex Sans';color:#7A8699"),
+        tituloStyle: "font:600 14px/1.35 'IBM Plex Sans'" + (t.feita ? ';color:#7A8699;text-decoration:line-through' : ''),
+        cardStyle: 'background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);border-bottom:3px solid ' + colCor + ';padding:12px 14px;display:flex;flex-direction:column;gap:8px' + (t.feita ? ';opacity:.75' : ''),
+        abrirNegocio: () => this.setState({ drawerOpen: true, drawerNegocio: t.negocio, drawerCliente: t.cliente || 'Depósito São Jorge' }),
+        concluir: () => { VT.concluir(t.id); this.avisar('Tarefa concluída — boa!'); },
+        reabrir: () => { VT.reabrir(t.id); this.avisar('Tarefa reaberta'); },
+      };
+    };
+    const ICONES = ['phone', 'users-round', 'square-check', 'mail', 'file-text', 'message-circle', 'calendar', 'clock-3', 'star', 'flag', 'bell', 'bookmark', 'tag', 'link-2', 'map-pin'];
+    const CORES = ['#176FBC', '#0E7D57', '#D9822B', '#8B5CB8', '#B3202F', '#2AA1A8', '#C2537A', '#628A11', '#B8860B', '#021226'];
+    const NEGOCIOS = [
+      { nome: 'Mix de lançamento 2027', cliente: 'Depósito São Jorge' },
+      { nome: 'Reposição linha operacional', cliente: 'Casa & Lar Móveis' },
+      { nome: 'Pedido trimestral', cliente: 'Depósito São Jorge' },
+      { nome: 'Gaveteiros — promoção', cliente: 'Lojas Pinheiral' },
+      { nome: 'Linha de poltronas', cliente: 'Móveis Guarani' },
+      { nome: 'Reativação após 180 dias', cliente: 'Móveis Baltazar' },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      subtitulo: VT ? abertas + ' tarefas em aberto · tipos e permissões em Configurações do CRM' : 'Carregando…',
+      periodos: [
+        { id: 'todas', nome: 'Todas' }, { id: 'hoje', nome: 'Hoje' }, { id: 'semana', nome: 'Essa semana' }, { id: 'perso', nome: 'Personalizado' },
+      ].map(p => ({ ...p, style: tabStyle(this.state.periodo === p.id), ir: () => this.setState({ periodo: p.id, pDe: this.state.pDe || seg, pAte: this.state.pAte || dom }) })),
+      ehPersonalizado: this.state.periodo === 'perso',
+      pDe: this.state.pDe, pAte: this.state.pAte,
+      setPDe: (e) => this.setState({ pDe: e.target.value }),
+      setPAte: (e) => this.setState({ pAte: e.target.value }),
+      minhasOn: this.state.minhas,
+      minhasStyle: chip(this.state.minhas),
+      toggleMinhas: () => this.setState(s => ({ minhas: !s.minhas })),
+      statusFiltros: [
+        { id: 'todos', nome: 'Todos os status' }, { id: 'abertas', nome: 'Abertas' }, { id: 'atrasadas', nome: 'Atrasadas' }, { id: 'concluidas', nome: 'Concluídas' },
+      ].map(sf => ({ ...sf, on: this.state.status === sf.id, style: chip(this.state.status === sf.id), ir: () => this.setState({ status: sf.id }) })),
+      colunas: COLS.map(c => {
+        const cards = todas.filter(t => VT && VT.status(t) === c.id).map(t => cardTarefa(t, c.cor));
+        return {
+          titulo: c.titulo,
+          resumo: cards.length + (cards.length === 1 ? ' tarefa' : ' tarefas'),
+          linhaStyle: 'display:block;height:3px;border-radius:999px;background:' + c.cor,
+          vazia: !cards.length,
+          cards,
+        };
+      }),
+      drawerOpen: this.state.drawerOpen,
+      drawerNegocio: this.state.drawerNegocio,
+      drawerCliente: this.state.drawerCliente,
+      fecharDrawer: () => this.setState({ drawerOpen: false }),
+      novaOpen: this.state.novaOpen,
+      abrirNova: () => this.setState({ novaOpen: true, fData: hoje }),
+      fecharNova: () => this.setState({ novaOpen: false }),
+      fTitulo: this.state.fTitulo,
+      setFTitulo: (e) => this.setState({ fTitulo: typeof e === 'string' ? e : e.target.value }),
+      fTipos: (VT ? VT.tipos() : []).map(tp => {
+        const on = this.state.fTipo === tp.id;
+        return { ...tp, on, pegar: () => this.setState({ fTipo: tp.id }),
+          style: "display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 11px;border-radius:999px;cursor:pointer;font:" + (on ? '600' : '500') + " 12.5px/1 'IBM Plex Sans';border:1px solid " + (on ? tp.cor : '#D6DCE5') + ';background:' + (on ? tp.cor + '1A' : '#FFFFFF') + ';color:' + (on ? tp.cor : '#454F5E') };
+      }),
+      fData: this.state.fData || hoje, fHora: this.state.fHora,
+      setFData: (e) => this.setState({ fData: e.target.value }),
+      setFHora: (e) => this.setState({ fHora: e.target.value }),
+      fNegBusca: this.state.fNegBusca,
+      setFNegBusca: (e) => this.setState({ fNegBusca: typeof e === 'string' ? e : e.target.value, negBuscaAtiva: true, fNegocio: '' }),
+      focarNegBusca: () => this.setState({ negBuscaAtiva: true }),
+      temNegVinculado: !!this.state.fNegocio,
+      limparNegocio: () => this.setState({ fNegocio: '', fNegBusca: '', negBuscaAtiva: false }),
+      negSugestoes: this.state.negBuscaAtiva && !this.state.fNegocio && this.state.fNegBusca.trim().length > 0,
+      negResultados: NEGOCIOS.filter(n => n.nome.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0 || n.cliente.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0).slice(0, 6).map(n => ({
+        ...n, pegar: () => this.setState({ fNegocio: n.nome, fNegBusca: n.nome, negBuscaAtiva: false }),
+      })),
+      negSemResultado: !NEGOCIOS.some(n => n.nome.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0 || n.cliente.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0),
+      semTitulo: !this.state.fTitulo.trim(),
+      criarTarefa: () => {
+        if (!VT || !this.state.fTitulo.trim()) return;
+        VT.criar({ titulo: this.state.fTitulo.trim(), tipo: this.state.fTipo, negocio: this.state.fNegocio, cliente: '', resp: 'CR', data: this.state.fData || hoje, hora: this.state.fHora || '09:00' });
+        this.setState({ novaOpen: false, fTitulo: '', fNegocio: '', fNegBusca: '', negBuscaAtiva: false });
+        this.avisar('Tarefa criada');
+      },
+      tiposOpen: this.state.tiposOpen,
+      abrirTipos: () => this.setState({ tiposOpen: true }),
+      fecharTipos: () => this.setState({ tiposOpen: false }),
+      listaTipos: (VT ? VT.tipos() : []).map(tp => ({
+        ...tp,
+        chipStyle: 'width:32px;height:32px;border-radius:8px;flex:none;display:grid;place-items:center;color:#FFFFFF;background:' + tp.cor,
+        uso: (VT.tarefas().filter(t => t.tipo === tp.id).length || 'sem') + ' tarefas',
+        remover: () => { VT.delTipo(tp.id); this.avisar('Tipo excluído — as tarefas antigas guardam o nome'); },
+      })),
+      tNome: this.state.tNome,
+      setTNome: (e) => this.setState({ tNome: typeof e === 'string' ? e : e.target.value }),
+      tIcones: ICONES.map(id => {
+        const on = this.state.tIcone === id;
+        return { id, on, pegar: () => this.setState({ tIcone: id }),
+          style: 'width:38px;height:38px;border-radius:8px;cursor:pointer;display:grid;place-items:center;border:1px solid ' + (on ? this.state.tCor : '#D6DCE5') + ';background:' + (on ? this.state.tCor + '1A' : '#FFFFFF') + ';color:' + (on ? this.state.tCor : '#454F5E') };
+      }),
+      tCores: CORES.map(cor => {
+        const on = this.state.tCor === cor;
+        return { on, pegar: () => this.setState({ tCor: cor }),
+          style: 'width:26px;height:26px;border-radius:999px;border:0;cursor:pointer;background:' + cor + ';box-shadow:' + (on ? '0 0 0 2px #FFFFFF,0 0 0 4px ' + cor : 'none') };
+      }),
+      semNomeTipo: !this.state.tNome.trim(),
+      criarTipo: () => {
+        if (!VT || !this.state.tNome.trim()) return;
+        VT.addTipo({ nome: this.state.tNome.trim(), icone: this.state.tIcone, cor: this.state.tCor });
+        this.setState({ tNome: '' });
+        this.avisar('Tipo de tarefa criado');
+      },
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="TRA-02 Cadastro de transportadora" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="transportadoras" hint-size="0px,0px"></dc-import>
+<main style="max-width:1080px;margin:0 auto;padding:44px 32px 120px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="transportadoras.dc.html" style="text-decoration:none">Transportadoras</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Cadastrar transportadora</span></nav>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 24px">Cadastrar transportadora</h1>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Identificação</span>
+<div style="display:flex;align-items:end;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CNPJ" mask="cnpj" code="{{ true }}" required="{{ true }}" value="{{ cnpj }}" placeholder="00.000.000/0000-00" hint-size="260px,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="search" loading="{{ buscando }}" onClick="{{ buscarCnpj }}" hint-size="auto,40px">Buscar CNPJ</x-import>
+<sc-if value="{{ buscou }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;height:40px;font:400 13px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:15px"></i>Dados preenchidos pela Receita</span></sc-if>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Razão social" required="{{ true }}" value="{{ razao }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome fantasia" value="{{ fantasia }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Inscrição estadual" code="{{ true }}" value="{{ ie }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="RNTRC" code="{{ true }}" value="{{ rntrc }}" help="Registro na ANTT — sai nos documentos de transporte" hint-size="100%,88px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Endereço</span>
+<div class="g-cep" style="display:grid;grid-template-columns:180px 1fr 110px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="CEP" mask="cep" code="{{ true }}" value="{{ cep }}" help="Preenche o endereço" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Endereço" value="{{ endereco }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Número" value="{{ numero }}" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr) 90px;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Bairro" value="{{ bairro }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cidade" value="{{ cidade }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="UF" value="{{ uf }}" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;align-items:start">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Contato</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do contato" placeholder="Quem agenda as coletas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Telefone" mask="telefone" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" placeholder="coleta@transportadora.com.br" hint-size="100%,66px"></x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Observações</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="" rows="{{ 5 }}" placeholder="Coleta na serra às segundas e quintas. Não atende o litoral norte." hint-size="100%,140px"></x-import>
+</div>
+</div>
+</div>
+<div data-va-dock="" style="position:sticky;bottom:0;margin-top:24px;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;justify-content:flex-end;gap:8px;z-index:20">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ voltar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ voltar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar transportadora</x-import>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { buscando: false, buscou: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const b = this.state.buscou;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      buscando: this.state.buscando,
+      buscou: b,
+      cnpj: '07.334.816/0001-20',
+      razao: b ? 'Expresso Serrano Transportes Ltda' : '',
+      fantasia: b ? 'Expresso Serrano' : '',
+      ie: b ? '029/4471203' : '',
+      rntrc: b ? '00412876' : '',
+      cep: b ? '95012-580' : '',
+      endereco: b ? 'Rodovia RSC-453, km 92' : '',
+      numero: b ? 's/n' : '',
+      bairro: b ? 'Distrito Industrial' : '',
+      cidade: b ? 'Caxias do Sul' : '',
+      uf: b ? 'RS' : '',
+      buscarCnpj: () => {
+        this.setState({ buscando: true });
+        setTimeout(() => this.setState({ buscando: false, buscou: true }), 900);
+      },
+      voltar: () => { location.href = 'transportadoras.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

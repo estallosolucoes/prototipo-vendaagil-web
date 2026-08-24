@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>.pn-kpis>*{flex:1 1 250px;min-width:240px;box-sizing:border-box}.pn-baixo>*{flex:1 1 340px;min-width:300px;box-sizing:border-box}.pn-charts>*{flex:1 1 460px;min-width:min(100%,420px);box-sizing:border-box}.pn-charts>*:first-child{flex-grow:2}.pn-abc>*{flex:1 1 380px;min-width:min(100%,340px);box-sizing:border-box}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="PNL-01 Painel de indicadores" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="painel" hint-size="0px,0px"></dc-import>
+<main style="max-width:1440px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Painel</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Agosto de 2026</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="plus" onClick="{{ abrirModal }}" hint-size="auto,40px">Adicionar métrica</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="calendar" hint-size="auto,40px">1 ago – 31 ago</x-import>
+<a href="pedidos-novo.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" dc-props="{{ btnProps }}" hint-size="auto,40px">Emitir pedido</x-import></a>
+</div>
+</div>
+<div style="display:flex;gap:12px;margin-bottom:20px;max-width:280px">
+<x-import component-from-global-scope="va-select" label="Representada" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas as representadas" hint-size="100%,66px"></x-import>
+</div>
+<div class="pn-kpis" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+<sc-if value="{{ v_comissao }}" hint-placeholder-val="{{ true }}">
+<div style="background:#021226;color:#FFFFFF;border-radius:16px;padding:20px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E">Comissão prevista</span>
+<span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="receipt" style="font-size:20px"></i><button onClick="{{ rm_comissao }}" aria-label="Remover métrica" title="Remover do painel" style="width:24px;height:24px;border-radius:6px;border:0;background:transparent;color:rgba(255,255,255,.5);cursor:pointer;display:grid;place-items:center" style-hover="background:rgba(255,255,255,.12);color:#FFFFFF"><i data-lucide="x" style="font-size:14px"></i></button></span>
+</div>
+<div style="display:flex;align-items:baseline;gap:4px;margin-top:16px;font-variant-numeric:tabular-nums">
+<span style="font:500 21px/1 'IBM Plex Sans';color:rgba(255,255,255,.72)">R$</span>
+<span style="font:600 34px/1.1 'IBM Plex Sans';letter-spacing:-.02em">12.405</span>
+<span style="font:500 24px/1 'IBM Plex Sans';color:rgba(255,255,255,.8)">,50</span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-top:12px">
+<span style="display:inline-flex;align-items:center;gap:3px;font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#4FC599"><i data-lucide="arrow-up-right" style="font-size:13px"></i>+12,6%</span>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:rgba(255,255,255,.7)">vs. R$ 11.020,00 em julho</span>
+</div>
+<div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6)">Média 5,00% sobre faturamento</div>
+</div>
+</sc-if>
+<sc-if value="{{ v_faturado }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column">
+<button onClick="{{ rm_faturado }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="file-text" style="font-size:15px"></i>Faturado no mês</span>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:12px;font-variant-numeric:tabular-nums;flex-wrap:wrap">
+<span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">R$ 248.312,90</span>
+<span style="display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 8px;border-radius:999px;background:#FDF0F1;color:#85202C;font:600 12.5px/1 'IBM Plex Sans'"><i data-lucide="arrow-down-right" style="font-size:12px"></i>−4,2%</span>
+</div>
+<div style="margin-top:8px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">R$ 259.200,00 em julho</div>
+</div>
+</sc-if>
+<sc-if value="{{ v_corte }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column">
+<button onClick="{{ rm_corte }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="scissors" style="font-size:15px"></i>Corte de pedido</span>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:12px;font-variant-numeric:tabular-nums;flex-wrap:wrap">
+<span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">7,5%</span>
+<span style="display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 8px;border-radius:999px;background:#E8F7F0;color:#0A6244;font:600 12.5px/1 'IBM Plex Sans'"><i data-lucide="arrow-down-right" style="font-size:12px"></i>−1,8%</span>
+</div>
+<div style="margin-top:8px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">melhor que os 9,3% de julho</div>
+</div>
+</sc-if>
+<sc-for list="{{ extras1 }}" as="e" hint-placeholder-count="0">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06)">
+<button onClick="{{ e.rm }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<span style="display:block;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px">{{ e.nome }}</span>
+<div style="display:flex;align-items:baseline;gap:8px;margin-top:12px;font-variant-numeric:tabular-nums">
+<span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">{{ e.valor }}</span>
+<span style="font:400 14px/1.4 'IBM Plex Sans';color:#5B6678">{{ e.unidade }}</span>
+</div>
+<div style="margin-top:8px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">{{ e.sub }}</div>
+</div>
+</sc-for>
+</div>
+<div class="pn-charts" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;align-items:stretch">
+<sc-if value="{{ v_chart_fat }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Faturamento por mês</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Abril concentra a reposição do varejo</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px">
+<div style="display:inline-flex;padding:2px;gap:2px;background:#E4E8EF;border-radius:6px">
+<button onClick="{{ verMensal }}" style="{{ segMensal }}">Mensal</button>
+<button onClick="{{ verAnual }}" style="{{ segAnual }}">Anual</button>
+</div>
+<button onClick="{{ rm_chart_fat }}" aria-label="Remover métrica" title="Remover do painel" style="width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" highlight="{{ destaque }}" height="{{ h252 }}" hint-size="100%,252px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ v_chart_evo }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<button onClick="{{ rm_chart_evo }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px;padding-right:32px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Evolução e previsão</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Realizado sólido, previsto tracejado, objetivo em linha fina</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.LineChart" realized="{{ realizado }}" forecast="{{ previsto }}" target="{{ alvo }}" labels="{{ meses }}" height="{{ h180 }}" hint-size="100%,220px"></x-import>
+</div>
+</sc-if>
+</div>
+<div class="pn-baixo" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;align-items:stretch">
+<sc-if value="{{ v_ultimos }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Últimos pedidos</span>
+<div style="display:flex;align-items:center;gap:10px">
+<a href="pedidos.dc.html" style="font:600 13px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">Ver todos</a>
+<button onClick="{{ rm_ultimos }}" aria-label="Remover métrica" title="Remover do painel" style="width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+</div>
+</div>
+<sc-for list="{{ ultimos }}" as="p" hint-placeholder-count="4">
+<a href="pedido-detalhe.dc.html" style="display:grid;grid-template-columns:48px minmax(90px,1fr) auto auto;gap:10px;align-items:center;padding:11px 4px;border-bottom:1px solid #EDF0F5;text-decoration:none;color:inherit" style-hover="background:#F7F9FB">
+<span style="font:500 13px/1 'IBM Plex Mono',monospace;color:#5B6678">{{ p.num }}</span>
+<span style="font:500 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.cliente }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ p.total }}</span>
+<span style="{{ p.stStyle }}">{{ p.st }}</span>
+</a>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ v_meta }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.GoalCard" current="{{ metaAtual }}" target="{{ metaAlvo }}" businessDaysLeft="{{ diasUteis }}" projection="{{ projecao }}" hint-size="100%,240px"></x-import>
+<button onClick="{{ rm_meta }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+</div>
+</sc-if>
+<sc-if value="{{ v_positivacao }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<button onClick="{{ rm_positivacao }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px;padding-right:32px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Positivação</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Clientes com pedido no mês</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums">
+<span style="font:600 34px/1.1 'IBM Plex Sans';letter-spacing:-.02em">62</span>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#5B6678">de 148 clientes</span>
+</div>
+<div style="height:8px;border-radius:999px;background:#E4E8EF;overflow:hidden;margin-top:12px"><span style="display:block;height:100%;width:42%;border-radius:999px;background:#78A614"></span></div>
+<div style="display:grid;gap:8px;margin-top:16px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:#E8F7F0;border:1px solid #93DCBE;color:#0A6244;font:500 12px/1 'IBM Plex Sans'"><span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>Ativos</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">62</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:#FFF7E6;border:1px solid #FFD787;color:#855507;font:500 12px/1 'IBM Plex Sans'"><span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>Sem compra 60d</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">38</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:#FDF0F1;border:1px solid #F3B0B7;color:#85202C;font:500 12px/1 'IBM Plex Sans'"><span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>Sem compra 180d</span><span style="font:500 14px/1.4 'IBM Plex Sans';font-variant-numeric:tabular-nums">31</span></div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ v_aprovacoes }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<button onClick="{{ rm_aprovacoes }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Aprovações pendentes</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Descontos acima do seu limite</span>
+</div>
+<sc-for list="{{ aprovacoes }}" as="a" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #EDF0F5">
+<span style="width:32px;height:32px;border-radius:999px;background:#FCF3DF;display:grid;place-items:center;color:#8A5B00;flex:none"><i data-lucide="triangle-alert" style="font-size:15px"></i></span>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column">
+<span style="font:500 13px/1.3 'IBM Plex Sans'">{{ a.titulo }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ a.sub }}</span>
+</div>
+</div>
+</sc-for>
+<a href="pedidos-aprovacoes.dc.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font:600 13px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">Abrir aprovações<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ v_abc_algum }}" hint-placeholder-val="{{ true }}">
+<div class="pn-abc" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;margin-top:16px">
+<sc-if value="{{ v_abc_clientes }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<button onClick="{{ rm_abc_clientes }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Curva ABC de clientes</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ abcCliSub }}</span>
+</div>
+<div style="display:flex;height:10px;border-radius:999px;overflow:hidden;background:#E4E8EF">
+<sc-for list="{{ abcClientesBarra }}" as="ab" hint-placeholder-count="3"><span style="{{ ab.style }}"></span></sc-for>
+</div>
+<div style="display:grid;gap:8px;margin-top:14px">
+<sc-for list="{{ abcClientes }}" as="fx" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="{{ fx.chipStyle }}">{{ fx.faixa }}</span>
+<span style="flex:1;font:400 13px/1.4 'IBM Plex Sans';color:#454F5E">{{ fx.rotulo }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ fx.share }}</span>
+</div>
+</sc-for>
+</div>
+<a href="relatorio.dc.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:600 13px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">Ver relatório completo<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+</div>
+</sc-if>
+<sc-if value="{{ v_abc_produtos }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<button onClick="{{ rm_abc_produtos }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Curva ABC de produtos</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ abcProSub }}</span>
+</div>
+<div style="display:flex;height:10px;border-radius:999px;overflow:hidden;background:#E4E8EF">
+<sc-for list="{{ abcProdutosBarra }}" as="ab" hint-placeholder-count="3"><span style="{{ ab.style }}"></span></sc-for>
+</div>
+<div style="display:grid;gap:8px;margin-top:14px">
+<sc-for list="{{ abcProdutos }}" as="fx" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="{{ fx.chipStyle }}">{{ fx.faixa }}</span>
+<span style="flex:1;font:400 13px/1.4 'IBM Plex Sans';color:#454F5E">{{ fx.rotulo }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ fx.share }}</span>
+</div>
+</sc-for>
+</div>
+<a href="relatorio.dc.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font:600 13px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">Ver relatório completo<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+</div>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ vazio }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:8px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:40px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+<i data-lucide="layout-dashboard" style="font-size:32px;color:#7A8699"></i>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Nenhuma métrica no painel</span>
+<span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#5B6678">Você removeu tudo. Adicione as métricas que quer acompanhar.</span>
+<button onClick="{{ abrirModal }}" style="margin-top:6px;border:none;background:#78A614;border-radius:6px;height:38px;padding:0 16px;cursor:pointer;font:600 13.5px/1 'IBM Plex Sans';color:#F3F3F3" style-hover="background:#679212">Adicionar métrica</button>
+</div>
+</sc-if>
+</main>
+</div>
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:100">
+<div onClick="{{ fecharModal }}" style="position:absolute;inset:0;background:rgba(2,18,38,.55)"></div>
+<div role="dialog" aria-modal="true" aria-label="Adicionar métrica" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(600px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 48px));display:flex;flex-direction:column;background:#FFFFFF;border-radius:16px;box-shadow:0 16px 48px rgba(2,18,38,.28);overflow:hidden">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 20px 12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 17px/1.3 'IBM Plex Sans'">Adicionar métrica</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Escolha o que acompanhar. Para tirar do painel, use o x de cada cartão.</span>
+</div>
+<button onClick="{{ fecharModal }}" aria-label="Fechar" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;color:#454F5E;cursor:pointer;display:grid;place-items:center;flex:none" style-hover="background:#EDF0F5"><i data-lucide="x" style="font-size:17px"></i></button>
+</div>
+<div style="display:flex;gap:6px;padding:0 20px 14px;border-bottom:1px solid #E4E8EF;flex-wrap:wrap">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+<button onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.nome }}</button>
+</sc-for>
+</div>
+<div style="overflow:auto;padding:10px 12px 14px;display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ itensCat }}" as="m" hint-placeholder-count="4">
+<button onClick="{{ m.toggle }}" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border:0;border-radius:8px;background:transparent;cursor:pointer;font-family:inherit;text-align:left;width:100%" style-hover="background:#F2F4F7">
+<span style="width:34px;height:34px;border-radius:6px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none"><i data-lucide="{{ m.icone }}" style="font-size:17px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:500 14px/1.3 'IBM Plex Sans';color:#021226">{{ m.nome }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ m.desc }}</span></span>
+<span style="{{ m.badgeStyle }}">{{ m.badgeTxt }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  CATALOGO = [
+    { id: 'comissao', nome: 'Comissão prevista', cat: 'Financeiro', icone: 'receipt', desc: 'Quanto você recebe se tudo faturar', col: 0 },
+    { id: 'faturado', nome: 'Faturado no mês', cat: 'Financeiro', icone: 'file-text', desc: 'Total faturado pelas representadas', col: 0 },
+    { id: 'corte', nome: 'Corte de pedido', cat: 'Pedido', icone: 'scissors', desc: 'Diferença entre pedido e faturado', col: 0 },
+    { id: 'chart_fat', nome: 'Faturamento por mês', cat: 'Financeiro', icone: 'bar-chart-3', desc: 'Gráfico mensal e anual', col: 1 },
+    { id: 'chart_evo', nome: 'Evolução e previsão', cat: 'Financeiro', icone: 'trending-up', desc: 'Realizado, previsto e objetivo', col: 1 },
+    { id: 'ultimos', nome: 'Últimos pedidos', cat: 'Pedido', icone: 'clipboard-list', desc: 'Os pedidos mais recentes', col: 1 },
+    { id: 'abc_clientes', nome: 'Curva ABC de clientes', cat: 'Clientes', icone: 'layers', desc: 'Quem concentra o faturamento da carteira', col: 0 },
+    { id: 'abc_produtos', nome: 'Curva ABC de produtos', cat: 'Outros', icone: 'boxes', desc: 'Os itens que sustentam a venda', col: 2 },
+    { id: 'meta', nome: 'Meta do mês', cat: 'Outros', icone: 'target', desc: 'Progresso e projeção da meta', col: 2 },
+    { id: 'positivacao', nome: 'Positivação', cat: 'Clientes', icone: 'users', desc: 'Clientes com pedido no mês', col: 2 },
+    { id: 'aprovacoes', nome: 'Aprovações pendentes', cat: 'Pedido', icone: 'triangle-alert', desc: 'Descontos acima do seu limite', col: 2 },
+    { id: 'cli_ativos', nome: 'Clientes ativos', cat: 'Clientes', icone: 'user-round-check', desc: 'Com pedido nos últimos 90 dias', valor: '104', unidade: 'de 148', sub: '6 a mais que em julho' },
+    { id: 'cli_novos', nome: 'Clientes novos', cat: 'Clientes', icone: 'user-round-plus', desc: 'Cadastrados neste mês', valor: '9', unidade: 'no mês', sub: '3 já com pedido emitido' },
+    { id: 'cli_60d', nome: 'Sem compra há 60 dias', cat: 'Clientes', icone: 'user-round-x', desc: 'Clientes esfriando na carteira', valor: '38', unidade: 'clientes', sub: 'R$ 84.300,00 de potencial parado' },
+    { id: 'cont_conversas', nome: 'Conversas abertas', cat: 'Contatos', icone: 'message-square', desc: 'Aguardando sua resposta', valor: '5', unidade: 'abertas', sub: '2 esperam desde ontem' },
+    { id: 'cont_visitas', nome: 'Visitas agendadas', cat: 'Contatos', icone: 'calendar-check', desc: 'Agenda da semana', valor: '12', unidade: 'esta semana', sub: '4 na rota de quinta-feira' },
+    { id: 'cont_novos', nome: 'Contatos novos', cat: 'Contatos', icone: 'contact-round', desc: 'Adicionados no mês', valor: '17', unidade: 'no mês', sub: '11 vieram do catálogo B2B' },
+    { id: 'fin_receber', nome: 'A receber esta semana', cat: 'Financeiro', icone: 'hand-coins', desc: 'Cobranças com vencimento próximo', valor: 'R$ 9.480,00', unidade: '', sub: '2 cobranças até sexta-feira' },
+    { id: 'fin_ticket', nome: 'Ticket médio', cat: 'Financeiro', icone: 'receipt-text', desc: 'Valor médio por pedido', valor: 'R$ 3.980,00', unidade: '', sub: '+8,2% vs. julho' },
+    { id: 'ped_qtd', nome: 'Pedidos no mês', cat: 'Pedido', icone: 'clipboard-check', desc: 'Emitidos em agosto', valor: '62', unidade: 'pedidos', sub: 'Média de 3,1 por dia útil' },
+    { id: 'out_mix', nome: 'Mix médio por pedido', cat: 'Outros', icone: 'boxes', desc: 'Itens diferentes por pedido', valor: '7,4', unidade: 'itens', sub: 'Objetivo da representada: 9' },
+    { id: 'out_dias', nome: 'Dias úteis restantes', cat: 'Outros', icone: 'calendar-days', desc: 'Até o fechamento do mês', valor: '11', unidade: 'dias', sub: 'Fechamento em 31/08' },
+  ];
+  constructor(props) {
+    super(props);
+    let salvo = null;
+    try { salvo = JSON.parse(localStorage.getItem('va_painel_metricas') || 'null'); } catch (e) {}
+    const ativos = {};
+    this.CATALOGO.forEach(m => { ativos[m.id] = salvo ? (salvo[m.id] !== undefined ? !!salvo[m.id] : m.col !== undefined) : m.col !== undefined; });
+    this.state = { modo: 'mensal', ativos, modalOpen: false, cat: 'Clientes' };
+  }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  setAtivo(id, val) {
+    this.setState(s => {
+      const ativos = Object.assign({}, s.ativos); ativos[id] = val;
+      try { localStorage.setItem('va_painel_metricas', JSON.stringify(ativos)); } catch (e) {}
+      return { ativos };
+    });
+  }
+  renderVals() {
+    const s = this.state;
+    const segOn = "height:28px;display:inline-flex;align-items:center;padding:0 12px;border-radius:4px;border:0;background:#021226;color:#FFFFFF;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    const segOff = "height:28px;display:inline-flex;align-items:center;padding:0 12px;border:0;background:transparent;font:500 13px/1 'IBM Plex Sans';color:#454F5E;cursor:pointer;border-radius:4px";
+    const mensal = s.modo === 'mensal';
+    const stOk = "display:inline-flex;align-items:center;font:600 12px/1 'IBM Plex Sans';color:#0A6244;justify-content:flex-end";
+    const stAnda = "display:inline-flex;align-items:center;font:600 12px/1 'IBM Plex Sans';color:#8A5B00;justify-content:flex-end";
+    const on = id => s.ativos[id] !== false && s.ativos[id] !== undefined ? !!s.ativos[id] : false;
+    const vals = { modalOpen: s.modalOpen };
+    const base = this.CATALOGO.filter(m => m.col !== undefined);
+    base.forEach(m => {
+      vals['v_' + m.id] = on(m.id);
+      vals['rm_' + m.id] = () => this.setAtivo(m.id, false);
+    });
+    const counts = [0, 0, 0];
+    base.forEach(m => { if (on(m.id)) counts[m.col]++; });
+    const extras = [[], [], []];
+    this.CATALOGO.filter(m => m.col === undefined && on(m.id)).forEach(m => {
+      counts[0]++;
+      extras[0].push({ nome: m.nome, valor: m.valor, unidade: m.unidade, sub: m.sub, rm: () => this.setAtivo(m.id, false) });
+    });
+    const catBtn = a => a
+      ? "height:32px;padding:0 14px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer"
+      : "height:32px;padding:0 14px;border-radius:999px;border:1px solid #CFD6E1;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+    return Object.assign(vals, {
+      btnProps: { style: { color: '#F3F3F3' } },
+      deltaFat: -4.2, deltaCorte: -1.8, h252: 252, h180: 180, alvo: 260,
+      metaAtual: 182000, metaAlvo: 260000, diasUteis: 11, projecao: 241000,
+      destaque: mensal ? 3 : 5,
+      segMensal: mensal ? segOn : segOff,
+      segAnual: mensal ? segOff : segOn,
+      verMensal: () => this.setState({ modo: 'mensal' }),
+      verAnual: () => this.setState({ modo: 'anual' }),
+      barras: mensal
+        ? [{ label: 'Jan', value: 182 }, { label: 'Fev', value: 231 }, { label: 'Mar', value: 205 }, { label: 'Abr', value: 268 }, { label: 'Mai', value: 240 }, { label: 'Jun', value: 248 }]
+        : [{ label: '2021', value: 1480 }, { label: '2022', value: 1720 }, { label: '2023', value: 1890 }, { label: '2024', value: 2140 }, { label: '2025', value: 2380 }, { label: '2026', value: 1520 }],
+      realizado: [182, 198, 176, 221, 240, 248],
+      previsto: [248, 266],
+      meses: ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set'],
+      extras1: extras[0], extras2: extras[1], extras3: extras[2],
+      vazio: counts[0] + counts[1] + counts[2] === 0,
+      abrirModal: () => this.setState({ modalOpen: true }),
+      fecharModal: () => this.setState({ modalOpen: false }),
+      cats: ['Clientes', 'Contatos', 'Financeiro', 'Pedido', 'Outros'].map(c => ({
+        nome: c, style: catBtn(s.cat === c), pick: () => this.setState({ cat: c }),
+      })),
+      itensCat: this.CATALOGO.filter(m => m.cat === s.cat).map(m => ({
+        nome: m.nome, desc: m.desc, icone: m.icone,
+        badgeTxt: on(m.id) ? 'No painel' : 'Adicionar',
+        badgeStyle: on(m.id)
+          ? "flex:none;display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:#E7F0D2;color:#365E10;font:600 12px/1 'IBM Plex Sans'"
+          : "flex:none;display:inline-flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;border:1px solid #CFD6E1;color:#021226;font:600 12px/1 'IBM Plex Sans'",
+        toggle: () => this.setAtivo(m.id, !on(m.id)),
+      })),
+      ultimos: [
+        { num: '4.812', cliente: 'Depósito São Jorge', total: 'R$ 24.036,00', st: 'Separação', stStyle: stAnda },
+        { num: '4.811', cliente: 'Casa & Lar Móveis', total: 'R$ 8.420,00', st: 'Faturado', stStyle: stOk },
+        { num: '4.809', cliente: 'Lojas Pinheiral', total: 'R$ 9.840,00', st: 'Faturado', stStyle: stOk },
+        { num: '4.805', cliente: 'Móveis Guarani', total: 'R$ 4.260,00', st: 'Entregue', stStyle: stOk },
+      ],
+      v_abc_algum: on('abc_clientes') || on('abc_produtos'),
+      abcCliSub: '80% do faturamento vem de 14 clientes',
+      abcProSub: '80% do faturamento vem de 22 produtos',
+      abcClientesBarra: [{ w: 80, c: '#628A11' }, { w: 15, c: '#D9822B' }, { w: 5, c: '#B9C1CE' }].map(b => ({ style: 'display:block;height:100%;width:' + b.w + '%;background:' + b.c })),
+      abcProdutosBarra: [{ w: 80, c: '#628A11' }, { w: 15, c: '#D9822B' }, { w: 5, c: '#B9C1CE' }].map(b => ({ style: 'display:block;height:100%;width:' + b.w + '%;background:' + b.c })),
+      abcClientes: [
+        { faixa: 'A', cor: '#628A11', fundo: '#F2F8D4', txt: '#365E10', rotulo: '14 clientes · até 80% acumulado', share: '80%' },
+        { faixa: 'B', cor: '#D9822B', fundo: '#FCF3DF', txt: '#8A5B00', rotulo: '33 clientes · de 80% a 95%', share: '15%' },
+        { faixa: 'C', cor: '#B9C1CE', fundo: '#EDF0F5', txt: '#5B6678', rotulo: '101 clientes · acima de 95%', share: '5%' },
+      ].map(f => ({ ...f, chipStyle: "width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';background:" + f.fundo + ';color:' + f.txt })),
+      abcProdutos: [
+        { faixa: 'A', fundo: '#F2F8D4', txt: '#365E10', rotulo: '22 produtos · até 80% acumulado', share: '80%' },
+        { faixa: 'B', fundo: '#FCF3DF', txt: '#8A5B00', rotulo: '41 produtos · de 80% a 95%', share: '15%' },
+        { faixa: 'C', fundo: '#EDF0F5', txt: '#5B6678', rotulo: '156 produtos · acima de 95%', share: '5%' },
+      ].map(f => ({ ...f, chipStyle: "width:24px;height:24px;border-radius:6px;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';background:" + f.fundo + ';color:' + f.txt })),
+      aprovacoes: [
+        { titulo: 'Pedido 4.813 · desconto 15%', sub: 'Comercial Vitória · aguarda o gestor' },
+        { titulo: 'Pedido 4.808 · desconto 14%', sub: 'Lojas Pinheiral · aguarda o gestor' },
+      ],
+    });
+  }
+}
+</script>
+</body>
+</html>

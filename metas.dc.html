@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="EQP-03 Metas" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="metas" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Metas</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Agosto de 2026 · 11 dias úteis restantes</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="va-select" options="Agosto de 2026|Setembro de 2026|Julho de 2026" value="Agosto de 2026" hint-size="190px,40px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="flag" onClick="{{ abrirEncerrar }}" hint-size="auto,40px">Encerrar mês</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="target" onClick="{{ abrirDefinir }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Definir metas</x-import>
+</div>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:340px minmax(0,1fr);gap:16px;align-items:start;margin-bottom:24px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.GoalCard" current="{{ atual }}" target="{{ alvo }}" businessDaysLeft="{{ dias }}" projection="{{ proj }}" hint-size="100%,240px"></x-import>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px">
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Meta × realizado por mês</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Escritório inteiro, últimos seis meses</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" highlight="{{ destaque }}" height="{{ h }}" hint-size="100%,220px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:960px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Vendedor</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Meta</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Realizado</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Projeção</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Progresso</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Tendência</span>
+</div>
+<sc-for list="{{ linhas }}" as="l" hint-placeholder-count="5">
+<div style="min-width:960px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;align-items:center;gap:12px;min-width:0">
+<span style="width:36px;height:36px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 12px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ l.iniciais }}</span>
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.nome }}</span>
+</div>
+<span style="font:400 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.meta }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.real }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.proj }}</span>
+<div style="display:flex;align-items:center;gap:8px">
+<div style="flex:1;height:6px;border-radius:999px;background:#E4E8EF;overflow:hidden"><span style="{{ l.barStyle }}"></span></div>
+<span style="font:600 12px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ l.pct }}</span>
+</div>
+<span style="{{ l.tendStyle }}"><i data-lucide="{{ l.tendIcone }}" style="font-size:13px"></i>{{ l.tend }}</span>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ definirOpen }}" onClose="{{ fechar }}" title="Definir metas de setembro" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">A meta de cada vendedor soma a meta do escritório. Vendedor sem meta não aparece no ranking.</p>
+<div style="display:flex;gap:4px;background:#E4E8EF;border-radius:6px;padding:2px;width:fit-content">
+<button onClick="{{ metaPorVendedor }}" style="{{ vendBtnStyle }}">Por vendedor</button>
+<button onClick="{{ metaPorRep }}" style="{{ repBtnStyle }}">Por representada</button>
+</div>
+<sc-if value="{{ modoRep }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:1fr 160px;gap:10px;align-items:center">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Móveis Vale</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="210.000,00" hint-size="100%,40px"></x-import>
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Cerâmica Atlas</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="95.000,00" hint-size="100%,40px"></x-import>
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Metalúrgica Horizonte</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="60.000,00" hint-size="100%,40px"></x-import>
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Tecelagem Iguaçu</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="45.000,00" hint-size="100%,40px"></x-import>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A meta por representada mede a positivação de cada indústria, independente de quem vendeu.</span>
+</sc-if>
+<sc-if value="{{ modoVendedor }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:1fr 160px;gap:10px;align-items:center">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Carlos Rezende</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="115.000,00" hint-size="100%,40px"></x-import>
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Ana Prado</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="85.000,00" hint-size="100%,40px"></x-import>
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Jorge Tanaka</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="72.000,00" hint-size="100%,40px"></x-import>
+</div>
+</sc-if>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar metas</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ encerrarOpen }}" onClose="{{ fechar }}" title="Encerrar agosto de 2026?" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O mês encerrado vai para o histórico com o resultado congelado — 72% da meta até agora. As metas de setembro continuam abertas.</span>
+<div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Histórico de metas</span>
+<div style="display:flex;justify-content:space-between;font:400 13px/1.5 'IBM Plex Sans'"><span>Julho de 2026</span><span style="font-weight:600;color:#0A6244">95% · R$ 361.200</span></div>
+<div style="display:flex;justify-content:space-between;font:400 13px/1.5 'IBM Plex Sans'"><span>Junho de 2026</span><span style="font-weight:600;color:#0A6244">97% · R$ 348.900</span></div>
+<div style="display:flex;justify-content:space-between;font:400 13px/1.5 'IBM Plex Sans'"><span>Maio de 2026</span><span style="font-weight:600;color:#8A5B00">91% · R$ 322.400</span></div>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="flag" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Encerrar mês</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { definirOpen: false, encerrarOpen: false, metaModo: 'vendedor' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const bar = (p, cor) => 'display:block;height:100%;width:' + Math.min(p, 100) + '%;border-radius:999px;background:' + cor;
+    const sobe = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#0A6244";
+    const risco = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#85202C";
+    const neutro = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00";
+    const defs = [
+      { iniciais: 'CR', nome: 'Carlos Rezende', meta: 'R$ 110.000', real: 'R$ 96.400', proj: 'R$ 128.000', p: 88, tend: 'Bate a meta', tendIcone: 'arrow-up-right', tendStyle: sobe },
+      { iniciais: 'AP', nome: 'Ana Prado', meta: 'R$ 80.000', real: 'R$ 71.200', proj: 'R$ 94.500', p: 89, tend: 'Bate a meta', tendIcone: 'arrow-up-right', tendStyle: sobe },
+      { iniciais: 'JT', nome: 'Jorge Tanaka', meta: 'R$ 70.000', real: 'R$ 44.850', proj: 'R$ 59.600', p: 64, tend: 'No limite', tendIcone: 'minus', tendStyle: neutro },
+      { iniciais: 'RC', nome: 'Renata Cruz', meta: 'R$ 75.000', real: 'R$ 52.310', proj: 'R$ 69.400', p: 70, tend: 'No limite', tendIcone: 'minus', tendStyle: neutro },
+      { iniciais: 'PS', nome: 'Paulo Siqueira', meta: 'R$ 60.000', real: 'R$ 18.940', proj: 'R$ 25.100', p: 32, tend: 'Em risco', tendIcone: 'arrow-down-right', tendStyle: risco },
+    ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      atual: 283700, alvo: 395000, dias: 11, proj: 376600, h: 220, destaque: 5,
+      barras: [
+        { label: 'Mar', value: 82 }, { label: 'Abr', value: 103 }, { label: 'Mai', value: 91 },
+        { label: 'Jun', value: 97 }, { label: 'Jul', value: 95 }, { label: 'Ago', value: 72 },
+      ],
+      definirOpen: this.state.definirOpen,
+      abrirDefinir: () => this.setState({ definirOpen: true }),
+      encerrarOpen: this.state.encerrarOpen,
+      abrirEncerrar: () => this.setState({ encerrarOpen: true }),
+      fechar: () => this.setState({ definirOpen: false, encerrarOpen: false }),
+      modoVendedor: this.state.metaModo === 'vendedor',
+      modoRep: this.state.metaModo === 'rep',
+      metaPorVendedor: () => this.setState({ metaModo: 'vendedor' }),
+      metaPorRep: () => this.setState({ metaModo: 'rep' }),
+      vendBtnStyle: "height:32px;padding:0 12px;border:0;border-radius:5px;cursor:pointer;font:" + (this.state.metaModo === 'vendedor' ? "600" : "500") + " 13px/1 'IBM Plex Sans';background:" + (this.state.metaModo === 'vendedor' ? '#FFFFFF' : 'transparent') + ';color:#021226',
+      repBtnStyle: "height:32px;padding:0 12px;border:0;border-radius:5px;cursor:pointer;font:" + (this.state.metaModo === 'rep' ? "600" : "500") + " 13px/1 'IBM Plex Sans';background:" + (this.state.metaModo === 'rep' ? '#FFFFFF' : 'transparent') + ';color:#021226',
+      linhas: defs.map(l => ({
+        ...l,
+        pct: l.p + '%',
+        barStyle: bar(l.p, l.p >= 80 ? '#78A614' : l.p >= 50 ? '#E0A526' : '#C6501F'),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CFG-02 Conta e plano" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="plano" hint-size="0px,0px"></dc-import>
+<main style="max-width:980px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;flex-direction:column;gap:4px;margin-bottom:24px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Conta e plano</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Assinatura, uso e cobrança do escritório</span>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:16px">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0">Plano Escritório</h2>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">R$ 453,00 por mês · renova em 15/08/2026</span>
+</div>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:#E7F0D2;color:#365E10;font:600 12px/1 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:14px"></i>Ativo</span>
+</div>
+<div style="display:grid;gap:14px">
+<sc-for list="{{ usos }}" as="u" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between"><span style="font:500 14px/1.3 'IBM Plex Sans'">{{ u.nome }}</span><span style="font:500 13px/1.3 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ u.uso }}</span></div>
+<div style="height:6px;border-radius:999px;background:#E4E8EF;overflow:hidden"><span style="{{ u.barStyle }}"></span></div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:8px;margin-top:20px;border-top:1px solid #E4E8EF;padding-top:16px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" dc-props="{{ btnProps }}" hint-size="auto,40px">Mudar de plano</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" hint-size="auto,40px">Cancelar assinatura</x-import>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 4px">Composição da fatura</h2>
+<p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:0 0 12px">O que entra nos R$ 453,00 de agosto.</p>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ fatura }}" as="i" hint-placeholder-count="3">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 14px/1.3 'IBM Plex Sans'">{{ i.nome }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ i.sub }}</span></span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;white-space:nowrap">{{ i.valor }}</span>
+</div>
+</sc-for>
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:12px 0 0">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Total mensal</span>
+<span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 453,00</span>
+</div>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 12px">Módulos</h2>
+<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #EDF0F5;align-items:center;flex-wrap:wrap">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E;flex:none"><i data-lucide="kanban" style="font-size:19px"></i></span>
+<span style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:200px"><span style="font:600 14px/1.3 'IBM Plex Sans'">CRM</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Funis, contatos, conversas e automações</span></span>
+<span style="display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:13px"></i>Incluído no plano</span>
+</div>
+<div style="display:flex;gap:12px;padding:12px 0;align-items:center;flex-wrap:wrap">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E;flex:none"><i data-lucide="store" style="font-size:19px"></i></span>
+<span style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:200px"><span style="font:600 14px/1.3 'IBM Plex Sans'">Catálogo B2B</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">R$ 99,00 por mês · faixa de até 30 lojas · 12 lojas ativas</span></span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" onClick="{{ abrirModulo }}" hint-size="auto,32px">Ver faixas e preços</x-import>
+</div>
+</section>
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px">
+<h2 style="font:600 16px/1.3 'IBM Plex Sans';margin:0 0 16px">Faturas</h2>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ faturas }}" as="f" hint-placeholder-count="4">
+<div class="g-fatura" style="display:grid;grid-template-columns:1fr 120px 110px 90px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ f.mes }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">R$ 453,00</span>
+<span style="display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:13px"></i>Paga</span>
+<a href="#" style="font:600 13px/1 'IBM Plex Sans';text-decoration:none;text-align:right" style-hover="text-decoration:underline">Baixar</a>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<section style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px">
+<h2 style="font:600 15px/1.3 'IBM Plex Sans';margin:0 0 12px">Cobrança</h2>
+<div style="display:flex;align-items:center;gap:12px;padding:12px;background:#F7F9FB;border-radius:8px">
+<i data-lucide="credit-card" style="font-size:20px;color:#454F5E"></i>
+<div style="display:flex;flex-direction:column;gap:1px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Cartão · final 4207</span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">Vence 09/2028</span>
+</div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" full-width="{{ true }}" hint-size="100%,32px">Trocar forma de pagamento</x-import>
+</section>
+<section style="background:#021226;color:#FFFFFF;border-radius:16px;padding:20px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E">Módulo CRM</span>
+<p style="margin:10px 0 0;font:400 13px/1.6 'IBM Plex Sans';color:rgba(255,255,255,.8)">O CRM organiza seus negócios em etapas e mostra o que está parado. Incluído no plano Escritório — você já usa sem custo extra.</p>
+</section>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ moduloOpen }}" onClose="{{ fecharModulo }}" title="Catálogo B2B — faixas e preços" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">A cobrança é por faixa de lojas ativas. Você está na primeira faixa, com 12 de 30 lojas — a fatura só muda quando a 31ª loja for criada.</span>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ faixas }}" as="fx" hint-placeholder-count="3">
+<div style="{{ fx.style }}">
+<span style="display:flex;align-items:center;gap:8px;font:500 14px/1.3 'IBM Plex Sans'"><sc-if value="{{ fx.atual }}" hint-placeholder-val="{{ false }}"><i data-lucide="circle-check" style="font-size:15px;color:#0A6244"></i></sc-if>{{ fx.nome }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ fx.preco }}</span>
+</div>
+</sc-for>
+</div>
+<div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;justify-content:space-between;gap:12px">
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Impacto na fatura de hoje</span>
+<span style="font:600 13.5px/1.5 'IBM Plex Sans'">R$ 99,00 por mês — sem mudança</span>
+</div>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fecharModulo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Entendi</x-import>
+</div>
+</div>
+</x-import>
+</div>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { moduloOpen: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const bar = (p) => 'display:block;height:100%;width:' + p + '%;border-radius:999px;background:' + (p >= 90 ? '#C6501F' : '#78A614');
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      usos: [
+        { nome: 'Vendedores', uso: '6 · 3 no plano + 3 adicionais', barStyle: bar(60) },
+        { nome: 'Representadas', uso: '4 de 8', barStyle: bar(50) },
+        { nome: 'Lojas do catálogo', uso: '12 de 30 · faixa 1', barStyle: bar(40) },
+        { nome: 'Pedidos no mês', uso: '312 · sem limite', barStyle: bar(24) },
+      ],
+      fatura: [
+        { nome: 'Plano Escritório', sub: 'Inclui 3 vendedores e o módulo CRM', valor: 'R$ 249,00' },
+        { nome: 'Vendedores adicionais', sub: '3 × R$ 35,00 — muda quando você convida ou remove vendedor', valor: 'R$ 105,00' },
+        { nome: 'Catálogo B2B', sub: 'Faixa de até 30 lojas · 12 ativas', valor: 'R$ 99,00' },
+      ],
+      moduloOpen: this.state.moduloOpen,
+      abrirModulo: () => this.setState({ moduloOpen: true }),
+      fecharModulo: () => this.setState({ moduloOpen: false }),
+      faixas: [
+        { nome: 'Até 30 lojas', preco: 'R$ 99,00 / mês', atual: true },
+        { nome: '31 a 60 lojas', preco: 'R$ 149,00 / mês', atual: false },
+        { nome: '61 a 90 lojas', preco: 'R$ 199,00 / mês', atual: false },
+      ].map(fx => ({
+        ...fx,
+        style: 'display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:6px;border-bottom:1px solid #EDF0F5;background:' + (fx.atual ? '#F8FAF1' : '#FFFFFF'),
+      })),
+      faturas: [
+        { mes: 'Julho de 2026' }, { mes: 'Junho de 2026' }, { mes: 'Maio de 2026' }, { mes: 'Abril de 2026' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

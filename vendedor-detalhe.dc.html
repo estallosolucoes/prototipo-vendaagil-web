@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="EQU-02 Detalhe do vendedor" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="vendedores" hint-size="0px,0px"></dc-import>
+<main style="max-width:1360px;margin:0 auto;padding:44px 32px 120px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="vendedores.dc.html" style="text-decoration:none">Vendedores</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Carlos Rezende</span></nav>
+<div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+<span style="width:56px;height:56px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 18px/1 'IBM Plex Sans';color:#454F5E">CR</span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:220px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Carlos Rezende</h1>
+<span style="font:400 14px/1.5 'IBM Plex Sans';color:#454F5E">carlos@rezende.com.br · equipe Serra Gaúcha · 48 clientes na carteira</span>
+</div>
+<span style="display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 10px;border-radius:999px;background:#E8F7F0;color:#0A6244;font:600 12px/1 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:13px"></i>Ativo</span>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;align-items:start">
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Comissão por representada</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">O percentual do vendedor sobre a comissão que o escritório recebe de cada indústria.</span>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ comissoes }}" as="c" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid #EDF0F5;flex-wrap:wrap">
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:180px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ c.nome }}</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ c.sub }}</span>
+</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="" suffix="%" numeric="{{ true }}" value="{{ c.pct }}" hint-size="110px,40px"></x-import>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Limites de desconto</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Valem só para o Carlos e passam por cima do limite geral de 12%. Acima disso, o pedido vai para aprovação.</span>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desconto máximo por item" suffix="%" numeric="{{ true }}" value="10,00" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desconto máximo no pedido" suffix="%" numeric="{{ true }}" value="8,00" hint-size="100%,66px"></x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões</span>
+<div style="display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ permissoes }}" as="p" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #EDF0F5">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ p.titulo }}</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ p.sub }}</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ p.on }}" onChange="{{ p.toggle }}" aria-label="{{ p.titulo }}" hint-size="44px,24px"></x-import>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões do CRM</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">O que o Carlos pode fazer com os negócios do funil</span>
+</div>
+<sc-for list="{{ permsCrm }}" as="pc" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:8px;border-bottom:1px solid #EDF0F5;padding-bottom:14px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ pc.titulo }}</span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ pc.opcoes }}" as="op" hint-placeholder-count="3">
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="{{ pc.grupo }}" checked="{{ op.on }}" onChange="{{ op.pegar }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ op.nome }}</span><sc-if value="{{ op.temSub }}" hint-placeholder-val="{{ false }}"><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">{{ op.sub }}</span></sc-if></span>
+</label>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Carteira de clientes</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">48 clientes vinculados · o Carlos só vê e vende para a carteira dele</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="user-round-plus" onClick="{{ abrirVincular }}" hint-size="auto,32px">Vincular clientes</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ carteira }}" as="k" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:1px;flex:1;min-width:0">
+<span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ k.nome }}</span>
+<span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ k.sub }}</span>
+</span>
+<span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678;white-space:nowrap">{{ k.compra }}</span>
+<button aria-label="Desvincular cliente" title="Desvincular cliente" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="user-round-minus" style="font-size:16px"></i></button>
+</div>
+</sc-for>
+</div>
+<a href="clientes.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver os 48 clientes na lista</a>
+</div>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Acesso</span>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">E-mail de acesso</span><span style="font:500 14px/1.3 'IBM Plex Sans'">carlos@rezende.com.br</span></div>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Último acesso</span><span style="font:500 14px/1.3 'IBM Plex Sans'">Hoje, 07:52 — pelo aplicativo</span></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #E4E8EF;padding-top:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="key-round" onClick="{{ senhaEnviada }}" hint-size="100%,36px">{{ senhaLabel }}</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="user-round-x" onClick="{{ abrirDesativar }}" hint-size="100%,36px">Desativar vendedor</x-import>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 15px/1.3 'IBM Plex Sans'">Tabelas de preço</span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" hint-size="auto,32px">Vincular</x-import></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Móveis Vale</span><span style="font-weight:500">Tabela sul — varejo</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Cerâmica Atlas</span><span style="font-weight:500">Tabela geral 2026</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Tecelagem Iguaçu</span><span style="font-weight:500">Tabela atacado</span></div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">O vendedor só emite pedido com as tabelas vinculadas.</span>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Agosto de 2026</span>
+<div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Vendido</span><span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 96.400</span></div>
+<div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Meta</span><span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">R$ 110.000</span></div>
+<div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Comissão prevista</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#365E10">R$ 4.630</span></div>
+<a href="metas.dc.html" style="font:500 13px/1 'IBM Plex Sans';text-decoration:none">Ver metas</a>
+</div>
+</div>
+</div>
+<div data-va-dock="" style="position:sticky;bottom:0;margin-top:24px;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;justify-content:flex-end;gap:8px;z-index:20">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ voltar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ voltar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar vendedor</x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ vincularOpen }}" onClose="{{ fechar }}" title="Vincular clientes ao Carlos" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar cliente sem vendedor" hint-size="100%,40px"></x-import>
+<div style="display:flex;flex-direction:column;gap:2px;max-height:260px;overflow-y:auto">
+<sc-for list="{{ candidatos }}" as="c" hint-placeholder-count="4">
+<label style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:6px;cursor:pointer" style-hover="background:#F8F9FB">
+<input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;accent-color:#78A614">
+<span style="display:flex;flex-direction:column;gap:1px;flex:1"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ c.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ c.sub }}</span></span>
+</label>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px;flex-wrap:wrap">
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ nSelecionados }}</span>
+<div style="display:flex;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Vincular selecionados</x-import>
+</div>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ desativarOpen }}" onClose="{{ fechar }}" title="Desativar o Carlos Rezende?" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FDF0F1;color:#B3202F;display:grid;place-items:center;flex:none"><i data-lucide="triangle-alert" style="font-size:20px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Ele perde o acesso na hora. Os 48 clientes da carteira e os pedidos emitidos ficam no escritório — você pode vinculá-los a outro vendedor depois.</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="user-round-x" onClick="{{ fechar }}" hint-size="auto,40px">Desativar vendedor</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    vincularOpen: false, desativarOpen: false, senhaEnviada: false,
+    perms: { cliente: true, produto: false, alterar: false, historico: true },
+    crm: { ver: 'Somente as próprias', criar: 'Permitido', editar: 'Somente as próprias', excluir: 'Não permitido' },
+    sel: { 0: true, 1: true, 2: false, 3: false },
+  };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const permDefs = [
+      { id: 'cliente', titulo: 'Cadastrar cliente', sub: 'Novos clientes entram direto na carteira dele' },
+      { id: 'produto', titulo: 'Cadastrar produto', sub: 'Normalmente é do escritório — ligue só se ele mantém o catálogo' },
+      { id: 'alterar', titulo: 'Alterar pedido já emitido', sub: 'Sem isso, alteração pede aprovação do gestor' },
+      { id: 'historico', titulo: 'Ver histórico completo do cliente', sub: 'Desligado, ele vê só os últimos 90 dias' },
+    ];
+    const candDefs = [
+      { nome: 'Central do Construtor', sub: 'Flores da Cunha, RS · prospect sem vendedor' },
+      { nome: 'Madeireira Pinhal', sub: 'Gramado, RS · sem vendedor desde julho' },
+      { nome: 'Comercial Zanetti', sub: 'Veranópolis, RS · sem vendedor' },
+      { nome: 'Casa das Tintas Serra', sub: 'Caxias do Sul, RS · sem vendedor' },
+    ];
+    const nSel = Object.values(this.state.sel).filter(Boolean).length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      comissoes: [
+        { nome: 'Móveis Vale', sub: 'Escritório recebe 5% · base líquida sem IPI', pct: '60,00' },
+        { nome: 'Cerâmica Atlas', sub: 'Escritório recebe 4% · base líquida sem IPI', pct: '55,00' },
+        { nome: 'Metalúrgica Horizonte', sub: 'Escritório recebe 6% · base com IPI', pct: '60,00' },
+        { nome: 'Tecelagem Iguaçu', sub: 'Escritório recebe 8% · base líquida sem IPI', pct: '50,00' },
+      ],
+      permsCrm: [
+        { id: 'ver', titulo: 'Visualizar oportunidades', opcoes: [
+          { nome: 'Somente as próprias', sub: 'O vendedor visualiza apenas os negócios em que ele é o responsável' },
+          { nome: 'Todas', sub: 'Visualiza todos os negócios do CRM, independentemente do responsável' },
+        ]},
+        { id: 'criar', titulo: 'Criar oportunidades', opcoes: [ { nome: 'Permitido' }, { nome: 'Não permitido' } ] },
+        { id: 'editar', titulo: 'Editar oportunidades', opcoes: [ { nome: 'Somente as próprias' }, { nome: 'Todas' }, { nome: 'Não permitido' } ] },
+        { id: 'excluir', titulo: 'Excluir oportunidades', opcoes: [ { nome: 'Somente as próprias' }, { nome: 'Todas' }, { nome: 'Não permitido' } ] },
+      ].map(pc => ({
+        titulo: pc.titulo,
+        grupo: 'crm-' + pc.id,
+        opcoes: pc.opcoes.map(op => ({
+          ...op, temSub: !!op.sub,
+          on: this.state.crm[pc.id] === op.nome,
+          pegar: () => this.setState(s => ({ crm: { ...s.crm, [pc.id]: op.nome } })),
+        })),
+      })),
+      permissoes: permDefs.map(p => ({
+        ...p, on: this.state.perms[p.id],
+        toggle: () => this.setState(s => ({ perms: { ...s.perms, [p.id]: !s.perms[p.id] } })),
+      })),
+      carteira: [
+        { nome: 'Depósito São Jorge', sub: 'Caxias do Sul, RS · rota Serra Gaúcha', compra: 'comprou em 22/07' },
+        { nome: 'Casa & Construção Delta', sub: 'Bento Gonçalves, RS · rota Serra Gaúcha', compra: 'comprou em 18/07' },
+        { nome: 'Armazém Boa Vista', sub: 'Garibaldi, RS · rota Serra Gaúcha', compra: 'comprou em 10/07' },
+        { nome: 'Ferragens Colombo', sub: 'Carlos Barbosa, RS · rota Serra Gaúcha', compra: 'sem compra há 94 dias' },
+      ],
+      candidatos: candDefs.map((c, i) => ({
+        ...c, on: !!this.state.sel[i],
+        toggle: () => this.setState(s => ({ sel: { ...s.sel, [i]: !s.sel[i] } })),
+      })),
+      nSelecionados: nSel + (nSel === 1 ? ' cliente selecionado' : ' clientes selecionados'),
+      senhaLabel: this.state.senhaEnviada ? 'E-mail de redefinição enviado' : 'Redefinir senha por e-mail',
+      senhaEnviada: () => { this.setState({ senhaEnviada: true }); setTimeout(() => this.setState({ senhaEnviada: false }), 2500); },
+      vincularOpen: this.state.vincularOpen,
+      desativarOpen: this.state.desativarOpen,
+      abrirVincular: () => this.setState({ vincularOpen: true }),
+      abrirDesativar: () => this.setState({ desativarOpen: true }),
+      fechar: () => this.setState({ vincularOpen: false, desativarOpen: false }),
+      voltar: () => { location.href = 'vendedores.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

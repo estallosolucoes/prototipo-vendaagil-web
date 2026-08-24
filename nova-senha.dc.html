@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="AUT-05 Redefinir senha" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:32px 16px;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226">
+<img src="assets/logo-light-bg.svg" alt="Venda Ágil" style="width:120px">
+<div style="width:100%;max-width:400px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 3px rgba(2,18,38,.08);padding:32px 28px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="margin:0;font:600 20px/1.3 'IBM Plex Sans';letter-spacing:-.01em">Definir nova senha</h1>
+<span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Para a conta carlos@ribeiroprado.com.br</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nova senha" id="senha" placeholder="Mínimo de 8 caracteres" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Repetir a nova senha" id="senha2" placeholder="Digite a senha de novo" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:#F2F4F7;border-radius:6px">
+<span style="display:flex;align-items:center;gap:8px;font:400 12.5px/1.4 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:14px"></i>Pelo menos 8 caracteres</span>
+<span style="display:flex;align-items:center;gap:8px;font:400 12.5px/1.4 'IBM Plex Sans';color:#0A6244"><i data-lucide="circle-check" style="font-size:14px"></i>Uma letra e um número</span>
+<span style="display:flex;align-items:center;gap:8px;font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678"><i data-lucide="circle" style="font-size:14px"></i>Diferente das 3 senhas anteriores</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" full-width="{{ true }}" onClick="{{ salvar }}" hint-size="100%,40px">Salvar nova senha</x-import>
+</div>
+<a href="entrar.dc.html" style="font:400 13.5px/1 'IBM Plex Sans';text-decoration:none;color:#454F5E">Voltar para o login</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() { return { salvar: () => { location.href = 'entrar.dc.html'; } }; }
+}
+</script>
+</body>
+</html>

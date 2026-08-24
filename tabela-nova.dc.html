@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="TAB-02 Nova tabela de preço" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="tabelas" hint-size="0px,0px"></dc-import>
+<main style="max-width:840px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="tabelas-preco.dc.html" style="text-decoration:none">Tabelas de preço</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Criar tabela</span></nav>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0 0 24px">Criar tabela de preço</h1>
+<div style="display:flex;align-items:center;gap:0;margin-bottom:24px">
+<sc-for list="{{ passos }}" as="p" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;flex:1">
+<span style="{{ p.bola }}">{{ p.n }}</span>
+<span style="{{ p.rotuloStyle }}">{{ p.rotulo }}</span>
+<sc-if value="{{ p.linha }}" hint-placeholder-val="{{ true }}"><span style="flex:1;height:1px;background:#CFD6E1;margin:0 12px"></span></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:28px;display:flex;flex-direction:column;gap:18px">
+<sc-if value="{{ p1 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 17px/1.3 'IBM Plex Sans'">Para qual representada?</span><span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">A tabela usa os produtos e preços dessa indústria como base.</span></div>
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale — 84 produtos|Cerâmica Atlas — 212 produtos|Metalúrgica Horizonte — 148 produtos|Tecelagem Iguaçu — 96 produtos" value="Móveis Vale — 84 produtos" hint-size="100%,66px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ p2 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 17px/1.3 'IBM Plex Sans'">Nome da tabela</span><span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Aparece na emissão do pedido, no cadastro do cliente e no catálogo.</span></div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" placeholder="Ex.: Tabela sul — atacado" value="Tabela promocional agosto" hint-size="100%,66px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ p3 }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 17px/1.3 'IBM Plex Sans'">De onde vêm os preços?</span><span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Escolha a origem e um ajuste opcional. Você pode editar preço a preço depois.</span></div>
+<div class="g-origem" style="display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:end">
+<x-import component-from-global-scope="va-select" label="Origem do preço" options="Preço de venda do produto|Preço de custo|Outra tabela: Tabela sul — varejo" value="Preço de venda do produto" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Ajuste" suffix="%" numeric="{{ true }}" value="-5,00" help="Negativo reduz o preço" hint-size="100%,88px"></x-import>
+</div>
+<div style="padding:14px;background:#F2F4F7;border-radius:6px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Prévia dos preços</span>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13px/1.4 'IBM Plex Sans'"><span>Cadeira Diretor Vale — nogueira</span><span style="font-variant-numeric:tabular-nums"><span style="color:#5B6678;text-decoration:line-through">R$ 486,00</span> → <strong>R$ 461,70</strong></span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13px/1.4 'IBM Plex Sans'"><span>Mesa de reunião 2,40 m — carvalho</span><span style="font-variant-numeric:tabular-nums"><span style="color:#5B6678;text-decoration:line-through">R$ 2.140,00</span> → <strong>R$ 2.033,00</strong></span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:400 13px/1.4 'IBM Plex Sans'"><span>Armário alto 2 portas — grafite</span><span style="font-variant-numeric:tabular-nums"><span style="color:#5B6678;text-decoration:line-through">R$ 968,00</span> → <strong>R$ 919,60</strong></span></div>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">e mais 81 produtos com −5,00%</span>
+</div>
+</div>
+</sc-if>
+<div style="display:flex;justify-content:space-between;gap:8px;border-top:1px solid #E4E8EF;padding-top:16px">
+<sc-if value="{{ temVoltar }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="arrow-left" onClick="{{ voltar }}" hint-size="auto,40px">Voltar</x-import></sc-if>
+<sc-if value="{{ semVoltar }}" hint-placeholder-val="{{ true }}"><span></span></sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-right="arrow-right" onClick="{{ avancar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ avancarRotulo }}</x-import>
+</div>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { passo: 1 };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const p = this.state.passo;
+    const bolaOn = "width:28px;height:28px;border-radius:999px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';flex:none";
+    const bolaOk = "width:28px;height:28px;border-radius:999px;background:#78A614;color:#F3F3F3;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';flex:none";
+    const bolaOff = "width:28px;height:28px;border-radius:999px;background:#E4E8EF;color:#5B6678;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';flex:none";
+    const defs = [ { n: 1, rotulo: 'Representada' }, { n: 2, rotulo: 'Nome' }, { n: 3, rotulo: 'Origem do preço' } ];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      passos: defs.map(d => ({
+        ...d,
+        bola: d.n < p ? bolaOk : d.n === p ? bolaOn : bolaOff,
+        rotuloStyle: "font:" + (d.n === p ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:" + (d.n <= p ? '#021226' : '#5B6678') + ";white-space:nowrap",
+        linha: d.n < 3,
+      })),
+      p1: p === 1, p2: p === 2, p3: p === 3,
+      temVoltar: p > 1, semVoltar: p === 1,
+      avancarRotulo: p === 3 ? 'Criar tabela com 84 produtos' : 'Avançar',
+      avancar: () => { if (p === 3) { location.href = 'tabela-edicao.dc.html'; } else this.setState({ passo: p + 1 }); },
+      voltar: () => this.setState({ passo: Math.max(1, p - 1) }),
+    };
+  }
+}
+</script>
+</body>
+</html>

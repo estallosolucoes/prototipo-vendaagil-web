@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CAT-01 Catálogo B2B — visão geral" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="catalogo" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Catálogo B2B</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Vitrine pública por representada para os compradores dos seus clientes</span>
+</div>
+<div style="display:flex;gap:8px">
+<a href="catalogo-configurar.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="settings-2" hint-size="auto,40px">Configurar catálogo</x-import></a>
+<a href="loja.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="external-link" dc-props="{{ btnProps }}" hint-size="auto,40px">Abrir catálogo</x-import></a>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);margin-bottom:16px;overflow:hidden">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px 12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Lojas</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Uma loja por representada, cada uma com link, tabela e identidade próprios · 2 de 30 na faixa do plano</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ abrirNovaLoja }}" hint-size="auto,32px">Criar loja</x-import>
+</div>
+<sc-for list="{{ lojas }}" as="l" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid #EDF0F5;flex-wrap:wrap">
+<span style="{{ l.siglaStyle }}">{{ l.sigla }}</span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:220px">
+<span style="display:flex;align-items:center;gap:8px;font:600 14px/1.3 'IBM Plex Sans'">{{ l.nome }}<span style="{{ l.stStyle }}"><i data-lucide="{{ l.stIcone }}" style="font-size:12px"></i>{{ l.st }}</span></span>
+<span style="font:400 12.5px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ l.link }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px;min-width:140px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
+<span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ l.rep }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px;min-width:150px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Tabela de preço</span>
+<span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ l.tabela }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px;min-width:110px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Pedido mínimo</span>
+<span style="font:500 13.5px/1.3 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ l.minimo }}</span>
+</div>
+<div style="display:flex;gap:4px">
+<button onClick="{{ l.copiar }}" aria-label="Copiar link" title="Copiar link da loja" style="width:36px;height:36px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#454F5E" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:17px"></i></button>
+<button onClick="{{ l.qr }}" aria-label="QR Code da loja" title="QR Code para imprimir e mandar" style="width:36px;height:36px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#454F5E" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="qr-code" style="font-size:17px"></i></button>
+<a href="loja.dc.html" aria-label="Abrir loja" title="Abrir loja" style="width:36px;height:36px;border-radius:6px;display:grid;place-items:center;color:#454F5E;text-decoration:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="external-link" style="font-size:17px"></i></a>
+</div>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ qrOpen }}" onClose="{{ fecharModais }}" title="{{ qrTitulo }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif;align-items:center">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E;text-align:center">Imprima para o balcão do cliente ou mande a imagem no WhatsApp — a câmera do celular abre a loja direto.</span>
+<div style="width:190px;height:190px;border-radius:10px;background:#FFFFFF;border:1px solid #E4E8EF;display:grid;place-items:center">
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:3px;width:150px;height:150px">
+<sc-for list="{{ qrCelulas }}" as="q" hint-placeholder-count="64"><span style="{{ q.style }}"></span></sc-for>
+</div>
+</div>
+<span style="font:400 12.5px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ qrLink }}</span>
+<div style="display:flex;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ fecharModais }}" hint-size="auto,40px">Baixar imagem</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="printer" onClick="{{ fecharModais }}" hint-size="auto,40px">Imprimir</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaLojaOpen }}" onClose="{{ fecharModais }}" title="Criar loja" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">Cada loja mostra os produtos de uma representada. A 3ª loja continua dentro da faixa de até 30 — a fatura não muda.</span>
+<x-import component-from-global-scope="va-select" label="Representada" options="Metalúrgica Horizonte|Tecelagem Iguaçu" value="Metalúrgica Horizonte" help="Móveis Vale e Cerâmica Atlas já têm loja" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da loja" value="{{ nomeLoja }}" onChange="{{ setNomeLoja }}" help="É assim que os compradores vão ver a loja — o nome também define o link" hint-size="100%,88px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Tabela de preço" options="Tabela industrial 2026|Tabela atacado" value="Tabela industrial 2026" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Pedido mínimo" prefix="R$" numeric="{{ true }}" value="2.000,00" hint-size="100%,66px"></x-import>
+</div>
+<div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:2px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Link da loja</span>
+<span style="font:400 13.5px/1.3 'IBM Plex Mono',monospace">{{ slugLoja }}.vendaagil.shop</span>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharModais }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ criarLoja }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar loja</x-import>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+<div data-va-kpis="" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:24px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">{{ k.label }}</span>
+<span style="font:600 28px/1.1 'IBM Plex Sans';letter-spacing:-.01em;font-variant-numeric:tabular-nums">{{ k.valor }}</span>
+<span style="{{ k.deltaStyle }}">{{ k.delta }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+<h2 style="font:600 17px/1.3 'IBM Plex Sans';margin:0">Pedidos recebidos pelo catálogo</h2>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Últimos 30 dias · 21 pedidos</span>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:1060px;display:grid;grid-template-columns:150px 1fr 170px 90px 130px 130px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Recebido</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Comprador</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Itens</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Total</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
+<span></span>
+</div>
+<sc-for list="{{ recebidos }}" as="r" hint-placeholder-count="6">
+<div style="min-width:1060px;display:grid;grid-template-columns:150px 1fr 170px 90px 130px 130px 110px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ r.quando }}</span>
+<div style="display:flex;flex-direction:column;gap:1px;min-width:0">
+<span style="font:600 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.cliente }}</span>
+<span style="font:400 12px/1.3 'IBM Plex Mono',monospace;color:#7A8699">{{ r.cnpj }}</span>
+</div>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ r.comprador }}</span>
+<span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ r.itens }}</span>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ r.total }}</span>
+<span style="{{ r.stStyle }}"><i data-lucide="{{ r.stIcone }}" style="font-size:13px"></i>{{ r.st }}</span>
+<span style="text-align:right"><a href="catalogo-pedido-revisar.dc.html" style="font:600 13px/1 'IBM Plex Sans';color:#365E10;text-decoration:none" style-hover="text-decoration:underline">{{ r.acao }}</a></span>
+</div>
+</sc-for>
+</div>
+<div data-va-kpis="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px">
+<a href="catalogo-acessos.dc.html" style="text-decoration:none;color:inherit;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;align-items:center;gap:14px" style-hover="background:#F7F9FB">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="key-round" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Acessos do catálogo</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">5 compradores · 1 convite pendente · 1 bloqueado</span>
+</div>
+<i data-lucide="chevron-right" style="font-size:18px;color:#7A8699"></i>
+</a>
+<a href="catalogo-pdf.dc.html" style="text-decoration:none;color:inherit;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;align-items:center;gap:14px" style-hover="background:#F7F9FB">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="file-down" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Catálogo em PDF</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Gerar arquivo para imprimir ou mandar no WhatsApp</span>
+</div>
+<i data-lucide="chevron-right" style="font-size:18px;color:#7A8699"></i>
+</a>
+<a href="catalogo-produtos.dc.html" style="flex:1;text-decoration:none;color:inherit;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;align-items:center;gap:14px" style-hover="background:#F7F9FB">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="package" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Produtos no catálogo</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">184 visíveis de 212 · 6 em promoção</span>
+</div>
+<i data-lucide="chevron-right" style="font-size:18px;color:#7A8699"></i>
+</a>
+<a href="catalogo-configurar.dc.html" style="flex:1;text-decoration:none;color:inherit;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;align-items:center;gap:14px" style-hover="background:#F7F9FB">
+<span style="width:40px;height:40px;border-radius:8px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E"><i data-lucide="settings-2" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:2px;flex:1">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">Configurações do catálogo</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Identidade, tabela de preço, pedido mínimo e condições</span>
+</div>
+<i data-lucide="chevron-right" style="font-size:18px;color:#7A8699"></i>
+</a>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { copiado: false, qrOpen: false, qrLoja: null, novaLojaOpen: false, toast: '', nomeLoja: 'Horizonte Ferramentas' };
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const up = "font:500 12px/1.3 'IBM Plex Sans';color:#0A6244;font-variant-numeric:tabular-nums";
+    const flat = "font:400 12px/1.3 'IBM Plex Sans';color:#7A8699";
+    const revisar = "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00";
+    const emitido = "display:inline-flex;align-items:center;gap:5px;font:600 12px/1 'IBM Plex Sans';color:#0A6244";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      lojas: [
+        { sigla: 'VO', nome: 'Vale Office', rep: 'Móveis Vale', link: 'valeoffice.vendaagil.shop', tabela: 'Varejo Sul 2026', minimo: 'R$ 3.000,00', pub: true },
+        { sigla: 'AR', nome: 'Atlas Revestimentos', rep: 'Cerâmica Atlas', link: 'atlasrevestimentos.vendaagil.shop', tabela: 'Tabela geral 2026', minimo: 'R$ 1.500,00', pub: false },
+      ].map(l => ({
+        ...l,
+        siglaStyle: "width:40px;height:40px;border-radius:8px;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';flex:none;background:#021226;color:#FFFFFF",
+        st: l.pub ? 'Publicada' : 'Rascunho',
+        stIcone: l.pub ? 'circle-check' : 'pencil-line',
+        stStyle: "display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:999px;font:600 11px/1 'IBM Plex Sans';background:" + (l.pub ? '#E7F0D2' : '#EDF0F5') + ';color:' + (l.pub ? '#365E10' : '#5B6678'),
+        copiar: () => { try { navigator.clipboard.writeText('https://' + l.link); } catch (e) {} this.avisar('Link da loja ' + l.nome + ' copiado'); },
+        qr: () => this.setState({ qrOpen: true, qrLoja: l }),
+      })),
+      qrOpen: this.state.qrOpen,
+      qrTitulo: 'QR Code — ' + (this.state.qrLoja ? this.state.qrLoja.nome : 'loja'),
+      qrLink: this.state.qrLoja ? this.state.qrLoja.link : '',
+      qrCelulas: [1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,1,0,1,1,0,0,1,0,0,1,0,1,1,0,1,1,1,0,0,1,0,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,1,0,1,0,0,1,0,1,1].map(v => ({ style: 'border-radius:1px;background:' + (v ? '#021226' : 'transparent') })),
+      novaLojaOpen: this.state.novaLojaOpen,
+      nomeLoja: this.state.nomeLoja,
+      setNomeLoja: (v) => this.setState({ nomeLoja: typeof v === 'string' ? v : v.target.value }),
+      slugLoja: (this.state.nomeLoja || 'minha-loja').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '').slice(0, 30) || 'minha-loja',
+      abrirNovaLoja: () => this.setState({ novaLojaOpen: true }),
+      criarLoja: () => { this.setState({ novaLojaOpen: false }); this.avisar('Loja criada como rascunho — configure a identidade e publique'); },
+      fecharModais: () => this.setState({ qrOpen: false, novaLojaOpen: false }),
+      toast: !!this.state.toast,
+      toastMsg: this.state.toast,
+      kpis: [
+        { label: 'Visitas · 30 dias', valor: '412', delta: '↗ +18% sobre o mês anterior', deltaStyle: up },
+        { label: 'Carrinhos iniciados', valor: '58', delta: '↗ +9 sobre o mês anterior', deltaStyle: up },
+        { label: 'Pedidos recebidos', valor: '21', delta: '36% dos carrinhos viram pedido', deltaStyle: flat },
+        { label: 'Valor recebido', valor: 'R$ 86.420', delta: '↗ +R$ 12.300 sobre o mês anterior', deltaStyle: up },
+      ],
+      recebidos: [
+        { quando: 'hoje, 09:12', cliente: 'Depósito São Jorge', cnpj: '12.448.732/0001-90', comprador: 'Márcia Fontana', itens: '9', total: 'R$ 6.480,00', st: 'Para revisar', stIcone: 'triangle-alert', stStyle: revisar, acao: 'Revisar' },
+        { quando: 'hoje, 08:47', cliente: 'Casa & Lar Móveis', cnpj: '08.221.904/0001-33', comprador: 'Paulo Siqueira', itens: '4', total: 'R$ 3.120,00', st: 'Para revisar', stIcone: 'triangle-alert', stStyle: revisar, acao: 'Revisar' },
+        { quando: 'ontem, 16:30', cliente: 'Lojas Pinheiral', cnpj: '31.775.640/0001-08', comprador: 'Renata Cruz', itens: '12', total: 'R$ 9.840,00', st: 'Emitido · 4.809', stIcone: 'circle-check', stStyle: emitido, acao: 'Ver pedido' },
+        { quando: 'ontem, 11:05', cliente: 'Móveis Guarani', cnpj: '05.914.207/0001-51', comprador: 'Jorge Tanaka', itens: '6', total: 'R$ 4.260,00', st: 'Emitido · 4.805', stIcone: 'circle-check', stStyle: emitido, acao: 'Ver pedido' },
+        { quando: '04/08, 15:44', cliente: 'Comercial Vitória', cnpj: '22.108.356/0001-77', comprador: 'Ana Beatriz Melo', itens: '7', total: 'R$ 5.030,00', st: 'Emitido · 4.798', stIcone: 'circle-check', stStyle: emitido, acao: 'Ver pedido' },
+        { quando: '03/08, 10:21', cliente: 'Depósito São Jorge', cnpj: '12.448.732/0001-90', comprador: 'Márcia Fontana', itens: '11', total: 'R$ 8.115,00', st: 'Emitido · 4.791', stIcone: 'circle-check', stStyle: emitido, acao: 'Ver pedido' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

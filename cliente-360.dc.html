@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CLI-03 Visão 360° do cliente" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="clientes" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="clientes.dc.html" style="text-decoration:none">Clientes</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Depósito São Jorge</span></nav>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="width:52px;height:52px;border-radius:10px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;font:600 17px/1 'IBM Plex Sans'">SJ</span>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:10px"><h1 style="font:600 24px/1.2 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Depósito São Jorge</h1><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="ativo" hint-size="auto,22px"></x-import></div>
+<span style="font:400 13.5px/1.4 'IBM Plex Sans';color:#454F5E">São Jorge Materiais Ltda · 12.448.732/0001-90 · Caxias do Sul, RS · rota Serra Gaúcha · vendedor Carlos Ribeiro</span>
+</div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="message-circle" hint-size="auto,40px">Enviar mensagem</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="pencil" onClick="{{ goCadastro }}" hint-size="auto,40px">Alterar cadastro</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" onClick="{{ goPedido }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar pedido</x-import>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g4,repeat(4,1fr));gap:16px;margin-bottom:20px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Comprado no ano</span><span style="font:600 26px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums;letter-spacing:-.01em">R$ 148.212</span><span style="display:inline-flex;align-items:center;gap:4px;font:600 12.5px/1 'IBM Plex Sans';color:#0A6244"><i data-lucide="arrow-up-right" style="font-size:12px"></i>+18,4% vs. 2025</span></div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Ticket médio</span><span style="font:600 26px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums;letter-spacing:-.01em">R$ 8.412</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">em 18 pedidos</span></div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Última compra</span><span style="font:600 26px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums;letter-spacing:-.01em">22/07</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">há 14 dias · Móveis Vale</span></div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Títulos em aberto</span><span style="font:600 26px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums;letter-spacing:-.01em">R$ 9.480</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">2 a vencer · nenhum vencido</span></div>
+</div>
+<div style="display:flex;gap:2px;border-bottom:1px solid #E4E8EF;margin-bottom:20px">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="5">
+<button onClick="{{ a.ir }}" style="{{ a.estilo }}">{{ a.rotulo }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ vPedidos }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<sc-for list="{{ pedidos }}" as="p" hint-placeholder-count="5">
+<a href="pedido-detalhe.dc.html" style="min-width:720px;display:flex;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid #EDF0F5;text-decoration:none;color:#021226" style-hover="background:#FAFBFC">
+<span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ p.num }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.meta }}</span></span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="{{ p.status }}" hint-size="auto,22px"></x-import>
+<span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;min-width:120px;text-align:right">{{ p.valor }}</span>
+</a>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ vMix }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:720px;display:grid;grid-template-columns:1fr 130px 130px 140px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Produto</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Qtde no ano</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Última compra</span>
+<span></span>
+</div>
+<sc-for list="{{ mix }}" as="m" hint-placeholder-count="4">
+<div style="min-width:720px;display:grid;grid-template-columns:1fr 130px 130px 140px;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ m.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Mono',monospace;color:#5B6678">{{ m.codigo }}</span></span>
+<span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ m.qtde }}</span>
+<span style="font:400 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ m.ultima }}</span>
+<span style="text-align:right"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" onClick="{{ goPedido }}" hint-size="auto,32px">Adicionar</x-import></span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ vAtividades }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:0;max-width:760px">
+<sc-for list="{{ atividades }}" as="at" hint-placeholder-count="4">
+<div style="display:flex;gap:14px;padding-bottom:20px;position:relative">
+<span style="width:32px;height:32px;border-radius:999px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none;z-index:1"><i data-lucide="{{ at.icone }}" style="font-size:15px"></i></span>
+<span style="position:absolute;left:15px;top:32px;bottom:0;width:1px;background:#E4E8EF"></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13.5px/1.5 'IBM Plex Sans'">{{ at.texto }}</span><span style="font:400 12px/1 'IBM Plex Sans';color:#5B6678">{{ at.quando }}</span></span>
+</div>
+</sc-for>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Registrar atividade</x-import>
+</div>
+</sc-if>
+<sc-if value="{{ vContatos }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;max-width:900px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#EDF0F5;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';color:#454F5E">JM</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">Jorge Machado — comprador</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">(54) 99911-2044 · jorge@saojorge.com.br</span></span>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#EDF0F5;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans';color:#454F5E">RS</span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">Rosane Silveira — financeiro</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">(54) 3282-4410 · financeiro@saojorge.com.br</span></span>
+</div>
+</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { aba: 'pedidos' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const defs = [
+      { id: 'pedidos', rotulo: 'Pedidos' },
+      { id: 'mix', rotulo: 'Produtos mais comprados' },
+      { id: 'atividades', rotulo: 'Atividades e anotações' },
+      { id: 'contatos', rotulo: 'Contatos' },
+    ];
+    const on = "height:40px;padding:0 16px;border:0;background:transparent;cursor:pointer;font:600 14px/1 'IBM Plex Sans';color:#021226;box-shadow:inset 0 -2px 0 #628A11";
+    const off = "height:40px;padding:0 16px;border:0;background:transparent;cursor:pointer;font:500 14px/1 'IBM Plex Sans';color:#5B6678";
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: defs.map(a => ({ ...a, estilo: this.state.aba === a.id ? on : off, ir: () => this.setState({ aba: a.id }) })),
+      vPedidos: this.state.aba === 'pedidos',
+      vMix: this.state.aba === 'mix',
+      vAtividades: this.state.aba === 'atividades',
+      vContatos: this.state.aba === 'contatos',
+      pedidos: [
+        { num: '4.812', meta: 'Móveis Vale · hoje, 10:24 · 30/60/90', status: 'pedido', valor: 'R$ 24.810,00' },
+        { num: '4.771', meta: 'Cerâmica Atlas · 22/07/2026 · 30/60', status: 'faturado_total', valor: 'R$ 6.240,00' },
+        { num: '4.702', meta: 'Móveis Vale · 08/07/2026 · 30/60/90', status: 'entregue', valor: 'R$ 11.130,00' },
+        { num: '4.655', meta: 'Tecelagem Iguaçu · 24/06/2026 · à vista', status: 'entregue', valor: 'R$ 3.980,00' },
+        { num: '4.601', meta: 'Móveis Vale · 10/06/2026 · 30/60/90', status: 'cancelado', valor: 'R$ 8.360,00' },
+      ],
+      mix: [
+        { nome: 'Cadeira Operacional Vale — preta', codigo: 'MV-1180', qtde: '96 un', ultima: '22/07/2026' },
+        { nome: 'Cadeira Diretor Vale — nogueira', codigo: 'MV-1204', qtde: '38 un', ultima: '22/07/2026' },
+        { nome: 'Porcelanato Atlas 80×80 — polar', codigo: 'CA-8080P', qtde: '410 m²', ultima: '22/07/2026' },
+        { nome: 'Gaveteiro volante 3 gavetas', codigo: 'MV-3418', qtde: '22 un', ultima: '08/07/2026' },
+      ],
+      atividades: [
+        { icone: 'phone', texto: 'Ligação: Jorge pediu prazo estendido para a reposição de setembro. Combinado 30/60/90/120 com aprovação do gestor.', quando: 'Hoje, 09:40 · Carlos Ribeiro' },
+        { icone: 'clipboard-list', texto: 'Pedido 4.812 emitido — R$ 24.810,00, comissão prevista R$ 1.240,50.', quando: 'Hoje, 10:24 · sistema' },
+        { icone: 'message-circle', texto: 'Catálogo de promoções de agosto enviado por WhatsApp.', quando: 'Ontem, 16:12 · Ana Prado' },
+        { icone: 'map-pin', texto: 'Visita na loja: espaço novo de exposição para linha de escritório. Oportunidade de mostruário.', quando: '28/07/2026 · Carlos Ribeiro' },
+      ],
+      goPedido: () => { location.href = 'pedidos-novo.dc.html'; },
+      goCadastro: () => { location.href = 'cliente-cadastro.dc.html'; },
+    };
+  }
+}
+</script>
+</body>
+</html>

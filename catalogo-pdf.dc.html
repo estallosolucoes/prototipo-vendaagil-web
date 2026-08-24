@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="CAT-05 Catálogo em PDF" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="catalogo" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="catalogo.dc.html" style="text-decoration:none">Catálogo B2B</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Catálogo em PDF</span></nav>
+<div style="display:flex;flex-direction:column;gap:4px;margin-bottom:24px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Gerar catálogo em PDF</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Um arquivo pronto para imprimir ou mandar no WhatsApp do comprador</span>
+</div>
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:16px;align-items:start">
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Conteúdo</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:12px">
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Tabela de preço" options="Varejo Sul 2026|Atacado Sul 2026|Sem preço (prospecção)" value="Varejo Sul 2026" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="va-select" label="Produtos" options="Todos os visíveis no catálogo (184)|Só produtos em promoção (6)|Escolher categorias" value="Todos os visíveis no catálogo (184)" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ cats }}" as="c" hint-placeholder-count="5">
+<button onClick="{{ c.pegar }}" aria-pressed="{{ c.on }}" style="{{ c.style }}">{{ c.nome }}</button>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Capa</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Título" value="Catálogo Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Validade dos preços" value="31/08/2026" mask="data" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Contato na contracapa" value="Carlos Rezende · (54) 99912-8007 · carlos@rezende.com.br" help="Sai na última página, com o link e o QR Code da loja" hint-size="100%,88px"></x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Layout</span>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{ layouts }}" as="l" hint-placeholder-count="3">
+<button onClick="{{ l.pegar }}" aria-pressed="{{ l.on }}" style="{{ l.style }}">
+<span style="{{ l.miniStyle }}">
+<sc-for list="{{ l.celulas }}" as="x" hint-placeholder-count="4"><span style="background:#D6DCE5;border-radius:2px"></span></sc-for>
+</span>
+<span style="font:inherit">{{ l.nome }}</span>
+</button>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:4px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:500 14px/1.3 'IBM Plex Sans'">Mostrar preços</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Desligado vira catálogo de prospecção, sem valores</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ comPreco }}" onChange="{{ togglePreco }}" aria-label="Mostrar preços" hint-size="44px,24px"></x-import>
+</div>
+</div>
+</div>
+<div style="display:grid;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Prévia</span>
+<div style="display:flex;gap:12px;justify-content:center">
+<div style="width:150px;aspect-ratio:210/297;background:#021226;border-radius:4px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 2px 8px rgba(2,18,38,.2)">
+<span style="width:34px;height:34px;border-radius:6px;background:#78A614;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';color:#021226">MV</span>
+<div style="display:flex;flex-direction:column;gap:4px">
+<span style="font:600 13px/1.3 'IBM Plex Sans';color:#F3F3F3">Catálogo Móveis Vale</span>
+<span style="font:400 9px/1.4 'IBM Plex Sans';color:#9AA4B4">Preços válidos até 31/08/2026 · Rezende Representações</span>
+</div>
+</div>
+<div style="width:150px;aspect-ratio:210/297;background:#FFFFFF;border:1px solid #E4E8EF;border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 8px rgba(2,18,38,.12)">
+<span style="height:6px;width:60%;background:#E4E8EF;border-radius:2px"></span>
+<div style="{{ paginaStyle }}">
+<sc-for list="{{ paginaCelulas }}" as="p" hint-placeholder-count="6">
+<span style="display:flex;flex-direction:column;gap:3px"><span style="flex:1;background:#EDF0F5;border-radius:2px"></span><span style="height:4px;width:80%;background:#D6DCE5;border-radius:2px"></span><sc-if value="{{ comPreco }}" hint-placeholder-val="{{ true }}"><span style="height:4px;width:45%;background:#78A614;border-radius:2px"></span></sc-if></span>
+</sc-for>
+</div>
+</div>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;text-align:center">{{ resumo }}</span>
+</div>
+<sc-if value="{{ pronto }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#E8F7F0;color:#0A6244;display:grid;place-items:center;flex:none"><i data-lucide="circle-check" style="font-size:20px"></i></span>
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">catalogo-moveis-vale.pdf</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">32 páginas · 8,4 MB · gerado agora</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" hint-size="100%,40px">Baixar PDF</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="message-circle" hint-size="100%,40px">Mandar no WhatsApp</x-import>
+</div>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="lg" icon-left="file-down" loading="{{ gerando }}" onClick="{{ gerar }}" dc-props="{{ btnProps }}" hint-size="100%,48px">{{ gerarLabel }}</x-import>
+</div>
+</div>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { layout: 'Grade 6 por página', comPreco: true, cats: { 0: true, 1: true, 2: true, 3: true, 4: true }, gerando: false, pronto: false };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const catNomes = ['Cadeiras e poltronas', 'Mesas e estações', 'Armários e arquivos', 'Recepção e espera', 'Acessórios'];
+    const chip = (on) => 'height:32px;padding:0 12px;border-radius:999px;cursor:pointer;font:' + (on ? '600' : '500') + " 13px/1 'IBM Plex Sans';border:1px solid " + (on ? '#628A11' : '#D6DCE5') + ';background:' + (on ? '#F2F8D4' : '#FFFFFF') + ';color:' + (on ? '#365E10' : '#454F5E');
+    const layouts = [
+      { nome: 'Grade 4 por página', n: 4, cols: 2 },
+      { nome: 'Grade 6 por página', n: 6, cols: 2 },
+      { nome: 'Lista com detalhes', n: 4, cols: 1 },
+    ];
+    const atual = layouts.find(l => l.nome === this.state.layout) || layouts[1];
+    const nSel = Object.values(this.state.cats).filter(Boolean).length;
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      cats: catNomes.map((nome, i) => ({
+        nome, on: !!this.state.cats[i],
+        style: chip(!!this.state.cats[i]),
+        pegar: () => this.setState(s => ({ cats: { ...s.cats, [i]: !s.cats[i] }, pronto: false })),
+      })),
+      layouts: layouts.map(l => {
+        const on = this.state.layout === l.nome;
+        return {
+          nome: l.nome, on,
+          style: 'display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 16px;border-radius:6px;cursor:pointer;font:' + (on ? '600' : '500') + " 13px/1.2 'IBM Plex Sans';border:1px solid " + (on ? '#628A11' : '#D6DCE5') + ';background:' + (on ? '#F2F8D4' : '#FFFFFF') + ';color:' + (on ? '#365E10' : '#454F5E'),
+          miniStyle: 'width:56px;height:72px;background:#FFFFFF;border:1px solid #D6DCE5;border-radius:3px;padding:5px;display:grid;gap:3px;grid-template-columns:repeat(' + l.cols + ',1fr)',
+          celulas: Array.from({ length: l.n }, () => ({})),
+          pegar: () => this.setState({ layout: l.nome, pronto: false }),
+        };
+      }),
+      paginaStyle: 'flex:1;display:grid;gap:5px;grid-template-columns:repeat(' + atual.cols + ',1fr);grid-auto-rows:1fr',
+      paginaCelulas: Array.from({ length: atual.n }, () => ({})),
+      comPreco: this.state.comPreco,
+      togglePreco: () => this.setState(s => ({ comPreco: !s.comPreco, pronto: false })),
+      resumo: '184 produtos · ' + nSel + ' de 5 categorias · ' + this.state.layout.toLowerCase() + (this.state.comPreco ? ' · com preços da Varejo Sul 2026' : ' · sem preços'),
+      gerando: this.state.gerando,
+      pronto: this.state.pronto,
+      gerarLabel: this.state.gerando ? 'Gerando catálogo' : (this.state.pronto ? 'Gerar de novo' : 'Gerar catálogo em PDF'),
+      gerar: () => { this.setState({ gerando: true, pronto: false }); setTimeout(() => this.setState({ gerando: false, pronto: true }), 1400); },
+    };
+  }
+}
+</script>
+</body>
+</html>

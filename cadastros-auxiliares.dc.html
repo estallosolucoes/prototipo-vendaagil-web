@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+</helmet>
+<div data-screen-label="AUX-01 Cadastros auxiliares" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="auxiliares" hint-size="0px,0px"></dc-import>
+<main style="max-width:980px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Cadastros auxiliares</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Categorias, segmentos, rotas e grades usados no resto do sistema</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ novoLabel }}</x-import>
+</div>
+<div style="display:flex;gap:4px;border-bottom:1px solid #CFD6E1;margin-bottom:20px;overflow-x:auto">
+<sc-for list="{{ abas }}" as="a" hint-placeholder-count="4">
+<button onClick="{{ a.ir }}" style="{{ a.style }}">{{ a.label }}<span style="{{ a.badgeStyle }}">{{ a.n }}</span></button>
+</sc-for>
+</div>
+<sc-if value="{{ ehCategorias }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+<x-import component-from-global-scope="va-select" label="" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="240px,40px"></x-import>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Categorias são da representada — cada indústria tem as suas. Arraste para reordenar o catálogo.</span>
+</div>
+</sc-if>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<sc-for list="{{ linhas }}" as="l" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid #EDF0F5" style-hover="background:#FAFBFC">
+<span style="color:#B9C1CE;cursor:grab;display:grid;place-items:center" title="Arrastar para reordenar"><i data-lucide="grip-vertical" style="font-size:16px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0">
+<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.nome }}</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ l.sub }}</span>
+</span>
+<span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678;font-variant-numeric:tabular-nums;white-space:nowrap">{{ l.uso }}</span>
+<button onClick="{{ l.editar }}" aria-label="Editar" title="Editar" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i></button>
+<button onClick="{{ l.excluir }}" aria-label="Excluir" title="Excluir" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="trash-2" style="font-size:16px"></i></button>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ ehRotas }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:14px;display:flex;gap:10px;padding:12px 16px;border-radius:6px;border:1px solid #9CCBF5;background:#EAF4FD;color:#0C477B;max-width:640px">
+<i data-lucide="info" style="font-size:18px;margin-top:1px;flex:none"></i>
+<span style="font:400 13px/1.55 'IBM Plex Sans';color:#021226">Para mover vários clientes de rota de uma vez, use a seleção em lote na lista de clientes.</span>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novoOpen }}" onClose="{{ fechar }}" title="{{ novoTitulo }}" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-if value="{{ ehCategorias }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da categoria" required="{{ true }}" placeholder="Cadeiras e poltronas" hint-size="100%,66px"></x-import>
+</sc-if>
+<sc-if value="{{ ehSegmentos }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do segmento" required="{{ true }}" placeholder="Material de construção" help="Usado no cadastro do cliente e nos filtros" hint-size="100%,88px"></x-import>
+</sc-if>
+<sc-if value="{{ ehRotas }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da rota" required="{{ true }}" placeholder="Serra Gaúcha" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Descrição" placeholder="Caxias, Bento, Farroupilha e região — visita quinzenal" hint-size="100%,66px"></x-import>
+</sc-if>
+<sc-if value="{{ ehGrades }}" hint-placeholder-val="{{ false }}">
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Tecelagem Iguaçu" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da grade" required="{{ true }}" placeholder="Camisetas — malha fria" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Tamanhos" placeholder="P, M, G, GG" help="Separe por vírgula, na ordem de exibição" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cores" placeholder="Branco, Preto, Marinho" help="Deixe vazio para grade só de tamanho" hint-size="100%,88px"></x-import>
+</sc-if>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ salvarLabel }}</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ excluirOpen }}" onClose="{{ fechar }}" title="{{ excluirTitulo }}" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:12px">
+<span style="width:40px;height:40px;border-radius:999px;background:#FDF0F1;color:#B3202F;display:grid;place-items:center;flex:none"><i data-lucide="triangle-alert" style="font-size:20px"></i></span>
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">{{ excluirAviso }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.4 'IBM Plex Sans';color:#454F5E">A exclusão é irreversível. Digite <strong style="font-family:'IBM Plex Mono',monospace;color:#021226">excluir</strong> para confirmar:</span>
+<input value="{{ confirmaTexto }}" onInput="{{ setConfirma }}" placeholder="excluir" aria-label="Digite excluir para confirmar" style="height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;font:500 14px/1 'IBM Plex Mono',monospace;color:#021226;width:100%" style-focus="outline:none;border-color:#B3202F;box-shadow:0 0 0 3px rgba(179,32,47,.12)">
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="trash-2" disabled="{{ confirmaInvalida }}" onClick="{{ fechar }}" hint-size="auto,40px">Excluir mesmo assim</x-import>
+</div>
+</div>
+</x-import>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { aba: 'categorias', novoOpen: false, excluirOpen: false, excluirItem: null, confirma: '' };
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  renderVals() {
+    const aba = this.state.aba;
+    const DADOS = {
+      categorias: [
+        { nome: 'Cadeiras e poltronas', sub: 'Móveis Vale', uso: '34 produtos' },
+        { nome: 'Mesas e estações', sub: 'Móveis Vale', uso: '28 produtos' },
+        { nome: 'Armários e arquivos', sub: 'Móveis Vale', uso: '19 produtos' },
+        { nome: 'Recepção e espera', sub: 'Móveis Vale', uso: '11 produtos' },
+        { nome: 'Acessórios', sub: 'Móveis Vale', uso: '7 produtos' },
+      ],
+      segmentos: [
+        { nome: 'Material de construção', sub: 'Segmento de cliente', uso: '61 clientes' },
+        { nome: 'Papelaria e escritório', sub: 'Segmento de cliente', uso: '42 clientes' },
+        { nome: 'Atacado', sub: 'Segmento de cliente', uso: '27 clientes' },
+        { nome: 'Órgão público', sub: 'Segmento de cliente', uso: '9 clientes' },
+      ],
+      rotas: [
+        { nome: 'Serra Gaúcha', sub: 'Caxias, Bento, Farroupilha e região — visita quinzenal', uso: '58 clientes' },
+        { nome: 'Litoral norte', sub: 'Capão, Torres, Tramandaí — visita mensal', uso: '33 clientes' },
+        { nome: 'Vale do Itajaí', sub: 'Blumenau, Brusque, Itajaí — visita mensal', uso: '41 clientes' },
+        { nome: 'Planalto', sub: 'Passo Fundo, Erechim — sob demanda', uso: '16 clientes' },
+      ],
+      grades: [
+        { nome: 'Camisetas — malha fria', sub: 'Tecelagem Iguaçu · tamanhos P, M, G, GG · cores Branco, Preto, Marinho', uso: '12 produtos' },
+        { nome: 'Polos bordadas', sub: 'Tecelagem Iguaçu · tamanhos P, M, G, GG, XG · cores Branco, Cinza', uso: '8 produtos' },
+        { nome: 'Revestimentos 20×20', sub: 'Cerâmica Atlas · cores Polar, Areia, Grafite', uso: '15 produtos' },
+      ],
+    };
+    const META = {
+      categorias: { label: 'Categorias', novo: 'Nova categoria', titulo: 'Nova categoria', salvar: 'Salvar categoria', aviso: 'A categoria "Acessórios" tem 7 produtos vinculados. Eles ficam sem categoria e somem dos filtros do catálogo.' },
+      segmentos: { label: 'Segmentos', novo: 'Novo segmento', titulo: 'Novo segmento', salvar: 'Salvar segmento', aviso: 'O segmento "Órgão público" tem 9 clientes vinculados. Eles ficam sem segmento nos filtros e relatórios.' },
+      rotas: { label: 'Rotas', novo: 'Nova rota', titulo: 'Nova rota', salvar: 'Salvar rota', aviso: 'A rota "Planalto" tem 16 clientes vinculados. Mova-os para outra rota antes, ou eles ficam sem rota de atendimento.' },
+      grades: { label: 'Grades', novo: 'Nova grade', titulo: 'Nova grade', salvar: 'Salvar grade', aviso: 'A grade "Revestimentos 20×20" está em 15 produtos. Sem ela, esses produtos voltam a ser vendidos sem variação.' },
+    };
+    const tabStyle = (on) => 'display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border:0;background:transparent;cursor:pointer;white-space:nowrap;font:' + (on ? '600' : '500') + " 14px/1 'IBM Plex Sans';color:" + (on ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (on ? '#628A11' : 'transparent') + ';margin-bottom:-1px';
+    const m = META[aba];
+    const item = this.state.excluirItem || DADOS[aba][DADOS[aba].length - 1];
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      abas: ['categorias', 'segmentos', 'rotas', 'grades'].map(id => ({
+        label: META[id].label,
+        n: DADOS[id].length,
+        style: tabStyle(aba === id),
+        badgeStyle: 'min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:' + (aba === id ? '#F2F8D4' : '#EDF0F5') + ';color:' + (aba === id ? '#365E10' : '#5B6678') + ";font:600 11px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums",
+        ir: () => this.setState({ aba: id }),
+      })),
+      ehCategorias: aba === 'categorias',
+      ehSegmentos: aba === 'segmentos',
+      ehRotas: aba === 'rotas',
+      ehGrades: aba === 'grades',
+      linhas: DADOS[aba].map(l => ({
+        ...l,
+        editar: () => this.setState({ novoOpen: true }),
+        excluir: () => this.setState({ excluirOpen: true, excluirItem: l }),
+      })),
+      novoLabel: m.novo,
+      novoTitulo: m.titulo,
+      salvarLabel: m.salvar,
+      excluirTitulo: 'Excluir "' + item.nome + '"?',
+      excluirAviso: m.aviso,
+      novoOpen: this.state.novoOpen,
+      excluirOpen: this.state.excluirOpen,
+      abrirNovo: () => this.setState({ novoOpen: true }),
+      fechar: () => this.setState({ novoOpen: false, excluirOpen: false, confirma: '' }),
+      confirmaTexto: this.state.confirma,
+      setConfirma: (e) => this.setState({ confirma: e.target.value }),
+      confirmaInvalida: this.state.confirma.trim().toLowerCase() !== 'excluir',
+    };
+  }
+}
+</script>
+</body>
+</html>

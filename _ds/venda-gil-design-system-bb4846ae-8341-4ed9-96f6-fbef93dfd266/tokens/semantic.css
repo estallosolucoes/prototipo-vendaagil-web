@@ -1,0 +1,115 @@
+/* Venda Ágil — TOKENS SEMÂNTICOS (camada 2 de 2), tema claro.
+   Esta é a única camada que os componentes enxergam.
+   Trocar a paleta inteira do produto = reescrever tokens/colors.css.
+   Trocar o significado = reescrever este arquivo. Componente não muda. */
+
+:root,[data-theme="light"]{
+  /* fundo de página e planos de profundidade — FZ.2 §4 bordas:
+     profundidade se comunica por MUDANÇA DE SUPERFÍCIE antes de sombra. */
+  --background-base:var(--neutral-100);
+  --background-subtle:var(--neutral-50);
+  --background-raised:var(--neutral-0);
+  --background-sunken:var(--neutral-200);
+  --background-overlay:rgba(2,18,38,.55);
+  --background-inverse:var(--navy-950);
+
+  /* superfícies interativas (linha de tabela, item de lista, card clicável) */
+  --surface-default:var(--neutral-0);
+  --surface-hover:var(--neutral-100);
+  --surface-active:var(--neutral-200);
+  --surface-selected:var(--green-100);
+  --surface-disabled:var(--neutral-100);
+
+  --border-subtle:var(--neutral-200);
+  --border-default:var(--neutral-300);
+  --border-strong:var(--neutral-400);
+  --border-focus:var(--navy-950);
+  --border-error:var(--danger-600);
+
+  --text-primary:var(--navy-950);     /* 19:1 no branco */
+  --text-secondary:var(--neutral-700);/* 9,1:1 */
+  --text-tertiary:var(--neutral-600); /* 6,3:1 — piso do texto legível */
+  --text-placeholder:var(--neutral-500);
+  --text-disabled:var(--neutral-500);
+  --text-inverse:var(--neutral-0);
+  --text-link:var(--green-800);
+  --text-link-hover:var(--green-900);
+  --text-on-accent:var(--navy-950);   /* 6,2:1 sobre --accent-default */
+
+  /* AÇÃO E ÊNFASE DE MARCA. O verde aqui nunca significa "deu certo". */
+  --accent-default:var(--green-600);
+  --accent-hover:var(--green-500);
+  --accent-active:var(--green-700);
+  --accent-subtle:var(--green-100);
+  --accent-muted:var(--green-200);
+  --accent-text:var(--green-800);
+  --accent-on-dark:var(--green-400);  /* único uso do limão: sobre navy */
+
+  /* ação neutra forte — a segunda forma do botão cheio */
+  --solid-default:var(--navy-950);
+  --solid-hover:var(--navy-800);
+  --solid-active:var(--navy-900);
+
+  --status-success-bg:var(--success-50);
+  --status-success-border:var(--success-200);
+  --status-success-text:var(--success-700);
+  --status-success-icon:var(--success-600);
+  --status-success-solid:var(--success-600);
+
+  --status-warning-bg:var(--warning-50);
+  --status-warning-border:var(--warning-200);
+  --status-warning-text:var(--warning-700);
+  --status-warning-icon:var(--warning-600);
+  /* assimetria deliberada: os outros /solid usam o degrau 600, o âmbar usa 400
+     porque o âmbar 600 é escuro demais para ler como "alerta" num ponto de 6px.
+     Regra: âmbar sólido nunca leva texto por cima. */
+  --status-warning-solid:var(--warning-400);
+
+  --status-danger-bg:var(--danger-50);
+  --status-danger-border:var(--danger-200);
+  --status-danger-text:var(--danger-700);
+  --status-danger-icon:var(--danger-600);
+  --status-danger-solid:var(--danger-600);
+
+  --status-info-bg:var(--info-50);
+  --status-info-border:var(--info-200);
+  --status-info-text:var(--info-700);
+  --status-info-icon:var(--info-600);
+  --status-info-solid:var(--info-600);
+
+  --status-neutral-bg:var(--neutral-100);
+  --status-neutral-border:var(--neutral-300);
+  --status-neutral-text:var(--neutral-700);
+  --status-neutral-icon:var(--neutral-600);
+  --status-neutral-solid:var(--neutral-600);
+
+  /* DADO FINANCEIRO — FZ.2 §10. Não reaproveita os semânticos de status:
+     um pedido "faturado" e um crescimento de 12% não são a mesma coisa. */
+  --data-realized:var(--navy-950);
+  --data-forecast:var(--neutral-500);
+  --data-forecast-line:var(--neutral-400);
+  --data-positive:var(--success-600);
+  --data-negative:var(--danger-600);
+  --data-neutral:var(--neutral-600);
+  --data-zero:var(--neutral-400);
+  --data-commission:var(--green-800);
+  --data-commission-bg:var(--green-100);
+  --data-grid:var(--neutral-200);
+  --data-axis:var(--neutral-500);
+
+  /* ORDEM DA PALETA DE DADOS — usar sempre nesta ordem, nunca sortear.
+     1–4 sobrevivem a protanopia/deuteranopia por diferença de luminância. */
+  --chart-1:var(--green-600);
+  --chart-2:var(--navy-700);
+  --chart-3:var(--info-400);
+  --chart-4:var(--warning-400);
+  --chart-5:var(--success-600);
+  --chart-6:var(--danger-600);
+  --chart-7:#7A5BC4;
+  --chart-8:var(--green-400);
+
+  --focus-ring:var(--navy-950);
+  --focus-ring-inverse:var(--neutral-0);
+  --focus-ring-width:2px; /* @kind spacing */
+  --focus-ring-offset:2px; /* @kind spacing */
+}

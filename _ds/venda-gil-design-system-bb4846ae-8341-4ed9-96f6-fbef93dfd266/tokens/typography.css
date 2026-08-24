@@ -1,0 +1,68 @@
+/* Venda Ágil — TIPOGRAFIA.
+   Escala modular razão 1,125 (menor) nos tamanhos de trabalho e 1,2 nos
+   títulos. Derivação FZ.2 §1 ritmo: os tamanhos caem em múltiplos do
+   ritmo de 4px sempre que possível, para que texto e caixa compartilhem
+   a mesma malha. Piso de corpo 14px (Persona 1 enxerga mal, luz solar). */
+
+:root{
+  --fw-light:300; /* @kind font */
+  --fw-regular:400; /* @kind font */
+  --fw-medium:500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:700; /* @kind font */
+
+  /* display — só autenticação, onboarding e vazio de primeiro uso */
+  --type-display-lg-size:48px; --type-display-lg-lh:1.1;  --type-display-lg-weight:600; --type-display-lg-tracking:-0.02em;
+  --type-display-md-size:38px; --type-display-md-lh:1.15; --type-display-md-weight:600; --type-display-md-tracking:-0.02em;
+
+  --type-heading-xl-size:30px; --type-heading-xl-lh:1.2;  --type-heading-xl-weight:600; --type-heading-xl-tracking:-0.015em;
+  --type-heading-lg-size:24px; --type-heading-lg-lh:1.25; --type-heading-lg-weight:600; --type-heading-lg-tracking:-0.01em;
+  --type-heading-md-size:20px; --type-heading-md-lh:1.3;  --type-heading-md-weight:600; --type-heading-md-tracking:-0.01em;
+  --type-heading-sm-size:18px; --type-heading-sm-lh:1.3;  --type-heading-sm-weight:600; --type-heading-sm-tracking:0;
+  --type-heading-xs-size:16px; --type-heading-xs-lh:1.35; --type-heading-xs-weight:600; --type-heading-xs-tracking:0;
+
+  --type-body-lg-size:16px; --type-body-lg-lh:1.55; --type-body-lg-weight:400; --type-body-lg-tracking:0;
+  --type-body-md-size:14px; --type-body-md-lh:1.55; --type-body-md-weight:400; --type-body-md-tracking:0;
+  --type-body-sm-size:13px; --type-body-sm-lh:1.45; --type-body-sm-weight:400; --type-body-sm-tracking:0;
+
+  --type-label-lg-size:14px; --type-label-lg-lh:1.3; --type-label-lg-weight:500; --type-label-lg-tracking:0;
+  --type-label-md-size:13px; --type-label-md-lh:1.3; --type-label-md-weight:500; --type-label-md-tracking:0;
+  --type-label-sm-size:12px; --type-label-sm-lh:1.3; --type-label-sm-weight:500; --type-label-sm-tracking:0.005em;
+
+  --type-caption-size:12px;  --type-caption-lh:1.4; --type-caption-weight:400; --type-caption-tracking:0;
+  --type-overline-size:11px; --type-overline-lh:1.2; --type-overline-weight:600; --type-overline-tracking:0.06em;
+  --type-code-size:13px;     --type-code-lh:1.45; --type-code-weight:400; --type-code-tracking:0;
+
+  /* NUMÉRICOS — sempre tabulares. FZ.2 §10: número não é texto comum. */
+  --type-numeric-xl-size:34px; --type-numeric-xl-lh:1.1;  --type-numeric-xl-weight:600; --type-numeric-xl-tracking:-0.02em;
+  --type-numeric-lg-size:24px; --type-numeric-lg-lh:1.15; --type-numeric-lg-weight:600; --type-numeric-lg-tracking:-0.015em;
+  --type-numeric-md-size:18px; --type-numeric-md-lh:1.2;  --type-numeric-md-weight:600; --type-numeric-md-tracking:-0.01em;
+  --type-numeric-sm-size:14px; --type-numeric-sm-lh:1.4;  --type-numeric-sm-weight:500; --type-numeric-sm-tracking:0;
+
+  /* linha de leitura 60–75 caracteres */
+  --measure-reading:68ch; /* @kind spacing */
+  --measure-form:640px; /* @kind spacing */
+}
+
+/* utilitários canônicos — usar estas classes em vez de repetir valores */
+.va-display-lg{font:var(--fw-semibold) var(--type-display-lg-size)/var(--type-display-lg-lh) var(--font-display);letter-spacing:var(--type-display-lg-tracking)}
+.va-display-md{font:var(--fw-semibold) var(--type-display-md-size)/var(--type-display-md-lh) var(--font-display);letter-spacing:var(--type-display-md-tracking)}
+.va-heading-xl{font:var(--fw-semibold) var(--type-heading-xl-size)/var(--type-heading-xl-lh) var(--font-ui);letter-spacing:var(--type-heading-xl-tracking)}
+.va-heading-lg{font:var(--fw-semibold) var(--type-heading-lg-size)/var(--type-heading-lg-lh) var(--font-ui);letter-spacing:var(--type-heading-lg-tracking)}
+.va-heading-md{font:var(--fw-semibold) var(--type-heading-md-size)/var(--type-heading-md-lh) var(--font-ui);letter-spacing:var(--type-heading-md-tracking)}
+.va-heading-sm{font:var(--fw-semibold) var(--type-heading-sm-size)/var(--type-heading-sm-lh) var(--font-ui)}
+.va-heading-xs{font:var(--fw-semibold) var(--type-heading-xs-size)/var(--type-heading-xs-lh) var(--font-ui)}
+.va-body-lg{font:var(--fw-regular) var(--type-body-lg-size)/var(--type-body-lg-lh) var(--font-ui)}
+.va-body-md{font:var(--fw-regular) var(--type-body-md-size)/var(--type-body-md-lh) var(--font-ui)}
+.va-body-sm{font:var(--fw-regular) var(--type-body-sm-size)/var(--type-body-sm-lh) var(--font-ui)}
+.va-label-lg{font:var(--fw-medium) var(--type-label-lg-size)/var(--type-label-lg-lh) var(--font-ui)}
+.va-label-md{font:var(--fw-medium) var(--type-label-md-size)/var(--type-label-md-lh) var(--font-ui)}
+.va-label-sm{font:var(--fw-medium) var(--type-label-sm-size)/var(--type-label-sm-lh) var(--font-ui)}
+.va-caption{font:var(--fw-regular) var(--type-caption-size)/var(--type-caption-lh) var(--font-ui);color:var(--text-tertiary)}
+.va-overline{font:var(--fw-semibold) var(--type-overline-size)/var(--type-overline-lh) var(--font-ui);letter-spacing:var(--type-overline-tracking);text-transform:uppercase}
+.va-code{font:var(--fw-regular) var(--type-code-size)/var(--type-code-lh) var(--font-code);font-variant-numeric:tabular-nums slashed-zero}
+.va-num-xl,.va-num-lg,.va-num-md,.va-num-sm{font-family:var(--font-num);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"zero" 1}
+.va-num-xl{font-size:var(--type-numeric-xl-size);line-height:var(--type-numeric-xl-lh);font-weight:var(--type-numeric-xl-weight);letter-spacing:var(--type-numeric-xl-tracking)}
+.va-num-lg{font-size:var(--type-numeric-lg-size);line-height:var(--type-numeric-lg-lh);font-weight:var(--type-numeric-lg-weight);letter-spacing:var(--type-numeric-lg-tracking)}
+.va-num-md{font-size:var(--type-numeric-md-size);line-height:var(--type-numeric-md-lh);font-weight:var(--type-numeric-md-weight);letter-spacing:var(--type-numeric-md-tracking)}
+.va-num-sm{font-size:var(--type-numeric-sm-size);line-height:var(--type-numeric-sm-lh);font-weight:var(--type-numeric-sm-weight)}

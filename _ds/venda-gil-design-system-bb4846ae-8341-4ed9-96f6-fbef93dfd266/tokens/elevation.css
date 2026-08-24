@@ -1,0 +1,28 @@
+/* Venda Ágil — ELEVAÇÃO. 6 níveis. Sombra é sempre neutra (tinta do
+   azul-noite em alfa, nunca cor). FZ.2 §4: sombra é o separador mais
+   forte e vem SEMPRE acompanhada de mudança de superfície ou borda —
+   nunca dos três ao mesmo tempo. Em alto contraste a sombra some e a
+   borda sustenta o limite sozinha. */
+
+:root{
+  --elevation-0:none;                                    /* conteúdo em fluxo, linha de tabela */
+  --elevation-1:0 1px 2px rgba(2,18,38,.06);             /* card, painel de KPI */
+  --elevation-2:0 2px 6px rgba(2,18,38,.08);             /* topbar sticky, barra de totais */
+  --elevation-3:0 6px 16px rgba(2,18,38,.10);            /* dropdown, popover, tooltip escuro */
+  --elevation-4:0 12px 32px rgba(2,18,38,.14);           /* drawer, modal */
+  --elevation-5:0 24px 56px rgba(2,18,38,.18);           /* toast, diálogo destrutivo */
+
+  --z-content:0; /* @kind other */
+  --z-sticky:100; /* @kind other */    /* cabeçalho de tabela, barra de totais do pedido */
+  --z-sidebar:200; /* @kind other */
+  --z-topbar:300; /* @kind other */
+  --z-dropdown:400; /* @kind other */  /* menu, combobox, seletor de data */
+  --z-drawer:500; /* @kind other */
+  --z-modal:600; /* @kind other */
+  --z-toast:700; /* @kind other */
+  --z-tooltip:800; /* @kind other */
+}
+
+@media (prefers-contrast:more){
+  :root{--elevation-1:none;--elevation-2:none;--elevation-3:none;--elevation-4:none;--elevation-5:none}
+}
