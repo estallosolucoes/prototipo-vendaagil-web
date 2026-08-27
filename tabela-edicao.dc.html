@@ -32,22 +32,26 @@
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
-<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}input.preco{width:110px;height:32px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#021226}input.preco:focus{outline:2px solid #021226;outline-offset:1px}</style>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}input.preco:focus{outline:none}.va-inputwrap:focus-within{border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)}</style>
 </helmet>
 <div data-screen-label="TAB-03 Edição da tabela" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
 <dc-import name="Topbar" hint-size="100%,92px"></dc-import>
 <div style="position:relative;flex:1">
 <dc-import name="Sidebar" active="tabelas" hint-size="0px,0px"></dc-import>
 <main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
-<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="tabelas-preco.dc.html" style="text-decoration:none">Tabelas de preço</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Tabela sul — varejo</span></nav>
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="tabelas-preco.dc.html" style="text-decoration:none">Tabelas de preço</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Tabela 2 — varejo</span></nav>
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
 <div style="display:flex;flex-direction:column;gap:4px">
-<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Tabela sul — varejo</h1>
-<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Móveis Vale · 84 produtos · 96 clientes vinculados · usada no catálogo B2B</span>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Tabela 2 — varejo</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Móveis Vale · escada — tabela 2 · varejo · CIF · 84 produtos · 96 clientes vinculados · usada no catálogo B2B</span>
+<div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-top:10px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor mínimo do pedido" prefix="R$" numeric="{{ true }}" value="1.000,00" help="A Móveis Vale usa o modelo escada — na emissão, o pedido entra nesta tabela ao passar deste valor" hint-size="280px,88px"></x-import>
+</div>
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="users" onClick="{{ abrirClientes }}" hint-size="auto,40px">Clientes vinculados</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="trending-up" onClick="{{ abrirFaixas }}" hint-size="auto,40px">Faixas progressivas</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="badge-percent" onClick="{{ abrirComissao }}" hint-size="auto,40px">Comissão por faixa</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="percent" onClick="{{ abrirReajuste }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Reajustar em massa</x-import>
 </div>
 </div>
@@ -69,7 +73,7 @@
 <span style="font:400 12.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ i.codigo }}</span>
 <span style="font:500 13.5px/1.35 'IBM Plex Sans'">{{ i.nome }}</span>
 <span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#5B6678">{{ i.base }}</span>
-<span style="display:flex;justify-content:flex-end"><input class="preco" defaultValue="{{ i.preco }}"></span>
+<span style="display:flex;justify-content:flex-end"><span class="va-inputwrap" style="display:inline-flex;align-items:center;gap:6px;height:36px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;background:#FFFFFF"><span style="font:400 13px/1 'IBM Plex Sans';color:#5B6678">R$</span><input class="preco" data-money="" defaultValue="{{ i.preco }}" aria-label="Preço na tabela — {{ i.nome }}" style="border:0;outline:none;width:92px;font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#021226;text-align:right;background:transparent"></span></span>
 <span style="{{ i.difStyle }}">{{ i.dif }}</span>
 <span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ i.comissao }}</span>
 </div>
@@ -93,20 +97,58 @@
 </div>
 </div>
 </x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ faixasOpen }}" onClose="{{ fechar }}" title="Faixas progressivas" subtitle="Desconto automático pelo valor do pedido" hint-size="0,0">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ faixasOpen }}" onClose="{{ fechar }}" title="Faixas progressivas" subtitle="Desconto automático pelo valor do pedido — configure e simule" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="display:flex;gap:8px;padding:10px 12px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF;font:400 12.5px/1.5 'IBM Plex Sans';color:#021226"><i data-lucide="triangle-alert" style="font-size:14px;color:#8A5B00;margin-top:2px;flex:none"></i>Demonstração: a Móveis Vale usa o modelo escada, onde o volume já está no preço. Faixas progressivas valem para representadas de tabela única.</span>
 <x-import component-from-global-scope="va-select" label="Gatilho" options="Valor total do pedido|Quantidade de itens" value="Valor total do pedido" hint-size="100%,66px"></x-import>
 <div style="display:flex;flex-direction:column;gap:8px">
-<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">A partir de <strong>R$ 8.000,00</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">3,00%</span></div>
-<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">A partir de <strong>R$ 15.000,00</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">5,00%</span></div>
-<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">A partir de <strong>R$ 30.000,00</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">7,00%</span></div>
+<div style="display:grid;grid-template-columns:1fr 110px 32px;gap:8px;align-items:center">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">A partir de</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Desconto</span>
+<span></span>
 </div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Adicionar faixa</x-import>
+<sc-for list="{{ faixasCfg }}" as="fx" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:1fr 110px 32px;gap:8px;align-items:center">
+<div class="va-inputwrap" style="display:flex;align-items:center;gap:8px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;background:#FFFFFF">
+<span style="font:400 13.5px/1 'IBM Plex Sans';color:#5B6678">R$</span>
+<input value="{{ fx.minTxt }}" onInput="{{ fx.setMin }}" aria-label="Valor mínimo da faixa" style="border:0;outline:none;flex:1;min-width:0;font:400 14px/1 'IBM Plex Sans';color:#021226;text-align:right;background:transparent">
+</div>
+<div style="display:flex;align-items:center;gap:6px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;background:#FFFFFF">
+<input value="{{ fx.pctTxt }}" onInput="{{ fx.setPct }}" aria-label="Percentual de desconto da faixa" style="border:0;outline:none;flex:1;min-width:0;font:400 14px/1 'IBM Plex Sans';color:#021226;text-align:right;background:transparent">
+<span style="font:400 13.5px/1 'IBM Plex Sans';color:#5B6678">%</span>
+</div>
+<button onClick="{{ fx.remover }}" aria-label="Remover faixa" title="Remover faixa" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FBECEE;color:#B3202F"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addFaixa }}" hint-size="auto,36px">Adicionar faixa</x-import>
 <div style="border-top:1px solid #E4E8EF;padding-top:14px;display:flex;flex-direction:column;gap:8px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Simulador</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor do pedido" prefix="R$" numeric="{{ true }}" value="18.500,00" hint-size="100%,66px"></x-import>
-<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">Cai na faixa de <strong style="color:#0A6244">5,00%</strong>. Faltam <strong>R$ 11.500,00</strong> para a faixa de 7,00%.</span>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Valor do pedido</span>
+<div style="display:flex;align-items:center;gap:8px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;background:#FFFFFF">
+<span style="font:400 13.5px/1 'IBM Plex Sans';color:#5B6678">R$</span>
+<input value="{{ simTxt }}" onInput="{{ setSim }}" aria-label="Valor do pedido no simulador" style="border:0;outline:none;flex:1;min-width:0;font:400 14px/1 'IBM Plex Sans';color:#021226;text-align:right;background:transparent">
 </div>
+</div>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">{{ simResultado }}</span>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ comissaoOpen }}" onClose="{{ fechar }}" title="Comissão por faixa" subtitle="Sobrescreve a grade da Móveis Vale só nesta tabela" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="checkbox" checked="{{ sobrescreve }}" onChange="{{ toggleSobrescreve }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Sobrescrever a grade da representada</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Desmarcado, vale a grade padrão da Móveis Vale</span></span>
+</label>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Desconto de <strong>0,0% a 5,0%</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">10%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Desconto de <strong>5,1% a 10,0%</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">8%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Desconto de <strong>10,1% a 20,0%</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">5%</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px"><span style="font:400 13.5px/1.4 'IBM Plex Sans'">Desconto <strong>acima de 30,0%</strong></span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#0A6244">3%</span></div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Adicionar faixa</x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A faixa é definida pelo desconto médio manual do pedido inteiro. Ordem de resolução: condição especial do cliente → esta tabela → grade da representada → % do vendedor.</span>
 </div>
 </x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ clientesOpen }}" onClose="{{ fechar }}" title="Clientes vinculados" subtitle="96 clientes usam esta tabela" hint-size="0,0">
@@ -124,7 +166,10 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { reajusteOpen: false, faixasOpen: false, clientesOpen: false };
+  state = { reajusteOpen: false, faixasOpen: false, clientesOpen: false, comissaoOpen: false, sobrescreve: true,
+    faixas: [{ min: 8000, pct: 3 }, { min: 15000, pct: 5 }, { min: 30000, pct: 7 }], sim: 18500 };
+  _brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
+  _digitos(txt) { const d = String(txt).replace(/\D/g, ''); return d ? parseInt(d, 10) / 100 : 0; }
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -153,7 +198,41 @@ class Component extends DCLogic {
       abrirReajuste: () => this.setState({ reajusteOpen: true }),
       abrirFaixas: () => this.setState({ faixasOpen: true }),
       abrirClientes: () => this.setState({ clientesOpen: true }),
-      fechar: () => this.setState({ reajusteOpen: false, faixasOpen: false, clientesOpen: false }),
+      ...(() => {
+        const fx = this.state.faixas;
+        const ordenadas = fx.slice().sort((a, b) => a.min - b.min);
+        const sim = this.state.sim;
+        let atual = null, prox = null;
+        ordenadas.forEach(f => { if (sim >= f.min) atual = f; });
+        prox = ordenadas.find(f => f.min > sim) || null;
+        const fmtPct = (p) => p.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) + '%';
+        let resultado;
+        if (!ordenadas.length) resultado = 'Nenhuma faixa configurada.';
+        else if (!atual) resultado = 'Abaixo da primeira faixa — sem desconto automático. Faltam ' + this._brl(ordenadas[0].min - sim) + ' para a faixa de ' + fmtPct(ordenadas[0].pct) + '.';
+        else resultado = 'Cai na faixa de ' + fmtPct(atual.pct) + '.' + (prox ? ' Faltam ' + this._brl(prox.min - sim) + ' para a faixa de ' + fmtPct(prox.pct) + '.' : ' É a última faixa.');
+        return {
+          faixasCfg: fx.map((f, i) => ({
+            minTxt: f.min.toLocaleString('pt-BR', { minimumFractionDigits: 2 }),
+            pctTxt: f.pct.toLocaleString('pt-BR', { minimumFractionDigits: 2 }),
+            setMin: (e) => this.setState(s => { const arr = s.faixas.slice(); arr[i] = { ...arr[i], min: this._digitos(e.target.value) }; return { faixas: arr }; }),
+            setPct: (e) => this.setState(s => { const arr = s.faixas.slice(); arr[i] = { ...arr[i], pct: this._digitos(e.target.value) }; return { faixas: arr }; }),
+            remover: () => this.setState(s => ({ faixas: s.faixas.filter((_, j) => j !== i) })),
+          })),
+          addFaixa: () => this.setState(s => {
+            const ult = s.faixas.length ? Math.max(...s.faixas.map(f => f.min)) : 0;
+            const ultPct = s.faixas.length ? Math.max(...s.faixas.map(f => f.pct)) : 0;
+            return { faixas: [...s.faixas, { min: ult * 2 || 5000, pct: ultPct + 2 }] };
+          }),
+          simTxt: sim.toLocaleString('pt-BR', { minimumFractionDigits: 2 }),
+          setSim: (e) => this.setState({ sim: this._digitos(e.target.value) }),
+          simResultado: resultado,
+        };
+      })(),
+      comissaoOpen: this.state.comissaoOpen,
+      abrirComissao: () => this.setState({ comissaoOpen: true }),
+      sobrescreve: this.state.sobrescreve,
+      toggleSobrescreve: () => this.setState(s => ({ sobrescreve: !s.sobrescreve })),
+      fechar: () => this.setState({ reajusteOpen: false, faixasOpen: false, clientesOpen: false, comissaoOpen: false }),
     };
   }
 }

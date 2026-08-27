@@ -49,10 +49,15 @@
 </div>
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por comprador, cliente ou e-mail" hint-size="360px,40px"></x-import>
-<x-import component-from-global-scope="va-select" label="" options="Todas as situações|Ativo|Convite pendente|Bloqueado" value="Todas as situações" hint-size="190px,40px"></x-import>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+<sc-for list="{{ stFiltros }}" as="ft" hint-placeholder-count="4">
+<button onClick="{{ ft.pegar }}" style="{{ ft.style }}">{{ ft.nome }}</button>
+</sc-for>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:960px;display:grid;grid-template-columns:1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:988px;display:grid;grid-template-columns:28px 1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todos os acessos" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Comprador</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Último acesso</span>
@@ -60,7 +65,8 @@
 <span></span>
 </div>
 <sc-for list="{{ acessos }}" as="a" hint-placeholder-count="5">
-<div style="min-width:960px;display:grid;grid-template-columns:1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="{{ a.rowStyle }}">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ a.sel }}" onChange="{{ a.marcar }}" aria-label="Selecionar {{ a.nome }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <div style="display:flex;flex-direction:column;gap:1px;min-width:0">
 <span style="font:600 14px/1.3 'IBM Plex Sans'">{{ a.nome }}</span>
 <span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ a.email }}</span>
@@ -75,6 +81,15 @@
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<button onClick="{{ loteReenviar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="send" style="font-size:13px"></i>Reenviar convite/senha</button>
+<button onClick="{{ loteBloquear }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #7A3540;background:transparent;color:#F2A3AE;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="ban" style="font-size:13px"></i>Bloquear</button>
+</div>
+</sc-if>
 <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
 </sc-if>
@@ -110,7 +125,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { liberarOpen: false, bloquearOpen: false, alvo: null, toast: '', bloqueados: {} };
+  state = { liberarOpen: false, bloquearOpen: false, alvo: null, toast: '', bloqueados: {}, stFiltro: 'Todos' };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -137,12 +152,25 @@ class Component extends DCLogic {
     ];
     return {
       btnProps: { style: { color: '#F3F3F3' } },
-      acessos: defs.map((a, i) => {
-        const sit = this.state.bloqueados[i] ? 'bloqueado' : a.sit;
+      stFiltros: (() => {
+        const chipOn = "display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+        const chipOff = "display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+        return ['Todos', 'Ativo', 'Convite pendente', 'Bloqueado'].map(nome => ({
+          nome,
+          style: this.state.stFiltro === nome ? chipOn : chipOff,
+          pegar: () => this.setState({ stFiltro: nome }),
+        }));
+      })(),
+      acessos: defs.map((a, i) => ({ a, i, sit: this.state.bloqueados[i] ? 'bloqueado' : a.sit }))
+        .filter(x => this.state.stFiltro === 'Todos' || st[x.sit].st === this.state.stFiltro)
+        .map(({ a, i, sit }) => {
         const s = st[sit];
         const pend = sit === 'pendente', bloq = sit === 'bloqueado';
         return {
           ...a, st: s.st, stIcone: s.icone, stStyle: s.style,
+          rowStyle: 'min-width:988px;display:grid;grid-template-columns:28px 1fr 1fr 150px 150px 132px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5' + (this.state.sel && this.state.sel[i] ? ';background:#F8FAF1' : ''),
+          sel: !!(this.state.sel && this.state.sel[i]),
+          marcar: () => this.setState(s2 => ({ sel: { ...(s2.sel || {}), [i]: !(s2.sel || {})[i] } })),
           acao1Icone: pend ? 'send' : 'key-round',
           acao1Titulo: pend ? 'Reenviar convite' : 'Reenviar senha por e-mail',
           acao1: () => this.avisar(pend ? 'Convite reenviado para ' + a.email : 'E-mail de redefinição enviado para ' + a.email),
@@ -156,6 +184,30 @@ class Component extends DCLogic {
       }),
       toast: !!this.state.toast,
       toastMsg: this.state.toast,
+      ...(() => {
+        const idx = defs.map((a, i) => ({ a, i, sit: this.state.bloqueados[i] ? 'bloqueado' : a.sit }))
+          .filter(x => this.state.stFiltro === 'Todos' || st[x.sit].st === this.state.stFiltro)
+          .map(x => x.i);
+        const sel = this.state.sel || {};
+        const marcados = idx.filter(i => sel[i]);
+        const n = marcados.length;
+        return {
+          selTodos: n > 0 && n === idx.length,
+          toggleTodos: () => this.setState(() => {
+            const liga = marcados.length < idx.length;
+            const m = {}; if (liga) idx.forEach(i => { m[i] = true; });
+            return { sel: m };
+          }),
+          temSel: n > 0,
+          nSel: n + (n === 1 ? ' acesso selecionado' : ' acessos selecionados'),
+          limparSel: () => this.setState({ sel: {} }),
+          loteReenviar: () => { this.setState({ sel: {} }); this.avisar('Convite/senha reenviados para ' + n + (n === 1 ? ' comprador' : ' compradores')); },
+          loteBloquear: () => {
+            this.setState(s2 => { const b = { ...s2.bloqueados }; marcados.forEach(i => { b[i] = true; }); return { bloqueados: b, sel: {} }; });
+            this.avisar(n + (n === 1 ? ' acesso bloqueado' : ' acessos bloqueados'));
+          },
+        };
+      })(),
       liberarOpen: this.state.liberarOpen,
       bloquearOpen: this.state.bloquearOpen,
       bloquearTitulo: 'Bloquear ' + (this.state.alvo ? this.state.alvo.nome : 'comprador') + '?',

@@ -92,7 +92,6 @@ Documento de referência do protótipo. Descreve, por módulo e página, o que c
 
 ## 7. Financeiro
 - **Faturamento** (`faturamento`, `faturamento-lote`): registrar faturamento de pedidos (parcial/total); em lote seleciona vários pedidos.
-- **Contas a receber** (`contas-receber`): parcelas, vencimentos, status pago/atrasado.
 - **Comissões** (`comissoes`): apuração por vendedor/representada/período; fechamento gera extrato.
 
 ## 8. Equipe
@@ -159,3 +158,8 @@ Documento de referência do protótipo. Descreve, por módulo e página, o que c
 - **Responsivo**: breakpoint 768px; modais/drawers viram bottom-sheet; inputs 16px (evita zoom iOS); alvos de toque ≥44px; tabelas com scroll interno no card.
 - **Permissões**: ações destrutivas e aprovações dependem do papel (gestor × vendedor); tarefas seguem a matriz da aba Tarefas do CRM.
 - **Dados de demonstração**: clientes, negócios e mensagens são estáticos; tarefas, tipos e conversas do chat persistem em localStorage.
+
+## Adendo — 27/08/2026 · Tela única de relatórios parametrizada
+- relatorio.dc.html é UMA tela para todos os relatórios, parametrizada por URL (?r=<id>) e por um select "Relatório" na barra de filtros (trocar atualiza título, subtítulo, colunas, linhas, gráfico, insight e a URL via history.replaceState). Filtros comuns: período, representada, vendedor. Exportação sai com o relatório+filtros aplicados.
+- Atalhos em relatorios.dc.html apontam para relatorio.dc.html?r=<id> — o usuário chega já filtrado.
+- Catálogo (ids): venda-geral, abc-clientes, abc-produtos, mais-vendidos, **menos-vendidos** (novo), positivados, inativos, carteira, **com-recebidas**, **com-pendentes**, **com-previstas** (novos — substituem "Comissão na emissão" e "Comissão no faturamento", REMOVIDOS), faturados, cortes, cobrancas (informativo — cobrança é da indústria), crm-funil, **crm-total** (total de negócios), **crm-abertos** (negócios em aberto), **crm-tempo** (tempo médio de atendimento) (novos).

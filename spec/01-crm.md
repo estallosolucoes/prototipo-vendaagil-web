@@ -226,3 +226,49 @@ Tabela: coluna Vendedor (avatar+nome, min 560px com scroll interno §F 3.6) + 4 
 
 ## 9. Notificações de tarefas no sino (Topbar)
 Seção "TAREFAS DE HOJE E ATRASADAS" lista tarefas com `status ∈ {hoje, atrasada}` (+ as concluídas nesta sessão do popover, para permitir desfazer). Item: checkbox 18px (marcar → conclui no store, título fica riscado; desmarcar → reabre) · título · "{cliente} · {data se atrasada} {hora}" · badge "atrasada" · ícone do tipo 26px. Link "Ver todas as tarefas" → módulo §4. Some quando não há tarefas de hoje/atrasadas.
+
+## Adendo — 26/08/2026 · Funil padrão, automações modulares e tarefas recorrentes
+### Funil de venda padrão (12 etapas, nesta ordem)
+1 Primeiro contato · 2 Cadastro do cliente · 3 Apresentação do mix · 4 Proposta enviada · 5 Negociação · 6 Recuperação 1 · 7 Recuperação 2 · 8 Recuperação 3 · 9 Aguardando aprovação da representada · 10 Faturado parcial · 11 Perdidos (fixa) · 12 Ganhos (fixa). Vale como default no kanban e em Configurações › Funis.
+### Card do negócio
+- Negócio com pedido vinculado mostra chip explícito "Pedido {nº} · {status}" (Rascunho/Emitido/Aguardando aprovação/Faturado parcial/Faturado, cor+ícone por status) entre o cliente e as etiquetas.
+### Automações (Configurações › Automações e WhatsApp)
+- REMOVIDAS: Avisar negócio parado · Responder primeiro contato · Abrir tratativa de cobrança.
+- Princípio: automação MODULAR — padrão sugerido ligado + parâmetros configuráveis inline (painel abaixo do switch quando ativa).
+- "Mover negócio ao emitir pedido": select da etapa de destino (padrão: Aguardando aprovação da representada; trocável se o funil do usuário não tiver a etapa).
+- "Avisar faturamento ao cliente": mensagem padrão editável com variáveis {nome} {pedido} {empresa} + Restaurar padrão. Padrão: "{nome}, boa notícia! O pedido {pedido} foi faturado pela {empresa} e já segue para expedição. Qualquer dúvida me chama por aqui."
+- "Mensagem personalizada ao mover para etapa" (nova): negócio entra na etapa → cliente recebe mensagem por WhatsApp. Lista de mensagens criadas (card por etapa, com remover); "Nova mensagem por etapa" abre form inline com select de FUNIL → select de etapa (opções dependem do funil escolhido; trocar o funil reseta a etapa para a primeira) + textarea (variáveis {nome} {pedido} {empresa}). Pode criar VÁRIAS — uma por funil×etapa; salvar na mesma combinação substitui. Card lista "Funil · Etapa" com editar (abre form preenchido) e remover.
+- "Avisar retorno de estoque" (nova): gatilho = produto vinculado a negócio volta ao estoque; parâmetros = funil a observar (padrão Lista de espera) + etapa (padrão Aguardando estoque) + quem notificar por PAPEL em dropdown MULTI-seleção (checkboxes, marcar todos/limpar, contador verde): Responsável pelo negócio / Vendedor da carteira do cliente / Gestor da equipe / Clientes do negócio — nunca amarrada a produto ou usuário específico.
+### Automações — apresentação e anexos (26/08)
+- Cada automação é um CARD demarcado (borda, raio 10, ícone 36px à esquerda, chip "ATIVA"): ativa = borda verde-clara #C9DCA3 + fundo branco + sombra; inativa = borda #E4E8EF + fundo #FAFBFC. Contêiner com gap 12px — nunca lista corrida com divisores.
+- "Avisar faturamento ao cliente" e "Mensagem personalizada ao mover para etapa" aceitam ANEXO na mensagem: botões Áudio/Imagem/Arquivo (chips tracejados); anexo escolhido vira chip verde com nome do arquivo e X para remover (um anexo por mensagem).
+
+### NegocioDrawer
+- Criar tarefa inline agora tem seleção de TIPO (chips dos tipos do va-tarefas store).
+### Tarefas recorrentes (crm-tarefas + va-tarefas.js)
+- Nova tarefa: select Repetir (Não repete/Diária/Semanal/Mensal) + "Repetir até" (data término). Cria série (até 30 ocorrências) via VATarefas.criarRecorrente.
+- Card de ocorrência mostra chip verde "Diária/Semanal/Mensal · até dd/mm" → abre modal da série (lista das ocorrências, a atual destacada, concluídas marcadas) com "Cancelar recorrência" — remove só as futuras, mantém as já criadas (VATarefas.cancelarSerie).
+- Editar (lápis no card): tarefa de série abre modal de escopo com 3 opções — "Somente esta tarefa" · "Esta e as próximas" · "Todas as tarefas" — antes do formulário; salvar aplica via atualizar/atualizarSerie. Tarefa avulsa edita direto.
+
+## Adendo — 27/08/2026 · Apagar contato e Permissões centralizadas
+### Contatos (crm-contatos)
+- Ação Apagar (lixeira) por linha. Contato vinculado a cliente → modal pergunta o destino: "Apagar somente o contato" (cliente mantido com histórico) ou "Apagar o contato e o cliente" (estilo destrutivo; pedidos/histórico ficam arquivados). Sem vínculo → confirmação simples. Toast confirma o resultado.
+### Permissões do CRM (Configurações › aba Permissões — substitui a aba Tarefas)
+- Modelo por GRUPOS DE PERMISSÃO reutilizáveis (padrão: Vendedor padrão, Vendedor sênior, Gestor) — configura uma vez, aplica a N vendedores; botão "Duplicar grupo selecionado" cria cópia editável.
+- Card Vendedores: cada vendedor recebe um grupo via select — sem reconfigurar do zero.
+- Editor do grupo: grade CRUD (Visualizar/Criar/Editar/Excluir) para Oportunidades, Tarefas e Contatos (contatos sem "Criar" na grade: visualizar/editar/apagar); toggles simples para Modelos de mensagem, Motivos de perda, Edição de funil, Automações e WhatsApp; Conversas em segmented "Vê as conversas de todos" × "Só as conversas dele".
+- vendedor-detalhe: o bloco de radios de permissões do CRM virou um card-resumo do grupo do vendedor com link "Gerenciar em Configurações do CRM" (RF-149 substituído).
+
+## Adendo — 27/08/2026 · Etiquetas por tipo e ações em massa
+### Etiquetas (Configurações › Etiquetas)
+- Duas listas SEPARADAS em sub-abas: "De negócios" (Cliente novo, Reativação, Promoção, Urgente) e "De contatos" (Decisor, Influenciador, Financeiro, Não perturbar).
+### Seleção em massa — lista de negócios (crm-negocios, modo lista)
+- Coluna de checkbox 28px + selecionar todos no cabeçalho; linha selecionada com fundo #F8AF1F… (#F8FAF1). Barra flutuante escura (padrão BulkActionsBar) com contagem + limpar + ações: Aplicar etiqueta (dropdown das etiquetas de negócios), Mover para etapa (etapas do funil atual), Mover para funil (demais funis → entra na 1ª etapa), Apagar (destrutiva, vermelho claro, por último).
+### Seleção em massa — contatos (crm-contatos)
+- Mesmo padrão: checkbox por linha + selecionar todos; barra com Aplicar etiqueta (etiquetas de contatos) e Apagar em massa (apaga só os contatos; clientes mantidos — a escolha contato×cliente é apenas na exclusão individual).
+
+## Adendo — 27/08/2026 · Notas no contato (crm-contato-detalhe)
+- Card "Notas" acima do Histórico: textarea + "Adicionar nota"; notas listadas em cartões âmbar (ícone notebook-pen) com texto, "quando — por quem" e apagar. Novas notas entram no topo. Visíveis só para a equipe.
+
+## Adendo — 27/08/2026 · Apagar tarefa (com escopo de recorrência)
+- Card da tarefa tem botão apagar (lixeira, ao lado do editar). Tarefa avulsa apaga direto (toast). Tarefa de série abre modal de escopo destrutivo com 3 opções: "Somente esta tarefa" (série continua) · "Esta e as que estão por vir" (excluirSerie a partir da data; anteriores ficam) · "Todas as tarefas da série" (remove tudo). Store: VATarefas.excluirSerie(serie, deData|null).

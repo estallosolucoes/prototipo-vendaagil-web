@@ -96,7 +96,7 @@
 <span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ promoFrase }}</span>
 <span style="margin-left:auto;font:700 13px/1 'IBM Plex Sans';white-space:nowrap">Ver promoções →</span>
 </button>
-<div data-va-chips="" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px">
+<div data-va-chips="" style="display:flex;flex-wrap:wrap;gap:8px">
 <sc-for list="{{ categorias }}" as="cat" hint-placeholder-count="4">
 <button onClick="{{ cat.escolher }}" style="{{ cat.style }}">{{ cat.nome }}</button>
 </sc-for>

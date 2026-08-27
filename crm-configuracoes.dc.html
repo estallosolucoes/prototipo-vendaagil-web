@@ -119,9 +119,13 @@
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
 <div style="display:flex;flex-direction:column;gap:2px">
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Etiquetas</span>
-<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Aplicadas em contatos e negócios; viram filtro no kanban e na lista</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Etiquetas de negócios e de contatos são listas separadas; viram filtro no kanban e nas listas</span>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ addEtiqueta }}" hint-size="auto,32px">Nova etiqueta</x-import>
+</div>
+<div style="display:flex;gap:4px;border-bottom:1px solid #CFD6E1">
+<button onClick="{{ verEtqNegocios }}" style="{{ etqNegTab }}">De negócios</button>
+<button onClick="{{ verEtqContatos }}" style="{{ etqConTab }}">De contatos</button>
 </div>
 <div style="display:flex;flex-direction:column">
 <sc-for list="{{ etiquetas }}" as="t" hint-placeholder-count="4">
@@ -136,30 +140,80 @@
 </div>
 </div>
 </sc-if>
-<sc-if value="{{ ehTarefas }}" hint-placeholder-val="{{ false }}">
-<div style="max-width:760px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<sc-if value="{{ ehPermissoes }}" hint-placeholder-val="{{ false }}">
+<div data-va-cols="" style="display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;flex-direction:column;gap:2px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões de tarefas por vendedor</span>
-<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Controla o que cada vendedor pode fazer no módulo Tarefas. Os tipos de tarefa são cadastrados na própria tela de <a href="crm-tarefas.dc.html">Tarefas</a>.</span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Grupos de permissão</span>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Configure uma vez, aplique a quantos vendedores quiser</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<sc-for list="{{ pgGrupos }}" as="pg" hint-placeholder-count="3">
+<button onClick="{{ pg.pegar }}" style="{{ pg.style }}">
+<span style="display:flex;flex-direction:column;gap:1px;text-align:left;flex:1;min-width:0"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ pg.nome }}</span><span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">{{ pg.uso }}</span></span>
+<i data-lucide="chevron-right" style="font-size:15px;color:#7A8699"></i>
+</button>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="copy-plus" onClick="{{ pgDuplicar }}" hint-size="auto,36px">Duplicar grupo selecionado</x-import>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 15px/1.3 'IBM Plex Sans'">Vendedores</span>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Cada vendedor usa um grupo — sem reconfigurar do zero</span>
+</div>
+<sc-for list="{{ pgVendedores }}" as="pv" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:28px;height:28px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10.5px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ pv.sigla }}</span>
+<span style="font:500 13px/1.3 'IBM Plex Sans';flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pv.nome }}</span>
+<div style="width:150px;flex:none"><x-import component-from-global-scope="va-select" data-campo="{{ pv.campo }}" options="Vendedor padrão|Vendedor sênior|Gestor" value="{{ pv.grupo }}" hint-size="100%,40px"></x-import></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões do grupo — {{ pgSelNome }}</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Tudo do CRM num lugar só: oportunidades, tarefas, contatos, mensagens, funil, automações e conversas</span>
 </div>
 <div style="overflow-x:auto">
-<div style="min-width:560px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,92px);gap:8px;align-items:center;padding:0 0 10px;border-bottom:1px solid #E4E8EF">
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Vendedor</span>
+<div style="min-width:520px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,86px);gap:8px;align-items:center;padding:0 0 10px;border-bottom:1px solid #E4E8EF">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Módulo</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Visualizar</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Criar</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Editar</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:center">Excluir</span>
 </div>
-<sc-for list="{{ permLinhas }}" as="pl" hint-placeholder-count="5">
-<div style="min-width:560px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,92px);gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #EDF0F5">
-<span style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:28px;height:28px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10.5px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ pl.sigla }}</span><span style="font:500 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pl.nome }}</span></span>
-<sc-for list="{{ pl.cols }}" as="pc" hint-placeholder-count="4">
-<span style="display:grid;place-items:center"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ pc.on }}" onChange="{{ pc.toggle }}" aria-label="{{ pc.rotulo }}" hint-size="44px,24px"></x-import></span>
+<sc-for list="{{ pgCrud }}" as="pr" hint-placeholder-count="3">
+<div style="min-width:520px;display:grid;grid-template-columns:minmax(0,1fr) repeat(4,86px);gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;align-items:center;gap:8px;font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="{{ pr.icone }}" style="font-size:15px;color:#5B6678"></i>{{ pr.nome }}</span>
+<sc-for list="{{ pr.cols }}" as="pc" hint-placeholder-count="4">
+<span style="display:grid;place-items:center">
+<sc-if value="{{ pc.aplica }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ pc.on }}" onChange="{{ pc.toggle }}" aria-label="{{ pc.rotulo }}" hint-size="44px,24px"></x-import></sc-if>
+<sc-if value="{{ pc.naoAplica }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px/1 'IBM Plex Sans';color:#B9C1CE">—</span></sc-if>
+</span>
 </sc-for>
 </div>
 </sc-for>
 </div>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;border-top:1px solid #E4E8EF;padding-top:12px">Sem Visualizar, o módulo Tarefas some do menu do vendedor. Excluir vale só para as tarefas dele.</span>
+<div style="display:flex;flex-direction:column;gap:2px">
+<sc-for list="{{ pgToggles }}" as="pt" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="display:flex;align-items:center;gap:8px;font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="{{ pt.icone }}" style="font-size:15px;color:#5B6678"></i>{{ pt.nome }}</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678;padding-left:23px">{{ pt.sub }}</span></span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ pt.on }}" onChange="{{ pt.toggle }}" aria-label="{{ pt.nome }}" hint-size="44px,24px"></x-import>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="display:flex;align-items:center;gap:8px;font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="messages-square" style="font-size:15px;color:#5B6678"></i>Conversas de WhatsApp</span>
+<div style="display:flex;border:1px solid #CFD6E1;border-radius:6px;overflow:hidden;width:fit-content">
+<button onClick="{{ pgConvTodas }}" style="{{ pgConvTodasStyle }}">Vê as conversas de todos</button>
+<button onClick="{{ pgConvDele }}" style="{{ pgConvDeleStyle }}">Só as conversas dele</button>
+</div>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;border-top:1px solid #E4E8EF;padding-top:12px">Sem Visualizar, o módulo some do menu do vendedor. Excluir vale só para os registros dele.</span>
+</div>
 </div>
 </sc-if>
 <sc-if value="{{ ehModelos }}" hint-placeholder-val="{{ false }}">
@@ -203,15 +257,127 @@
 </sc-if>
 <sc-if value="{{ ehAutomacoes }}" hint-placeholder-val="{{ false }}">
 <div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
-<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:6px">
-<span style="font:600 16px/1.3 'IBM Plex Sans';margin-bottom:6px">Automações</span>
-<sc-for list="{{ automacoes }}" as="a" hint-placeholder-count="7">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EDF0F5">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Automações</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Cada automação vem com um padrão sugerido e é configurável — gatilho, destino e mensagem são seus.</span>
+</div>
+<sc-for list="{{ automacoes }}" as="a" hint-placeholder-count="5">
+<div style="{{ a.cardStyle }}">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+<div style="display:flex;align-items:flex-start;gap:12px">
+<span style="{{ a.iconeStyle }}"><i data-lucide="{{ a.icone }}" style="font-size:17px"></i></span>
 <div style="display:flex;flex-direction:column;gap:2px">
-<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ a.titulo }}</span>
+<span style="display:flex;align-items:center;gap:8px;font:600 14px/1.3 'IBM Plex Sans'">{{ a.titulo }}<sc-if value="{{ a.on }}" hint-placeholder-val="{{ false }}"><span style="height:19px;display:inline-flex;align-items:center;padding:0 7px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 10.5px/1 'IBM Plex Sans';letter-spacing:.04em">ATIVA</span></sc-if></span>
 <span style="font:400 13px/1.45 'IBM Plex Sans';color:#5B6678">{{ a.sub }}</span>
 </div>
+</div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" checked="{{ a.on }}" onChange="{{ a.toggle }}" aria-label="{{ a.titulo }}" hint-size="44px,24px"></x-import>
+</div>
+<sc-if value="{{ a.cfgMover }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<x-import component-from-global-scope="va-select" data-campo="autoMoverEtapa" label="Mover o negócio para a etapa" options="Primeiro contato|Cadastro do cliente|Apresentação do mix|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Aguardando aprovação da representada|Faturado parcial|Ganhos" value="{{ autoMoverEtapa }}" help="Padrão sugerido — troque se o seu funil não tiver essa etapa" hint-size="100%,88px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ a.cfgAviso }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Mensagem enviada ao cliente</span>
+<textarea id="va-auto-msg-fat" rows="3" aria-label="Mensagem de faturamento" style="border:1px solid #CFD6E1;border-radius:6px;padding:10px 12px;font:400 13.5px/1.55 'IBM Plex Sans';color:#021226;resize:vertical;background:#FFFFFF" style-focus="outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)">{nome}, boa notícia! O pedido {pedido} foi faturado pela {empresa} e já segue para expedição. Qualquer dúvida me chama por aqui.</textarea>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{nome}</span>
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{pedido}</span>
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{empresa}</span>
+<span style="flex:1"></span>
+<button onClick="{{ restaurarMsgFat }}" style="border:0;background:transparent;color:#365E10;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px">Restaurar padrão</button>
+</div>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px dashed #E4E8EF;padding-top:10px">
+<span style="font:500 12.5px/1 'IBM Plex Sans';color:#5B6678">Anexar:</span>
+<sc-for list="{{ anexosFat }}" as="ax" hint-placeholder-count="3">
+<button onClick="{{ ax.pegar }}" style="{{ ax.style }}"><i data-lucide="{{ ax.icone }}" style="font-size:13px"></i>{{ ax.nome }}</button>
+</sc-for>
+<sc-if value="{{ anexoFatNome }}" hint-placeholder-val="{{ false }}">
+<span style="display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;background:#F2F8D4;color:#365E10;font:500 12px/1 'IBM Plex Sans'"><i data-lucide="paperclip" style="font-size:12px"></i>{{ anexoFatNome }}<button onClick="{{ limparAnexoFat }}" aria-label="Remover anexo" style="border:0;background:transparent;color:#365E10;cursor:pointer;display:grid;place-items:center;padding:0"><i data-lucide="x" style="font-size:12px"></i></button></span>
+</sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ a.cfgMsgEtapa }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Quando um negócio entra na etapa escolhida, o cliente recebe a mensagem por WhatsApp. Crie quantas quiser — uma por etapa.</span>
+<sc-for list="{{ msgsEtapa }}" as="me" hint-placeholder-count="2">
+<div style="display:flex;gap:10px;border:1px solid #E4E8EF;border-radius:8px;padding:10px 12px;background:#FFFFFF">
+<span style="width:30px;height:30px;border-radius:6px;background:#F2F8D4;color:#365E10;display:grid;place-items:center;flex:none"><i data-lucide="message-square-text" style="font-size:15px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:600 13px/1.3 'IBM Plex Sans'">{{ me.rotulo }}</span><span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">{{ me.msg }}</span></span>
+<button onClick="{{ me.editar }}" aria-label="Editar mensagem" title="Editar mensagem" style="width:30px;height:30px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#98A2B3;flex:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:14px"></i></button>
+<button onClick="{{ me.remover }}" aria-label="Remover mensagem" title="Remover mensagem" style="width:30px;height:30px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#98A2B3;flex:none" style-hover="background:#FBECEE;color:#B3202F"><i data-lucide="trash-2" style="font-size:14px"></i></button>
+</div>
+</sc-for>
+<sc-if value="{{ msgEtapaForm }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px dashed #B9C1CE;border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:10px;background:#FFFFFF">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+<x-import component-from-global-scope="va-select" data-campo="msgEtapaFunil" label="Funil" options="Venda|Acompanhamento|Lista de espera|SAC / Cobrança" value="{{ msgEtapaFunil }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="msgEtapaNova" label="Ao mover para a etapa" options="{{ msgEtapaOpcoes }}" value="{{ msgEtapaNova }}" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Mensagem</span>
+<textarea id="va-msg-etapa-txt" rows="3" aria-label="Mensagem personalizada" placeholder="Ex.: {nome}, sua proposta foi enviada! Qualquer dúvida me chama por aqui." style="border:1px solid #CFD6E1;border-radius:6px;padding:10px 12px;font:400 13.5px/1.55 'IBM Plex Sans';color:#021226;resize:vertical;background:#FFFFFF" style-focus="outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)"></textarea>
+</div>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{nome}</span>
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{pedido}</span>
+<span style="height:24px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:#EDF0F5;font:500 11.5px/1 'IBM Plex Mono',monospace;color:#454F5E">{empresa}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<span style="font:500 12.5px/1 'IBM Plex Sans';color:#5B6678">Anexar:</span>
+<sc-for list="{{ anexosEtapa }}" as="ax" hint-placeholder-count="3">
+<button onClick="{{ ax.pegar }}" style="{{ ax.style }}"><i data-lucide="{{ ax.icone }}" style="font-size:13px"></i>{{ ax.nome }}</button>
+</sc-for>
+<sc-if value="{{ anexoEtapaNome }}" hint-placeholder-val="{{ false }}">
+<span style="display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;background:#F2F8D4;color:#365E10;font:500 12px/1 'IBM Plex Sans'"><i data-lucide="paperclip" style="font-size:12px"></i>{{ anexoEtapaNome }}<button onClick="{{ limparAnexoEtapa }}" aria-label="Remover anexo" style="border:0;background:transparent;color:#365E10;cursor:pointer;display:grid;place-items:center;padding:0"><i data-lucide="x" style="font-size:12px"></i></button></span>
+</sc-if>
+</div>
+<div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" onClick="{{ msgEtapaCancelar }}" hint-size="auto,32px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="check" onClick="{{ msgEtapaSalvar }}" dc-props="{{ btnProps }}" hint-size="auto,32px">Salvar mensagem</x-import>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ msgEtapaFormFechado }}" hint-placeholder-val="{{ true }}">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ msgEtapaAbrirForm }}" hint-size="auto,36px">Nova mensagem por etapa</x-import>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ a.cfgEstoque }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Gatilho: um produto vinculado a um negócio volta ao estoque na indústria. Você escolhe onde olhar e quem avisar — nada fica amarrado a um produto ou usuário específico.</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px">
+<x-import component-from-global-scope="va-select" data-campo="autoEstoqueFunil" label="Olhar os negócios do funil" options="Lista de espera|Venda|Acompanhamento" value="{{ autoEstoqueFunil }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="autoEstoqueEtapa" label="Na etapa" options="Entrou na lista|Aguardando estoque|Estoque disponível|Cliente avisado" value="{{ autoEstoqueEtapa }}" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px;position:relative">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Notificar</span>
+<button onClick="{{ toggleQuemDd }}" style="height:40px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 12px;border:1px solid #CFD6E1;border-radius:6px;background:#FFFFFF;cursor:pointer;font:400 13.5px/1 'IBM Plex Sans';color:#021226;text-align:left" style-hover="border-color:#98A2B3">
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ quemRotulo }}</span>
+<span style="display:inline-flex;align-items:center;gap:6px;flex:none"><span style="min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 6px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11.5px/1 'IBM Plex Sans'">{{ quemCount }}</span><i data-lucide="chevron-down" style="font-size:15px;color:#7A8699"></i></span>
+</button>
+<sc-if value="{{ quemDdAberto }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#FFFFFF;border:1px solid #CFD6E1;border-radius:8px;box-shadow:0 8px 24px rgba(2,18,38,.14);z-index:30;display:flex;flex-direction:column;padding:6px">
+<sc-for list="{{ quemOpcoes }}" as="qo" hint-placeholder-count="4">
+<label style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;cursor:pointer" style-hover="background:#F5F7FA">
+<input type="checkbox" checked="{{ qo.on }}" onChange="{{ qo.toggle }}" style="width:16px;height:16px;accent-color:#78A614;flex:none">
+<span style="font:400 13.5px/1.3 'IBM Plex Sans'">{{ qo.nome }}</span>
+</label>
+</sc-for>
+<div style="display:flex;justify-content:space-between;border-top:1px solid #EDF0F5;margin-top:4px;padding:6px 4px 2px">
+<button onClick="{{ quemTodos }}" style="border:0;background:transparent;color:#365E10;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px">Marcar todos</button>
+<button onClick="{{ quemLimpar }}" style="border:0;background:transparent;color:#5B6678;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px">Limpar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Padrão sugerido: negócios em <strong>Aguardando estoque</strong> na <strong>Lista de espera</strong> → notifica o <strong>responsável pelo negócio</strong>, que decide avisar o cliente.</span>
+</div>
+</sc-if>
 </div>
 </sc-for>
 </div>
@@ -268,15 +434,114 @@
 class Component extends DCLogic {
   state = {
     aba: 'funis', funil: 'venda', modelo: 0,
+    pgSel: 'Vendedor padrão',
+    pgPerms: {
+      'Vendedor padrão': { oportunidades: { v: true, c: true, e: true, x: false }, tarefas: { v: true, c: true, e: true, x: true }, contatos: { v: true, e: true, x: false }, modelos: false, motivos: false, funil: false, autom: false, conv: 'dele' },
+      'Vendedor sênior': { oportunidades: { v: true, c: true, e: true, x: true }, tarefas: { v: true, c: true, e: true, x: true }, contatos: { v: true, e: true, x: true }, modelos: true, motivos: true, funil: false, autom: false, conv: 'dele' },
+      'Gestor': { oportunidades: { v: true, c: true, e: true, x: true }, tarefas: { v: true, c: true, e: true, x: true }, contatos: { v: true, e: true, x: true }, modelos: true, motivos: true, funil: true, autom: true, conv: 'todas' },
+    },
+    pgVend: { 'Carlos Rezende': 'Gestor', 'Ana Paula Vieira': 'Vendedor sênior', 'Renata Cruz': 'Vendedor padrão', 'Jorge Tomasi': 'Vendedor padrão', 'Paulo Selau': 'Vendedor padrão' },
     etapasCustom: null, cores: {}, paletaAberta: null,
-    autos: { parado: true, primeiro: true, aviso: true, mover: false, aniversario: false, cobranca: true, resumo: false },
+    autos: { aviso: true, mover: true, msgetapa: true, estoque: true, aniversario: false, resumo: false },
+    msgsEtapa: [
+      { funil: 'Venda', etapa: 'Proposta enviada', msg: '{nome}, sua proposta acabou de sair! Dá uma olhada e me diz o que achou.' },
+    ],
+    msgEtapaForm: false, msgEtapaFunil: 'Venda', msgEtapaNova: 'Negociação',
+    anexoFat: null, anexoEtapa: null,
+    autoMoverEtapa: 'Aguardando aprovação da representada',
+    autoEstoqueFunil: 'Lista de espera', autoEstoqueEtapa: 'Aguardando estoque',
+    autoEstoqueQuem: { 'Responsável pelo negócio': true }, quemDdAberto: false,
     zap: true, qrOpen: false, qrLendo: false, toast: '',
   };
-  componentDidMount() { this.paint(); }
+  componentDidMount() {
+    this.paint();
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT') return;
+      const campo = el.getAttribute('data-campo');
+      if (!campo) return;
+      const valor = (e.detail && e.detail.value) || el.getAttribute('value');
+      if (campo === 'msgEtapaFunil') {
+        const primeira = ({
+          'Venda': 'Primeiro contato', 'Acompanhamento': 'Aguardando retorno indústria',
+          'Lista de espera': 'Entrou na lista', 'SAC / Cobrança': 'Em tratativa — SAC',
+        })[valor];
+        this.setState({ msgEtapaFunil: valor, msgEtapaNova: primeira });
+        return;
+      }
+      if (campo.indexOf('vg:') === 0) {
+        const vend = campo.slice(3);
+        this.setState(s => ({ pgVend: { ...s.pgVend, [vend]: valor } }));
+        this.avisar(vend.split(' ')[0] + ' agora usa o grupo ' + valor);
+        return;
+      }
+      this.setState({ [campo]: valor });
+    };
+    document.addEventListener('change', this._chg);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); }
   componentDidUpdate() { this.paint(); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  permissoesVals() {
+    const sel = this.state.pgSel;
+    const P = this.state.pgPerms[sel];
+    const setP = (fn) => this.setState(s => {
+      const novo = JSON.parse(JSON.stringify(s.pgPerms));
+      fn(novo[s.pgSel]);
+      return { pgPerms: novo };
+    });
+    const usoDe = (g) => {
+      const n = Object.values(this.state.pgVend).filter(v => v === g).length;
+      return n === 0 ? 'nenhum vendedor' : n === 1 ? '1 vendedor' : n + ' vendedores';
+    };
+    const segBtn = (on) => 'height:36px;padding:0 14px;border:0;cursor:pointer;font:' + (on ? '600' : '500') + " 13px/1 'IBM Plex Sans';background:" + (on ? '#F2F8D4' : '#FFFFFF') + ';color:' + (on ? '#365E10' : '#454F5E');
+    return {
+      pgSelNome: sel,
+      pgGrupos: Object.keys(this.state.pgPerms).map(g => ({
+        nome: g, uso: usoDe(g),
+        style: 'display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;font-family:inherit;text-align:left;border:1px solid ' + (g === sel ? '#628A11' : '#E4E8EF') + ';background:' + (g === sel ? '#F8FAF1' : '#FFFFFF'),
+        pegar: () => this.setState({ pgSel: g }),
+      })),
+      pgDuplicar: () => {
+        const novoNome = 'Cópia de ' + sel;
+        if (this.state.pgPerms[novoNome]) { this.avisar('Já existe um grupo com esse nome'); return; }
+        this.setState(s => ({ pgPerms: { ...s.pgPerms, [novoNome]: JSON.parse(JSON.stringify(s.pgPerms[s.pgSel])) }, pgSel: novoNome }));
+        this.avisar('Grupo duplicado — ajuste e aplique aos vendedores');
+      },
+      pgVendedores: Object.keys(this.state.pgVend).map(nome => ({
+        nome, sigla: nome.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase(),
+        grupo: this.state.pgVend[nome], campo: 'vg:' + nome,
+      })),
+      pgCrud: [
+        { id: 'oportunidades', nome: 'Oportunidades', icone: 'trending-up', cols: ['v', 'c', 'e', 'x'] },
+        { id: 'tarefas', nome: 'Tarefas', icone: 'list-checks', cols: ['v', 'c', 'e', 'x'] },
+        { id: 'contatos', nome: 'Contatos', icone: 'users-round', cols: ['v', null, 'e', 'x'] },
+      ].map(m => ({
+        nome: m.nome, icone: m.icone,
+        cols: m.cols.map(cKey => ({
+          aplica: !!cKey, naoAplica: !cKey,
+          on: cKey ? !!P[m.id][cKey] : false,
+          rotulo: (cKey || '') + ' ' + m.nome + ' — ' + sel,
+          toggle: () => setP(g => { g[m.id][cKey] = !g[m.id][cKey]; }),
+        })),
+      })),
+      pgToggles: [
+        { id: 'modelos', nome: 'Modelos de mensagem', icone: 'message-square-text', sub: 'Criar e editar os modelos usados nas conversas' },
+        { id: 'motivos', nome: 'Motivos de perda', icone: 'circle-x', sub: 'Gerenciar a lista de motivos' },
+        { id: 'funil', nome: 'Edição de funil', icone: 'kanban', sub: 'Criar, renomear e reordenar etapas dos funis' },
+        { id: 'autom', nome: 'Automações e WhatsApp', icone: 'zap', sub: 'Ligar/desligar automações e configurar canais' },
+      ].map(t => ({
+        ...t, on: !!P[t.id],
+        toggle: () => setP(g => { g[t.id] = !g[t.id]; }),
+      })),
+      pgConvTodasStyle: segBtn(P.conv === 'todas') + ';border-right:1px solid #CFD6E1',
+      pgConvDeleStyle: segBtn(P.conv === 'dele'),
+      pgConvTodas: () => setP(g => { g.conv = 'todas'; }),
+      pgConvDele: () => setP(g => { g.conv = 'dele'; }),
+    };
   }
   avisar(msg) {
     this.setState({ toast: msg });
@@ -285,7 +550,7 @@ class Component extends DCLogic {
   }
   etapasDe(funil) {
     const BASE = {
-      venda: ['Cadastro do cliente', 'Primeiro contato', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Pedido emitido', 'Aguardando aprovação', 'Enviado à indústria', 'Faturado parcial'],
+      venda: ['Primeiro contato', 'Cadastro do cliente', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3', 'Aguardando aprovação da representada', 'Faturado parcial'],
       acompanhamento: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Em transporte', 'Pedido faturado total'],
       espera: ['Entrou na lista', 'Aguardando estoque', 'Estoque disponível', 'Cliente avisado'],
       sac: ['Em tratativa — SAC', 'Em tratativa — Cobrança', 'Resolvido'],
@@ -312,23 +577,23 @@ class Component extends DCLogic {
     ];
     const mod = MODELOS[this.state.modelo];
     const AUTOS = [
-      { id: 'parado', titulo: 'Avisar negócio parado', sub: 'Alerta quando um negócio fica 10 dias sem movimento na etapa' },
-      { id: 'primeiro', titulo: 'Responder primeiro contato', sub: 'Envia o modelo /tabela quando um contato novo chama no WhatsApp' },
-      { id: 'aviso', titulo: 'Avisar faturamento ao cliente', sub: 'Manda mensagem quando o pedido do negócio é faturado' },
-      { id: 'mover', titulo: 'Mover ao emitir pedido', sub: 'Negócio vai sozinho para a etapa Pedido emitido' },
-      { id: 'aniversario', titulo: 'Lembrar aniversário do contato', sub: 'Cria tarefa no dia, com modelo de mensagem pronto' },
-      { id: 'cobranca', titulo: 'Abrir tratativa de cobrança', sub: 'Título vencido há 5 dias cria negócio no funil SAC / Cobrança' },
-      { id: 'resumo', titulo: 'Resumo semanal por e-mail', sub: 'Toda segunda, 7h: negócios parados, ganhos e perdidos da semana' },
+      { id: 'mover', icone: 'arrow-right-circle', titulo: 'Mover negócio ao emitir pedido', sub: 'Quando o pedido vinculado é emitido, o negócio muda de etapa sozinho — você escolhe qual' },
+      { id: 'aviso', icone: 'receipt', titulo: 'Avisar faturamento ao cliente', sub: 'Manda mensagem por WhatsApp quando o pedido do negócio é faturado' },
+      { id: 'msgetapa', icone: 'message-square-text', titulo: 'Mensagem personalizada ao mover para etapa', sub: 'Negócio entra numa etapa → cliente recebe a mensagem daquela etapa; crie uma por etapa' },
+      { id: 'estoque', icone: 'package-check', titulo: 'Avisar retorno de estoque', sub: 'Produto de um negócio volta ao estoque → notifica quem você escolher, na etapa que você escolher' },
+      { id: 'aniversario', icone: 'cake', titulo: 'Lembrar aniversário do contato', sub: 'Cria tarefa no dia, com modelo de mensagem pronto' },
+      { id: 'resumo', icone: 'mail', titulo: 'Resumo semanal por e-mail', sub: 'Toda segunda, 7h: negócios parados, ganhos e perdidos da semana' },
     ];
     const qrSeed = [1,0,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,1,0,1,1,0,0,1,0,0,1,0,1,1,0,1,1,1,0,0,1,0,1,0,0,1,1,1,0,1,0,1,1,0,0,1,1,0,1,1,0,1,0,0,1,0,1,1];
     return {
       btnProps: { style: { color: '#F3F3F3' } },
       abas: [
-        { id: 'funis', label: 'Funis' }, { id: 'motivos', label: 'Motivos de perda' }, { id: 'etiquetas', label: 'Etiquetas' }, { id: 'tarefas', label: 'Tarefas' }, { id: 'modelos', label: 'Modelos de mensagem' }, { id: 'automacoes', label: 'Automações e WhatsApp' },
+        { id: 'funis', label: 'Funis' }, { id: 'motivos', label: 'Motivos de perda' }, { id: 'etiquetas', label: 'Etiquetas' }, { id: 'permissoes', label: 'Permissões' }, { id: 'modelos', label: 'Modelos de mensagem' }, { id: 'automacoes', label: 'Automações e WhatsApp' },
       ].map(t => ({ ...t, style: tabStyle(aba === t.id), ir: () => { if (t.id === 'modelos') { window.location.href = 'crm-templates.dc.html'; return; } this.setState({ aba: t.id }); } })).concat([
         { label: 'Canais de WhatsApp', style: tabStyle(false), ir: () => { window.location.href = 'configuracoes-canais.dc.html'; } },
       ]),
-      ehFunis: aba === 'funis', ehMotivos: aba === 'motivos', ehEtiquetas: aba === 'etiquetas', ehTarefas: aba === 'tarefas', ehModelos: aba === 'modelos', ehAutomacoes: aba === 'automacoes',
+      ehFunis: aba === 'funis', ehMotivos: aba === 'motivos', ehEtiquetas: aba === 'etiquetas', ehPermissoes: aba === 'permissoes', ehModelos: aba === 'modelos', ehAutomacoes: aba === 'automacoes',
+      ...this.permissoesVals(),
       permLinhas: ['Carlos Rezende', 'Ana Paula Vieira', 'Renata Cruz', 'Jorge Tomasi', 'Paulo Selau'].map(nome => {
         const sigla = nome.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
         const padrao = { Visualizar: true, Criar: true, Editar: ['Carlos Rezende', 'Ana Paula Vieira'].indexOf(nome) >= 0, Excluir: nome === 'Carlos Rezende' };
@@ -343,7 +608,7 @@ class Component extends DCLogic {
       }),
       listaFunis: FUNIS.map(f => ({
         nome: f.nome,
-        sub: (this.state.funil === f.id ? editaveis.length + f.fixos.length : ({ venda: 11, acompanhamento: 5, espera: 6, sac: 4 })[f.id]) + ' etapas',
+        sub: (this.state.funil === f.id ? editaveis.length + f.fixos.length : ({ venda: 12, acompanhamento: 5, espera: 6, sac: 4 })[f.id]) + ' etapas',
         style: 'display:flex;width:100%;padding:14px 16px;border:0;border-bottom:1px solid #EDF0F5;border-left:3px solid ' + (this.state.funil === f.id ? '#78A614' : 'transparent') + ';background:' + (this.state.funil === f.id ? '#F8FAF1' : '#FFFFFF') + ';cursor:pointer',
         ir: () => this.setState({ funil: f.id }),
       })),
@@ -386,12 +651,21 @@ class Component extends DCLogic {
         remover: () => this.avisar('Motivo excluído — os negócios antigos guardam o texto'),
       })),
       addMotivo: () => this.avisar('Motivo adicionado à lista'),
-      etiquetas: [
+      etqNegTab: "height:38px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:" + (this.state.etqAba !== 'contatos' ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:" + (this.state.etqAba !== 'contatos' ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (this.state.etqAba !== 'contatos' ? '#628A11' : 'transparent') + ';margin-bottom:-1px',
+      etqConTab: "height:38px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:" + (this.state.etqAba === 'contatos' ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:" + (this.state.etqAba === 'contatos' ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (this.state.etqAba === 'contatos' ? '#628A11' : 'transparent') + ';margin-bottom:-1px',
+      verEtqNegocios: () => this.setState({ etqAba: 'negocios' }),
+      verEtqContatos: () => this.setState({ etqAba: 'contatos' }),
+      etiquetas: (this.state.etqAba === 'contatos' ? [
+        { nome: 'Decisor', c: '#0C477B', b: '#EAF4FD', uso: '9 contatos' },
+        { nome: 'Influenciador', c: '#8A5B00', b: '#FCF3DF', uso: '5 contatos' },
+        { nome: 'Financeiro', c: '#365E10', b: '#F2F8D4', uso: '3 contatos' },
+        { nome: 'Não perturbar', c: '#85202C', b: '#FDF0F1', uso: '1 contato' },
+      ] : [
         { nome: 'Cliente novo', c: '#0C477B', b: '#EAF4FD', uso: '6 aplicações' },
         { nome: 'Reativação', c: '#8A5B00', b: '#FCF3DF', uso: '4 aplicações' },
         { nome: 'Promoção', c: '#365E10', b: '#F2F8D4', uso: '9 aplicações' },
         { nome: 'Urgente', c: '#85202C', b: '#FDF0F1', uso: '2 aplicações' },
-      ].map(t => ({ ...t, chipStyle: "display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font:600 12px/1 'IBM Plex Sans';color:" + t.c + ';background:' + t.b })),
+      ]).map(t => ({ ...t, chipStyle: "display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font:600 12px/1 'IBM Plex Sans';color:" + t.c + ';background:' + t.b })),
       addEtiqueta: () => this.avisar('Etiqueta criada — escolha nome e cor'),
       modelos: MODELOS.map((m, i) => ({
         ...m,
@@ -403,8 +677,86 @@ class Component extends DCLogic {
       modeloPrevia: mod.previa,
       automacoes: AUTOS.map(a => ({
         ...a, on: this.state.autos[a.id],
+        cardStyle: 'display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:10px;border:1px solid ' + (this.state.autos[a.id] ? '#C9DCA3' : '#E4E8EF') + ';background:' + (this.state.autos[a.id] ? '#FFFFFF' : '#FAFBFC') + (this.state.autos[a.id] ? ';box-shadow:0 1px 2px rgba(2,18,38,.05)' : ''),
+        iconeStyle: 'width:36px;height:36px;border-radius:8px;display:grid;place-items:center;flex:none;background:' + (this.state.autos[a.id] ? '#F2F8D4' : '#EDF0F5') + ';color:' + (this.state.autos[a.id] ? '#365E10' : '#7A8699'),
+        cfgMover: a.id === 'mover' && this.state.autos.mover,
+        cfgAviso: a.id === 'aviso' && this.state.autos.aviso,
+        cfgEstoque: a.id === 'estoque' && this.state.autos.estoque,
+        cfgMsgEtapa: a.id === 'msgetapa' && this.state.autos.msgetapa,
         toggle: () => this.setState(s => ({ autos: { ...s.autos, [a.id]: !s.autos[a.id] } })),
       })),
+      autoMoverEtapa: this.state.autoMoverEtapa,
+      autoEstoqueFunil: this.state.autoEstoqueFunil,
+      autoEstoqueEtapa: this.state.autoEstoqueEtapa,
+      msgsEtapa: this.state.msgsEtapa.map((m, i) => ({
+        ...m,
+        remover: () => { this.setState(s => ({ msgsEtapa: s.msgsEtapa.filter((_, j) => j !== i) })); this.avisar('Mensagem removida'); },
+        rotulo: (m.funil || 'Venda') + ' · ' + m.etapa,
+        editar: () => {
+          this.setState({ msgEtapaForm: true, msgEtapaFunil: m.funil || 'Venda', msgEtapaNova: m.etapa });
+          setTimeout(() => { const el = document.getElementById('va-msg-etapa-txt'); if (el) { el.value = m.msg; el.focus(); } }, 60);
+        },
+      })),
+      msgEtapaForm: this.state.msgEtapaForm,
+      msgEtapaFormFechado: !this.state.msgEtapaForm,
+      msgEtapaFunil: this.state.msgEtapaFunil,
+      msgEtapaOpcoes: ({
+        'Venda': 'Primeiro contato|Cadastro do cliente|Apresentação do mix|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Aguardando aprovação da representada|Faturado parcial|Ganhos',
+        'Acompanhamento': 'Aguardando retorno indústria|Em produção|Faturado parcial|Em transporte|Pedido faturado total',
+        'Lista de espera': 'Entrou na lista|Aguardando estoque|Estoque disponível|Cliente avisado|Ganhos',
+        'SAC / Cobrança': 'Em tratativa — SAC|Em tratativa — Cobrança|Resolvido|Não resolvido',
+      })[this.state.msgEtapaFunil],
+      msgEtapaNova: this.state.msgEtapaNova,
+      msgEtapaAbrirForm: () => this.setState({ msgEtapaForm: true }),
+      msgEtapaCancelar: () => this.setState({ msgEtapaForm: false }),
+      msgEtapaSalvar: () => {
+        const el = document.getElementById('va-msg-etapa-txt');
+        const msg = el ? el.value.trim() : '';
+        if (!msg) { this.avisar('Escreva a mensagem antes de salvar'); return; }
+        this.setState(s => ({
+          msgsEtapa: s.msgsEtapa.filter(m => !(m.etapa === s.msgEtapaNova && (m.funil || 'Venda') === s.msgEtapaFunil)).concat([{ funil: s.msgEtapaFunil, etapa: s.msgEtapaNova, msg }]),
+          msgEtapaForm: false,
+        }));
+        this.avisar('Mensagem da etapa salva');
+      },
+      quemDdAberto: this.state.quemDdAberto,
+      toggleQuemDd: () => this.setState(s => ({ quemDdAberto: !s.quemDdAberto })),
+      quemOpcoes: ['Responsável pelo negócio', 'Vendedor da carteira do cliente', 'Gestor da equipe', 'Clientes do negócio'].map(nome => ({
+        nome, on: !!this.state.autoEstoqueQuem[nome],
+        toggle: () => this.setState(s => ({ autoEstoqueQuem: { ...s.autoEstoqueQuem, [nome]: !s.autoEstoqueQuem[nome] } })),
+      })),
+      quemCount: Object.values(this.state.autoEstoqueQuem).filter(Boolean).length,
+      quemRotulo: (() => {
+        const on = Object.keys(this.state.autoEstoqueQuem).filter(k => this.state.autoEstoqueQuem[k]);
+        return on.length === 0 ? 'Escolher quem notificar' : on.length === 1 ? on[0] : on.length + ' selecionados';
+      })(),
+      quemTodos: () => this.setState({ autoEstoqueQuem: { 'Responsável pelo negócio': true, 'Vendedor da carteira do cliente': true, 'Gestor da equipe': true, 'Clientes do negócio': true } }),
+      quemLimpar: () => this.setState({ autoEstoqueQuem: {} }),
+      ...(() => {
+        const TIPOS = [
+          { id: 'audio', nome: 'Áudio', icone: 'mic', arq: 'boas-vindas.ogg' },
+          { id: 'imagem', nome: 'Imagem', icone: 'image', arq: 'catalogo-capa.jpg' },
+          { id: 'arquivo', nome: 'Arquivo', icone: 'paperclip', arq: 'tabela-precos.pdf' },
+        ];
+        const chip = (chave) => TIPOS.map(t => ({
+          nome: t.nome, icone: t.icone,
+          style: "display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border-radius:999px;border:1px dashed #B9C1CE;background:#FFFFFF;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans';color:#454F5E",
+          pegar: () => { this.setState({ [chave]: { tipo: t.nome, arq: t.arq } }); this.avisar(t.nome + ' anexado à mensagem'); },
+        }));
+        return {
+          anexosFat: chip('anexoFat'),
+          anexoFatNome: this.state.anexoFat ? this.state.anexoFat.tipo + ' · ' + this.state.anexoFat.arq : false,
+          limparAnexoFat: () => this.setState({ anexoFat: null }),
+          anexosEtapa: chip('anexoEtapa'),
+          anexoEtapaNome: this.state.anexoEtapa ? this.state.anexoEtapa.tipo + ' · ' + this.state.anexoEtapa.arq : false,
+          limparAnexoEtapa: () => this.setState({ anexoEtapa: null }),
+        };
+      })(),
+      restaurarMsgFat: () => {
+        const el = document.getElementById('va-auto-msg-fat');
+        if (el) el.value = '{nome}, boa notícia! O pedido {pedido} foi faturado pela {empresa} e já segue para expedição. Qualquer dúvida me chama por aqui.';
+        this.avisar('Mensagem padrão restaurada');
+      },
       zapConectado: this.state.zap,
       zapDesconectado: !this.state.zap,
       desconectar: () => { this.setState({ zap: false }); this.avisar('WhatsApp desconectado'); },

@@ -97,7 +97,12 @@
 <span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Aprovados pela Meta, iniciam conversa com o cliente. Conexão: Cloud oficial · (54) 3282-9001</span>
 </div>
 <div style="display:flex;align-items:center;gap:10px">
-<x-import component-from-global-scope="va-select" label="" options="Todas as situações|Aprovado|Pendente|Recusado|Pausado" value="{{ filtroSit }}" onChange="{{ setFiltro }}" hint-size="170px,36px"></x-import>
+<div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ sitFiltros }}" as="ft" hint-placeholder-count="5">
+<button onClick="{{ ft.pegar }}" style="{{ ft.style }}">{{ ft.nome }}</button>
+</sc-for>
+</div>
+
 <a href="crm-template-novo.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="plus" dc-props="{{ btnProps }}" hint-size="auto,32px">Novo template</x-import></a>
 </div>
 </div>
@@ -232,6 +237,15 @@ class Component extends DCLogic {
       semCloud: !conexao, comCloud: conexao,
       filtroSit: st.filtro,
       setFiltro: (v) => this.setState({ filtro: v && v.target ? v.target.value : v }),
+      sitFiltros: (() => {
+        const chipOn = "display:inline-flex;align-items:center;height:30px;padding:0 11px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:600 12.5px/1 'IBM Plex Sans';cursor:pointer";
+        const chipOff = "display:inline-flex;align-items:center;height:30px;padding:0 11px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer";
+        return [{ nome: 'Todas', valor: 'Todas as situações' }, { nome: 'Aprovado' }, { nome: 'Pendente' }, { nome: 'Recusado' }, { nome: 'Pausado' }].map(f => ({
+          nome: f.nome,
+          style: st.filtro === (f.valor || f.nome) ? chipOn : chipOff,
+          pegar: () => this.setState({ filtro: f.valor || f.nome }),
+        }));
+      })(),
       templates: visiveis.map(t => ({
         ...t,
         sitIcone: SIT[t.sit].icone, sitStyle: SIT[t.sit].style,

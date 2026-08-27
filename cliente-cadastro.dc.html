@@ -105,6 +105,7 @@
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Comercial</span>
 <x-import component-from-global-scope="va-select" label="Rota" options="Serra Gaúcha|Litoral norte|Vale do Itajaí" value="Serra Gaúcha" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Segmento" options="Material de construção|Papelaria e escritório|Atacado" value="Material de construção" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Transportadora do cliente" options="Patrus Transportes|Espécie Guanambi|Expresso Serrano|TransVale Cargas|Rodoviário Planalto" value="Patrus Transportes" help="No frete FOB quem escolhe a transportadora é o cliente — ela vem preenchida na emissão do pedido" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="va-select" label="Vendedor responsável" options="Carlos Rezende|Ana Paula Vieira|Jorge Tomasi" value="Carlos Rezende" help="Outros vendedores podem ser vinculados como carteira compartilhada" hint-size="100%,88px"></x-import>
 <div style="display:flex;flex-direction:column;gap:6px">
 <span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vendedores com acesso</span>
@@ -123,28 +124,43 @@
 <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
 <input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="width:18px;height:18px;accent-color:#78A614">
 <span style="font:400 14px/1.3 'IBM Plex Sans';flex:1">{{ c.nome }}</span>
+<sc-if value="{{ c.temDesc }}" hint-placeholder-val="{{ false }}"><span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:#E8F7F0;color:#0A6244;font:600 11px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ c.desc }} sobre a tabela</span></sc-if>
 <sc-if value="{{ c.padrao }}" hint-placeholder-val="{{ false }}"><span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'">padrão</span></sc-if>
 </label>
 </sc-for>
 </div>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Na emissão, só as condições marcadas aparecem para este cliente. Gerencie a lista em Cadastros → Condições de pagamento.</span>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Na emissão, só as condições marcadas aparecem para este cliente. O desconto da condição aplica sobre a tabela vinculada — são dois vínculos separados. Gerencie a lista em Cadastros → Condições de pagamento.</span>
 </div>
 <div style="display:grid;gap:16px">
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 16px/1.3 'IBM Plex Sans'">Tabelas de preço</span><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" hint-size="auto,32px">Vincular</x-import></div>
 <div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Móveis Vale</span><span style="font-weight:500">Tabela sul — varejo</span></div>
 <div style="display:flex;align-items:center;justify-content:space-between;font:400 13.5px/1.4 'IBM Plex Sans'"><span>Cerâmica Atlas</span><span style="font-weight:500">Tabela geral 2026</span></div>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;border-top:1px solid #E4E8EF;padding-top:12px">
+<input type="checkbox" checked="{{ usaB2b }}" onChange="{{ toggleB2b }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Este cliente usa o catálogo B2B</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Ao abrir o link do catálogo, ele vê os preços da tabela vinculada acima</span></span>
+</label>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Crédito e bloqueio</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Limite de crédito" prefix="R$" numeric="{{ true }}" value="30.000,00" help="Em aberto hoje: R$ 11.240,00 — 37% do limite" hint-size="100%,88px"></x-import>
-<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-<input type="checkbox" checked="{{ bloqAuto }}" onChange="{{ toggleBloqAuto }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
-<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Bloquear sozinho por título vencido</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Título vencido há mais de 30 dias bloqueia a emissão; o bloqueio cai na baixa da cobrança</span></span>
-</label>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Limite de crédito" prefix="R$" numeric="{{ true }}" value="30.000,00" help="Referência para a negociação — a cobrança é da indústria" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Switch" label="Bloquear emissão de pedidos agora" hint-size="auto,24px"></x-import>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Bloqueado, o cliente só recebe orçamento. O motivo aparece na emissão.</span>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Use quando a indústria informar inadimplência. Bloqueado, o cliente só recebe orçamento — o motivo aparece na emissão.</span>
 </div>
+</div>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Condição especial negociada</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Sobrepõe a tabela e a grade de comissão — uma por representada, autorizada pelo gerente da indústria</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" icon-left="plus" onClick="{{ abrirCondEsp }}" hint-size="auto,32px">Adicionar condição especial</x-import>
+</div>
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px;flex-wrap:wrap">
+<span style="width:36px;height:36px;border-radius:8px;background:#F2F8D4;display:grid;place-items:center;color:#365E10;flex:none"><i data-lucide="badge-percent" style="font-size:17px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:220px"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">Móveis Vale — desconto especial de 15%, comissão 2%</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Prazo 30/60/90/120 · autorizada por Ricardo (gerente comercial) · válida até 31/12/2026</span></span>
+<button aria-label="Editar condição especial" title="Editar condição especial" onClick="{{ abrirCondEsp }}" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i></button>
 </div>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
@@ -200,6 +216,23 @@
 </div>
 </div>
 </x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ condEspOpen }}" onClose="{{ fechar }}" title="Condição especial do cliente" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13.5px/1.55 'IBM Plex Sans';color:#454F5E;margin:0">Vale só para este cliente nesta representada, dentro do que a indústria permite. Na emissão, ela sobrepõe a tabela de preço e a grade de comissão.</span>
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desconto especial" suffix="%" numeric="{{ true }}" value="15,00" help="Além do que a tabela dá" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Comissão" suffix="%" numeric="{{ true }}" value="2,00" help="Substitui a grade por faixa" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-select" label="Prazo" options="30/60/90|30/60/90/120|30/60/90/120/150" value="30/60/90/120" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Autorizada por" required="{{ true }}" value="Ricardo — gerente comercial" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Válida até (opcional)" mask="data" value="31/12/2026" help="Sem data, vale até ser removida" hint-size="100%,88px"></x-import>
+</div>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar condição especial</x-import>
+</div>
+</div>
+</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ refOpen }}" onClose="{{ fechar }}" title="Adicionar referência" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <x-import component-from-global-scope="va-select" label="Tipo" options="Comercial (fornecedor)|Bancária" value="Comercial (fornecedor)" hint-size="100%,66px"></x-import>
@@ -221,7 +254,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { contatoOpen: false, refOpen: false, buscando: false, buscou: false, sairOpen: false, mesmoEndereco: true, bloqAuto: true, vendedores: ['Carlos Rezende', 'Ana Paula Vieira'], conds: { 0: true, 1: true, 2: false, 3: false } };
+  state = { contatoOpen: false, refOpen: false, condEspOpen: false, usaB2b: true, buscando: false, buscou: false, sairOpen: false, mesmoEndereco: true, bloqAuto: true, vendedores: ['Carlos Rezende', 'Ana Paula Vieira'], conds: { 0: true, 1: true, 2: false, 3: false } };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -260,19 +293,30 @@ class Component extends DCLogic {
         tirar: () => this.setState(s => ({ vendedores: s.vendedores.filter(v => v !== nome) })),
       })),
       addVendedor: () => this.setState(s => ({ vendedores: s.vendedores.includes('Jorge Tomasi') ? s.vendedores : s.vendedores.concat(['Jorge Tomasi']) })),
-      condicoes: ['30/60/90 · boleto', '28 dias · boleto', 'À vista · PIX', '30/60 · boleto'].map((nome, i) => ({
-        nome,
+      condicoes: [
+        { nome: '30/60/90 · boleto', desc: '' },
+        { nome: '28 dias · boleto', desc: '−1,50%' },
+        { nome: 'À vista · PIX', desc: '−3,00%' },
+        { nome: '30/60 · boleto', desc: '−0,50%' },
+      ].map((c, i) => ({
+        nome: c.nome,
+        desc: c.desc,
+        temDesc: !!c.desc,
         on: !!this.state.conds[i],
         padrao: i === 0,
         toggle: () => this.setState(s => ({ conds: { ...s.conds, [i]: !s.conds[i] } })),
       })),
+      usaB2b: this.state.usaB2b,
+      toggleB2b: () => this.setState(s => ({ usaB2b: !s.usaB2b })),
+      condEspOpen: this.state.condEspOpen,
+      abrirCondEsp: () => this.setState({ condEspOpen: true }),
       referencias: [
         { icone: 'store', nome: 'Distribuidora Alfa Ferragens', sub: 'Comercial · (51) 3222-7788 · cliente desde 2019' },
         { icone: 'landmark', nome: 'Sicredi — agência Caxias Centro', sub: 'Bancária · gerente Fabiane · (54) 3220-4501' },
       ],
       addReferencia: () => this.setState({ refOpen: true }),
       refOpen: this.state.refOpen,
-      fechar: () => this.setState({ contatoOpen: false, refOpen: false }),
+      fechar: () => this.setState({ contatoOpen: false, refOpen: false, condEspOpen: false }),
       voltar: () => { location.href = 'clientes.dc.html'; },
       sairOpen: this.state.sairOpen,
       tentarSair: () => this.setState({ sairOpen: true }),

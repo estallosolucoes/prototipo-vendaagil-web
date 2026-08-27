@@ -8,7 +8,7 @@
     btn: 'display:flex;align-items:center;gap:8px;width:100%;height:40px;padding:0 12px;background:#FFFFFF;border:1px solid #CFD6E1;border-radius:6px;cursor:pointer;font:400 14px/1.4 &quot;IBM Plex Sans&quot;;color:#021226;text-align:left;transition:border-color 120ms ease,box-shadow 120ms ease',
     btnFocus: 'border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18);outline:none',
     panel: 'position:absolute;left:0;right:0;z-index:60;margin:0;padding:6px;list-style:none;background:#FFFFFF;border:1px solid #E4E8EF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);max-height:280px;overflow-y:auto;opacity:0;transform:translateY(-4px);transition:opacity 120ms ease,transform 120ms ease',
-    item: 'display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:6px;cursor:pointer;font:400 13.5px/1.4 &quot;IBM Plex Sans&quot;;color:#021226',
+    item: 'display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:6px;cursor:pointer;white-space:nowrap;font:400 13.5px/1.4 &quot;IBM Plex Sans&quot;;color:#021226',
     help: 'font:400 12px/1.4 &quot;IBM Plex Sans&quot;;color:#5B6678',
   };
   const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
@@ -95,9 +95,18 @@
       const below = window.innerHeight - r.bottom;
       this._list.style.position = 'fixed';
       this._list.style.left = r.left + 'px';
-      this._list.style.width = r.width + 'px';
+      // largura: nunca menor que o botão, mas cresce até caber a maior opção sem quebrar linha
+      this._list.style.width = 'auto';
+      this._list.style.minWidth = r.width + 'px';
+      this._list.style.maxWidth = 'min(340px, calc(100vw - 16px))';
+      this._list.style.whiteSpace = 'nowrap';
       this._list.style.right = 'auto';
       this._list.style.zIndex = '400';
+      // se estourar a viewport à direita, realinha
+      requestAnimationFrame(() => {
+        const lr = this._list.getBoundingClientRect();
+        if (lr.right > window.innerWidth - 8) this._list.style.left = Math.max(8, window.innerWidth - 8 - lr.width) + 'px';
+      });
       if (below < 240 && r.top > 260) { this._list.style.top = 'auto'; this._list.style.bottom = (window.innerHeight - r.top + 4) + 'px'; }
       else { this._list.style.bottom = 'auto'; this._list.style.top = (r.bottom + 4) + 'px'; }
       this._onScroll = (e) => { if (e && e.target instanceof Node && (e.target === this._list || this._list.contains(e.target))) return; this.close(); };

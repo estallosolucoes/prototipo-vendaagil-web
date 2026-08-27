@@ -12,6 +12,56 @@
   else window.addEventListener('load', function () { refix(); setTimeout(refix, 300); setTimeout(refix, 1000); });
 })();
 
+/* ===== Campo monetário global (padrão do sistema) =====
+   Qualquer input com prefixo "R$" (DS Input prefix, ou span irmão "R$", ou [data-money])
+   ganha máscara de centavos em tempo real: só dígitos entram, "100000" → "1.000,00".
+   Vale para digitação e colagem. O valor numérico fica em el.dataset.valorNumerico. */
+(function () {
+  function isMoney(el) {
+    if (el.dataset && el.dataset.money != null) return true;
+    var wrap = el.closest && (el.closest('.va-inputwrap') || el.parentElement);
+    if (!wrap) return false;
+    for (var i = 0; i < wrap.children.length; i++) {
+      var c = wrap.children[i];
+      if (c !== el && (c.textContent || '').trim() === 'R$') return true;
+    }
+    return false;
+  }
+  document.addEventListener('input', function (e) {
+    var el = e.target;
+    if (!(el instanceof HTMLInputElement)) return;
+    if (el.type === 'checkbox' || el.type === 'radio' || el.type === 'number') return;
+    if (!isMoney(el)) return;
+    var digits = el.value.replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, 12);
+    var cents = parseInt(digits || '0', 10);
+    el.value = digits ? (cents / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    el.dataset.valorNumerico = String(cents / 100);
+    try { el.setSelectionRange(el.value.length, el.value.length); } catch (err) {}
+  }, true);
+  // bloqueia letras/símbolos antes de entrarem (melhor feedback que corrigir depois)
+  document.addEventListener('keydown', function (e) {
+    var el = e.target;
+    if (!(el instanceof HTMLInputElement) || el.type === 'number') return;
+    if (e.ctrlKey || e.metaKey || e.altKey || e.key.length > 1) return;
+    if (!isMoney(el)) return;
+    if (!/\d/.test(e.key)) e.preventDefault();
+  }, true);
+})();
+
+/* Centraliza verticalmente os ícones dos botões em todo o sistema:
+   .va-icon é um span inline-flex 20×20 sem align-items, e a regra global
+   svg[data-lucide]{width:1em;height:1em} encolhe o svg, que ficava colado
+   no topo do span (ícone ~3px acima do centro do texto). */
+(function () {
+  var s = document.createElement('style');
+  s.textContent =
+    '.va-icon{align-items:center;justify-content:center}' +
+    '.va-btn__icon{display:inline-flex;align-items:center;align-self:center}' +
+    'i[data-lucide]{align-items:center;justify-content:center}' +
+    'button i[data-lucide], a i[data-lucide]{align-self:center}';
+  (document.head || document.documentElement).appendChild(s);
+})();
+
 /* Substitui BarChart e LineChart do bundle: os originais usam viewBox de 100
    unidades com preserveAspectRatio "none", esticando texto, marcador e barras.
    Estas versões medem o contêiner em px (sem distorção), alinham os rótulos aos

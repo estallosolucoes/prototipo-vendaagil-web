@@ -49,7 +49,7 @@
 <span style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:34px;border-radius:6px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center"><i data-lucide="{{ g.icone }}" style="font-size:17px"></i></span><span style="font:600 15px/1.3 'IBM Plex Sans'">{{ g.nome }}</span></span>
 <div style="display:flex;flex-direction:column;gap:2px">
 <sc-for list="{{ g.itens }}" as="r" hint-placeholder-count="3">
-<a href="relatorio.dc.html" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:6px;text-decoration:none;color:#021226;font:400 13.5px/1.4 'IBM Plex Sans'" style-hover="background:#EDF0F5"><span>{{ r }}</span><i data-lucide="chevron-right" style="font-size:14px;color:#7A8699"></i></a>
+<a href="{{ r.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:6px;text-decoration:none;color:#021226;font:400 13.5px/1.4 'IBM Plex Sans'" style-hover="background:#EDF0F5"><span>{{ r.nome }}</span><i data-lucide="chevron-right" style="font-size:14px;color:#7A8699"></i></a>
 </sc-for>
 </div>
 </div>
@@ -70,13 +70,23 @@ class Component extends DCLogic {
   renderVals() {
     return {
       grupos: [
-        { nome: 'Vendas', icone: 'clipboard-list', itens: ['Venda geral', 'Venda por cliente — Curva ABC', 'Venda por produto — Curva ABC', 'Produtos mais vendidos'] },
-        { nome: 'Clientes', icone: 'users', itens: ['Clientes positivados', 'Clientes inativos', 'Situação da carteira'] },
-        { nome: 'Comissões', icone: 'receipt', itens: ['Comissão na emissão', 'Comissão no faturamento'] },
-        { nome: 'Faturamento', icone: 'file-text', itens: ['Pedidos faturados', 'Corte de pedido por representada'] },
-        { nome: 'Financeiro', icone: 'hand-coins', itens: ['Cobranças'] },
-        { nome: 'CRM', icone: 'kanban', itens: ['Funil e motivos de perda'] },
-      ],
+        { nome: 'Vendas', icone: 'clipboard-list', itens: [
+          { nome: 'Venda geral', id: 'venda-geral' }, { nome: 'Venda por cliente — Curva ABC', id: 'abc-clientes' },
+          { nome: 'Venda por produto — Curva ABC', id: 'abc-produtos' }, { nome: 'Produtos mais vendidos', id: 'mais-vendidos' },
+          { nome: 'Produtos menos vendidos', id: 'menos-vendidos' } ] },
+        { nome: 'Clientes', icone: 'users', itens: [
+          { nome: 'Clientes positivados', id: 'positivados' }, { nome: 'Clientes inativos', id: 'inativos' },
+          { nome: 'Situação da carteira', id: 'carteira' } ] },
+        { nome: 'Comissões', icone: 'receipt', itens: [
+          { nome: 'Comissões recebidas', id: 'com-recebidas' }, { nome: 'Comissões pendentes', id: 'com-pendentes' },
+          { nome: 'Comissões previstas', id: 'com-previstas' } ] },
+        { nome: 'Faturamento', icone: 'file-text', itens: [
+          { nome: 'Pedidos faturados', id: 'faturados' }, { nome: 'Corte de pedido por representada', id: 'cortes' } ] },
+        { nome: 'Financeiro', icone: 'hand-coins', itens: [{ nome: 'Cobranças', id: 'cobrancas' }, { nome: 'Fluxo de caixa previsto', id: 'fluxo-caixa' }, { nome: 'Despesas da representação', id: 'despesas' }] },
+        { nome: 'CRM', icone: 'kanban', itens: [
+          { nome: 'Motivos de perda', id: 'crm-funil' }, { nome: 'Total de negócios', id: 'crm-total' },
+          { nome: 'Negócios em aberto', id: 'crm-abertos' }, { nome: 'Tempo médio de atendimento', id: 'crm-tempo' } ] },
+      ].map(g => ({ ...g, itens: g.itens.map(r => ({ ...r, href: 'relatorio.dc.html?r=' + r.id })) })),
     };
   }
 }

@@ -53,11 +53,12 @@
 <div style="display:flex;gap:12px;margin-bottom:20px;max-width:280px">
 <x-import component-from-global-scope="va-select" label="Representada" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas as representadas" hint-size="100%,66px"></x-import>
 </div>
-<div class="pn-kpis" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="pn-kpis" onDragOver="{{ filaDv_kpis }}" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;order:{{ filaOrd_kpis }}">
 <sc-if value="{{ v_comissao }}" hint-placeholder-val="{{ true }}">
-<div style="background:#021226;color:#FFFFFF;border-radius:16px;padding:20px">
+<div draggable="true" onDragStart="{{ dg_comissao }}" onDragOver="{{ dv_comissao }}" onDragEnd="{{ dgEnd }}" style="background:#021226;color:#FFFFFF;border-radius:16px;padding:20px;order:{{ ord_comissao }};cursor:grab">
 <div style="display:flex;align-items:center;justify-content:space-between">
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E">Comissão prevista</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#C3D91E"><i data-lucide="grip-vertical" style="font-size:13px;color:rgba(255,255,255,.4);cursor:grab"></i>Comissão prevista</span>
 <span style="display:inline-flex;align-items:center;gap:6px"><i data-lucide="receipt" style="font-size:20px"></i><button onClick="{{ rm_comissao }}" aria-label="Remover métrica" title="Remover do painel" style="width:24px;height:24px;border-radius:6px;border:0;background:transparent;color:rgba(255,255,255,.5);cursor:pointer;display:grid;place-items:center" style-hover="background:rgba(255,255,255,.12);color:#FFFFFF"><i data-lucide="x" style="font-size:14px"></i></button></span>
 </div>
 <div style="display:flex;align-items:baseline;gap:4px;margin-top:16px;font-variant-numeric:tabular-nums">
@@ -73,9 +74,9 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_faturado }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column">
+<div draggable="true" onDragStart="{{ dg_faturado }}" onDragOver="{{ dv_faturado }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column;order:{{ ord_faturado }};cursor:grab">
 <button onClick="{{ rm_faturado }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
-<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="file-text" style="font-size:15px"></i>Faturado no mês</span>
+<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="grip-vertical" style="font-size:13px;color:#B9C1CE;cursor:grab"></i><i data-lucide="file-text" style="font-size:15px"></i>Faturado no mês</span>
 <div style="display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:12px;font-variant-numeric:tabular-nums;flex-wrap:wrap">
 <span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">R$ 248.312,90</span>
 <span style="display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 8px;border-radius:999px;background:#FDF0F1;color:#85202C;font:600 12.5px/1 'IBM Plex Sans'"><i data-lucide="arrow-down-right" style="font-size:12px"></i>−4,2%</span>
@@ -84,9 +85,9 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_corte }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column">
+<div draggable="true" onDragStart="{{ dg_corte }}" onDragOver="{{ dv_corte }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);display:flex;flex-direction:column;order:{{ ord_corte }};cursor:grab">
 <button onClick="{{ rm_corte }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
-<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="scissors" style="font-size:15px"></i>Corte de pedido</span>
+<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="grip-vertical" style="font-size:13px;color:#B9C1CE;cursor:grab"></i><i data-lucide="scissors" style="font-size:15px"></i>Corte de pedido</span>
 <div style="display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:12px;font-variant-numeric:tabular-nums;flex-wrap:wrap">
 <span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">7,5%</span>
 <span style="display:inline-flex;align-items:center;gap:3px;height:22px;padding:0 8px;border-radius:999px;background:#E8F7F0;color:#0A6244;font:600 12.5px/1 'IBM Plex Sans'"><i data-lucide="arrow-down-right" style="font-size:12px"></i>−1,8%</span>
@@ -95,23 +96,26 @@
 </div>
 </sc-if>
 <sc-for list="{{ extras1 }}" as="e" hint-placeholder-count="0">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06)">
+<div draggable="true" onDragStart="{{ e.dg }}" onDragOver="{{ e.dv }}" onDragEnd="{{ dgEnd }}" onClick="{{ e.detalhar }}" style="{{ e.cardStyle }}" style-hover="box-shadow:0 3px 10px rgba(2,18,38,.12)">
 <button onClick="{{ e.rm }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
-<span style="display:block;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px">{{ e.nome }}</span>
+<sc-if value="{{ e.temLista }}" hint-placeholder-val="{{ false }}">
+<span style="position:absolute;bottom:10px;right:10px;display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:600 11px/1 'IBM Plex Sans'">Ver lista<i data-lucide="chevron-right" style="font-size:12px"></i></span>
+</sc-if>
+<span style="display:flex;align-items:center;gap:6px;font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;padding-right:28px"><i data-lucide="grip-vertical" style="font-size:13px;color:#B9C1CE;cursor:grab;flex:none"></i>{{ e.nome }}</span>
 <div style="display:flex;align-items:baseline;gap:8px;margin-top:12px;font-variant-numeric:tabular-nums">
 <span style="font:600 30px/1.1 'IBM Plex Sans';letter-spacing:-.02em">{{ e.valor }}</span>
 <span style="font:400 14px/1.4 'IBM Plex Sans';color:#5B6678">{{ e.unidade }}</span>
 </div>
-<div style="margin-top:8px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">{{ e.sub }}</div>
+<div style="margin-top:8px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678;padding-right:28px">{{ e.sub }}</div>
 </div>
 </sc-for>
 </div>
-<div class="pn-charts" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;align-items:stretch">
+<div class="pn-charts" onDragOver="{{ filaDv_charts }}" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;order:{{ filaOrd_charts }}">
 <sc-if value="{{ v_chart_fat }}" hint-placeholder-val="{{ true }}">
-<div style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_chart_fat }}" onDragOver="{{ dv_chart_fat }}" onDragEnd="{{ dgEnd }}" style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_chart_fat }};cursor:grab">
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px">
 <div style="display:flex;flex-direction:column;gap:2px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Faturamento por mês</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Faturamento por mês</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Abril concentra a reposição do varejo</span>
 </div>
 <div style="display:flex;align-items:center;gap:8px">
@@ -126,21 +130,21 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_chart_evo }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_chart_evo }}" onDragOver="{{ dv_chart_evo }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_chart_evo }};cursor:grab">
 <button onClick="{{ rm_chart_evo }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px;padding-right:32px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Evolução e previsão</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Evolução e previsão</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Realizado sólido, previsto tracejado, objetivo em linha fina</span>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.LineChart" realized="{{ realizado }}" forecast="{{ previsto }}" target="{{ alvo }}" labels="{{ meses }}" height="{{ h180 }}" hint-size="100%,220px"></x-import>
 </div>
 </sc-if>
 </div>
-<div class="pn-baixo" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;align-items:stretch">
+<div class="pn-baixo" onDragOver="{{ filaDv_baixo }}" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;order:{{ filaOrd_baixo }}">
 <sc-if value="{{ v_ultimos }}" hint-placeholder-val="{{ true }}">
-<div style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_ultimos }}" onDragOver="{{ dv_ultimos }}" onDragEnd="{{ dgEnd }}" style="background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_ultimos }};cursor:grab">
 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Últimos pedidos</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Últimos pedidos</span>
 <div style="display:flex;align-items:center;gap:10px">
 <a href="pedidos.dc.html" style="font:600 13px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">Ver todos</a>
 <button onClick="{{ rm_ultimos }}" aria-label="Remover métrica" title="Remover do painel" style="width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
@@ -157,16 +161,17 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_meta }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative">
+<div draggable="true" onDragStart="{{ dg_meta }}" onDragOver="{{ dv_meta }}" onDragEnd="{{ dgEnd }}" style="position:relative;order:{{ ord_meta }};cursor:grab">
+<span title="Arraste para reordenar" style="position:absolute;top:12px;right:40px;color:#B9C1CE;display:grid;place-items:center;z-index:2"><i data-lucide="grip-vertical" style="font-size:14px"></i></span>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.GoalCard" current="{{ metaAtual }}" target="{{ metaAlvo }}" businessDaysLeft="{{ diasUteis }}" projection="{{ projecao }}" hint-size="100%,240px"></x-import>
 <button onClick="{{ rm_meta }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 </div>
 </sc-if>
 <sc-if value="{{ v_positivacao }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_positivacao }}" onDragOver="{{ dv_positivacao }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_positivacao }};cursor:grab">
 <button onClick="{{ rm_positivacao }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px;padding-right:32px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Positivação</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Positivação</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Clientes com pedido no mês</span>
 </div>
 <div style="display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums">
@@ -182,10 +187,10 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_aprovacoes }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_aprovacoes }}" onDragOver="{{ dv_aprovacoes }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_aprovacoes }};cursor:grab">
 <button onClick="{{ rm_aprovacoes }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Aprovações pendentes</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Aprovações pendentes</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Descontos acima do seu limite</span>
 </div>
 <sc-for list="{{ aprovacoes }}" as="a" hint-placeholder-count="2">
@@ -202,12 +207,12 @@
 </sc-if>
 </div>
 <sc-if value="{{ v_abc_algum }}" hint-placeholder-val="{{ true }}">
-<div class="pn-abc" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;margin-top:16px">
+<div class="pn-abc" onDragOver="{{ filaDv_abc }}" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;order:{{ filaOrd_abc }}">
 <sc-if value="{{ v_abc_clientes }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_abc_clientes }}" onDragOver="{{ dv_abc_clientes }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_abc_clientes }};cursor:grab">
 <button onClick="{{ rm_abc_clientes }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Curva ABC de clientes</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Curva ABC de clientes</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ abcCliSub }}</span>
 </div>
 <div style="display:flex;height:10px;border-radius:999px;overflow:hidden;background:#E4E8EF">
@@ -226,10 +231,10 @@
 </div>
 </sc-if>
 <sc-if value="{{ v_abc_produtos }}" hint-placeholder-val="{{ true }}">
-<div style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden">
+<div draggable="true" onDragStart="{{ dg_abc_produtos }}" onDragOver="{{ dv_abc_produtos }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_abc_produtos }};cursor:grab">
 <button onClick="{{ rm_abc_produtos }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
 <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px;padding-right:32px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Curva ABC de produtos</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Curva ABC de produtos</span>
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ abcProSub }}</span>
 </div>
 <div style="display:flex;height:10px;border-radius:999px;overflow:hidden;background:#E4E8EF">
@@ -249,6 +254,7 @@
 </sc-if>
 </div>
 </sc-if>
+</div>
 <sc-if value="{{ vazio }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top:8px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:40px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
 <i data-lucide="layout-dashboard" style="font-size:32px;color:#7A8699"></i>
@@ -259,6 +265,36 @@
 </sc-if>
 </main>
 </div>
+<sc-if value="{{ detOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:110">
+<div onClick="{{ fecharDet }}" style="position:absolute;inset:0;background:rgba(2,18,38,.45)"></div>
+<div role="dialog" aria-modal="true" aria-label="{{ detTitulo }}" style="position:absolute;top:0;right:0;bottom:0;width:min(440px,100vw);background:#FFFFFF;box-shadow:-12px 0 32px rgba(2,18,38,.18);display:flex;flex-direction:column">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 20px 14px;border-bottom:1px solid #E4E8EF">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">{{ detTitulo }}</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">{{ detSub }}</span>
+</div>
+<button onClick="{{ fecharDet }}" aria-label="Fechar" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;color:#454F5E;cursor:pointer;display:grid;place-items:center;flex:none" style-hover="background:#EDF0F5"><i data-lucide="x" style="font-size:17px"></i></button>
+</div>
+<div style="flex:1;overflow:auto;padding:10px 12px">
+<sc-for list="{{ detItens }}" as="di" hint-placeholder-count="6">
+<a href="{{ di.href }}" style="display:flex;align-items:center;gap:12px;padding:11px 10px;border-radius:8px;text-decoration:none;color:#021226" style-hover="background:#F5F7FA">
+<span style="width:34px;height:34px;border-radius:6px;background:#EDF0F5;color:#454F5E;display:grid;place-items:center;flex:none;font:600 12px/1 'IBM Plex Sans'">{{ di.sigla }}</span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0">
+<span style="font:600 13.5px/1.3 'IBM Plex Sans';overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ di.nome }}</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ di.meta }}</span>
+</span>
+<sc-if value="{{ di.chip }}" hint-placeholder-val="{{ false }}"><span style="{{ di.chipStyle }}">{{ di.chip }}</span></sc-if>
+<span style="font:600 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E;flex:none">{{ di.valor }}</span>
+</a>
+</sc-for>
+</div>
+<div style="border-top:1px solid #E4E8EF;padding:14px 20px">
+<a href="{{ detHref }}" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">{{ detHrefLabel }}<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+</div>
+</div>
+</div>
+</sc-if>
 <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;z-index:100">
 <div onClick="{{ fecharModal }}" style="position:absolute;inset:0;background:rgba(2,18,38,.55)"></div>
@@ -321,13 +357,126 @@ class Component extends DCLogic {
     try { salvo = JSON.parse(localStorage.getItem('va_painel_metricas') || 'null'); } catch (e) {}
     const ativos = {};
     this.CATALOGO.forEach(m => { ativos[m.id] = salvo ? (salvo[m.id] !== undefined ? !!salvo[m.id] : m.col !== undefined) : m.col !== undefined; });
-    this.state = { modo: 'mensal', ativos, modalOpen: false, cat: 'Clientes' };
+    let ordem = null, filas = null;
+    try { ordem = JSON.parse(localStorage.getItem('va_painel_ordem') || 'null'); } catch (e) {}
+    try { filas = JSON.parse(localStorage.getItem('va_painel_filas') || 'null'); } catch (e) {}
+    this.state = { modo: 'mensal', ativos, modalOpen: false, cat: 'Clientes', detId: null, ordem: Array.isArray(ordem) ? ordem : [], filas: Array.isArray(filas) && filas.length === 4 ? filas : ['kpis', 'charts', 'baixo', 'abc'] };
+    const chipOk = "flex:none;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'";
+    const chipWarn = "flex:none;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#FCF3DF;color:#8A5B00;font:600 11px/1 'IBM Plex Sans'";
+    this.DETALHES = {
+      cli_ativos: { sub: '104 clientes com pedido nos últimos 90 dias — os 10 maiores', href: 'clientes.dc.html', hrefLabel: 'Ver todos em Clientes', itens: [
+        { nome: 'Depósito São Jorge', meta: 'último pedido 26/08', valor: 'R$ 24.036,00' },
+        { nome: 'Casa & Lar Móveis', meta: 'último pedido 25/08', valor: 'R$ 8.420,00' },
+        { nome: 'Lojas Pinheiral', meta: 'último pedido 22/08', valor: 'R$ 9.840,00' },
+        { nome: 'Móveis Guarani', meta: 'último pedido 19/08', valor: 'R$ 4.260,00' },
+        { nome: 'Constrular Ltda', meta: 'último pedido 15/08', valor: 'R$ 12.180,00' },
+        { nome: 'Atacadão do Lar', meta: 'último pedido 12/08', valor: 'R$ 6.940,00' } ] },
+      cli_novos: { sub: '9 clientes cadastrados em agosto', href: 'clientes.dc.html', hrefLabel: 'Ver todos em Clientes', itens: [
+        { nome: 'Comercial Boa Vista', meta: 'cadastrado 24/08 · Caxias do Sul', chip: 'já com pedido', chipStyle: chipOk },
+        { nome: 'Mercado Estrela', meta: 'cadastrado 21/08 · Gramado', chip: 'já com pedido', chipStyle: chipOk },
+        { nome: 'Papelaria Central', meta: 'cadastrado 19/08 · Bento Gonçalves', chip: 'já com pedido', chipStyle: chipOk },
+        { nome: 'Casa Nova Decorações', meta: 'cadastrado 15/08 · Canela' },
+        { nome: 'Depósito Aliança', meta: 'cadastrado 12/08 · Farroupilha' },
+        { nome: 'Móveis Bela Vista', meta: 'cadastrado 08/08 · Nova Petrópolis' },
+        { nome: 'Armarinhos Krауzer', meta: 'cadastrado 06/08 · Garibaldi' },
+        { nome: 'Loja do Marceneiro', meta: 'cadastrado 04/08 · Carlos Barbosa' },
+        { nome: 'Ferragens União', meta: 'cadastrado 01/08 · Veranópolis' } ] },
+      cli_60d: { sub: '38 clientes sem compra — os de maior potencial parado', href: 'clientes.dc.html', hrefLabel: 'Ver todos em Clientes', itens: [
+        { nome: 'Atacado Serrano', meta: 'última compra 14/06', valor: 'R$ 18.400,00' },
+        { nome: 'Casa das Tintas', meta: 'última compra 08/06', valor: 'R$ 12.900,00' },
+        { nome: 'Mercadão da Construção', meta: 'última compra 02/06', valor: 'R$ 9.750,00' },
+        { nome: 'Lojão Popular', meta: 'última compra 28/05', valor: 'R$ 8.320,00' },
+        { nome: 'Depósito Vale Verde', meta: 'última compra 22/05', valor: 'R$ 7.100,00' },
+        { nome: 'Comercial Andrade', meta: 'última compra 17/05', valor: 'R$ 5.860,00' } ] },
+      cont_conversas: { sub: '5 conversas aguardando sua resposta', href: 'crm-conversas.dc.html', hrefLabel: 'Abrir Conversas', itens: [
+        { nome: 'Marcos — Depósito São Jorge', meta: '"Consegue segurar o preço até sexta?"', chip: 'desde ontem', chipStyle: chipWarn },
+        { nome: 'Paula — Casa & Lar Móveis', meta: '"Chegou a tabela nova?"', chip: 'desde ontem', chipStyle: chipWarn },
+        { nome: 'Ricardo — Lojas Pinheiral', meta: '"Preciso do prazo de entrega"' },
+        { nome: 'Fernanda — Constrular', meta: '"Tem o item 4020 em estoque?"' },
+        { nome: 'João — Mercado Estrela', meta: '"Pode me ligar amanhã cedo?"' } ] },
+      cont_visitas: { sub: '12 visitas agendadas nesta semana', href: 'crm-tarefas.dc.html', hrefLabel: 'Ver agenda em Tarefas', itens: [
+        { nome: 'Depósito São Jorge', meta: 'quinta 09:00 · rota serra' },
+        { nome: 'Atacadão do Lar', meta: 'quinta 11:00 · rota serra' },
+        { nome: 'Casa das Tintas', meta: 'quinta 14:30 · rota serra' },
+        { nome: 'Móveis Guarani', meta: 'quinta 16:30 · rota serra' },
+        { nome: 'Lojas Pinheiral', meta: 'sexta 09:30 · rota capital' },
+        { nome: 'Constrular Ltda', meta: 'sexta 14:00 · rota capital' } ] },
+      cont_novos: { sub: '17 contatos adicionados no mês', href: 'crm-contatos.dc.html', hrefLabel: 'Ver todos em Contatos', itens: [
+        { nome: 'André Souza', meta: '23/08 · catálogo B2B', chip: 'B2B', chipStyle: chipOk },
+        { nome: 'Beatriz Ramos', meta: '22/08 · catálogo B2B', chip: 'B2B', chipStyle: chipOk },
+        { nome: 'Carlos Mendes', meta: '20/08 · WhatsApp' },
+        { nome: 'Daniela Fritz', meta: '18/08 · catálogo B2B', chip: 'B2B', chipStyle: chipOk },
+        { nome: 'Eduardo Lima', meta: '15/08 · indicação' },
+        { nome: 'Flávia Costa', meta: '12/08 · catálogo B2B', chip: 'B2B', chipStyle: chipOk } ] },
+      fin_receber: { sub: '2 cobranças com vencimento até sexta-feira', href: 'comissoes.dc.html', hrefLabel: 'Ver em Comissões', itens: [
+        { nome: 'Móveis Vale — fechamento julho', meta: 'vence sexta 29/08', valor: 'R$ 7.020,20' },
+        { nome: 'Cerâmica Atlas — fechamento julho', meta: 'vence quinta 28/08', valor: 'R$ 2.459,80' } ] },
+      ped_qtd: { sub: '62 pedidos emitidos em agosto — os mais recentes', href: 'pedidos.dc.html', hrefLabel: 'Ver todos em Pedidos', itens: [
+        { nome: '4.812 — Depósito São Jorge', meta: '26/08 · Móveis Vale', valor: 'R$ 24.036,00' },
+        { nome: '4.811 — Casa & Lar Móveis', meta: '25/08 · Móveis Vale', valor: 'R$ 8.420,00' },
+        { nome: '4.809 — Lojas Pinheiral', meta: '22/08 · Cerâmica Atlas', valor: 'R$ 9.840,00' },
+        { nome: '4.805 — Móveis Guarani', meta: '19/08 · Tecelagem Iguaçu', valor: 'R$ 4.260,00' },
+        { nome: '4.801 — Constrular Ltda', meta: '15/08 · Metalúrgica Horizonte', valor: 'R$ 12.180,00' } ] },
+    };
   }
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  ordemDe(id) {
+    const i = this.state.ordem.indexOf(id);
+    if (i >= 0) return i;
+    return 100 + this.CATALOGO.findIndex(m => m.id === id);
+  }
+  grupos() {
+    return [
+      this.CATALOGO.filter(m => m.col === 0 || m.col === undefined).map(m => m.id),
+      ['chart_fat', 'chart_evo'],
+      ['ultimos', 'meta', 'positivacao', 'aprovacoes'],
+      ['abc_clientes', 'abc_produtos'],
+    ];
+  }
+  arrastarSobre(alvoId) {
+    const de = this._drag;
+    if (!de || de === alvoId) return;
+    // só reordena dentro da mesma fileira — o card mantém o espaço que ocupa
+    const grupo = this.grupos().find(g => g.includes(de) && g.includes(alvoId));
+    if (!grupo) return;
+    this.setState(() => {
+      const porGrupo = this.grupos().map(g => g.slice().sort((a, b) => this.ordemDe(a) - this.ordemDe(b)));
+      const atual = porGrupo.find(g => g.includes(de));
+      const iDe = atual.indexOf(de), iAlvo = atual.indexOf(alvoId);
+      if (iDe < 0 || iAlvo < 0) return null;
+      atual.splice(iAlvo, 0, atual.splice(iDe, 1)[0]);
+      return { ordem: [].concat(...porGrupo) };
+    });
+  }
+  salvarOrdem() {
+    this._drag = null;
+    try {
+      localStorage.setItem('va_painel_ordem', JSON.stringify(this.state.ordem));
+      localStorage.setItem('va_painel_filas', JSON.stringify(this.state.filas));
+    } catch (e) {}
+  }
+  filaDe(id) {
+    const nomes = ['kpis', 'charts', 'baixo', 'abc'];
+    const i = this.grupos().findIndex(g => g.includes(id));
+    return i >= 0 ? nomes[i] : null;
+  }
+  arrastarSobreFila(fila) {
+    const de = this._drag;
+    if (!de) return;
+    const filaDe = this.filaDe(de);
+    if (!filaDe || filaDe === fila) return;
+    this.setState(s => {
+      const filas = s.filas.slice();
+      const iDe = filas.indexOf(filaDe), iAlvo = filas.indexOf(fila);
+      if (iDe < 0 || iAlvo < 0) return null;
+      filas.splice(iAlvo, 0, filas.splice(iDe, 1)[0]);
+      return { filas };
+    });
   }
   setAtivo(id, val) {
     this.setState(s => {
@@ -350,13 +499,48 @@ class Component extends DCLogic {
       vals['v_' + m.id] = on(m.id);
       vals['rm_' + m.id] = () => this.setAtivo(m.id, false);
     });
+    ['comissao', 'faturado', 'corte', 'chart_fat', 'chart_evo', 'ultimos', 'meta', 'positivacao', 'aprovacoes', 'abc_clientes', 'abc_produtos'].forEach(id => {
+      vals['ord_' + id] = this.ordemDe(id);
+      vals['dg_' + id] = () => { this._drag = id; };
+      vals['dv_' + id] = (e) => { e.preventDefault(); this.arrastarSobre(id); };
+    });
+    vals.dgEnd = () => this.salvarOrdem();
+    ['kpis', 'charts', 'baixo', 'abc'].forEach(f => {
+      vals['filaOrd_' + f] = this.state.filas.indexOf(f);
+      vals['filaDv_' + f] = (e) => { e.preventDefault(); this.arrastarSobreFila(f); };
+    });
     const counts = [0, 0, 0];
     base.forEach(m => { if (on(m.id)) counts[m.col]++; });
     const extras = [[], [], []];
     this.CATALOGO.filter(m => m.col === undefined && on(m.id)).forEach(m => {
       counts[0]++;
-      extras[0].push({ nome: m.nome, valor: m.valor, unidade: m.unidade, sub: m.sub, rm: () => this.setAtivo(m.id, false) });
+      const temLista = !!this.DETALHES[m.id];
+      extras[0].push({
+        nome: m.nome, valor: m.valor, unidade: m.unidade, sub: m.sub,
+        temLista,
+        cardStyle: 'position:relative;background:#FFFFFF;border-radius:10px;padding:20px' + (temLista ? ' 20px 40px' : '') + ';box-shadow:0 1px 2px rgba(2,18,38,.06);order:' + this.ordemDe(m.id) + (temLista ? ';cursor:pointer' : ';cursor:grab'),
+        detalhar: temLista ? () => this.setState({ detId: m.id }) : () => {},
+        dg: () => { this._drag = m.id; },
+        dv: (e) => { e.preventDefault(); this.arrastarSobre(m.id); },
+        rm: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setAtivo(m.id, false); },
+      });
     });
+    const det = this.state.detId ? this.DETALHES[this.state.detId] : null;
+    const detMeta = this.state.detId ? this.CATALOGO.find(m => m.id === this.state.detId) : null;
+    vals.detOpen = !!det;
+    vals.detTitulo = detMeta ? detMeta.nome : '';
+    vals.detSub = det ? det.sub : '';
+    vals.detHref = det ? det.href : '#';
+    vals.detHrefLabel = det ? det.hrefLabel : '';
+    vals.fecharDet = () => this.setState({ detId: null });
+    vals.detItens = det ? det.itens.map(it => ({
+      ...it,
+      href: det.href,
+      sigla: it.nome.replace(/^\d[\d.]*\s—\s/, '').split(/\s+/).slice(0, 2).map(p => p[0]).join('').toUpperCase(),
+      valor: it.valor || '',
+      chip: it.chip || false,
+      chipStyle: it.chipStyle || '',
+    })) : [];
     const catBtn = a => a
       ? "height:32px;padding:0 14px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:500 13px/1 'IBM Plex Sans';cursor:pointer"
       : "height:32px;padding:0 14px;border-radius:999px;border:1px solid #CFD6E1;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";

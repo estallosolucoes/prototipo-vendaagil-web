@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venda Ágil — Protótipo</title>
+<link rel="icon" href="assets/logo-simbolo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#021226; --navy-soft:#0B1E38;
+  --green:#78A614; --green-dk:#365E10; --lime:#C3D91E;
+  --bg:#F2F4F7; --surface:#FFFFFF; --line:#DFE4EC;
+  --ink:#021226; --muted:#5B6678;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15px;line-height:1.55}
+a{color:var(--green-dk);text-decoration:none}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+
+header{background:var(--navy);color:#F3F3F3;padding:40px 24px 44px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header .wrap{padding:0}
+header img{width:150px;display:block;margin-bottom:26px}
+header h1{font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.15;letter-spacing:-.02em;margin:0 0 10px;font-weight:700}
+header p{margin:0;color:#A8B6C8;max-width:60ch}
+header .meta{margin-top:22px;padding-top:18px;border-top:1px solid #16304F;font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:#8B9BB1}
+
+.aviso{background:#FFF9E6;border-bottom:1px solid #EFDFA8;padding:14px 0;font-size:.92rem;color:#6B5310}
+.aviso .wrap{display:flex;gap:10px;align-items:flex-start}
+.aviso b{color:#4A3908}
+
+main{padding:38px 0 70px}
+section{margin-bottom:38px}
+h2{font-size:1.12rem;margin:0 0 4px;letter-spacing:-.01em;display:flex;align-items:baseline;gap:10px}
+h2 .n{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--green-dk);font-weight:500}
+.sub{margin:0 0 16px;color:var(--muted);font-size:.92rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.card{
+  display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;transition:border-color .12s ease, box-shadow .12s ease, transform .12s ease;
+}
+.card:hover{border-color:var(--green);box-shadow:0 2px 10px rgba(2,18,38,.07);transform:translateY(-1px)}
+.card .nome{font-weight:600;color:var(--ink);margin-bottom:3px}
+.card .desc{color:var(--muted);font-size:.86rem;line-height:1.45}
+.card.destaque{border-left:3px solid var(--green)}
+.card.destaque .nome::after{content:"principal";font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green-dk);background:#F2F8D4;border-radius:999px;padding:2px 7px;margin-left:8px;vertical-align:1px}
+
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+
+@media (max-width:640px){
+  header{padding:30px 20px 34px}
+  .wrap{padding:0 20px}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img src="assets/logo-dark-bg.svg" alt="Venda Ágil">
+    <h1>Protótipo do sistema</h1>
+    <p>Todas as telas navegáveis do Venda Ágil, para validação. Clique em qualquer uma para abrir; use o botão de voltar do navegador para retornar a esta lista.</p>
+    <div class="meta">75 telas · versão 4 · agosto de 2026</div>
+  </div>
+</header>
+
+<div class="aviso">
+  <div class="wrap">
+    <span>⚠</span>
+    <div><b>É um protótipo visual, não o sistema funcionando.</b> Os dados são fictícios e os botões navegam entre telas, mas nada é salvo. O objetivo é validar o que aparece em cada tela e como as informações estão organizadas.</div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section>
+  <h2><span class="n">01</span>Começo</h2>
+  <p class="sub">O que o usuário vê ao entrar no sistema pela primeira vez.</p>
+  <div class="grid">
+    <a class="card" href="inicio.dc.html"><div class="nome">Início</div><div class="desc">Atalhos, últimos pedidos e avisos</div></a>
+    <a class="card" href="painel.dc.html"><div class="nome">Painel de indicadores</div><div class="desc">Evolução de venda, comissão prevista, Curva ABC</div></a>
+    <a class="card" href="primeiros-passos.dc.html"><div class="nome">Guia inicial</div><div class="desc">As etapas para configurar a conta</div></a>
+    <a class="card" href="onboarding.dc.html"><div class="nome">Configuração inicial</div><div class="desc">Assistente do primeiro acesso</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Pedidos</h2>
+  <p class="sub">O coração do sistema — onde o representante passa a maior parte do tempo.</p>
+  <div class="grid">
+    <a class="card destaque" href="pedidos-novo.dc.html"><div class="nome">Emitir pedido</div><div class="desc">Itens, desconto progressivo, transporte e frete, comissão prevista</div></a>
+    <a class="card" href="pedidos.dc.html"><div class="nome">Lista de pedidos</div><div class="desc">Agrupada por data, com totais do período</div></a>
+    <a class="card" href="pedido-detalhe.dc.html"><div class="nome">Detalhe do pedido</div><div class="desc">Estágios, envios por WhatsApp e e-mail, histórico</div></a>
+    <a class="card" href="pedido-editar.dc.html"><div class="nome">Editar pedido</div><div class="desc">Alteração de pedido já emitido</div></a>
+    <a class="card" href="pedidos-aprovacoes.dc.html"><div class="nome">Aprovações</div><div class="desc">Pedidos vindos do catálogo aguardando aprovação</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Clientes</h2>
+  <div class="grid">
+    <a class="card" href="clientes.dc.html"><div class="nome">Lista de clientes</div><div class="desc">Carteira com situação e últimos pedidos</div></a>
+    <a class="card" href="cliente-360.dc.html"><div class="nome">Visão do cliente</div><div class="desc">Histórico, títulos e produtos mais comprados</div></a>
+    <a class="card" href="cliente-cadastro.dc.html"><div class="nome">Cadastro de cliente</div><div class="desc">Com busca automática por CNPJ</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Cadastros</h2>
+  <p class="sub">A base que sustenta o pedido: indústrias, produtos, preços e transporte.</p>
+  <div class="grid">
+    <a class="card" href="representadas.dc.html"><div class="nome">Representadas</div><div class="desc">As indústrias que o escritório representa</div></a>
+    <a class="card" href="representada-detalhe.dc.html"><div class="nome">Detalhe da representada</div><div class="desc">Política comercial, regras do pedido, comissão</div></a>
+    <a class="card" href="representada-cadastro.dc.html"><div class="nome">Cadastro de representada</div><div class="desc">Dados e configurações da indústria</div></a>
+    <a class="card" href="produtos.dc.html"><div class="nome">Produtos</div><div class="desc">Mix por representada, com preço e promoção</div></a>
+    <a class="card" href="produto-cadastro.dc.html"><div class="nome">Cadastro de produto</div><div class="desc">Fotos, preço promocional, grade, ST por UF</div></a>
+    <a class="card" href="tabelas-preco.dc.html"><div class="nome">Tabelas de preço</div><div class="desc">Uma ou várias por representada</div></a>
+    <a class="card" href="tabela-edicao.dc.html"><div class="nome">Editar tabela</div><div class="desc">Faixas progressivas e simulador de desconto</div></a>
+    <a class="card" href="tabela-nova.dc.html"><div class="nome">Nova tabela</div><div class="desc">Assistente de criação</div></a>
+    <a class="card" href="condicoes-pagamento.dc.html"><div class="nome">Condições de pagamento</div><div class="desc">Prazos e parcelamentos</div></a>
+    <a class="card" href="transportadoras.dc.html"><div class="nome">Transportadoras</div><div class="desc">Quem entrega, e o frete no pedido</div></a>
+    <a class="card" href="transportadora-cadastro.dc.html"><div class="nome">Cadastro de transportadora</div><div class="desc">Dados e contato</div></a>
+    <a class="card" href="cadastros-auxiliares.dc.html"><div class="nome">Cadastros auxiliares</div><div class="desc">Categorias, segmentos, rotas e grades</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Financeiro e comissões</h2>
+  <p class="sub">O que a indústria faturou e quanto o escritório tem a receber.</p>
+  <div class="grid">
+    <a class="card destaque" href="comissoes.dc.html"><div class="nome">Comissões</div><div class="desc">Prevista, confirmada e recebida, com fechamento por representada</div></a>
+    <a class="card" href="faturamento.dc.html"><div class="nome">Faturamento</div><div class="desc">O que foi faturado e o corte de pedido</div></a>
+    <a class="card" href="faturamento-lote.dc.html"><div class="nome">Faturamento em lote</div><div class="desc">Lançar vários pedidos de uma vez</div></a>
+    <a class="card" href="despesas.dc.html"><div class="nome">Despesas</div><div class="desc">Gastos da representação, com recorrência mensal e resultado por indústria</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Catálogo B2B</h2>
+  <p class="sub">A vitrine que o representante manda para o cliente comprar sozinho.</p>
+  <div class="grid">
+    <a class="card" href="catalogo.dc.html"><div class="nome">Catálogos publicados</div><div class="desc">Link, produtos e pedidos recebidos</div></a>
+    <a class="card" href="catalogo-configurar.dc.html"><div class="nome">Configurar catálogo</div><div class="desc">Identidade, tabela de preço e pedido mínimo</div></a>
+    <a class="card" href="catalogo-produtos.dc.html"><div class="nome">Produtos do catálogo</div><div class="desc">O que aparece para o comprador</div></a>
+    <a class="card" href="catalogo-acessos.dc.html"><div class="nome">Acessos dos compradores</div><div class="desc">Quem pode entrar e ver preço</div></a>
+    <a class="card" href="catalogo-pdf.dc.html"><div class="nome">Catálogo em PDF</div><div class="desc">Gerar para mandar por WhatsApp</div></a>
+    <a class="card" href="catalogo-pedido-revisar.dc.html"><div class="nome">Revisar pedido do catálogo</div><div class="desc">Antes de mandar para a indústria</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>A loja, pelos olhos do comprador</h2>
+  <p class="sub">É o que o cliente do representante vê ao abrir o link no celular — por isso estas telas são estreitas.</p>
+  <div class="grid">
+    <a class="card" href="loja.dc.html"><div class="nome">Vitrine</div><div class="desc">Produtos com foto, preço e selo de promoção</div></a>
+    <a class="card" href="loja-produto.dc.html"><div class="nome">Produto</div><div class="desc">Detalhe e quantidade</div></a>
+    <a class="card" href="loja-carrinho.dc.html"><div class="nome">Carrinho</div><div class="desc">Itens e pedido mínimo</div></a>
+    <a class="card" href="loja-identificacao.dc.html"><div class="nome">Identificação</div><div class="desc">Quem está comprando</div></a>
+    <a class="card" href="loja-login.dc.html"><div class="nome">Entrar na loja</div><div class="desc">Acesso do comprador cadastrado</div></a>
+    <a class="card" href="loja-enviado.dc.html"><div class="nome">Pedido enviado</div><div class="desc">Confirmação para o comprador</div></a>
+    <a class="card" href="loja-pedidos.dc.html"><div class="nome">Pedidos do comprador</div><div class="desc">Histórico dele na loja</div></a>
+    <a class="card" href="loja-encerrado.dc.html"><div class="nome">Loja indisponível</div><div class="desc">Quando o catálogo está despublicado</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">08</span>Equipe</h2>
+  <div class="grid">
+    <a class="card" href="vendedores.dc.html"><div class="nome">Vendedores</div><div class="desc">Quem vende, quanto vendeu e a meta</div></a>
+    <a class="card" href="vendedor-detalhe.dc.html"><div class="nome">Detalhe do vendedor</div><div class="desc">Comissão por representada, limites, permissões e carteira</div></a>
+    <a class="card" href="equipes.dc.html"><div class="nome">Equipes</div><div class="desc">Times com supervisor</div></a>
+    <a class="card" href="metas.dc.html"><div class="nome">Metas</div><div class="desc">Por vendedor, com projeção de atingimento</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">09</span>CRM</h2>
+  <p class="sub">Módulo adicional: acompanhar negócios, clientes parados e conversas.</p>
+  <div class="grid">
+    <a class="card" href="crm-negocios.dc.html"><div class="nome">Negócios</div><div class="desc">Kanban com os quatro funis prontos</div></a>
+    <a class="card" href="crm-contatos.dc.html"><div class="nome">Contatos</div><div class="desc">Quem são as pessoas por trás dos negócios</div></a>
+    <a class="card" href="crm-contato-detalhe.dc.html"><div class="nome">Ficha do contato</div><div class="desc">Grupo por CNPJ e vários CNPJs</div></a>
+    <a class="card" href="crm-conversas.dc.html"><div class="nome">Conversas</div><div class="desc">WhatsApp dentro do sistema</div></a>
+    <a class="card" href="crm-tarefas.dc.html"><div class="nome">Tarefas</div><div class="desc">O que ficou combinado fazer</div></a>
+    <a class="card" href="crm-templates.dc.html"><div class="nome">Modelos de mensagem</div><div class="desc">Modelos rápidos e templates da Meta</div></a>
+    <a class="card" href="crm-template-novo.dc.html"><div class="nome">Novo template</div><div class="desc">Construtor com prévia ao vivo</div></a>
+    <a class="card" href="crm-configuracoes.dc.html"><div class="nome">Configurações do CRM</div><div class="desc">Funis, automações, etiquetas, motivos de perda</div></a>
+    <a class="card" href="configuracoes-canais.dc.html"><div class="nome">Canais de WhatsApp</div><div class="desc">Números conectados e modo de conexão</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">10</span>Relatórios e importações</h2>
+  <div class="grid">
+    <a class="card" href="relatorios.dc.html"><div class="nome">Central de relatórios</div><div class="desc">Organizados por assunto</div></a>
+    <a class="card" href="relatorio.dc.html"><div class="nome">Curva ABC de clientes</div><div class="desc">Exemplo de relatório com filtros</div></a>
+    <a class="card" href="importacoes.dc.html"><div class="nome">Importações</div><div class="desc">Histórico de planilhas enviadas</div></a>
+    <a class="card" href="importacao-nova.dc.html"><div class="nome">Importar planilha</div><div class="desc">Assistente com mapeamento de colunas</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">11</span>Conta e configurações</h2>
+  <div class="grid">
+    <a class="card" href="configuracoes.dc.html"><div class="nome">Configurações</div><div class="desc">Escritório, e-mail e regras de venda</div></a>
+    <a class="card" href="usuarios-escritorio.dc.html"><div class="nome">Usuários</div><div class="desc">Quem acessa e com qual permissão</div></a>
+    <a class="card" href="conta-plano.dc.html"><div class="nome">Conta e plano</div><div class="desc">Assinatura, uso e faturas</div></a>
+    <a class="card" href="conta-perfil.dc.html"><div class="nome">Meu perfil</div><div class="desc">Dados do usuário</div></a>
+    <a class="card" href="modulo-bloqueado.dc.html"><div class="nome">Módulo não contratado</div><div class="desc">O que o usuário vê ao tentar acessar</div></a>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">12</span>Entrada no sistema</h2>
+  <div class="grid">
+    <a class="card" href="entrar.dc.html"><div class="nome">Entrar</div><div class="desc">Login</div></a>
+    <a class="card" href="criar-conta.dc.html"><div class="nome">Criar conta</div><div class="desc">Cadastro do teste grátis</div></a>
+    <a class="card" href="verificar-email.dc.html"><div class="nome">Verificar e-mail</div><div class="desc">Confirmação do cadastro</div></a>
+    <a class="card" href="recuperar-senha.dc.html"><div class="nome">Recuperar senha</div><div class="desc">Esqueci minha senha</div></a>
+    <a class="card" href="nova-senha.dc.html"><div class="nome">Nova senha</div><div class="desc">Definir a senha</div></a>
+    <a class="card" href="convite.dc.html"><div class="nome">Aceitar convite</div><div class="desc">Entrada de um vendedor convidado</div></a>
+    <a class="card" href="escolher-conta.dc.html"><div class="nome">Escolher conta</div><div class="desc">Quando o e-mail pertence a mais de um escritório</div></a>
+    <a class="card" href="sistema.dc.html"><div class="nome">Avisos do sistema</div><div class="desc">Teste acabando, sem conexão, manutenção</div></a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>Venda Ágil · protótipo para validação interna</div>
+    <div>Dados fictícios · nada aqui é salvo</div>
+  </div>
+</footer>
+
+</body>
+</html>

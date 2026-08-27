@@ -60,13 +60,19 @@
 <sc-if value="{{ p2 }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:16px">
 <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 17px/1.3 'IBM Plex Sans'">Nome da tabela</span><span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Aparece na emissão do pedido, no cadastro do cliente e no catálogo.</span></div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" placeholder="Ex.: Tabela sul — atacado" value="Tabela promocional agosto" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome" required="{{ true }}" placeholder="Ex.: Curva A — varejo" value="Curva B — atacado" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Curva" options="Curva A|Curva B|Curva C|Sem curva" value="Curva B" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Público" options="Varejo|Atacado" value="Atacado" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Modalidade de frete" options="CIF|FOB" value="CIF" hint-size="100%,66px"></x-import>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Curva, público e modalidade só compõem o nome da tabela — no pedido, quem escolhe a tabela é você; o frete nunca troca tabela nem recalcula preço.</span>
 </div>
 </sc-if>
 <sc-if value="{{ p3 }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:16px">
 <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 17px/1.3 'IBM Plex Sans'">De onde vêm os preços?</span><span style="font:400 13.5px/1.5 'IBM Plex Sans';color:#454F5E">Escolha a origem e um ajuste opcional. Você pode editar preço a preço depois.</span></div>
-<div class="g-origem" style="display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:end">
+<div class="g-origem" style="display:grid;grid-template-columns:1fr 220px;gap:12px;align-items:start">
 <x-import component-from-global-scope="va-select" label="Origem do preço" options="Preço de venda do produto|Preço de custo|Outra tabela: Tabela sul — varejo" value="Preço de venda do produto" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Ajuste" suffix="%" numeric="{{ true }}" value="-5,00" help="Negativo reduz o preço" hint-size="100%,88px"></x-import>
 </div>

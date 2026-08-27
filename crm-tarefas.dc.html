@@ -90,12 +90,17 @@
 <span style="{{ t.quandoStyle }}"><i data-lucide="clock-3" style="font-size:12px"></i>{{ t.quando }}</span>
 </div>
 <span style="{{ t.tituloStyle }}">{{ t.titulo }}</span>
+<sc-if value="{{ t.temSerie }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ t.verSerie }}" title="Ver a recorrência" style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border:0;border-radius:999px;background:#F2F8D4;color:#365E10;cursor:pointer;font:600 11.5px/1 'IBM Plex Sans';align-self:flex-start" style-hover="background:#E7F0D2"><i data-lucide="repeat" style="font-size:12px;flex:none"></i>{{ t.serieChip }}</button>
+</sc-if>
 <sc-if value="{{ t.temNegocio }}" hint-placeholder-val="{{ false }}">
 <button onClick="{{ t.abrirNegocio }}" title="Abrir negócio" style="display:inline-flex;align-items:center;gap:6px;max-width:100%;height:24px;padding:0 8px;border:0;border-radius:999px;background:#EDF0F5;color:#454F5E;cursor:pointer;font:500 11.5px/1 'IBM Plex Sans';align-self:flex-start" style-hover="background:#E4E8EF;color:#021226"><i data-lucide="kanban" style="font-size:12px;flex:none"></i><span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.negocio }}</span></button>
 </sc-if>
 <div style="display:flex;align-items:center;gap:8px;border-top:1px solid #EDF0F5;padding-top:8px">
 <span style="width:24px;height:24px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 10px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ t.resp }}</span>
 <span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.cliente }}</span>
+<button onClick="{{ t.editar }}" aria-label="Editar tarefa" title="Editar tarefa" style="width:26px;height:26px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#98A2B3;flex:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:13px"></i></button>
+<button onClick="{{ t.apagar }}" aria-label="Apagar tarefa" title="Apagar tarefa" style="width:26px;height:26px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#98A2B3;flex:none" style-hover="background:#FBECEE;color:#B3202F"><i data-lucide="trash-2" style="font-size:13px"></i></button>
 <sc-if value="{{ t.aberta }}" hint-placeholder-val="{{ true }}">
 <button onClick="{{ t.concluir }}" title="Marcar como concluída" style="display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border:1px solid #CFD6E1;border-radius:999px;background:#FFFFFF;color:#454F5E;font:600 11.5px/1 'IBM Plex Sans';cursor:pointer;flex:none" style-hover="border-color:#0E7D57;color:#0E7D57;background:#E8F7F0"><i data-lucide="check" style="font-size:13px"></i>Concluir</button>
 </sc-if>
@@ -112,7 +117,7 @@
 </sc-for>
 </div>
 </div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaOpen }}" onClose="{{ fecharNova }}" title="Nova tarefa" size="md" hint-size="0,0">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaOpen }}" onClose="{{ fecharNova }}" title="{{ modalTarefaTitulo }}" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif;max-width:100%;overflow-x:hidden">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Título" value="{{ fTitulo }}" onChange="{{ setFTitulo }}" placeholder="Ex.: Ligar para cobrar retorno da proposta" hint-size="100%,66px"></x-import>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
@@ -134,6 +139,18 @@
 <input type="time" value="{{ fHora }}" onChange="{{ setFHora }}" style="height:44px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font-family:'IBM Plex Sans';color:#021226;width:100%">
 </div>
 </div>
+<div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap">
+<div style="flex:1;min-width:160px"><x-import component-from-global-scope="va-select" data-campo="fFreq" label="Repetir" options="Não repete|Diária|Semanal|Mensal" value="{{ fFreq }}" hint-size="100%,66px"></x-import></div>
+<sc-if value="{{ fRecorrente }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:6px;width:170px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Repetir até</span>
+<input type="date" value="{{ fAte }}" onChange="{{ setFAte }}" aria-label="Fim da recorrência" style="height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font-family:'IBM Plex Sans';color:#021226;width:100%">
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ fRecorrente }}" hint-placeholder-val="{{ false }}">
+<span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678"><i data-lucide="repeat" style="font-size:14px;color:#628A11"></i>Cria uma série de tarefas até a data final. Dá para cancelar a recorrência depois — as já criadas ficam.</span>
+</sc-if>
 <div style="display:flex;flex-direction:column;gap:6px;position:relative">
 <span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vincular a um negócio</span>
 <div style="position:relative">
@@ -205,6 +222,57 @@
 <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
 </sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ serieOpen }}" onClose="{{ fecharSerie }}" title="Tarefa recorrente" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="display:flex;align-items:center;gap:8px;font:400 14px/1.5 'IBM Plex Sans';color:#454F5E"><i data-lucide="repeat" style="font-size:16px;color:#628A11"></i>{{ serieResumo }}</span>
+<div style="display:flex;flex-direction:column;border:1px solid #E4E8EF;border-radius:6px;padding:4px 14px;max-height:240px;overflow-y:auto">
+<sc-for list="{{ serieItens }}" as="si" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #EDF0F5">
+<i data-lucide="{{ si.icone }}" style="font-size:14px;color:{{ si.cor }}"></i>
+<span style="flex:1;font:400 13.5px/1.3 'IBM Plex Sans';{{ si.extra }}">{{ si.rotulo }}</span>
+<span style="font:500 12px/1 'IBM Plex Sans';color:#7A8699">{{ si.st }}</span>
+</div>
+</sc-for>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Cancelar a recorrência interrompe as próximas tarefas da série. As que já foram criadas até hoje continuam na sua lista.</span>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharSerie }}" hint-size="auto,40px">Fechar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="danger" icon-left="circle-off" onClick="{{ cancelarSerie }}" hint-size="auto,40px">Cancelar recorrência</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ delEscopoOpen }}" onClose="{{ fecharDelEscopo }}" title="Apagar tarefa recorrente" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Esta tarefa faz parte de uma recorrência. O que você quer apagar?</span>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ delEscopos }}" as="de" hint-placeholder-count="3">
+<button onClick="{{ de.pegar }}" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #D6DCE5;border-radius:8px;background:#FFFFFF;cursor:pointer;text-align:left;font-family:inherit" style-hover="border-color:#B3202F;background:#FDF6F7">
+<i data-lucide="{{ de.icone }}" style="font-size:16px;color:#B3202F;margin-top:1px;flex:none"></i>
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 13.5px/1.3 'IBM Plex Sans';color:#021226">{{ de.nome }}</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">{{ de.sub }}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharDelEscopo }}" hint-size="auto,40px">Cancelar</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ escopoOpen }}" onClose="{{ fecharEscopo }}" title="Editar tarefa recorrente" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Esta tarefa faz parte de uma recorrência. O que você quer alterar?</span>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ escopos }}" as="eo" hint-placeholder-count="3">
+<button onClick="{{ eo.pegar }}" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #D6DCE5;border-radius:8px;background:#FFFFFF;cursor:pointer;text-align:left;font-family:inherit" style-hover="border-color:#628A11;background:#F8FAF1">
+<i data-lucide="{{ eo.icone }}" style="font-size:16px;color:#628A11;margin-top:1px;flex:none"></i>
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 13.5px/1.3 'IBM Plex Sans';color:#021226">{{ eo.nome }}</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">{{ eo.sub }}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharEscopo }}" hint-size="auto,40px">Cancelar</x-import>
+</div>
+</div>
+</x-import>
 </main>
 </div>
 </div>
@@ -215,6 +283,7 @@ class Component extends DCLogic {
     periodo: 'todas', status: 'todos', pDe: '', pAte: '', minhas: false,
     novaOpen: false, tiposOpen: false, toast: '',
     fTitulo: '', fTipo: 'ligacao', fData: '', fHora: '09:00', fNegocio: '', fNegBusca: '', negBuscaAtiva: false,
+    fFreq: 'Não repete', fAte: '', serieOpen: false, serieId: null, escopoOpen: false, escopoT: null, editEscopo: null, editId: null, editSerie: null,
     tNome: '', tIcone: 'square-check', tCor: '#176FBC',
     drawerOpen: false, drawerNegocio: '', drawerCliente: '',
   };
@@ -222,9 +291,17 @@ class Component extends DCLogic {
     this.paint();
     if (window.VATarefas) window.VATarefas.assinar(() => this.forceUpdate());
     else setTimeout(() => this.forceUpdate(), 300);
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT') return;
+      const campo = el.getAttribute('data-campo');
+      if (!campo) return;
+      this.setState({ [campo]: (e.detail && e.detail.value) || el.getAttribute('value') });
+    };
+    document.addEventListener('change', this._chg);
   }
   componentDidUpdate() { this.paint(); }
-  componentWillUnmount() { clearTimeout(this._t); }
+  componentWillUnmount() { clearTimeout(this._t); document.removeEventListener('change', this._chg); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
@@ -277,6 +354,17 @@ class Component extends DCLogic {
         tituloStyle: "font:600 14px/1.35 'IBM Plex Sans'" + (t.feita ? ';color:#7A8699;text-decoration:line-through' : ''),
         cardStyle: 'background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);border-bottom:3px solid ' + colCor + ';padding:12px 14px;display:flex;flex-direction:column;gap:8px' + (t.feita ? ';opacity:.75' : ''),
         abrirNegocio: () => this.setState({ drawerOpen: true, drawerNegocio: t.negocio, drawerCliente: t.cliente || 'Depósito São Jorge' }),
+        temSerie: !!t.serie,
+        serieChip: t.serie ? ({ diaria: 'Diária', semanal: 'Semanal', mensal: 'Mensal' })[t.freq] + (t.serieCancelada ? ' · cancelada' : ' · até ' + String(t.serieAte || '').split('-').reverse().join('/')) : '',
+        verSerie: () => this.setState({ serieOpen: true, serieId: t.serie, escopoT: t }),
+        editar: () => {
+          if (t.serie) this.setState({ escopoOpen: true, escopoT: t });
+          else this.setState({ novaOpen: true, editEscopo: 'esta', editId: t.id, editSerie: null, fTitulo: t.titulo, fTipo: t.tipo, fData: t.data, fHora: t.hora, fFreq: 'Não repete' });
+        },
+        apagar: () => {
+          if (t.serie) this.setState({ delEscopoOpen: true, escopoT: t });
+          else { VT.excluir(t.id); this.avisar('Tarefa apagada'); }
+        },
         concluir: () => { VT.concluir(t.id); this.avisar('Tarefa concluída — boa!'); },
         reabrir: () => { VT.reabrir(t.id); this.avisar('Tarefa reaberta'); },
       };
@@ -345,8 +433,82 @@ class Component extends DCLogic {
       })),
       negSemResultado: !NEGOCIOS.some(n => n.nome.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0 || n.cliente.toLowerCase().indexOf(this.state.fNegBusca.trim().toLowerCase()) >= 0),
       semTitulo: !this.state.fTitulo.trim(),
+      modalTarefaTitulo: this.state.editEscopo
+        ? 'Editar tarefa — ' + ({ esta: 'somente esta', proximas: 'esta e as próximas', todas: 'todas da série' })[this.state.editEscopo]
+        : 'Nova tarefa',
+      fFreq: this.state.fFreq,
+      fRecorrente: this.state.fFreq !== 'Não repete' && !this.state.editEscopo,
+      fAte: this.state.fAte || (VT ? VT.dISO(30) : ''),
+      setFAte: (e) => this.setState({ fAte: e.target.value }),
+      serieOpen: this.state.serieOpen,
+      fecharSerie: () => this.setState({ serieOpen: false }),
+      serieResumo: (() => {
+        const t = this.state.escopoT;
+        if (!t || !VT) return '';
+        const n = VT.serieDe(t.serie).length;
+        return 'Série ' + ({ diaria: 'diária', semanal: 'semanal', mensal: 'mensal' })[t.freq] + ' · ' + n + (n === 1 ? ' tarefa' : ' tarefas') + (t.serieCancelada ? ' · recorrência cancelada' : ' · até ' + String(t.serieAte || '').split('-').reverse().join('/'));
+      })(),
+      serieItens: (this.state.serieOpen && VT && this.state.escopoT ? VT.serieDe(this.state.escopoT.serie) : []).map(x => ({
+        icone: x.feita ? 'circle-check' : 'circle',
+        cor: x.feita ? '#0A6244' : '#98A2B3',
+        rotulo: x.titulo + ' — ' + String(x.data).split('-').reverse().join('/') + ' ' + x.hora,
+        extra: x.id === (this.state.escopoT || {}).id ? 'font-weight:600' : '',
+        st: x.feita ? 'concluída' : (x.id === (this.state.escopoT || {}).id ? 'esta tarefa' : ''),
+      })),
+      cancelarSerie: () => {
+        if (VT && this.state.escopoT) VT.cancelarSerie(this.state.escopoT.serie);
+        this.setState({ serieOpen: false });
+        this.avisar('Recorrência cancelada — as tarefas já criadas ficaram');
+      },
+      escopoOpen: this.state.escopoOpen,
+      fecharEscopo: () => this.setState({ escopoOpen: false }),
+      delEscopoOpen: !!this.state.delEscopoOpen,
+      fecharDelEscopo: () => this.setState({ delEscopoOpen: false }),
+      delEscopos: [
+        { id: 'esta', nome: 'Apagar somente esta tarefa', icone: 'square-x', sub: 'As demais ocorrências da série continuam' },
+        { id: 'proximas', nome: 'Apagar esta e as que estão por vir', icone: 'chevrons-right', sub: 'Remove esta e todas as ocorrências futuras; as anteriores ficam' },
+        { id: 'todas', nome: 'Apagar todas as tarefas da série', icone: 'trash-2', sub: 'Remove a recorrência inteira, inclusive as anteriores' },
+      ].map(de => ({
+        ...de,
+        pegar: () => {
+          const t = this.state.escopoT;
+          if (de.id === 'esta') VT.excluir(t.id);
+          else if (de.id === 'proximas') VT.excluirSerie(t.serie, t.data);
+          else VT.excluirSerie(t.serie, null);
+          this.setState({ delEscopoOpen: false });
+          this.avisar(({ esta: 'Tarefa apagada — a série continua', proximas: 'Esta e as próximas foram apagadas', todas: 'Série inteira apagada' })[de.id]);
+        },
+      })),
+      escopos: [
+        { id: 'esta', nome: 'Somente esta tarefa', icone: 'square-check', sub: 'Altera só esta ocorrência, sem mexer nas demais' },
+        { id: 'proximas', nome: 'Esta e as próximas', icone: 'chevrons-right', sub: 'Aplica a esta ocorrência e a todas as futuras da série' },
+        { id: 'todas', nome: 'Todas as tarefas', icone: 'repeat', sub: 'Aplica a todas as ocorrências da série, inclusive as anteriores' },
+      ].map(eo => ({
+        ...eo,
+        pegar: () => {
+          const t = this.state.escopoT;
+          this.setState({ escopoOpen: false, novaOpen: true, editEscopo: eo.id, editId: t.id, editSerie: t.serie, fTitulo: t.titulo, fTipo: t.tipo, fData: t.data, fHora: t.hora, fFreq: 'Não repete' });
+        },
+      })),
       criarTarefa: () => {
         if (!VT || !this.state.fTitulo.trim()) return;
+        const s = this.state;
+        if (s.editEscopo) {
+          const patch = { titulo: s.fTitulo.trim(), tipo: s.fTipo, hora: s.fHora || '09:00' };
+          if (s.editEscopo === 'esta' || !s.editSerie) { VT.atualizar(s.editId, Object.assign({ data: s.fData || hoje }, patch)); }
+          else if (s.editEscopo === 'proximas') VT.atualizarSerie(s.editSerie, s.fData || hoje, patch);
+          else VT.atualizarSerie(s.editSerie, null, patch);
+          this.setState({ novaOpen: false, editEscopo: null, editId: null, editSerie: null, fTitulo: '', fFreq: 'Não repete' });
+          this.avisar('Alterações salvas ' + ({ esta: 'nesta tarefa', proximas: 'nesta e nas próximas', todas: 'em toda a série' })[s.editEscopo]);
+          return;
+        }
+        if (s.fFreq !== 'Não repete') {
+          const freq = ({ 'Diária': 'diaria', 'Semanal': 'semanal', 'Mensal': 'mensal' })[s.fFreq];
+          VT.criarRecorrente({ titulo: s.fTitulo.trim(), tipo: s.fTipo, negocio: s.fNegocio, cliente: '', resp: 'CR', data: s.fData || hoje, hora: s.fHora || '09:00' }, freq, s.fAte || VT.dISO(30));
+          this.setState({ novaOpen: false, fTitulo: '', fNegocio: '', fNegBusca: '', negBuscaAtiva: false, fFreq: 'Não repete', fAte: '' });
+          this.avisar('Série ' + s.fFreq.toLowerCase() + ' criada');
+          return;
+        }
         VT.criar({ titulo: this.state.fTitulo.trim(), tipo: this.state.fTipo, negocio: this.state.fNegocio, cliente: '', resp: 'CR', data: this.state.fData || hoje, hora: this.state.fHora || '09:00' });
         this.setState({ novaOpen: false, fTitulo: '', fNegocio: '', fNegBusca: '', negBuscaAtiva: false });
         this.avisar('Tarefa criada');

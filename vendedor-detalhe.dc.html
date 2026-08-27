@@ -91,24 +91,16 @@
 </sc-for>
 </div>
 </div>
-<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;flex-direction:column;gap:2px">
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Permissões do CRM</span>
-<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">O que o Carlos pode fazer com os negócios do funil</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">As permissões agora são por grupo, centralizadas nas configurações do CRM</span>
 </div>
-<sc-for list="{{ permsCrm }}" as="pc" hint-placeholder-count="4">
-<div style="display:flex;flex-direction:column;gap:8px;border-bottom:1px solid #EDF0F5;padding-bottom:14px">
-<span style="font:500 14px/1.3 'IBM Plex Sans'">{{ pc.titulo }}</span>
-<div style="display:flex;flex-direction:column;gap:6px">
-<sc-for list="{{ pc.opcoes }}" as="op" hint-placeholder-count="3">
-<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-<input type="radio" name="{{ pc.grupo }}" checked="{{ op.on }}" onChange="{{ op.pegar }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
-<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ op.nome }}</span><sc-if value="{{ op.temSub }}" hint-placeholder-val="{{ false }}"><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">{{ op.sub }}</span></sc-if></span>
-</label>
-</sc-for>
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #E4E8EF;border-radius:8px;padding:12px 14px;flex-wrap:wrap">
+<span style="width:36px;height:36px;border-radius:8px;background:#F2F8D4;display:grid;place-items:center;color:#365E10;flex:none"><i data-lucide="shield-check" style="font-size:17px"></i></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:180px"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">Grupo de permissão: Gestor</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Oportunidades, tarefas, contatos, conversas e mais</span></span>
+<a href="crm-configuracoes.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="settings-2" hint-size="auto,32px">Gerenciar em Configurações do CRM</x-import></a>
 </div>
-</div>
-</sc-for>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">

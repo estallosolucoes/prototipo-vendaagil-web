@@ -8,23 +8,6 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/colors.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/semantic.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/theme-dark.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/typography.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/radius.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/elevation.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/motion.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/layout.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/tokens/base.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/core/core.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/feedback/feedback.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/layout/layout.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/data/data.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/domain/domain.css">
-<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/components/components.css">
 <link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
 <script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
 <script src="style-refix.js"></script>
@@ -32,18 +15,21 @@
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
-<style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+@media (max-width:1100px){[data-va-cols]{grid-template-columns:1fr !important}}
+@media (max-width:760px){main{padding:24px 16px 96px 16px !important}}
+</style>
 </helmet>
-<div data-screen-label="REL-02 Venda por cliente — Curva ABC" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<div data-screen-label="REL-02 Relatório" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
 <dc-import name="Topbar" hint-size="100%,92px"></dc-import>
 <div style="position:relative;flex:1">
 <dc-import name="Sidebar" active="relatorios" hint-size="0px,0px"></dc-import>
-<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
-<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="relatorios.dc.html" style="text-decoration:none">Relatórios</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">Venda por cliente — Curva ABC</span></nav>
+<main style="max-width:1500px;margin:0 auto;padding:36px 24px 56px 108px;width:100%">
+<nav style="display:flex;align-items:center;gap:6px;font:400 13px/1 'IBM Plex Sans';color:#5B6678;margin-bottom:16px"><a href="relatorios.dc.html" style="text-decoration:none">Relatórios</a><i data-lucide="chevron-right" style="font-size:13px"></i><span style="color:#021226;font-weight:500">{{ relNome }}</span></nav>
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
 <div style="display:flex;flex-direction:column;gap:4px">
-<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Venda por cliente — Curva ABC</h1>
-<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Este mês · todas as representadas · 148 clientes, 62 com compra</span>
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">{{ relNome }}</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">{{ relSub }}</span>
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="bookmark" onClick="{{ abrirSalvar }}" hint-size="auto,40px">Salvar filtro</x-import>
@@ -52,44 +38,39 @@
 </div>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;margin-bottom:16px;display:flex;gap:12px;align-items:end;flex-wrap:wrap">
-<x-import component-from-global-scope="va-select" label="Período" options="Este mês|Mês passado|Últimos 90 dias|Este ano" value="Este mês" hint-size="170px,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas" hint-size="200px,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="180px,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Agrupar por" options="Cliente|Cidade|Rota|Segmento" value="Cliente" hint-size="160px,66px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="rotate-cw" hint-size="auto,40px">Atualizar</x-import>
+<x-import component-from-global-scope="va-select" data-campo="rel" label="Relatório" options="{{ relOpcoes }}" value="{{ relNome }}" hint-size="280px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Período" options="Este mês|Mês passado|Últimos 90 dias|Este ano" value="Este mês" hint-size="160px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas" hint-size="190px,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="170px,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="rotate-cw" onClick="{{ atualizar }}" hint-size="auto,40px">Atualizar</x-import>
 </div>
-<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
+<div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;align-items:start">
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:760px;display:grid;grid-template-columns:44px 1fr 110px 130px 110px 90px;gap:12px;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Curva</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Pedidos</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Vendido</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">% do total</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Acum.</span>
+<div style="{{ headStyle }}">
+<sc-for list="{{ cabecalho }}" as="h" hint-placeholder-count="5">
+<span style="{{ h.style }}">{{ h.t }}</span>
+</sc-for>
 </div>
 <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="8">
-<div style="min-width:760px;display:grid;grid-template-columns:44px 1fr 110px 130px 110px 90px;gap:12px;align-items:center;padding:11px 20px;border-bottom:1px solid #EDF0F5">
-<span style="{{ l.curvaStyle }}">{{ l.curva }}</span>
-<a href="cliente-360.dc.html" style="font:500 13.5px/1.3 'IBM Plex Sans';text-decoration:none;color:#021226" style-hover="color:#365E10">{{ l.cliente }}</a>
-<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.pedidos }}</span>
-<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.vendido }}</span>
-<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.pct }}</span>
-<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#5B6678">{{ l.acum }}</span>
+<div style="{{ rowStyle }}">
+<sc-for list="{{ l.cels }}" as="c" hint-placeholder-count="5">
+<span style="{{ c.style }}">{{ c.t }}</span>
+</sc-for>
 </div>
 </sc-for>
-<div style="min-width:760px;display:flex;justify-content:space-between;padding:14px 20px;background:#FAFBFC;font:600 13.5px/1 'IBM Plex Sans'"><span>62 clientes com compra</span><span style="font-variant-numeric:tabular-nums">R$ 596.803,30</span></div>
+<div style="{{ rodapeStyle }}"><span>{{ rodapeEsq }}</span><span style="font-variant-numeric:tabular-nums">{{ rodapeDir }}</span></div>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;display:flex;flex-direction:column;gap:14px">
-<span style="font:600 15px/1.3 'IBM Plex Sans'">Concentração da carteira</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" height="{{ 180 }}" hint-size="100%,180px"></x-import>
-<span style="font:400 13px/1.6 'IBM Plex Sans';color:#454F5E">A curva A — <strong style="color:#021226">9 clientes</strong> — responde por <strong style="color:#021226">68%</strong> da venda do mês. Perder um deles custa em média R$ 45 mil/ano.</span>
+<span style="font:600 15px/1.3 'IBM Plex Sans'">{{ graficoTitulo }}</span>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" height="{{ 220 }}" hint-size="100%,220px"></x-import>
+<span style="font:400 13px/1.6 'IBM Plex Sans';color:#454F5E">{{ insight }}</span>
 </div>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fechar }}" title="Exportar relatório" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Sai exatamente o que está na tela — relatório e filtros aplicados: <strong>{{ relNome }}</strong>, este mês, todas as representadas.</span>
 <x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF — retrato|PDF — paisagem" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Incluir gráfico de concentração" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Incluir o gráfico" checked="{{ true }}" hint-size="auto,20px"></x-import>
 <div style="display:flex;justify-content:flex-end;gap:8px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar relatório</x-import>
@@ -98,7 +79,7 @@
 </x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ salvarOpen }}" onClose="{{ fechar }}" title="Salvar filtro" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do filtro" placeholder="Ex.: ABC do mês — todas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do filtro" placeholder="Ex.: Pendentes — Móveis Vale" hint-size="100%,66px"></x-import>
 <div style="display:flex;justify-content:flex-end;gap:8px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar filtro</x-import>
@@ -115,48 +96,208 @@
 </div>
 </div>
 </x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
 </main>
 </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { expOpen: false, salvarOpen: false, agendarOpen: false };
-  componentDidMount() { this.paint(); }
+  state = { rel: null, expOpen: false, salvarOpen: false, agendarOpen: false, toast: '' };
+  componentDidMount() {
+    const r = new URLSearchParams(location.search).get('r');
+    if (r) this.setState({ rel: r });
+    this.paint();
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT' || el.getAttribute('data-campo') !== 'rel') return;
+      const nome = (e.detail && e.detail.value) || el.getAttribute('value');
+      const id = Object.keys(this.CAT()).find(k => this.CAT()[k].nome === nome);
+      if (id) { this.setState({ rel: id }); history.replaceState(null, '', 'relatorio.dc.html?r=' + id); }
+    };
+    document.addEventListener('change', this._chg);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); }
   componentDidUpdate() { this.paint(); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
   }
-  renderVals() {
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  CAT() {
+    if (this._cat) return this._cat;
     const curva = (c) => {
       const cores = { A: ['#F2F8D4', '#365E10'], B: ['#FFF7E6', '#855507'], C: ['#EDF0F5', '#5B6678'] };
-      return "width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font:600 12.5px/1 'IBM Plex Sans';background:" + cores[c][0] + ';color:' + cores[c][1];
+      return { t: c, chip: cores[c] };
     };
+    const st = (t, tipo) => ({ t, chip: ({ ok: ['#E8F7F0', '#0A6244'], warn: ['#FCF3DF', '#8A5B00'], bad: ['#FDF0F1', '#85202C'] })[tipo] });
+    this._cat = {
+      'venda-geral': { nome: 'Venda geral', sub: 'Este mês · todas as representadas · R$ 596.803,30 vendidos', grupo: 'Vendas',
+        cols: [['Representada', '1fr'], ['Pedidos', '90px', 'r'], ['Vendido', '130px', 'r'], ['Ticket médio', '120px', 'r'], ['% do total', '100px', 'r']],
+        rows: [['Móveis Vale', '18', 'R$ 261.408,00', 'R$ 14.522,67', '43,8%'], ['Cerâmica Atlas', '14', 'R$ 178.212,30', 'R$ 12.729,45', '29,9%'], ['Metalúrgica Horizonte', '9', 'R$ 98.114,00', 'R$ 10.901,56', '16,4%'], ['Tecelagem Iguaçu', '6', 'R$ 59.069,00', 'R$ 9.844,83', '9,9%']],
+        rodape: ['47 pedidos no período', 'R$ 596.803,30'],
+        grafico: 'Venda por semana', barras: [{ label: 'S1', value: 128 }, { label: 'S2', value: 156 }, { label: 'S3', value: 171 }, { label: 'S4', value: 142 }],
+        insight: 'Melhor semana: S3, puxada pela promoção de gaveteiros da Móveis Vale.' },
+      'abc-clientes': { nome: 'Venda por cliente — Curva ABC', sub: 'Este mês · todas as representadas · 148 clientes, 62 com compra', grupo: 'Vendas',
+        cols: [['Curva', '44px'], ['Cliente', '1fr'], ['Pedidos', '90px', 'r'], ['Vendido', '130px', 'r'], ['% do total', '100px', 'r'], ['Acum.', '80px', 'r']],
+        rows: [[curva('A'), 'Depósito São Jorge', '6', 'R$ 86.412,00', '14,5%', '14,5%'], [curva('A'), 'Casa & Construção Delta', '5', 'R$ 71.980,00', '12,1%', '26,6%'], [curva('A'), 'Central do Construtor', '4', 'R$ 58.240,00', '9,8%', '36,4%'], [curva('A'), 'Armazém Boa Vista', '4', 'R$ 52.360,00', '8,8%', '45,2%'], [curva('B'), 'Materiais Pinheiro', '3', 'R$ 31.320,00', '5,2%', '50,4%'], [curva('B'), 'Ferragens Colombo', '3', 'R$ 24.216,00', '4,1%', '54,5%'], [curva('B'), 'Comercial Andrade', '2', 'R$ 18.410,00', '3,1%', '57,6%'], [curva('C'), 'Depósito Bela Vista', '1', 'R$ 6.180,00', '1,0%', '58,6%']],
+        rodape: ['62 clientes com compra', 'R$ 596.803,30'],
+        grafico: 'Concentração da carteira', barras: [{ label: 'A · 9', value: 68 }, { label: 'B · 21', value: 24 }, { label: 'C · 32', value: 8 }],
+        insight: 'A curva A — 9 clientes — responde por 68% da venda do mês. Perder um deles custa em média R$ 45 mil/ano.' },
+      'abc-produtos': { nome: 'Venda por produto — Curva ABC', sub: 'Este mês · todas as representadas · 524 produtos, 186 com venda', grupo: 'Vendas',
+        cols: [['Curva', '44px'], ['Produto', '1fr'], ['Qtde', '80px', 'r'], ['Vendido', '130px', 'r'], ['% do total', '100px', 'r'], ['Acum.', '80px', 'r']],
+        rows: [[curva('A'), 'Cadeira executiva Ergon — preta', '212', 'R$ 74.412,00', '12,5%', '12,5%'], [curva('A'), 'Mesa diretor 1,60m nogueira', '48', 'R$ 62.360,00', '10,4%', '22,9%'], [curva('A'), 'Porcelanato Urbano 90×90', '640 m²', 'R$ 51.104,00', '8,6%', '31,5%'], [curva('B'), 'Gaveteiro volante 3 gavetas', '96', 'R$ 28.804,00', '4,8%', '36,3%'], [curva('B'), 'Poltrona espera Duo', '31', 'R$ 21.318,00', '3,6%', '39,9%'], [curva('C'), 'Suporte de monitor articulado', '44', 'R$ 5.126,00', '0,9%', '40,8%']],
+        rodape: ['186 produtos com venda', 'R$ 596.803,30'],
+        grafico: 'Concentração do mix', barras: [{ label: 'A · 22', value: 61 }, { label: 'B · 58', value: 27 }, { label: 'C · 106', value: 12 }],
+        insight: '22 produtos concentram 61% da venda — o mix da curva C merece revisão com a indústria.' },
+      'mais-vendidos': { nome: 'Produtos mais vendidos', sub: 'Este mês · todas as representadas · por quantidade', grupo: 'Vendas',
+        cols: [['#', '36px'], ['Produto', '1fr'], ['Representada', '180px'], ['Qtde', '80px', 'r'], ['Vendido', '130px', 'r']],
+        rows: [['1', 'Cadeira executiva Ergon — preta', 'Móveis Vale', '212', 'R$ 74.412,00'], ['2', 'Gaveteiro volante 3 gavetas', 'Móveis Vale', '96', 'R$ 28.804,00'], ['3', 'Porcelanato Urbano 90×90', 'Cerâmica Atlas', '640 m²', 'R$ 51.104,00'], ['4', 'Cadeira fixa aproximação', 'Móveis Vale', '84', 'R$ 15.372,00'], ['5', 'Mesa diretor 1,60m nogueira', 'Móveis Vale', '48', 'R$ 62.360,00'], ['6', 'Suporte de monitor articulado', 'Metalúrgica Horizonte', '44', 'R$ 5.126,00']],
+        rodape: ['Top 6 de 186 produtos com venda', '—'],
+        grafico: 'Top 5 por quantidade', barras: [{ label: 'Ergon', value: 212 }, { label: 'Gavet.', value: 96 }, { label: 'Fixa', value: 84 }, { label: 'Mesa', value: 48 }, { label: 'Suporte', value: 44 }],
+        insight: 'A Ergon vende mais que os 3 seguintes somados — garanta estoque com a Móveis Vale antes da alta de setembro.' },
+      'menos-vendidos': { nome: 'Produtos menos vendidos', sub: 'Este mês · todas as representadas · produtos com venda abaixo da média', grupo: 'Vendas',
+        cols: [['#', '36px'], ['Produto', '1fr'], ['Representada', '180px'], ['Qtde', '80px', 'r'], ['Sem vender há', '120px', 'r']],
+        rows: [['1', 'Arquivo de aço 4 gavetas — cinza', 'Metalúrgica Horizonte', '0', '94 dias'], ['2', 'Revestimento Ravena 30×60', 'Cerâmica Atlas', '0', '71 dias'], ['3', 'Poltrona presidente couro — caramelo', 'Móveis Vale', '1', '58 dias'], ['4', 'Manta decorativa tramada', 'Tecelagem Iguaçu', '2', '44 dias'], ['5', 'Mesa lateral apoio 45cm', 'Móveis Vale', '2', '39 dias'], ['6', 'Cortina blackout 2,60m', 'Tecelagem Iguaçu', '3', '31 dias']],
+        rodape: ['38 produtos sem venda no período', '—'],
+        grafico: 'Dias sem vender — top 5', barras: [{ label: 'Arquivo', value: 94 }, { label: 'Ravena', value: 71 }, { label: 'Poltr.', value: 58 }, { label: 'Manta', value: 44 }, { label: 'Mesa', value: 39 }],
+        insight: 'O arquivo de aço está há 94 dias parado — vale propor promoção ou devolver o espaço de mostruário.' },
+      'positivados': { nome: 'Clientes positivados', sub: 'Este mês · 62 de 148 clientes compraram — 41,9% de positivação', grupo: 'Clientes',
+        cols: [['Cliente', '1fr'], ['Última compra', '130px'], ['Pedidos', '90px', 'r'], ['Vendido', '130px', 'r']],
+        rows: [['Depósito São Jorge', 'hoje', '6', 'R$ 86.412,00'], ['Casa & Construção Delta', 'ontem', '5', 'R$ 71.980,00'], ['Central do Construtor', '22/08', '4', 'R$ 58.240,00'], ['Armazém Boa Vista', '19/08', '4', 'R$ 52.360,00'], ['Materiais Pinheiro', '15/08', '3', 'R$ 31.320,00'], ['Ferragens Colombo', '12/08', '3', 'R$ 24.216,00']],
+        rodape: ['62 clientes positivados', 'R$ 596.803,30'],
+        grafico: 'Positivação por semana', barras: [{ label: 'S1', value: 18 }, { label: 'S2', value: 16 }, { label: 'S3', value: 15 }, { label: 'S4', value: 13 }],
+        insight: 'Positivação de 41,9% — 5 pontos acima de julho. A meta do trimestre é 45%.' },
+      'inativos': { nome: 'Clientes inativos', sub: 'Sem comprar há mais de 90 dias · 23 clientes', grupo: 'Clientes',
+        cols: [['Cliente', '1fr'], ['Sem comprar há', '130px', 'r'], ['Último pedido', '130px', 'r'], ['Vendedor', '150px']],
+        rows: [['Móveis Baltazar', '184 dias', 'R$ 9.100,00', 'Jorge Tomasi'], ['Bazar Monte Alto', '156 dias', 'R$ 4.220,00', 'Ana Paula Vieira'], ['Comercial Andrade Sul', '132 dias', 'R$ 12.480,00', 'Carlos Rezende'], ['Lojas Pinheiral — filial 2', '117 dias', 'R$ 6.910,00', 'Renata Cruz'], ['Casa Mattos', '98 dias', 'R$ 3.140,00', 'Paulo Selau']],
+        rodape: ['23 clientes inativos', 'R$ 214 mil/ano em risco'],
+        grafico: 'Inativos por faixa', barras: [{ label: '90-120', value: 9 }, { label: '120-180', value: 8 }, { label: '180+', value: 6 }],
+        insight: '6 clientes passaram de 180 dias — candidatos diretos ao funil de reativação do CRM.' },
+      'carteira': { nome: 'Situação da carteira', sub: 'Este mês · por vendedor', grupo: 'Clientes',
+        cols: [['Vendedor', '1fr'], ['Clientes', '90px', 'r'], ['Positivados', '100px', 'r'], ['% positivação', '110px', 'r'], ['Vendido', '130px', 'r']],
+        rows: [['Carlos Rezende', '48', '24', '50,0%', 'R$ 261.408,00'], ['Ana Paula Vieira', '39', '17', '43,6%', 'R$ 148.212,30'], ['Renata Cruz', '31', '12', '38,7%', 'R$ 98.114,00'], ['Jorge Tomasi', '30', '9', '30,0%', 'R$ 89.069,00']],
+        rodape: ['148 clientes na carteira', 'R$ 596.803,30'],
+        grafico: '% positivação', barras: [{ label: 'Carlos', value: 50 }, { label: 'Ana', value: 44 }, { label: 'Renata', value: 39 }, { label: 'Jorge', value: 30 }],
+        insight: 'Jorge está 12 pontos abaixo da média — 21 clientes dele sem compra há 60+ dias.' },
+      'com-recebidas': { nome: 'Comissões recebidas', sub: 'Este mês · conferidas e pagas pelas representadas · R$ 18.412,70', grupo: 'Comissões',
+        cols: [['Representada', '1fr'], ['Pedido', '90px'], ['Recebida em', '110px', 'r'], ['Base', '120px', 'r'], ['Comissão', '110px', 'r']],
+        rows: [['Móveis Vale', '4.786', '22/08', 'R$ 86.412,00', 'R$ 4.320,60'], ['Cerâmica Atlas', '4.771', '20/08', 'R$ 58.240,00', 'R$ 2.912,00'], ['Móveis Vale', '4.768', '18/08', 'R$ 52.360,00', 'R$ 2.618,00'], ['Metalúrgica Horizonte', '4.752', '12/08', 'R$ 31.320,00', 'R$ 1.566,00'], ['Tecelagem Iguaçu', '4.749', '08/08', 'R$ 24.216,00', 'R$ 1.210,80']],
+        rodape: ['14 comissões recebidas', 'R$ 18.412,70'],
+        grafico: 'Recebidas por representada', barras: [{ label: 'Vale', value: 9.4 }, { label: 'Atlas', value: 4.8 }, { label: 'Horiz.', value: 2.6 }, { label: 'Iguaçu', value: 1.6 }],
+        insight: 'A Móveis Vale paga em 12 dias em média — a Atlas, em 31. Vale cobrar o financeiro deles.' },
+      'com-pendentes': { nome: 'Comissões pendentes', sub: 'Faturadas e ainda não pagas · R$ 9.184,20 a receber', grupo: 'Comissões',
+        cols: [['Representada', '1fr'], ['Pedido', '90px'], ['Faturado em', '110px', 'r'], ['Comissão', '110px', 'r'], ['Situação', '130px']],
+        rows: [['Cerâmica Atlas', '4.797', '14/08', 'R$ 2.412,00', st('35 dias em atraso', 'bad')], ['Móveis Vale', '4.802', '19/08', 'R$ 2.106,20', st('no prazo', 'ok')], ['Metalúrgica Horizonte', '4.788', '11/08', 'R$ 1.890,00', st('12 dias em atraso', 'warn')], ['Móveis Vale', '4.806', '21/08', 'R$ 1.612,00', st('no prazo', 'ok')], ['Tecelagem Iguaçu', '4.781', '05/08', 'R$ 1.164,00', st('vence amanhã', 'warn')]],
+        rodape: ['9 comissões pendentes', 'R$ 9.184,20'],
+        grafico: 'Pendentes por idade', barras: [{ label: 'No prazo', value: 4.9 }, { label: '1-30d', value: 1.9 }, { label: '30d+', value: 2.4 }],
+        insight: 'R$ 2.412,00 da Atlas estão 35 dias em atraso — anexa o extrato e cobra no contato mensal.' },
+      'com-previstas': { nome: 'Comissões previstas', sub: 'Pedidos emitidos aguardando faturar · R$ 7.318,40 projetados', grupo: 'Comissões',
+        cols: [['Representada', '1fr'], ['Pedido', '90px'], ['Previsão de faturar', '140px', 'r'], ['Base', '120px', 'r'], ['Comissão prevista', '130px', 'r']],
+        rows: [['Móveis Vale', '4.812', 'esta semana', 'R$ 12.798,45', 'R$ 639,92'], ['Cerâmica Atlas', '4.810', 'esta semana', 'R$ 31.104,00', 'R$ 1.555,20'], ['Móveis Vale', '4.809', 'próxima semana', 'R$ 42.360,00', 'R$ 2.118,00'], ['Metalúrgica Horizonte', '4.805', 'próxima semana', 'R$ 28.410,00', 'R$ 1.420,50'], ['Tecelagem Iguaçu', '4.801', 'setembro', 'R$ 31.697,60', 'R$ 1.584,78']],
+        rodape: ['11 pedidos aguardando faturar', 'R$ 7.318,40'],
+        grafico: 'Previsão por quinzena', barras: [{ label: 'Set 1ª', value: 4.2 }, { label: 'Set 2ª', value: 2.1 }, { label: 'Out', value: 1.0 }],
+        insight: 'Se tudo faturar no prazo, setembro abre com R$ 6,3 mil já encaminhados — 42% da meta de comissão.' },
+      'faturados': { nome: 'Pedidos faturados', sub: 'Este mês · 32 pedidos · R$ 512.318,00 faturados', grupo: 'Faturamento',
+        cols: [['Pedido', '90px'], ['Cliente', '1fr'], ['Representada', '180px'], ['Faturado em', '110px', 'r'], ['Valor', '130px', 'r']],
+        rows: [['4.786', 'Depósito São Jorge', 'Móveis Vale', '22/08', 'R$ 86.412,00'], ['4.771', 'Central do Construtor', 'Cerâmica Atlas', '20/08', 'R$ 58.240,00'], ['4.768', 'Armazém Boa Vista', 'Móveis Vale', '18/08', 'R$ 52.360,00'], ['4.752', 'Materiais Pinheiro', 'Metalúrgica Horizonte', '12/08', 'R$ 31.320,00'], ['4.749', 'Ferragens Colombo', 'Tecelagem Iguaçu', '08/08', 'R$ 24.216,00']],
+        rodape: ['32 pedidos faturados', 'R$ 512.318,00'],
+        grafico: 'Faturado por semana', barras: [{ label: 'S1', value: 96 }, { label: 'S2', value: 132 }, { label: 'S3', value: 158 }, { label: 'S4', value: 126 }],
+        insight: '87% do emitido virou nota no mês — acima da média histórica de 82%.' },
+      'cortes': { nome: 'Corte de pedido por representada', sub: 'Este mês · R$ 14.212,00 cortados em 7 pedidos', grupo: 'Faturamento',
+        cols: [['Representada', '1fr'], ['Pedidos com corte', '140px', 'r'], ['Valor cortado', '130px', 'r'], ['% do faturado', '110px', 'r'], ['Motivo mais comum', '200px']],
+        rows: [['Cerâmica Atlas', '3', 'R$ 7.412,00', '4,2%', 'Sem estoque na indústria'], ['Móveis Vale', '2', 'R$ 3.980,00', '1,5%', 'Item fora de linha'], ['Metalúrgica Horizonte', '1', 'R$ 1.890,00', '1,9%', 'Crédito recusado'], ['Tecelagem Iguaçu', '1', 'R$ 930,00', '1,6%', 'Sem estoque na indústria']],
+        rodape: ['7 pedidos com corte', 'R$ 14.212,00'],
+        grafico: '% de corte', barras: [{ label: 'Atlas', value: 4.2 }, { label: 'Horiz.', value: 1.9 }, { label: 'Iguaçu', value: 1.6 }, { label: 'Vale', value: 1.5 }],
+        insight: 'A Atlas corta o triplo das demais, sempre por estoque — leve o relatório na reunião de setembro.' },
+      'cobrancas': { nome: 'Cobranças', sub: 'Acompanhamento informativo — a cobrança é da indústria', grupo: 'Financeiro',
+        cols: [['Cliente', '1fr'], ['Pedido', '90px'], ['Vencimento', '110px', 'r'], ['Situação', '150px'], ['Valor', '130px', 'r']],
+        rows: [['Depósito São Jorge', '4.786', '20/09', st('em dia', 'ok'), 'R$ 28.804,00'], ['Central do Construtor', '4.771', '12/09', st('em dia', 'ok'), 'R$ 19.413,33'], ['Móveis Baltazar', '4.702', '02/08', st('25 dias vencida', 'bad'), 'R$ 4.550,00'], ['Bazar Monte Alto', '4.718', '15/08', st('12 dias vencida', 'warn'), 'R$ 2.110,00']],
+        rodape: ['R$ 6.660,00 vencidos', 'R$ 54.877,33 total'],
+        grafico: 'Carteira por situação', barras: [{ label: 'Em dia', value: 48 }, { label: '1-15d', value: 2 }, { label: '15d+', value: 5 }],
+        insight: 'Dois clientes vencidos — sinal para bloqueio manual de emissão se a indústria confirmar a inadimplência.' },
+      'fluxo-caixa': { nome: 'Fluxo de caixa previsto', sub: 'Próximos 90 dias · comissões recebíveis por mês de entrada esperada', grupo: 'Financeiro',
+        cols: [['Mês', '1fr'], ['Pendentes (já faturadas)', '170px', 'r'], ['Previstas (a faturar)', '160px', 'r'], ['Total esperado', '130px', 'r'], ['Confiança', '110px']],
+        rows: [['Setembro', 'R$ 7.020,20', 'R$ 4.213,12', 'R$ 11.233,32', st('alta', 'ok')], ['Outubro', 'R$ 2.164,00', 'R$ 2.520,50', 'R$ 4.684,50', st('média', 'warn')], ['Novembro', '—', 'R$ 584,78', 'R$ 584,78', st('baixa', 'bad')]],
+        rodape: ['Base: 9 pendentes + 11 previstas', 'R$ 16.502,60 em 90 dias'],
+        grafico: 'Entrada esperada por mês', barras: [{ label: 'Set', value: 11.2 }, { label: 'Out', value: 4.7 }, { label: 'Nov', value: 0.6 }],
+        insight: 'Setembro concentra 68% da entrada esperada — pendentes já faturadas têm alta confiança; previstas dependem da indústria faturar no prazo.' },
+      'despesas': { nome: 'Despesas da representação', sub: 'Este mês · R$ 3.920,90 lançados · 21,3% das comissões recebidas', grupo: 'Financeiro',
+        cols: [['Categoria', '1fr'], ['Lançamentos', '110px', 'r'], ['Total', '130px', 'r'], ['% do total', '100px', 'r'], ['Vínculo mais comum', '190px']],
+        rows: [['Imposto', '1', 'R$ 1.842,30', '47,0%', 'Sem vínculo'], ['Combustível', '2', 'R$ 805,00', '20,5%', 'Rota serra'], ['Contador', '1', 'R$ 650,00', '16,6%', 'Sem vínculo'], ['Mostruário', '1', 'R$ 340,00', '8,7%', 'Tecelagem Iguaçu'], ['Viagem', '2', 'R$ 283,60', '7,2%', 'Rota litoral']],
+        rodape: ['7 lançamentos no mês', 'R$ 3.920,90'],
+        grafico: 'Despesa por categoria', barras: [{ label: 'Imposto', value: 1842 }, { label: 'Comb.', value: 805 }, { label: 'Cont.', value: 650 }, { label: 'Mostr.', value: 340 }, { label: 'Viagem', value: 284 }],
+        insight: 'As fixas (imposto + contador) são 64% do custo — a rua custou R$ 1.088,60, 5,9% do que ela trouxe em comissão. Lançamentos na tela Financeiro › Despesas.' },
+      'crm-funil': { nome: 'Motivos de perda', sub: 'Este mês · funil de venda · 21 negócios perdidos', grupo: 'CRM',
+        cols: [['Motivo de perda', '1fr'], ['Negócios', '90px', 'r'], ['Valor perdido', '130px', 'r'], ['% das perdas', '110px', 'r']],
+        rows: [['Preço acima do concorrente', '8', 'R$ 64.212,00', '38,1%'], ['Sem estoque na indústria', '5', 'R$ 38.410,00', '23,8%'], ['Cliente sem crédito', '4', 'R$ 22.180,00', '19,0%'], ['Perdeu o prazo de entrega', '2', 'R$ 12.960,00', '9,5%'], ['Outro', '2', 'R$ 8.114,00', '9,5%']],
+        rodape: ['21 negócios perdidos', 'R$ 145.876,00'],
+        grafico: 'Perdas por motivo', barras: [{ label: 'Preço', value: 8 }, { label: 'Estoque', value: 5 }, { label: 'Crédito', value: 4 }, { label: 'Prazo', value: 2 }, { label: 'Outro', value: 2 }],
+        insight: 'Preço lidera as perdas — 6 das 8 foram na Cerâmica Atlas; vale renegociar a tabela FOB.' },
+      'crm-total': { nome: 'Total de negócios', sub: 'Este mês · todos os funis · 94 negócios movimentados', grupo: 'CRM',
+        cols: [['Funil', '1fr'], ['Negócios', '90px', 'r'], ['Valor', '130px', 'r'], ['Ganhos', '80px', 'r'], ['Perdidos', '80px', 'r']],
+        rows: [['Venda', '52', 'R$ 486.212,00', '14', '16'], ['Acompanhamento', '18', 'R$ 212.318,00', '11', '0'], ['Lista de espera', '15', 'R$ 96.412,00', '4', '3'], ['SAC / Cobrança', '9', '—', '7', '2']],
+        rodape: ['94 negócios no período', 'R$ 794.942,00'],
+        grafico: 'Negócios por funil', barras: [{ label: 'Venda', value: 52 }, { label: 'Acomp.', value: 18 }, { label: 'Espera', value: 15 }, { label: 'SAC', value: 9 }],
+        insight: '36 negócios fechados no mês (ganhos) — taxa de conversão de 38% sobre os encerrados.' },
+      'crm-abertos': { nome: 'Negócios em aberto', sub: 'Agora · funil de venda · 36 negócios em andamento', grupo: 'CRM',
+        cols: [['Etapa', '1fr'], ['Em aberto', '90px', 'r'], ['Valor', '130px', 'r'], ['Parado há (média)', '140px', 'r']],
+        rows: [['Primeiro contato', '8', 'R$ 62.410,00', '4 dias'], ['Proposta enviada', '9', 'R$ 118.212,00', '6 dias'], ['Negociação', '7', 'R$ 141.318,00', '5 dias'], ['Recuperação 1-3', '6', 'R$ 48.114,00', '11 dias'], ['Aguardando aprovação da representada', '6', 'R$ 96.158,00', '2 dias']],
+        rodape: ['36 negócios em aberto', 'R$ 466.212,00'],
+        grafico: 'Valor em aberto por etapa', barras: [{ label: '1º cont.', value: 62 }, { label: 'Prop.', value: 118 }, { label: 'Negoc.', value: 141 }, { label: 'Recup.', value: 48 }, { label: 'Aguard.', value: 96 }],
+        insight: 'R$ 141 mil parados em Negociação — as recuperações estão 11 dias paradas em média, o dobro do resto.' },
+      'crm-tempo': { nome: 'Tempo médio de atendimento', sub: 'Este mês · da primeira resposta ao fechamento', grupo: 'CRM',
+        cols: [['Vendedor', '1fr'], ['1ª resposta (média)', '150px', 'r'], ['Tempo até fechar', '140px', 'r'], ['Negócios fechados', '140px', 'r']],
+        rows: [['Carlos Rezende', '18 min', '9 dias', '11'], ['Ana Paula Vieira', '32 min', '12 dias', '8'], ['Renata Cruz', '54 min', '14 dias', '6'], ['Jorge Tomasi', '2h 10', '19 dias', '4'], ['Paulo Selau', '1h 25', '16 dias', '5']],
+        rodape: ['Média da equipe: 58 min · 14 dias', '—'],
+        grafico: 'Dias até fechar', barras: [{ label: 'Carlos', value: 9 }, { label: 'Ana', value: 12 }, { label: 'Renata', value: 14 }, { label: 'Paulo', value: 16 }, { label: 'Jorge', value: 19 }],
+        insight: 'Quem responde em menos de 30 min fecha 5 dias mais rápido — o tempo de 1ª resposta é o alavancador.' },
+    };
+    return this._cat;
+  }
+  renderVals() {
+    const CAT = this.CAT();
+    const id = this.state.rel && CAT[this.state.rel] ? this.state.rel : 'abc-clientes';
+    const R = CAT[id];
+    const cols = R.cols;
+    const gridCols = cols.map(c => c[1]).join(' ');
+    const minw = '760px';
+    const base = "font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678";
+    const cel = (align) => "font:400 13.5px/1.35 'IBM Plex Sans';font-variant-numeric:tabular-nums" + (align === 'r' ? ';text-align:right' : '');
     return {
       btnProps: { style: { color: '#F3F3F3' } },
-      linhas: [
-        { curva: 'A', cliente: 'Depósito São Jorge', pedidos: 6, vendido: 'R$ 86.412,00', pct: '14,5%', acum: '14,5%' },
-        { curva: 'A', cliente: 'Casa & Construção Delta', pedidos: 5, vendido: 'R$ 71.980,00', pct: '12,1%', acum: '26,6%' },
-        { curva: 'A', cliente: 'Central do Construtor', pedidos: 4, vendido: 'R$ 58.240,00', pct: '9,8%', acum: '36,4%' },
-        { curva: 'A', cliente: 'Armazém Boa Vista', pedidos: 4, vendido: 'R$ 52.360,00', pct: '8,8%', acum: '45,2%' },
-        { curva: 'B', cliente: 'Materiais Pinheiro', pedidos: 3, vendido: 'R$ 31.320,00', pct: '5,2%', acum: '50,4%' },
-        { curva: 'B', cliente: 'Ferragens Colombo', pedidos: 3, vendido: 'R$ 24.216,00', pct: '4,1%', acum: '54,5%' },
-        { curva: 'B', cliente: 'Comercial Andrade', pedidos: 2, vendido: 'R$ 18.410,00', pct: '3,1%', acum: '57,6%' },
-        { curva: 'C', cliente: 'Depósito Bela Vista', pedidos: 1, vendido: 'R$ 6.180,00', pct: '1,0%', acum: '58,6%' },
-      ].map(l => ({ ...l, curvaStyle: curva(l.curva) })),
-      barras: [
-        { label: 'A · 9', value: 68 },
-        { label: 'B · 21', value: 24 },
-        { label: 'C · 32', value: 8 },
-      ],
-      expOpen: this.state.expOpen,
-      salvarOpen: this.state.salvarOpen,
-      agendarOpen: this.state.agendarOpen,
+      relNome: R.nome, relSub: R.sub,
+      relOpcoes: Object.values(CAT).map(r => r.nome).join('|'),
+      headStyle: 'min-width:' + minw + ';display:grid;grid-template-columns:' + gridCols + ';gap:12px;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF',
+      rowStyle: 'min-width:' + minw + ';display:grid;grid-template-columns:' + gridCols + ';gap:12px;align-items:center;padding:11px 20px;border-bottom:1px solid #EDF0F5',
+      rodapeStyle: 'min-width:' + minw + ";display:flex;justify-content:space-between;padding:14px 20px;background:#FAFBFC;font:600 13.5px/1 'IBM Plex Sans'",
+      cabecalho: cols.map(c => ({ t: c[0], style: base + (c[2] === 'r' ? ';text-align:right' : '') })),
+      linhas: R.rows.map((row, ri) => ({
+        cels: row.map((v, i) => {
+          if (v && typeof v === 'object' && v.chip) {
+            if (v.chip.length === 2 && String(v.t).length <= 2) return { t: v.t, style: "width:26px;height:26px;border-radius:6px;display:grid;place-items:center;font:600 12.5px/1 'IBM Plex Sans';background:" + v.chip[0] + ';color:' + v.chip[1] };
+            return { t: v.t, style: "display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;width:fit-content;font:600 11.5px/1 'IBM Plex Sans';background:" + v.chip[0] + ';color:' + v.chip[1] };
+          }
+          const alinhado = cols[i] && cols[i][2] === 'r';
+          const forte = i === 0 || /^R\$/.test(String(v)) && i === row.length - 1;
+          return { t: v, style: cel(alinhado ? 'r' : '') + (i === 0 && !alinhado ? ';font-weight:500' : '') };
+        }),
+      })),
+      rodapeEsq: R.rodape[0], rodapeDir: R.rodape[1],
+      graficoTitulo: R.grafico, barras: R.barras, insight: R.insight,
+      atualizar: () => this.avisar('Relatório atualizado com os filtros aplicados'),
+      expOpen: this.state.expOpen, salvarOpen: this.state.salvarOpen, agendarOpen: this.state.agendarOpen,
       abrirExportar: () => this.setState({ expOpen: true }),
       abrirSalvar: () => this.setState({ salvarOpen: true }),
       abrirAgendar: () => this.setState({ agendarOpen: true }),
       fechar: () => this.setState({ expOpen: false, salvarOpen: false, agendarOpen: false }),
+      toast: !!this.state.toast, toastMsg: this.state.toast,
     };
   }
 }

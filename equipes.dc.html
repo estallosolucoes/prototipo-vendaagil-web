@@ -92,9 +92,9 @@
 </div>
 </sc-for>
 </div>
-<div style="display:flex;align-items:end;gap:8px">
+<div style="display:flex;align-items:start;gap:8px">
 <div style="flex:1"><x-import component-from-global-scope="va-select" label="Adicionar vendedor" options="Jorge Tanaka|Paulo Siqueira|Renata Cruz" value="Jorge Tanaka" help="Só vendedores sem equipe aparecem" hint-size="100%,88px"></x-import></div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="user-round-plus" onClick="{{ addMembro }}" hint-size="auto,40px">Adicionar</x-import>
+<div style="padding-top:23px"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="user-round-plus" onClick="{{ addMembro }}" hint-size="auto,40px">Adicionar</x-import></div>
 </div>
 </div>
 <div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">

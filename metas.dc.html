@@ -60,6 +60,10 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" highlight="{{ destaque }}" height="{{ h }}" hint-size="100%,220px"></x-import>
 </div>
 </div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+<x-import component-from-global-scope="va-select" data-campo="repFiltro" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="{{ repFiltro }}" hint-size="250px,40px"></x-import>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ resumoFiltro }}</span>
+</div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
 <div style="min-width:960px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Vendedor</span>
@@ -70,10 +74,12 @@
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Tendência</span>
 </div>
 <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="5">
-<div style="min-width:960px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
-<div style="display:flex;align-items:center;gap:12px;min-width:0">
+<div style="border-bottom:1px solid #EDF0F5">
+<div onClick="{{ l.toggle }}" style="min-width:960px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:13px 20px;cursor:pointer" style-hover="background:#FAFBFC">
+<div style="display:flex;align-items:center;gap:10px;min-width:0">
+<span style="width:24px;height:24px;border-radius:6px;background:#EDF0F5;display:grid;place-items:center;color:#454F5E;flex:none"><i data-lucide="{{ l.chevron }}" style="font-size:14px"></i></span>
 <span style="width:36px;height:36px;border-radius:999px;background:#E4E8EF;display:grid;place-items:center;font:600 12px/1 'IBM Plex Sans';color:#454F5E;flex:none">{{ l.iniciais }}</span>
-<span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.nome }}</span>
+<span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">{{ l.subRep }}</span></span>
 </div>
 <span style="font:400 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ l.meta }}</span>
 <span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ l.real }}</span>
@@ -84,41 +90,113 @@
 </div>
 <span style="{{ l.tendStyle }}"><i data-lucide="{{ l.tendIcone }}" style="font-size:13px"></i>{{ l.tend }}</span>
 </div>
+<sc-if value="{{ l.aberto }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border-top:1px solid #EDF0F5;padding:4px 20px 10px 54px">
+<sc-for list="{{ l.detalhes }}" as="d" hint-placeholder-count="3">
+<div style="min-width:900px;display:grid;grid-template-columns:1fr 150px 150px 150px 160px 130px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px dashed #E4E8EF">
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ d.rep }}</span>
+<span style="font:400 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#454F5E">{{ d.meta }}</span>
+<span style="font:500 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ d.real }}</span>
+<span></span>
+<div style="display:flex;align-items:center;gap:8px">
+<div style="flex:1;height:5px;border-radius:999px;background:#E4E8EF;overflow:hidden"><span style="{{ d.barStyle }}"></span></div>
+<span style="font:600 11.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ d.pct }}</span>
+</div>
+<span></span>
+</div>
+</sc-for>
+<span style="display:block;padding:8px 0 2px;font:400 12px/1.4 'IBM Plex Sans';color:#7A8699">A meta global do vendedor é a soma das metas por representada.</span>
+</div>
+</sc-if>
+</div>
 </sc-for>
 </div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ definirOpen }}" onClose="{{ fechar }}" title="Definir metas de setembro" size="md" hint-size="0,0">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ definirOpen }}" onClose="{{ fechar }}" title="Definir metas" size="lg" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
-<p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">A meta de cada vendedor soma a meta do escritório. Vendedor sem meta não aparece no ranking.</p>
+<x-import component-from-global-scope="va-select" data-campo="mesMeta" label="Mês das metas" options="Setembro de 2026|Outubro de 2026|Agosto de 2026" value="{{ mesMeta }}" hint-size="240px,66px"></x-import>
 <div style="display:flex;gap:4px;background:#E4E8EF;border-radius:6px;padding:2px;width:fit-content">
 <button onClick="{{ metaPorVendedor }}" style="{{ vendBtnStyle }}">Por vendedor</button>
 <button onClick="{{ metaPorRep }}" style="{{ repBtnStyle }}">Por representada</button>
 </div>
-<sc-if value="{{ modoRep }}" hint-placeholder-val="{{ false }}">
-<div style="display:grid;grid-template-columns:1fr 160px;gap:10px;align-items:center">
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Móveis Vale</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="210.000,00" hint-size="100%,40px"></x-import>
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Cerâmica Atlas</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="95.000,00" hint-size="100%,40px"></x-import>
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Metalúrgica Horizonte</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="60.000,00" hint-size="100%,40px"></x-import>
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Tecelagem Iguaçu</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="45.000,00" hint-size="100%,40px"></x-import>
-</div>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A meta por representada mede a positivação de cada indústria, independente de quem vendeu.</span>
-</sc-if>
 <sc-if value="{{ modoVendedor }}" hint-placeholder-val="{{ true }}">
-<div style="display:grid;grid-template-columns:1fr 160px;gap:10px;align-items:center">
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Carlos Rezende</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="115.000,00" hint-size="100%,40px"></x-import>
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Ana Prado</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="85.000,00" hint-size="100%,40px"></x-import>
-<span style="font:500 14px/1.3 'IBM Plex Sans'">Jorge Tanaka</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" prefix="R$" numeric="{{ true }}" value="72.000,00" hint-size="100%,40px"></x-import>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">Cada vendedor recebe uma meta por representada. A meta global dele é a soma — vendedor sem meta não aparece no ranking.</span>
+<div style="display:flex;gap:8px;align-items:end;flex-wrap:wrap">
+<div data-vend-menu="" style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px;position:relative">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vendedores</span>
+<button onClick="{{ toggleVendMenu }}" aria-haspopup="listbox" aria-expanded="{{ vendMenuOpen }}" style="display:flex;align-items:center;gap:8px;width:100%;height:40px;padding:0 12px;background:#FFFFFF;border:1px solid #CFD6E1;border-radius:6px;cursor:pointer;font:400 14px/1.4 'IBM Plex Sans';color:#021226;text-align:left">
+<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ mVendLabel }}</span>
+<sc-if value="{{ temVends }}" hint-placeholder-val="{{ true }}"><span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#78A614;color:#F3F3F3;font:600 11px/1 'IBM Plex Sans'">{{ nVends }}</span></sc-if>
+<i data-lucide="chevron-down" style="font-size:15px;color:#5B6678"></i>
+</button>
+<sc-if value="{{ vendMenuOpen }}" hint-placeholder-val="{{ false }}">
+<div role="listbox" aria-multiselectable="true" style="position:absolute;top:68px;left:0;right:0;z-index:400;background:#FFFFFF;border:1px solid #E4E8EF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:6px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:1px">
+<div style="display:flex;justify-content:space-between;gap:8px;padding:4px 6px 6px;border-bottom:1px solid #EDF0F5">
+<button onClick="{{ marcarTodosVend }}" style="border:0;background:transparent;color:#365E10;font:600 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px">Marcar todos</button>
+<button onClick="{{ limparVends }}" style="border:0;background:transparent;color:#5B6678;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px" style-hover="color:#021226">Limpar</button>
+</div>
+<sc-for list="{{ mVendOpts }}" as="vo" hint-placeholder-count="5">
+<button onClick="{{ vo.toggle }}" role="option" aria-selected="{{ vo.on }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:400 13.5px/1.3 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F2F8D4">
+<span style="{{ vo.boxStyle }}"><sc-if value="{{ vo.on }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></sc-if></span>
+{{ vo.nome }}
+</button>
+</sc-for>
 </div>
 </sc-if>
-<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+</div>
+<div style="width:200px"><x-import component-from-global-scope="va-select" data-campo="mRep" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="{{ mRep }}" hint-size="100%,66px"></x-import></div>
+<div style="display:flex;flex-direction:column;gap:6px;width:150px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Meta do mês</span>
+<div style="display:flex;align-items:center;gap:6px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;background:#FFFFFF"><span style="font:400 13px/1 'IBM Plex Sans';color:#7A8699">R$</span><input id="va-meta-valor-vend" defaultValue="" onKeyDown="{{ valorTecla }}" placeholder="0,00" inputmode="numeric" aria-label="Valor da meta para os vendedores marcados" style="border:0;outline:none;width:100%;font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;background:transparent"></div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="plus" onClick="{{ addMetaVend }}" hint-size="auto,40px">{{ addVendLabel }}</x-import>
+</div>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#7A8699">Com vários vendedores marcados, a mesma meta da representada vale para todos.</span>
+<div style="display:flex;flex-direction:column;gap:10px;max-height:300px;overflow:auto;border:1px solid #E4E8EF;border-radius:6px;padding:12px 14px">
+<sc-for list="{{ gruposVend }}" as="g" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+<span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ g.nome }}</span>
+<span style="font:600 12.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#365E10">Meta global {{ g.total }}</span>
+</div>
+<sc-for list="{{ g.itens }}" as="it" hint-placeholder-count="2">
+<div style="display:flex;align-items:center;gap:8px;padding:5px 0 5px 12px;border-bottom:1px dashed #EDF0F5">
+<span style="flex:1;font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ it.rep }}</span>
+<span style="font:500 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ it.valor }}</span>
+<button onClick="{{ it.tirar }}" aria-label="Remover meta de {{ it.rep }}" style="width:26px;height:26px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="x" style="font-size:13px"></i></button>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<sc-if value="{{ semLancVend }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px/1.5 'IBM Plex Sans';color:#7A8699;text-align:center;padding:8px 0">Nenhuma meta lançada para {{ mesMeta }} — selecione vendedor, representada e valor acima.</span></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ modoRep }}" hint-placeholder-val="{{ false }}">
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#454F5E">A meta por representada mede a positivação de cada indústria, independente de quem vendeu.</span>
+<div style="display:flex;gap:8px;align-items:end;flex-wrap:wrap">
+<div style="flex:1;min-width:200px"><x-import component-from-global-scope="va-select" data-campo="mRep" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="{{ mRep }}" hint-size="100%,66px"></x-import></div>
+<div style="display:flex;flex-direction:column;gap:6px;width:170px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Meta do mês</span>
+<div style="display:flex;align-items:center;gap:6px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;background:#FFFFFF"><span style="font:400 13px/1 'IBM Plex Sans';color:#7A8699">R$</span><input id="va-meta-valor-rep" defaultValue="" onKeyDown="{{ valorTeclaRep }}" placeholder="0,00" inputmode="numeric" aria-label="Valor da meta da representada" style="border:0;outline:none;width:100%;font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;background:transparent"></div>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="plus" onClick="{{ addMetaRep }}" hint-size="auto,40px">Adicionar</x-import>
+</div>
+<div style="display:flex;flex-direction:column;border:1px solid #E4E8EF;border-radius:6px;padding:6px 14px;max-height:260px;overflow:auto">
+<sc-for list="{{ lancRep }}" as="lr" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed #EDF0F5">
+<span style="flex:1;font:500 13.5px/1.3 'IBM Plex Sans'">{{ lr.rep }}</span>
+<span style="font:500 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ lr.valor }}</span>
+<button onClick="{{ lr.tirar }}" aria-label="Remover meta de {{ lr.rep }}" style="width:26px;height:26px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FDF0F1;color:#85202C"><i data-lucide="x" style="font-size:13px"></i></button>
+</div>
+</sc-for>
+<sc-if value="{{ semLancRep }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px/1.5 'IBM Plex Sans';color:#7A8699;text-align:center;padding:10px 0">Nenhuma meta lançada para {{ mesMeta }}.</span></sc-if>
+</div>
+</sc-if>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #E4E8EF;padding-top:14px;flex-wrap:wrap">
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">{{ resumoModal }}</span>
+<div style="display:flex;gap:8px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar metas</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ salvarLabel }}</x-import>
+</div>
 </div>
 </div>
 </x-import>
@@ -143,8 +221,60 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { definirOpen: false, encerrarOpen: false, metaModo: 'vendedor' };
-  componentDidMount() { this.paint(); }
+  state = {
+    definirOpen: false, encerrarOpen: false, metaModo: 'vendedor',
+    repFiltro: 'Todas as representadas', abertos: {},
+    mesMeta: 'Setembro de 2026', mVends: ['Carlos Rezende'], mRep: 'Móveis Vale',
+    lancVend: [
+      { vend: 'Carlos Rezende', rep: 'Móveis Vale', valor: 65000 },
+      { vend: 'Carlos Rezende', rep: 'Cerâmica Atlas', valor: 35000 },
+      { vend: 'Ana Prado', rep: 'Móveis Vale', valor: 55000 },
+      { vend: 'Ana Prado', rep: 'Tecelagem Iguaçu', valor: 30000 },
+    ],
+    lancRep: [
+      { rep: 'Móveis Vale', valor: 215000 },
+      { rep: 'Cerâmica Atlas', valor: 98000 },
+    ],
+  };
+  brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { maximumFractionDigits: 0 }); }
+  mesLabel() { return this.state.mesMeta.split(' de ')[0].toLowerCase(); }
+  lerValor(id) {
+    const el = document.getElementById(id);
+    const v = el ? parseFloat(String(el.value).replace(/\./g, '').replace(',', '.')) || 0 : 0;
+    if (v && el) el.value = '';
+    return v;
+  }
+  addVend() {
+    const v = this.lerValor('va-meta-valor-vend');
+    if (!v || !this.state.mVends.length) return;
+    this.setState(s => ({
+      lancVend: s.lancVend
+        .filter(x => !(s.mVends.includes(x.vend) && x.rep === s.mRep))
+        .concat(s.mVends.map(vend => ({ vend, rep: s.mRep, valor: v }))),
+    }));
+  }
+  addRep() {
+    const v = this.lerValor('va-meta-valor-rep');
+    if (!v) return;
+    this.setState(s => ({
+      lancRep: s.lancRep.filter(x => x.rep !== s.mRep).concat([{ rep: s.mRep, valor: v }]),
+    }));
+  }
+  componentDidMount() {
+    this.paint();
+    // va-select emite CustomEvent('change') que o React não escuta — roteia por data-campo
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT') return;
+      const campo = el.getAttribute('data-campo');
+      if (!campo) return;
+      this.setState({ [campo]: (e.detail && e.detail.value) || el.getAttribute('value') });
+    };
+    document.addEventListener('change', this._chg);
+    this._doc = (e) => { if (this.state.vendMenuOpen && e.target.closest && !e.target.closest('[data-vend-menu]')) this.setState({ vendMenuOpen: false }); };
+    document.addEventListener('click', this._doc);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); document.removeEventListener('click', this._doc); }
   componentDidUpdate() { this.paint(); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
@@ -155,13 +285,39 @@ class Component extends DCLogic {
     const sobe = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#0A6244";
     const risco = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#85202C";
     const neutro = "display:inline-flex;align-items:center;gap:4px;font:600 12px/1 'IBM Plex Sans';color:#8A5B00";
-    const defs = [
-      { iniciais: 'CR', nome: 'Carlos Rezende', meta: 'R$ 110.000', real: 'R$ 96.400', proj: 'R$ 128.000', p: 88, tend: 'Bate a meta', tendIcone: 'arrow-up-right', tendStyle: sobe },
-      { iniciais: 'AP', nome: 'Ana Prado', meta: 'R$ 80.000', real: 'R$ 71.200', proj: 'R$ 94.500', p: 89, tend: 'Bate a meta', tendIcone: 'arrow-up-right', tendStyle: sobe },
-      { iniciais: 'JT', nome: 'Jorge Tanaka', meta: 'R$ 70.000', real: 'R$ 44.850', proj: 'R$ 59.600', p: 64, tend: 'No limite', tendIcone: 'minus', tendStyle: neutro },
-      { iniciais: 'RC', nome: 'Renata Cruz', meta: 'R$ 75.000', real: 'R$ 52.310', proj: 'R$ 69.400', p: 70, tend: 'No limite', tendIcone: 'minus', tendStyle: neutro },
-      { iniciais: 'PS', nome: 'Paulo Siqueira', meta: 'R$ 60.000', real: 'R$ 18.940', proj: 'R$ 25.100', p: 32, tend: 'Em risco', tendIcone: 'arrow-down-right', tendStyle: risco },
+    const METAS = [
+      { vend: 'Carlos Rezende', ini: 'CR', rep: 'Móveis Vale', meta: 60000, real: 55200 },
+      { vend: 'Carlos Rezende', ini: 'CR', rep: 'Cerâmica Atlas', meta: 30000, real: 26100 },
+      { vend: 'Carlos Rezende', ini: 'CR', rep: 'Metalúrgica Horizonte', meta: 20000, real: 15100 },
+      { vend: 'Ana Prado', ini: 'AP', rep: 'Móveis Vale', meta: 50000, real: 44900 },
+      { vend: 'Ana Prado', ini: 'AP', rep: 'Tecelagem Iguaçu', meta: 30000, real: 26300 },
+      { vend: 'Jorge Tanaka', ini: 'JT', rep: 'Cerâmica Atlas', meta: 40000, real: 25150 },
+      { vend: 'Jorge Tanaka', ini: 'JT', rep: 'Móveis Vale', meta: 30000, real: 19700 },
+      { vend: 'Renata Cruz', ini: 'RC', rep: 'Móveis Vale', meta: 45000, real: 31200 },
+      { vend: 'Renata Cruz', ini: 'RC', rep: 'Metalúrgica Horizonte', meta: 30000, real: 21110 },
+      { vend: 'Paulo Siqueira', ini: 'PS', rep: 'Tecelagem Iguaçu', meta: 35000, real: 11040 },
+      { vend: 'Paulo Siqueira', ini: 'PS', rep: 'Cerâmica Atlas', meta: 25000, real: 7900 },
     ];
+    const repF = this.state.repFiltro;
+    const visiveis = METAS.filter(m => repF === 'Todas as representadas' || m.rep === repF);
+    const vendedores = [];
+    visiveis.forEach(m => { if (!vendedores.includes(m.vend)) vendedores.push(m.vend); });
+    const defs = vendedores.map(vend => {
+      const itens = visiveis.filter(m => m.vend === vend);
+      const meta = itens.reduce((a, m) => a + m.meta, 0);
+      const real = itens.reduce((a, m) => a + m.real, 0);
+      const p = Math.round(real / meta * 100);
+      const proj = Math.round(real * 1.33);
+      const projP = proj / meta * 100;
+      return {
+        nome: vend, iniciais: itens[0].ini, itens,
+        metaN: meta, realN: real,
+        meta: this.brl(meta), real: this.brl(real), proj: this.brl(proj), p,
+        tend: projP >= 100 ? 'Bate a meta' : projP >= 85 ? 'No limite' : 'Em risco',
+        tendIcone: projP >= 100 ? 'arrow-up-right' : projP >= 85 ? 'minus' : 'arrow-down-right',
+        tendStyle: projP >= 100 ? sobe : projP >= 85 ? neutro : risco,
+      };
+    });
     return {
       btnProps: { style: { color: '#F3F3F3' } },
       atual: 283700, alvo: 395000, dias: 11, proj: 376600, h: 220, destaque: 5,
@@ -180,11 +336,76 @@ class Component extends DCLogic {
       metaPorRep: () => this.setState({ metaModo: 'rep' }),
       vendBtnStyle: "height:32px;padding:0 12px;border:0;border-radius:5px;cursor:pointer;font:" + (this.state.metaModo === 'vendedor' ? "600" : "500") + " 13px/1 'IBM Plex Sans';background:" + (this.state.metaModo === 'vendedor' ? '#FFFFFF' : 'transparent') + ';color:#021226',
       repBtnStyle: "height:32px;padding:0 12px;border:0;border-radius:5px;cursor:pointer;font:" + (this.state.metaModo === 'rep' ? "600" : "500") + " 13px/1 'IBM Plex Sans';background:" + (this.state.metaModo === 'rep' ? '#FFFFFF' : 'transparent') + ';color:#021226',
+      repFiltro: repF,
+      setRepFiltro: (v) => this.setState({ repFiltro: v && v.target ? v.target.value : v }),
+      resumoFiltro: repF === 'Todas as representadas'
+        ? 'Meta global = soma das metas por representada · clique no vendedor para abrir o detalhe'
+        : 'Mostrando só as metas da ' + repF,
       linhas: defs.map(l => ({
         ...l,
         pct: l.p + '%',
         barStyle: bar(l.p, l.p >= 80 ? '#78A614' : l.p >= 50 ? '#E0A526' : '#C6501F'),
+        aberto: !!this.state.abertos[l.nome],
+        chevron: this.state.abertos[l.nome] ? 'chevron-down' : 'chevron-right',
+        subRep: l.itens.length + (l.itens.length === 1 ? ' representada' : ' representadas'),
+        toggle: () => this.setState(s => ({ abertos: { ...s.abertos, [l.nome]: !s.abertos[l.nome] } })),
+        detalhes: l.itens.map(m => {
+          const dp = Math.round(m.real / m.meta * 100);
+          return { rep: m.rep, meta: this.brl(m.meta), real: this.brl(m.real), pct: dp + '%', barStyle: bar(dp, dp >= 80 ? '#78A614' : dp >= 50 ? '#E0A526' : '#C6501F') };
+        }),
       })),
+      mesMeta: this.state.mesMeta,
+      setMesMeta: (v) => this.setState({ mesMeta: v && v.target ? v.target.value : v }),
+      vendMenuOpen: !!this.state.vendMenuOpen,
+      toggleVendMenu: () => this.setState(s => ({ vendMenuOpen: !s.vendMenuOpen })),
+      temVends: this.state.mVends.length > 0,
+      nVends: this.state.mVends.length,
+      mVendLabel: this.state.mVends.length === 0 ? 'Selecionar vendedores'
+        : this.state.mVends.length === 1 ? this.state.mVends[0]
+        : this.state.mVends.length + ' vendedores selecionados',
+      marcarTodosVend: () => this.setState({ mVends: ['Carlos Rezende', 'Ana Prado', 'Jorge Tanaka', 'Renata Cruz', 'Paulo Siqueira'] }),
+      limparVends: () => this.setState({ mVends: [] }),
+      mVendOpts: ['Carlos Rezende', 'Ana Prado', 'Jorge Tanaka', 'Renata Cruz', 'Paulo Siqueira'].map(nome => {
+        const on = this.state.mVends.includes(nome);
+        return {
+          nome, on,
+          boxStyle: 'width:18px;height:18px;border-radius:2px;flex:none;border:1px solid ' + (on ? '#78A614' : '#B9C1CE') + ';background:' + (on ? '#78A614' : '#FFFFFF') + ';color:#FFFFFF;display:grid;place-items:center',
+          toggle: () => this.setState(s => ({ mVends: on ? s.mVends.filter(x => x !== nome) : s.mVends.concat([nome]) })),
+        };
+      }),
+      addVendLabel: this.state.mVends.length > 1 ? 'Adicionar para ' + this.state.mVends.length : 'Adicionar',
+      mRep: this.state.mRep,
+      valorTecla: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.addVend(); } },
+      valorTeclaRep: (e) => { if (e.key === 'Enter') { e.preventDefault(); this.addRep(); } },
+      addMetaVend: () => this.addVend(),
+      addMetaRep: () => this.addRep(),
+      gruposVend: (() => {
+        const nomes = [];
+        this.state.lancVend.forEach(x => { if (!nomes.includes(x.vend)) nomes.push(x.vend); });
+        return nomes.map(nome => {
+          const itens = this.state.lancVend.filter(x => x.vend === nome);
+          return {
+            nome,
+            total: this.brl(itens.reduce((a, x) => a + x.valor, 0)),
+            itens: itens.map(x => ({
+              rep: x.rep, valor: this.brl(x.valor),
+              tirar: () => this.setState(s => ({ lancVend: s.lancVend.filter(y => !(y.vend === x.vend && y.rep === x.rep)) })),
+            })),
+          };
+        });
+      })(),
+      semLancVend: this.state.lancVend.length === 0,
+      lancRep: this.state.lancRep.map(x => ({
+        rep: x.rep, valor: this.brl(x.valor),
+        tirar: () => this.setState(s => ({ lancRep: s.lancRep.filter(y => y.rep !== x.rep) })),
+      })),
+      semLancRep: this.state.lancRep.length === 0,
+      resumoModal: (() => {
+        const arr = this.state.metaModo === 'vendedor' ? this.state.lancVend : this.state.lancRep;
+        const n = arr.length;
+        return n + (n === 1 ? ' meta lançada · ' : ' metas lançadas · ') + this.mesLabel() + ' · total ' + this.brl(arr.reduce((a, x) => a + x.valor, 0));
+      })(),
+      salvarLabel: 'Salvar metas de ' + this.mesLabel(),
     };
   }
 }

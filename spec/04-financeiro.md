@@ -1,6 +1,6 @@
 # Venda Ágil — Especificação 04 · Financeiro
 
-Telas: `faturamento.dc.html`, `faturamento-lote.dc.html`, `contas-receber.dc.html`, `comissoes.dc.html`. Papel exigido: Financeiro, Gestor ou Administrador (vendedor não vê o grupo). Fundamentos: §F.
+Telas: `faturamento.dc.html`, `faturamento-lote.dc.html`, `comissoes.dc.html`. Papel exigido: Financeiro, Gestor ou Administrador (vendedor não vê o grupo). Fundamentos: §F.
 
 ---
 
@@ -73,3 +73,20 @@ Comissão = % da representada (ou % por item, quando definida na tabela de preç
 
 ### 4.6 Breakpoints
 T: cartão-resumo em cima do gráfico (1 coluna). M/L: tabela rola no card; modais bottom sheet. XS: valor grande 28px.
+
+## Adendo — 26/08/2026
+- Botões do cabeçalho renomeados: **"Faturar um pedido"** e **"Faturar em lote"** (antes "Lançar…"). Link do KPI acompanha.
+- **Faturamento parcial**: quando o faturado é menor que o pedido, o modal pergunta o destino da diferença — radio **"Registrar como corte"** (com motivo; sai no relatório de cortes) ou **"Faturamento parcial — manter o saldo em aberto"** (pedido permanece em "Emitido aguardando faturar" com o saldo para a próxima nota).
+
+## Adendo — 26/08/2026 · Contas a receber REMOVIDO
+- Módulo excluído do sistema (tela, menu, notificações e links): o representante não controla os títulos/pagamentos dos clientes — esse controle é da indústria. A seção 3 acima fica sem efeito.
+- Consequências aplicadas: modal de faturamento não gera mais cobranças (nota explica que a cobrança é da indústria); bloqueio de cliente passa a ser manual, acionado quando a indústria informa inadimplência (cadastro do cliente e banner da emissão atualizados).
+
+## Adendo — 27/08/2026 · Módulo de Despesas (despesas.dc.html)
+- Novo item Financeiro › Despesas no menu. Lançamento manual: descrição, categoria (Viagem/Combustível/Imposto/Contador/Mostruário/Outros), data, valor (máscara monetária global), representada opcional, rota opcional, checkbox "Despesa fixa mensal" (repete todo mês).
+- Tela: KPIs (total do mês, fixas mensais, custo da rua, % sobre comissões recebidas), filtros mês/categoria/representada, tabela com chip de categoria (ícone+cor), recorrência, apagar por linha, total do filtro no rodapé, botão "Ver relatório".
+- Relatório "Despesas da representação" (relatorio.dc.html?r=despesas): agregado por categoria + gráfico + insight (fixas × custo da rua). Atalho no hub de relatórios.
+- Fluxo de caixa previsto (?r=fluxo-caixa) também no hub — ver spec/07.
+
+## Adendo — 27/08/2026 · Apagar despesa recorrente (escopo)
+- Apagar uma despesa "Fixa mensal" abre modal de escopo: "Somente este lançamento" (recorrência continua) · "Este e os que estão por vir" (encerra dali em diante) · "Todos os lançamentos" (remove a fixa inteira). Despesa avulsa apaga direto. Mesmo padrão do apagar de tarefas recorrentes.

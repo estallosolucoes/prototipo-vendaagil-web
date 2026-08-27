@@ -74,18 +74,23 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.BarChart" data="{{ barras }}" highlight="{{ destaque }}" height="{{ h }}" hint-size="100%,220px"></x-import>
 </div>
 </div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+<sc-for list="{{ filtros }}" as="ft" hint-placeholder-count="4">
+<button onClick="{{ ft.pegar }}" style="{{ ft.style }}">{{ ft.nome }}<span style="{{ ft.qtdStyle }}">{{ ft.qtd }}</span></button>
+</sc-for>
+</div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:1000px;display:grid;grid-template-columns:1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:1028px;display:grid;grid-template-columns:28px 1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todos os fechamentos" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">% média</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Faturado</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Comissão</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Situação</span>
-<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Previsão</span>
+<sc-for list="{{ ordenaveis }}" as="oc" hint-placeholder-count="4">
+<button onClick="{{ oc.ordenar }}" title="Ordenar por {{ oc.nome }}" style="{{ oc.style }}">{{ oc.nome }}<span style="font:600 11px/1 'IBM Plex Sans';width:10px;display:inline-block">{{ oc.seta }}</span></button>
+</sc-for>
 <span></span>
 </div>
 <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="4">
-<div style="min-width:1000px;display:grid;grid-template-columns:1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="{{ l.rowStyle }}">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ l.selecionada }}" onChange="{{ l.marcar }}" aria-label="Selecionar {{ l.nome }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <div style="display:flex;align-items:center;gap:12px;min-width:0">
 <span style="width:36px;height:36px;border-radius:8px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:700 12px/1 'IBM Plex Sans';flex:none">{{ l.sigla }}</span>
 <span style="font:600 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.nome }}</span>
@@ -100,6 +105,18 @@
 </sc-for>
 </div>
 <p style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678;margin:14px 4px 0">Baixar a comissão registra o recebimento e concilia com os faturamentos do período.</p>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<button onClick="{{ loteBaixar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="hand-coins" style="font-size:13px"></i>Registrar recebimento</button>
+<button onClick="{{ loteExportar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="download" style="font-size:13px"></i>Exportar seleção</button>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toast }}</div>
+</sc-if>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ baixaOpen }}" onClose="{{ fechar }}" title="Baixar comissão" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Registrar o recebimento de <strong style="color:#021226">{{ alvoValor }}</strong> da <strong style="color:#021226">{{ alvoNome }}</strong>?</p>
@@ -112,6 +129,12 @@
 </x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ expOpen }}" onClose="{{ fecharExportar }}" title="Exportar comissões" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-if value="{{ filtroAtivo }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:10px;padding:10px 12px;border-radius:6px;border:1px solid #9CCBF5;background:#EAF4FD;color:#0C477B">
+<i data-lucide="filter" style="font-size:16px;margin-top:1px;flex:none"></i>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#021226">O filtro <strong>{{ filtroNome }}</strong> está ativo — só as comissões filtradas saem na exportação.</span>
+</div>
+</sc-if>
 <x-import component-from-global-scope="va-select" label="Formato" options="Excel (.xlsx)|PDF" value="Excel (.xlsx)" hint-size="100%,66px"></x-import>
 <div style="display:flex;flex-direction:column;gap:6px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Colunas</span>
@@ -126,7 +149,7 @@
 </div>
 <div style="display:flex;justify-content:flex-end;gap:8px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharExportar }}" hint-size="auto,40px">Cancelar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fecharExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Exportar 12 fechamentos</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="download" onClick="{{ fecharExportar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ exportarLabel }}</x-import>
 </div>
 </div>
 </x-import>
@@ -136,9 +159,14 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { baixaOpen: false, alvoNome: '', alvoValor: '' };
+  state = { baixaOpen: false, alvoNome: '', alvoValor: '', filtro: 'Todas', sel: {} };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
@@ -155,8 +183,24 @@ class Component extends DCLogic {
       { sigla: 'ER', nome: 'Estofados Rio Claro', pct: '4,00%', faturado: 'R$ 43.510,00', comissao: 'R$ 1.740,40', st: 'Prevista', stIcone: 'clock-3', stStyle: prev, previsao: '25/08/2026', ativo: false },
       { sigla: 'MP', nome: 'Metalúrgica Precisão', pct: '3,50%', faturado: 'R$ 24.202,90', comissao: 'R$ 847,10', st: 'Recebida 01/08', stIcone: 'circle-check', stStyle: rec, previsao: '—', ativo: false },
     ];
+    const num = (s) => parseFloat(String(s).replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+    const dataN = (s) => { const m = /(\d{2})\/(\d{2})\/(\d{4})/.exec(s); return m ? +(m[3] + m[2] + m[1]) : Infinity; };
+    const CAMPOS = { pct: (l) => num(l.pct), fat: (l) => num(l.faturado), com: (l) => num(l.comissao), prev: (l) => dataN(l.previsao) };
+    const ord = this.state.ord || { campo: null, dir: 1 };
     return {
       btnProps: { style: { color: '#F3F3F3' } },
+      ordenaveis: [
+        { nome: '% média', campo: 'pct', dir: 'right' },
+        { nome: 'Faturado', campo: 'fat', dir: 'right' },
+        { nome: 'Comissão', campo: 'com', dir: 'right' },
+        { nome: 'Situação', campo: null, dir: 'left' },
+        { nome: 'Previsão', campo: 'prev', dir: 'left' },
+      ].map(c => ({
+        nome: c.nome,
+        seta: c.campo ? (ord.campo === c.campo ? (ord.dir === 1 ? '↑' : '↓') : '↕') : '',
+        style: 'display:inline-flex;align-items:center;gap:4px;border:0;background:transparent;padding:0;font:600 11px/1.2 \'IBM Plex Sans\';letter-spacing:.06em;text-transform:uppercase;color:' + (c.campo && ord.campo === c.campo ? '#021226' : '#5B6678') + ';justify-content:' + (c.dir === 'right' ? 'flex-end' : 'flex-start') + (c.campo ? ';cursor:pointer' : ';cursor:default'),
+        ordenar: c.campo ? () => this.setState(s => ({ ord: s.ord && s.ord.campo === c.campo ? { campo: s.ord.dir === -1 ? null : c.campo, dir: -s.ord.dir } : { campo: c.campo, dir: 1 } })) : () => {},
+      })),
       expOpen: !!this.state.expOpen,
       abrirExportar: () => this.setState({ expOpen: true }),
       fecharExportar: () => this.setState({ expOpen: false }),
@@ -175,12 +219,54 @@ class Component extends DCLogic {
       alvoNome: this.state.alvoNome,
       alvoValor: this.state.alvoValor,
       fechar: () => this.setState({ baixaOpen: false }),
-      linhas: defs.map(l => ({
-        ...l,
-        acao: l.ativo ? 'Baixar' : (l.st.startsWith('Recebida') ? 'Recebida' : 'Aguardando'),
-        acaoStyle: l.ativo ? btnOn : btnOff,
-        baixar: l.ativo ? () => this.setState({ baixaOpen: true, alvoNome: l.nome, alvoValor: l.comissao }) : () => {},
-      })),
+      ...(() => {
+        const tipoDe = (l) => l.st.startsWith('Recebida') ? 'Recebidas' : l.st === 'Prevista' ? 'Previstas' : 'Confirmadas';
+        const filtro = this.state.filtro;
+        let visiveis = defs.filter(l => filtro === 'Todas' || tipoDe(l) === filtro);
+        if (ord.campo) visiveis = visiveis.slice().sort((a, b) => (CAMPOS[ord.campo](a) - CAMPOS[ord.campo](b)) * ord.dir);
+        const chipOn = "display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+        const chipOff = "display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
+        return {
+          filtros: ['Todas', 'Confirmadas', 'Previstas', 'Recebidas'].map(nome => ({
+            nome,
+            qtd: String(nome === 'Todas' ? defs.length : defs.filter(l => tipoDe(l) === nome).length),
+            style: filtro === nome ? chipOn : chipOff,
+            qtdStyle: "font:600 11.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:" + (filtro === nome ? '#C3D91E' : '#7A8699'),
+            pegar: () => this.setState({ filtro: nome }),
+          })),
+          filtroAtivo: filtro !== 'Todas',
+          filtroNome: filtro,
+          toast: this.state.toast || '',
+          exportarLabel: filtro === 'Todas' ? 'Exportar ' + defs.length + ' fechamentos' : 'Exportar ' + visiveis.length + ' de ' + defs.length + ' (' + filtro.toLowerCase() + ')',
+          linhas: visiveis.map(l => ({
+            ...l,
+            acao: l.ativo ? 'Baixar' : (l.st.startsWith('Recebida') ? 'Recebida' : 'Aguardando'),
+            acaoStyle: l.ativo ? btnOn : btnOff,
+            baixar: l.ativo ? () => this.setState({ baixaOpen: true, alvoNome: l.nome, alvoValor: l.comissao }) : () => {},
+            rowStyle: 'min-width:1028px;display:grid;grid-template-columns:28px 1fr 120px 140px 140px 150px 130px 120px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5' + (this.state.sel[l.nome + l.st] ? ';background:#F8FAF1' : ''),
+            selecionada: !!this.state.sel[l.nome + l.st],
+            marcar: () => this.setState(s => ({ sel: { ...s.sel, [l.nome + l.st]: !s.sel[l.nome + l.st] } })),
+          })),
+          ...(() => {
+            const chaves = visiveis.map(l => l.nome + l.st);
+            const marcados = chaves.filter(k => this.state.sel[k]);
+            const n = marcados.length;
+            return {
+              selTodos: n > 0 && n === chaves.length,
+              toggleTodos: () => this.setState(() => {
+                const liga = marcados.length < chaves.length;
+                const m = {}; if (liga) chaves.forEach(k => { m[k] = true; });
+                return { sel: m };
+              }),
+              temSel: n > 0,
+              nSel: n + (n === 1 ? ' fechamento selecionado' : ' fechamentos selecionados'),
+              limparSel: () => this.setState({ sel: {} }),
+              loteBaixar: () => { this.setState({ sel: {} }); this.avisar('Recebimento registrado em ' + n + (n === 1 ? ' fechamento' : ' fechamentos')); },
+              loteExportar: () => { this.setState({ sel: {} }); this.avisar('Exportação gerada com ' + n + (n === 1 ? ' fechamento' : ' fechamentos')); },
+            };
+          })(),
+        };
+      })(),
     };
   }
 }

@@ -42,7 +42,7 @@
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
 <div style="display:flex;flex-direction:column;gap:4px">
 <h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Cadastros auxiliares</h1>
-<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Categorias, segmentos, rotas e grades usados no resto do sistema</span>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Segmentos e rotas usados no resto do sistema · categorias e grades ficam em <a href="produtos.dc.html" style="text-decoration:none;font-weight:500">Produtos → Configurações de produtos</a></span>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">{{ novoLabel }}</x-import>
 </div>
@@ -124,7 +124,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { aba: 'categorias', novoOpen: false, excluirOpen: false, excluirItem: null, confirma: '' };
+  state = { aba: 'segmentos', novoOpen: false, excluirOpen: false, excluirItem: null, confirma: '' };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -170,7 +170,7 @@ class Component extends DCLogic {
     const item = this.state.excluirItem || DADOS[aba][DADOS[aba].length - 1];
     return {
       btnProps: { style: { color: '#F3F3F3' } },
-      abas: ['categorias', 'segmentos', 'rotas', 'grades'].map(id => ({
+      abas: ['segmentos', 'rotas'].map(id => ({
         label: META[id].label,
         n: DADOS[id].length,
         style: tabStyle(aba === id),

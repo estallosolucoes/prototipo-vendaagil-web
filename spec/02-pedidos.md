@@ -60,7 +60,7 @@ Breadcrumb "Pedidos › Novo pedido". Direita do H1: indicador "Rascunho salvo �
 **Barra de contexto** (card horizontal): avatar-sigla do cliente + nome + "CNPJ · cidade/UF · rota"; divisor; colunas Representada / Tabela de preço / Condição / Vendedor; badge "Rascunho"; **Alterar contexto** (ghost sm) → modal §2.7.
 
 ### 2.2 Cliente bloqueado (variação `?bloqueado=1`)
-Banner vermelho (borda `#EFA4AD`, fundo `danger-bg`): título "Este cliente está bloqueado por {n} títulos vencidos há mais de 30 dias", texto explicando que só pode salvar orçamento ou pedir liberação. Ações: **Ver títulos vencidos** (→ contas-receber) e **Pedir liberação ao gestor** (após clique vira "Liberação pedida ao gestor", desabilitado). Enquanto bloqueado: **Emitir pedido** e **Emitir e enviar** ficam `disabled`; "Salvar como orçamento" continua ativo.
+Banner vermelho (borda `#EFA4AD`, fundo `danger-bg`): título "Este cliente está bloqueado — a {representada} informou inadimplência" (bloqueio manual; Contas a receber foi removido), texto explicando que só pode salvar orçamento ou pedir liberação. Ações: **Ver títulos vencidos** (→ contas-receber) e **Pedir liberação ao gestor** (após clique vira "Liberação pedida ao gestor", desabilitado). Enquanto bloqueado: **Emitir pedido** e **Emitir e enviar** ficam `disabled`; "Salvar como orçamento" continua ativo.
 
 ### 2.3 Busca de produto
 Card com label "Buscar produto por código, código de barras, referência ou nome" + campo 44px (borda `#7A8699`, ícone lupa). Focus abre dropdown de resultados (sombra popover): itens com thumbnail 34px, nome, "código · embalagem" (mono), preço, hint "Enter adiciona"; hover `brand-green-bg`. Clique/Enter: adiciona o item com qtde 1 à tabela (produto com grade abre o modal de grade §2.5). Clique fora fecha. Abaixo: chips de atalhos de teclado ↑↓ / Enter / Tab (classe `.pn-kbd`, **ocultos ≤760px**) + **Buscar com fotos** (grade visual) e **Importar de planilha**.
@@ -141,3 +141,10 @@ Mesma tela da emissão (§2) pré-carregada com os itens do pedido; header "Alte
 | **Aprovar pedido** (primário) | Card sai da fila, pedido numerado, toast "Pedido do {cliente} aprovado e numerado. O cliente recebeu a confirmação." |
 - Fila vazia: card central verde "Nenhum pedido aguardando aprovação" + explicação.
 - Permissão: somente Gestor/Administrador; vendedor não vê o link no subtítulo da lista.
+
+## Adendo — 26/08/2026 (rodada de ajustes com o representante)
+- **Modalidades de frete (4)** no bloco Transporte e frete: **CIF** (frete da indústria) · **FOB** (frete do cliente) · **CIF/FOB misto** (indústria entrega até a **cidade limite** — campo obrigatório na modalidade; dali em diante redespacho por conta do cliente) · **Retira** (cliente coleta na indústria; sem transportadora e sem frete). FOB e misto exibem Valor do frete + checkbox "Somar o frete nas cobranças".
+- **Frete é informação logística**: nunca troca tabela de preço nem recalcula item (decisão fechada com o representante). Hint fixo sob os botões. A única troca automática de tabela é pela **escada por valor** (modelo de preço da representada).
+- **Transportadora vem do cadastro do cliente** (ex.: "Patrus Transportes — do cliente") pré-selecionada; no FOB quem escolhe é o cliente.
+- **Comissão ao vivo** (card na coluna direita): desconto médio manual do pedido → faixa da grade → comissão % e R$; recalcula ao editar desconto; aviso quando a próxima faixa está a ≤1,2 p.p.: "Mais X% de desconto e sua comissão cai de A% para B% — R$ N a menos neste pedido". Grade exibida com a faixa ativa destacada. OrderTotalsBar usa o valor recalculado.
+- Ordem de resolução da comissão: condição especial do cliente → faixa da tabela → faixa da representada → % do vendedor → padrão da representada. Só o desconto manual entra na conta (no modelo escada, o desconto por volume já está no preço).

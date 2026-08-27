@@ -94,6 +94,22 @@
 </div>
 <button onClick="{{ addPessoa }}" style="display:flex;align-items:center;gap:6px;border:0;background:transparent;color:#365E10;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:4px 0;width:fit-content" style-hover="text-decoration:underline"><i data-lucide="plus" style="font-size:14px"></i>Adicionar pessoa ao grupo</button>
 </div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Notas</span>
+<div style="display:flex;flex-direction:column;gap:8px">
+<textarea value="{{ notaTexto }}" onChange="{{ setNotaTexto }}" rows="2" aria-label="Nova nota" placeholder="Escreva uma nota sobre este contato — só a sua equipe vê" style="border:1px solid #CFD6E1;border-radius:6px;padding:10px 12px;font:400 13.5px/1.55 'IBM Plex Sans';color:#021226;resize:vertical;background:#FFFFFF" style-focus="outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,166,20,.18)"></textarea>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" size="sm" icon-left="notebook-pen" onClick="{{ salvarNota }}" dc-props="{{ btnProps }}" hint-size="auto,32px">Adicionar nota</x-import>
+</div>
+</div>
+<sc-for list="{{ notas }}" as="nt" hint-placeholder-count="1">
+<div style="display:flex;gap:10px;border:1px solid #F2D28A;background:#FEFAEF;border-radius:8px;padding:10px 12px">
+<i data-lucide="notebook-pen" style="font-size:15px;color:#8A5B00;margin-top:2px;flex:none"></i>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:400 13.5px/1.5 'IBM Plex Sans'">{{ nt.texto }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">{{ nt.quando }}</span></span>
+<button onClick="{{ nt.remover }}" aria-label="Apagar nota" title="Apagar nota" style="width:28px;height:28px;border:0;border-radius:6px;background:transparent;cursor:pointer;display:grid;place-items:center;color:#98A2B3;flex:none" style-hover="background:#FBECEE;color:#B3202F"><i data-lucide="trash-2" style="font-size:13px"></i></button>
+</div>
+</sc-for>
+</div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:10px">
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Histórico</span>
 <sc-for list="{{ historico }}" as="h" hint-placeholder-count="4">
@@ -147,7 +163,9 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { converterOpen: false, toast: '' };
+  state = { converterOpen: false, toast: '', notaTexto: '', notas: [
+    { texto: 'Prefere ser chamado no fim da tarde — de manhã está no depósito.', quando: '22/07, por Carlos' },
+  ] };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -171,6 +189,20 @@ class Component extends DCLogic {
         { iniciais: 'SB', nome: 'Sérgio Baltazar', papel: 'Dono', fone: '(54) 99655-0917' },
         { iniciais: 'LB', nome: 'Luciana Baltazar', papel: 'Financeiro', fone: '(54) 99218-4406' },
       ],
+      notaTexto: this.state.notaTexto,
+      setNotaTexto: (e) => this.setState({ notaTexto: typeof e === 'string' ? e : e.target.value }),
+      salvarNota: () => {
+        const t = this.state.notaTexto.trim();
+        if (!t) { this.avisar('Escreva a nota antes de adicionar'); return; }
+        const agora = new Date();
+        const quando = 'hoje, ' + String(agora.getHours()).padStart(2, '0') + ':' + String(agora.getMinutes()).padStart(2, '0') + ' — por você';
+        this.setState(s => ({ notas: [{ texto: t, quando }].concat(s.notas), notaTexto: '' }));
+        this.avisar('Nota adicionada ao contato');
+      },
+      notas: this.state.notas.map((nt, i) => ({
+        ...nt,
+        remover: () => { this.setState(s => ({ notas: s.notas.filter((_, j) => j !== i) })); this.avisar('Nota apagada'); },
+      })),
       addPessoa: () => this.avisar('Pessoa adicionada ao grupo Móveis Baltazar'),
       addTag: () => this.avisar('Escolha a etiqueta na lista'),
       historico: [

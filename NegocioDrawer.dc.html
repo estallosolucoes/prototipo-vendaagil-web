@@ -89,6 +89,11 @@
 <sc-if value="{{ tarefaFormAberta }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:8px;background:#F7F9FB;border-radius:8px;padding:12px">
 <span style="font:600 13px/1.3 'IBM Plex Sans'">Nova tarefa vinculada a este negócio</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{ ntTipos }}" as="tt" hint-placeholder-count="4">
+<button onClick="{{ tt.pegar }}" style="{{ tt.style }}"><i data-lucide="{{ tt.icone }}" style="font-size:13px"></i>{{ tt.nome }}</button>
+</sc-for>
+</div>
 <input value="{{ ntTitulo }}" onInput="{{ setNtTitulo }}" placeholder="Ex.: Cobrar retorno da proposta" aria-label="Título da tarefa" style="height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;font:400 16px/1 'IBM Plex Sans';color:#021226;background:#FFFFFF;min-width:0" style-focus="outline:none;border-color:#78A614">
 <div style="display:flex;gap:8px;align-items:center">
 <input type="date" value="{{ ntData }}" onChange="{{ setNtData }}" aria-label="Data da tarefa" style="height:36px;border:1px solid #CFD6E1;border-radius:6px;padding:0 8px;font-family:'IBM Plex Sans';font-size:16px;color:#021226;flex:1;min-width:0;background:#FFFFFF">
@@ -154,7 +159,7 @@
 class Component extends DCLogic {
   state = {
     sel: null, propNeg: null, mods: {}, negsAbertos: false, menuFunis: false,
-    tarefaFormAberta: false, ntTitulo: '', ntData: '',
+    tarefaFormAberta: false, ntTitulo: '', ntData: '', ntTipo: 'followup',
     tipoInteracao: 'Visita', anotacao: '', toast: '',
     anexos: [
       { nome: 'Tabela de preços — jul 2026.pdf', meta: 'PDF · 240 KB · há 3 dias', icone: 'file-text' },
@@ -181,7 +186,7 @@ class Component extends DCLogic {
     const p = this.props;
     const cliente = p.cliente || 'Depósito São Jorge';
     const FUNIS = {
-      venda: { nome: 'Venda', etapas: ['Cadastro do cliente', 'Primeiro contato', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Pedido emitido', 'Aguardando aprovação', 'Enviado à indústria', 'Faturado parcial', 'Perdidos', 'Ganhos'] },
+      venda: { nome: 'Venda', etapas: ['Primeiro contato', 'Cadastro do cliente', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3', 'Aguardando aprovação da representada', 'Faturado parcial', 'Perdidos', 'Ganhos'] },
       acompanhamento: { nome: 'Acompanhamento', etapas: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Em transporte', 'Pedido faturado total'] },
       espera: { nome: 'Lista de espera', etapas: ['Entrou na lista', 'Aguardando estoque', 'Estoque disponível', 'Cliente avisado', 'Perdidos', 'Ganhos'] },
       sac: { nome: 'SAC / Cobrança', etapas: ['Em tratativa — SAC', 'Em tratativa — Cobrança', 'Resolvido', 'Não resolvido'] },
@@ -263,13 +268,21 @@ class Component extends DCLogic {
       toggleTarefaForm: () => this.setState(s => ({ tarefaFormAberta: !s.tarefaFormAberta })),
       ntTitulo: this.state.ntTitulo,
       setNtTitulo: (ev) => this.setState({ ntTitulo: typeof ev === 'string' ? ev : ev.target.value }),
+      ntTipos: (window.VATarefas ? window.VATarefas.tipos() : []).map(tp => {
+        const on = this.state.ntTipo === tp.id;
+        return {
+          nome: tp.nome, icone: tp.icone,
+          style: "display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:999px;cursor:pointer;font:" + (on ? '600' : '500') + " 12.5px/1 'IBM Plex Sans';border:1px solid " + (on ? tp.cor : '#D6DCE5') + ';background:' + (on ? '#FFFFFF' : '#FFFFFF') + ';color:' + (on ? tp.cor : '#454F5E') + (on ? ';box-shadow:0 0 0 1px ' + tp.cor : ''),
+          pegar: () => this.setState({ ntTipo: tp.id }),
+        };
+      }),
       ntData: this.state.ntData || (window.VATarefas ? window.VATarefas.hoje() : ''),
       setNtData: (ev) => this.setState({ ntData: ev.target.value }),
       ntSemTitulo: !this.state.ntTitulo.trim(),
       criarTarefaNegocio: () => {
         if (!this.state.ntTitulo.trim()) return;
         const VT = window.VATarefas;
-        if (VT) VT.criar({ titulo: this.state.ntTitulo.trim(), tipo: 'followup', negocio: sel.titulo, cliente, resp: 'CR', data: this.state.ntData || VT.hoje(), hora: '09:00' });
+        if (VT) VT.criar({ titulo: this.state.ntTitulo.trim(), tipo: this.state.ntTipo, negocio: sel.titulo, cliente, resp: 'CR', data: this.state.ntData || VT.hoje(), hora: '09:00' });
         this.setState({ ntTitulo: '', tarefaFormAberta: false });
         this.avisar('Tarefa criada e vinculada ao negócio');
       },

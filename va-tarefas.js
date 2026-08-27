@@ -33,9 +33,38 @@
     hoje: function () { return dISO(0); },
     dISO: dISO,
     criar: function (t) { t.id = ++st.seq; t.feita = false; st.tarefas.push(t); save(); return t; },
+    /* Recorrência: gera a série (até 30 ocorrências) a partir da data inicial */
+    criarRecorrente: function (t, freq, ate) {
+      var serie = 's' + (++st.seq);
+      var d = new Date(t.data + 'T12:00:00');
+      var fim = new Date(ate + 'T12:00:00');
+      var n = 0;
+      while (d <= fim && n < 30) {
+        var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        var oc = {}; for (var k in t) oc[k] = t[k];
+        oc.id = ++st.seq; oc.feita = false; oc.data = iso; oc.serie = serie; oc.freq = freq; oc.serieAte = ate;
+        st.tarefas.push(oc);
+        n++;
+        if (freq === 'diaria') d.setDate(d.getDate() + 1);
+        else if (freq === 'semanal') d.setDate(d.getDate() + 7);
+        else d.setMonth(d.getMonth() + 1);
+      }
+      save(); return serie;
+    },
+    /* Cancela a recorrência: remove só as ocorrências futuras; as já criadas ficam */
+    cancelarSerie: function (serie) {
+      var hoje = dISO(0);
+      st.tarefas = st.tarefas.filter(function (t) { return t.serie !== serie || t.data <= hoje; });
+      st.tarefas.forEach(function (t) { if (t.serie === serie) t.serieCancelada = true; });
+      save();
+    },
+    serieDe: function (serie) { return st.tarefas.filter(function (t) { return t.serie === serie; }); },
+    atualizar: function (id, patch) { st.tarefas.forEach(function (t) { if (t.id === id) for (var k in patch) t[k] = patch[k]; }); save(); },
+    atualizarSerie: function (serie, deData, patch) { st.tarefas.forEach(function (t) { if (t.serie === serie && (!deData || t.data >= deData)) for (var k in patch) t[k] = patch[k]; }); save(); },
     concluir: function (id) { st.tarefas.forEach(function (t) { if (t.id === id) t.feita = true; }); save(); },
     reabrir: function (id) { st.tarefas.forEach(function (t) { if (t.id === id) t.feita = false; }); save(); },
     excluir: function (id) { st.tarefas = st.tarefas.filter(function (t) { return t.id !== id; }); save(); },
+    excluirSerie: function (serie, deData) { st.tarefas = st.tarefas.filter(function (t) { return t.serie !== serie || (deData ? t.data < deData : false); }); save(); },
     addTipo: function (tp) { tp.id = 't' + (++st.seq); st.tipos.push(tp); save(); return tp; },
     delTipo: function (id) { st.tipos = st.tipos.filter(function (t) { return t.id !== id; }); save(); },
     assinar: function (f) { subs.push(f); }

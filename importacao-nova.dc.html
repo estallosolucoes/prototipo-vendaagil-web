@@ -66,7 +66,7 @@
 <span style="font:600 17px/1.3 'IBM Plex Sans'">Baixe o modelo e envie o arquivo preenchido</span>
 <div style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #E4E8EF;border-radius:6px">
 <i data-lucide="file-down" style="font-size:22px;color:#5B6678"></i>
-<span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">modelo-clientes.xlsx</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Colunas prontas com exemplos — não renomeie os títulos</span></span>
+<span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font:600 13.5px/1.3 'IBM Plex Sans'">{{ modeloNome }}</span><span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">Colunas prontas com exemplos — não renomeie os títulos</span></span>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="download" hint-size="auto,36px">Baixar modelo</x-import>
 </div>
 <button onClick="{{ simularUpload }}" style="{{ dropStyle }}">
@@ -228,6 +228,7 @@ class Component extends DCLogic {
         this.setState({ passo: p + 1 });
       },
       voltar: () => this.setState({ passo: Math.max(1, p - 1) }),
+      modeloNome: ({ Clientes: 'modelo-clientes.xlsx', Produtos: 'modelo-produtos.xlsx', 'Preços': 'modelo-tabela-de-preco.xlsx', Faturamento: 'modelo-faturamento.xlsx' })[this.state.tipo] || 'modelo-clientes.xlsx',
       goClientes: () => { location.href = 'clientes.dc.html'; },
     };
   }

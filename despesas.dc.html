@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/styles.css">
+<script src="_ds/venda-gil-design-system-bb4846ae-8341-4ed9-96f6-fbef93dfd266/_ds_bundle.js"></script>
+<script src="style-refix.js"></script>
+<script src="va-chat.js"></script>
+<link rel="stylesheet" href="form-overrides.css">
+<script src="va-select.js"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
+@media (max-width:1100px){[data-va-kpis]{grid-template-columns:1fr 1fr !important}}
+@media (max-width:760px){main{padding:24px 16px 96px 16px !important}[data-va-kpis]{grid-template-columns:1fr !important}}
+</style>
+</helmet>
+<div data-screen-label="FIN-05 Despesas" style="min-height:100vh;background:#F2F4F7;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#021226;display:flex;flex-direction:column">
+<dc-import name="Topbar" hint-size="100%,92px"></dc-import>
+<div style="position:relative;flex:1">
+<dc-import name="Sidebar" active="despesas" hint-size="0px,0px"></dc-import>
+<main style="max-width:1280px;margin:0 auto;padding:44px 32px 56px 120px;width:100%">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Despesas da representação</h1>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">Agosto · lançamentos do escritório e da rua · alimentam o relatório de despesas</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ abrirNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Lançar despesa</x-import>
+</div>
+<div data-va-kpis="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">{{ k.label }}</span>
+<span style="font:600 22px/1.2 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ k.valor }}</span>
+<span style="font:400 12.5px/1.4 'IBM Plex Sans';color:#5B6678">{{ k.sub }}</span>
+</div>
+</sc-for>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;margin-bottom:16px;display:flex;gap:12px;align-items:end;flex-wrap:wrap">
+<x-import component-from-global-scope="va-select" data-campo="fMes" label="Mês" options="Agosto|Julho|Junho|Este ano" value="{{ fMes }}" hint-size="150px,66px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="fCat" label="Categoria" options="Todas|Viagem|Combustível|Imposto|Contador|Mostruário|Outros" value="{{ fCat }}" hint-size="170px,66px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="fRep" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu|Sem vínculo" value="{{ fRep }}" hint-size="190px,66px"></x-import>
+<span style="flex:1"></span>
+<a href="relatorio.dc.html?r=despesas" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="chart-bar" hint-size="auto,40px">Ver relatório</x-import></a>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
+<div style="min-width:908px;display:grid;grid-template-columns:28px 110px 1fr 150px 190px 110px 130px 44px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todas as despesas" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Data</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Descrição</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Categoria</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada / rota</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Recorrência</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Valor</span>
+<span></span>
+</div>
+<sc-for list="{{ despesas }}" as="d" hint-placeholder-count="7">
+<div style="{{ d.rowStyle }}">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ d.sel }}" onChange="{{ d.marcar }}" aria-label="Selecionar {{ d.desc }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
+<span style="font:400 13px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ d.data }}</span>
+<span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ d.desc }}</span>
+<span><span style="{{ d.catStyle }}"><i data-lucide="{{ d.catIcone }}" style="font-size:12px"></i>{{ d.cat }}</span></span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ d.vinculo }}</span>
+<span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ d.rec }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ d.valor }}</span>
+<button onClick="{{ d.apagar }}" aria-label="Apagar lançamento" title="Apagar lançamento" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#FBECEE;color:#B3202F"><i data-lucide="trash-2" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+<div style="min-width:908px;display:flex;justify-content:space-between;padding:14px 20px;background:#FAFBFC;font:600 13.5px/1 'IBM Plex Sans'"><span>{{ totalRotulo }}</span><span style="font-variant-numeric:tabular-nums">{{ totalValor }}</span></div>
+</div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<div style="position:relative">
+<button onClick="{{ toggleBulkCat }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="tag" style="font-size:13px"></i>Alterar categoria</button>
+<sc-if value="{{ bulkCatAberto }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;bottom:40px;left:0;width:180px;background:#FFFFFF;border-radius:8px;box-shadow:0 12px 32px rgba(2,18,38,.25);padding:6px;display:flex;flex-direction:column">
+<sc-for list="{{ bulkCats }}" as="bc" hint-placeholder-count="6"><button onClick="{{ bc.pegar }}" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:400 13px/1 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F5F7FA">{{ bc.nome }}</button></sc-for>
+</div>
+</sc-if>
+</div>
+<button onClick="{{ loteApagar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #7A3540;background:transparent;color:#F2A3AE;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="trash-2" style="font-size:13px"></i>Apagar</button>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ delRecOpen }}" onClose="{{ fecharDelRec }}" title="Apagar despesa recorrente" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<span style="font:400 14px/1.6 'IBM Plex Sans';color:#454F5E"><strong>{{ delRecDesc }}</strong> é uma despesa fixa mensal. O que você quer apagar?</span>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ delRecEscopos }}" as="de" hint-placeholder-count="3">
+<button onClick="{{ de.pegar }}" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #D6DCE5;border-radius:8px;background:#FFFFFF;cursor:pointer;text-align:left;font-family:inherit" style-hover="border-color:#B3202F;background:#FDF6F7">
+<i data-lucide="{{ de.icone }}" style="font-size:16px;color:#B3202F;margin-top:1px;flex:none"></i>
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 13.5px/1.3 'IBM Plex Sans';color:#021226">{{ de.nome }}</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">{{ de.sub }}</span></span>
+</button>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:flex-end">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharDelRec }}" hint-size="auto,40px">Cancelar</x-import>
+</div>
+</div>
+</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaOpen }}" onClose="{{ fechar }}" title="Lançar despesa" size="md" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Descrição" required="{{ true }}" placeholder="Ex.: Pedágio rota serra" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" label="Categoria" options="Viagem|Combustível|Imposto|Contador|Mostruário|Outros" value="Combustível" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Data</span>
+<input type="date" value="2026-08-27" aria-label="Data da despesa" style="height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font-family:'IBM Plex Sans';color:#021226;width:100%">
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Valor</span>
+<div class="va-inputwrap" style="display:flex;align-items:center;gap:8px;height:40px;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px;background:#FFFFFF">
+<span style="font:400 13.5px/1 'IBM Plex Sans';color:#5B6678">R$</span>
+<input aria-label="Valor da despesa" placeholder="0,00" style="border:0;outline:none;flex:1;min-width:0;font:400 14px/1 'IBM Plex Sans';color:#021226;text-align:right;background:transparent">
+</div>
+</div>
+<x-import component-from-global-scope="va-select" label="Representada (opcional)" options="Sem vínculo|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Sem vínculo" help="Vincule para ver o custo de atender cada pasta" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-select" label="Rota (opcional)" options="Sem rota|Rota serra|Rota litoral|Rota capital" value="Sem rota" hint-size="100%,66px"></x-import>
+</div>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="checkbox" checked="{{ recMensal }}" onChange="{{ toggleRec }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Despesa fixa mensal</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Lança sozinha todo mês no mesmo dia — ex.: contador, aluguel do escritório</span></span>
+</label>
+<div style="display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #E4E8EF;padding-top:14px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ salvarNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Lançar despesa</x-import>
+</div>
+</div>
+</x-import>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
+</sc-if>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { novaOpen: false, recMensal: false, toast: '', removidas: {}, fMes: 'Agosto', fCat: 'Todas', fRep: 'Todas', sel: {}, bulkCat: false, delRecOpen: false, delRec: null };
+  componentDidMount() {
+    this.paint();
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT') return;
+      const campo = el.getAttribute('data-campo');
+      if (!campo) return;
+      this.setState({ [campo]: (e.detail && e.detail.value) || el.getAttribute('value') });
+    };
+    document.addEventListener('change', this._chg);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); }
+  componentDidUpdate() { this.paint(); }
+  paint() {
+    if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
+    try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
+  }
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+  renderVals() {
+    const CAT = {
+      'Viagem': ['map', '#0C477B', '#EAF4FD'], 'Combustível': ['fuel', '#8A5B00', '#FCF3DF'],
+      'Imposto': ['landmark', '#85202C', '#FDF0F1'], 'Contador': ['calculator', '#5B6ECC', '#EDF0FB'],
+      'Mostruário': ['lamp-desk', '#365E10', '#F2F8D4'], 'Outros': ['circle-ellipsis', '#454F5E', '#EDF0F5'],
+    };
+    const DADOS = [
+      { data: '26/08', desc: 'Combustível — rota serra (Caxias e região)', cat: 'Combustível', vinculo: 'Rota serra', rec: '—', valor: 'R$ 420,00', n: 420 },
+      { data: '25/08', desc: 'Almoço com comprador — Depósito São Jorge', cat: 'Viagem', vinculo: 'Móveis Vale', rec: '—', valor: 'R$ 96,00', n: 96 },
+      { data: '20/08', desc: 'DAS — Simples Nacional', cat: 'Imposto', vinculo: 'Sem vínculo', rec: 'Fixa mensal', valor: 'R$ 1.842,30', n: 1842.3 },
+      { data: '18/08', desc: 'Pedágios — semana na rota litoral', cat: 'Viagem', vinculo: 'Rota litoral', rec: '—', valor: 'R$ 187,60', n: 187.6 },
+      { data: '12/08', desc: 'Reposição do mostruário de tecidos', cat: 'Mostruário', vinculo: 'Tecelagem Iguaçu', rec: '—', valor: 'R$ 340,00', n: 340 },
+      { data: '08/08', desc: 'Combustível — rota capital', cat: 'Combustível', vinculo: 'Rota capital', rec: '—', valor: 'R$ 385,00', n: 385 },
+      { data: '05/08', desc: 'Honorários do contador', cat: 'Contador', vinculo: 'Sem vínculo', rec: 'Fixa mensal', valor: 'R$ 650,00', n: 650 },
+    ];
+    const fc = this.state.fCat, fr = this.state.fRep;
+    const visiveis = DADOS.filter(d => !this.state.removidas[d.desc]
+      && (fc === 'Todas' || d.cat === fc)
+      && (fr === 'Todas' || d.vinculo === fr || (fr === 'Sem vínculo' && d.vinculo === 'Sem vínculo')));
+    const total = visiveis.reduce((a, d) => a + d.n, 0);
+    return {
+      btnProps: { style: { color: '#F3F3F3' } },
+      fMes: this.state.fMes, fCat: this.state.fCat, fRep: this.state.fRep,
+      kpis: [
+        { label: 'Total do mês', valor: 'R$ 3.920,90', sub: '7 lançamentos' },
+        { label: 'Fixas mensais', valor: 'R$ 2.492,30', sub: 'imposto + contador' },
+        { label: 'Custo da rua', valor: 'R$ 1.088,60', sub: 'viagem + combustível' },
+        { label: '% sobre comissões', valor: '21,3%', sub: 'de R$ 18.412,70 recebidos' },
+      ],
+      despesas: visiveis.map(d => {
+        const [ic, c, b] = CAT[d.cat];
+        return {
+          ...d,
+          catIcone: ic,
+          catStyle: "display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';color:" + c + ';background:' + b,
+          apagar: () => {
+            if (d.rec === 'Fixa mensal') this.setState({ delRecOpen: true, delRec: d });
+            else { this.setState(s => ({ removidas: { ...s.removidas, [d.desc]: true } })); this.avisar('Lançamento apagado'); }
+          },
+          rowStyle: 'min-width:908px;display:grid;grid-template-columns:28px 110px 1fr 150px 190px 110px 130px 44px;gap:12px;align-items:center;padding:12px 20px;border-bottom:1px solid #EDF0F5' + (this.state.sel[d.desc] ? ';background:#F8FAF1' : ''),
+          sel: !!this.state.sel[d.desc],
+          marcar: () => this.setState(s => ({ sel: { ...s.sel, [d.desc]: !s.sel[d.desc] } })),
+        };
+      }),
+      ...(() => {
+        const chaves = visiveis.map(d => d.desc);
+        const marcados = chaves.filter(k => this.state.sel[k]);
+        const n = marcados.length;
+        return {
+          selTodos: n > 0 && n === chaves.length,
+          toggleTodos: () => this.setState(() => {
+            const liga = marcados.length < chaves.length;
+            const m = {}; if (liga) chaves.forEach(k => { m[k] = true; });
+            return { sel: m };
+          }),
+          temSel: n > 0,
+          nSel: n + (n === 1 ? ' despesa selecionada' : ' despesas selecionadas'),
+          limparSel: () => this.setState({ sel: {}, bulkCat: false }),
+          bulkCatAberto: this.state.bulkCat,
+          toggleBulkCat: () => this.setState(s => ({ bulkCat: !s.bulkCat })),
+          bulkCats: ['Viagem', 'Combustível', 'Imposto', 'Contador', 'Mostruário', 'Outros'].map(nome => ({
+            nome,
+            pegar: () => { this.setState({ sel: {}, bulkCat: false }); this.avisar('Categoria "' + nome + '" aplicada a ' + n + (n === 1 ? ' despesa' : ' despesas')); },
+          })),
+          loteApagar: () => {
+            this.setState(s => { const rm = { ...s.removidas }; marcados.forEach(k => { rm[k] = true; }); return { removidas: rm, sel: {}, bulkCat: false }; });
+            this.avisar(n + (n === 1 ? ' despesa apagada' : ' despesas apagadas'));
+          },
+        };
+      })(),
+      totalRotulo: visiveis.length + (visiveis.length === 1 ? ' lançamento' : ' lançamentos') + ' com os filtros',
+      totalValor: 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2 }),
+      delRecOpen: this.state.delRecOpen,
+      delRecDesc: this.state.delRec ? this.state.delRec.desc : '',
+      fecharDelRec: () => this.setState({ delRecOpen: false }),
+      delRecEscopos: [
+        { id: 'este', nome: 'Apagar somente este lançamento', icone: 'square-x', sub: 'A recorrência continua lançando nos próximos meses' },
+        { id: 'proximos', nome: 'Apagar este e os que estão por vir', icone: 'chevrons-right', sub: 'Encerra a recorrência daqui em diante; os meses anteriores ficam' },
+        { id: 'todos', nome: 'Apagar todos os lançamentos', icone: 'trash-2', sub: 'Remove a despesa fixa inteira, inclusive os meses anteriores' },
+      ].map(de => ({
+        ...de,
+        pegar: () => {
+          const d = this.state.delRec;
+          this.setState(s => ({ delRecOpen: false, removidas: { ...s.removidas, [d.desc]: true } }));
+          this.avisar(({ este: 'Lançamento apagado — a recorrência continua', proximos: 'Este e os próximos foram encerrados', todos: 'Despesa fixa apagada por completo' })[de.id]);
+        },
+      })),
+      novaOpen: this.state.novaOpen,
+      abrirNova: () => this.setState({ novaOpen: true }),
+      fechar: () => this.setState({ novaOpen: false }),
+      recMensal: this.state.recMensal,
+      toggleRec: () => this.setState(s => ({ recMensal: !s.recMensal })),
+      salvarNova: () => { this.setState({ novaOpen: false }); this.avisar(this.state.recMensal ? 'Despesa fixa lançada — repete todo mês' : 'Despesa lançada'); },
+      toast: !!this.state.toast, toastMsg: this.state.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

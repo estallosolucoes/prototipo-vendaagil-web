@@ -103,6 +103,9 @@
 <div onClick="{{ c.abrir }}" style="{{ c.cardStyle }}" style-hover="box-shadow:0 3px 8px rgba(2,18,38,.12)">
 <span style="font:600 14px/1.35 'IBM Plex Sans'">{{ c.titulo }}</span>
 <span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">{{ c.cliente }}</span>
+<sc-if value="{{ c.temPedido }}" hint-placeholder-val="{{ false }}">
+<span style="{{ c.pedidoStyle }}"><i data-lucide="{{ c.pedidoIcone }}" style="font-size:11px"></i>Pedido {{ c.pedidoNum }} · {{ c.pedidoSt }}</span>
+</sc-if>
 <sc-if value="{{ c.temTags }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;gap:4px;flex-wrap:wrap">
 <sc-for list="{{ c.tags }}" as="t" hint-placeholder-count="1"><span style="{{ t.style }}">{{ t.nome }}</span></sc-for>
@@ -131,7 +134,8 @@
 </sc-if>
 <sc-if value="{{ modoLista }}" hint-placeholder-val="{{ false }}">
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:920px;display:grid;grid-template-columns:1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:948px;display:grid;grid-template-columns:28px 1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodosNeg }}" onChange="{{ toggleTodosNeg }}" aria-label="Selecionar todos os negócios" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Negócio</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Etapa</span>
@@ -140,7 +144,8 @@
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Etiquetas</span>
 </div>
 <sc-for list="{{ listaLinhas }}" as="l" hint-placeholder-count="8">
-<div onClick="{{ l.abrir }}" style="min-width:920px;display:grid;grid-template-columns:1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC">
+<div onClick="{{ l.abrir }}" style="{{ l.rowStyle }}" style-hover="background:#FAFBFC">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ l.sel }}" onChange="{{ l.marcar }}" data-parar="" onClick="{{ l.pararClique }}" aria-label="Selecionar {{ l.titulo }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 14px/1.3 'IBM Plex Sans'">{{ l.titulo }}</span>
 <span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ l.cliente }}</span>
 <span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ l.etapa }}</span>
@@ -150,6 +155,38 @@
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ temSelNeg }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:400;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:12px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13px/1 'IBM Plex Sans';white-space:nowrap">{{ selNegRotulo }}</span>
+<button onClick="{{ limparSelNeg }}" style="border:0;background:transparent;color:#9FB0C7;font:500 12.5px/1 'IBM Plex Sans';cursor:pointer;padding:4px;text-decoration:underline">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<div style="position:relative">
+<button onClick="{{ toggleBulkEtq }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="tag" style="font-size:13px"></i>Aplicar etiqueta</button>
+<sc-if value="{{ bulkEtqAberto }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;bottom:40px;left:0;width:190px;background:#FFFFFF;border-radius:8px;box-shadow:0 12px 32px rgba(2,18,38,.25);padding:6px;display:flex;flex-direction:column">
+<sc-for list="{{ bulkEtiquetas }}" as="be" hint-placeholder-count="4"><button onClick="{{ be.pegar }}" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:400 13px/1 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F5F7FA"><span style="{{ be.chip }}">{{ be.nome }}</span></button></sc-for>
+</div>
+</sc-if>
+</div>
+<div style="position:relative">
+<button onClick="{{ toggleBulkEtapa }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="arrow-right-circle" style="font-size:13px"></i>Mover para etapa</button>
+<sc-if value="{{ bulkEtapaAberto }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;bottom:40px;left:0;width:250px;max-height:240px;overflow-y:auto;background:#FFFFFF;border-radius:8px;box-shadow:0 12px 32px rgba(2,18,38,.25);padding:6px;display:flex;flex-direction:column">
+<sc-for list="{{ bulkEtapas }}" as="bt" hint-placeholder-count="6"><button onClick="{{ bt.pegar }}" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:400 13px/1.3 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F5F7FA">{{ bt.nome }}</button></sc-for>
+</div>
+</sc-if>
+</div>
+<div style="position:relative">
+<button onClick="{{ toggleBulkFunil }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="kanban" style="font-size:13px"></i>Mover para funil</button>
+<sc-if value="{{ bulkFunilAberto }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;bottom:40px;left:0;width:210px;background:#FFFFFF;border-radius:8px;box-shadow:0 12px 32px rgba(2,18,38,.25);padding:6px;display:flex;flex-direction:column">
+<sc-for list="{{ bulkFunis }}" as="bf" hint-placeholder-count="3"><button onClick="{{ bf.pegar }}" style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:400 13px/1 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F5F7FA">{{ bf.nome }}</button></sc-for>
+</div>
+</sc-if>
+</div>
+<button onClick="{{ bulkApagarNeg }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #7A3540;background:transparent;color:#F2A3AE;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="trash-2" style="font-size:13px"></i>Apagar</button>
+</div>
+</sc-if>
 </sc-if>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ escolhaOpen }}" onClose="{{ fecharEscolha }}" title="Escolha o funil para começar" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
@@ -229,6 +266,7 @@ class Component extends DCLogic {
     escolhaOpen: !localStorage.getItem('va-crm-funil-escolhido'),
     novoOpen: false, perdaOpen: false, motivoSel: null,
     detOpen: false, det: null, toast: '', prazoFiltro: null, filtrosAbertos: false, filtrosAplicados: 0,
+    selNeg: {}, bulkDd: null,
   };
   componentDidMount() { this.paint(); }
   componentWillUnmount() { clearTimeout(this._t); }
@@ -249,20 +287,39 @@ class Component extends DCLogic {
     const tag = (nome) => { const [c, b] = (TAG[nome] || '#454F5E|#EDF0F5').split('|'); return { nome, style: "display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font:600 11px/1 'IBM Plex Sans';color:" + c + ';background:' + b }; };
     const ok = "display:inline-flex;align-items:center;gap:4px;font:500 11px/1 'IBM Plex Sans';color:#7A8699";
     const parado = "display:inline-flex;align-items:center;gap:4px;font:600 11px/1 'IBM Plex Sans';color:#85202C";
-    const card = (t, cli, v, idade, lenta, dono, prox, tags) => ({ titulo: t, cliente: cli, valor: v, idade, idadeStyle: lenta ? parado : ok, dono, proximo: prox, tags: (tags || []).map(tag), temTags: !!(tags || []).length });
+    const PED_ST = {
+      'Rascunho': { icone: 'file', style: '#454F5E|#EDF0F5' },
+      'Emitido': { icone: 'send', style: '#0C477B|#EAF4FD' },
+      'Aguardando aprovação': { icone: 'clock-3', style: '#8A5B00|#FCF3DF' },
+      'Faturado parcial': { icone: 'chart-pie', style: '#8A5B00|#FCF3DF' },
+      'Faturado': { icone: 'circle-check', style: '#0A6244|#E8F7F0' },
+    };
+    const card = (t, cli, v, idade, lenta, dono, prox, tags, pedido) => {
+      const ps = pedido ? PED_ST[pedido.st] || PED_ST['Emitido'] : null;
+      const [pc, pb] = ps ? ps.style.split('|') : [];
+      return {
+        titulo: t, cliente: cli, valor: v, idade, idadeStyle: lenta ? parado : ok, dono, proximo: prox,
+        tags: (tags || []).map(tag), temTags: !!(tags || []).length,
+        temPedido: !!pedido,
+        pedidoNum: pedido ? pedido.num : '', pedidoSt: pedido ? pedido.st : '',
+        pedidoIcone: ps ? ps.icone : '',
+        pedidoStyle: ps ? "display:inline-flex;align-items:center;gap:5px;width:fit-content;height:22px;padding:0 8px;border-radius:999px;font:600 11.5px/1 'IBM Plex Sans';color:" + pc + ';background:' + pb : '',
+      };
+    };
     const FUNIS = {
       venda: { nome: 'Venda', etapas: [
-        { titulo: 'Cadastro do cliente', cards: [card('Primeira compra — colchões', 'Bazar Monte Alto', 'R$ 6.800', '5 dias', false, 'AP', 'Aguardando CNPJ do comprador', ['Cliente novo'])] },
         { titulo: 'Primeiro contato', cards: [card('Mix de lançamento 2027', 'Depósito São Jorge', 'R$ 12.400', '2 dias', false, 'CR', 'Ligar quinta de manhã'), card('Reativação após 180 dias', 'Móveis Baltazar', 'R$ 9.100', '12 dias', true, 'JT', 'Visita na rota de terça', ['Reativação'])] },
+        { titulo: 'Cadastro do cliente', cards: [card('Primeira compra — colchões', 'Bazar Monte Alto', 'R$ 6.800', '5 dias', false, 'AP', 'Aguardando CNPJ do comprador', ['Cliente novo'])] },
         { titulo: 'Apresentação do mix', cards: [card('Linha de poltronas', 'Móveis Guarani', 'R$ 11.100', '6 dias', false, 'AP', 'Mandar catálogo em PDF')] },
         { titulo: 'Proposta enviada', cards: [card('Reposição linha operacional', 'Casa & Lar Móveis', 'R$ 15.200', '3 dias', false, 'CR', 'Cobrar retorno amanhã'), card('Gaveteiros — promoção', 'Lojas Pinheiral', 'R$ 7.300', '15 dias', true, 'PS', 'Proposta vence sexta', ['Promoção'])] },
         { titulo: 'Negociação', cards: [card('Pedido trimestral', 'Depósito São Jorge', 'R$ 21.500', '4 dias', false, 'CR', 'Fechar desconto com gestor', ['Urgente'])] },
-        { titulo: 'Pedido emitido', cards: [card('Kit escritório completo', 'Comercial Vitória', 'R$ 18.700', '1 dia', false, 'RC', 'Enviar à representada')] },
-        { titulo: 'Aguardando aprovação', cards: [] },
-        { titulo: 'Enviado à indústria', cards: [card('Mesas de reunião', 'Comercial Vitória', 'R$ 9.800', '2 dias', false, 'RC', 'Aguarda confirmação da Vale')] },
-        { titulo: 'Faturado parcial', cards: [] },
+        { titulo: 'Recuperação 1', cards: [card('Sumiu após a proposta', 'Armazém Boa Vista', 'R$ 5.400', '7 dias', true, 'PS', 'Reforçar promoção por WhatsApp')] },
+        { titulo: 'Recuperação 2', cards: [] },
+        { titulo: 'Recuperação 3', cards: [] },
+        { titulo: 'Aguardando aprovação da representada', cards: [card('Kit escritório completo', 'Comercial Vitória', 'R$ 18.700', '1 dia', false, 'RC', 'Aguarda decisão da Vale', [], { num: '4.812', st: 'Aguardando aprovação' }), card('Mesas de reunião', 'Comercial Vitória', 'R$ 9.800', '2 dias', false, 'RC', 'Enviado à indústria ontem', [], { num: '4.809', st: 'Emitido' })] },
+        { titulo: 'Faturado parcial', cards: [card('Reposição de inverno', 'Comercial Vitória', 'R$ 12.450', '3 dias', false, 'RC', 'Corte de 8% — avisar cliente', [], { num: '4.797', st: 'Faturado parcial' })] },
         { titulo: 'Perdidos', perdidos: true, cards: [card('Cadeiras gamer — teste', 'Bazar Monte Alto', 'R$ 4.200', '—', false, 'AP', 'Preço acima do concorrente')] },
-        { titulo: 'Ganhos', ganhos: true, cards: [card('Cadeiras fixas — reposição', 'Casa & Lar Móveis', 'R$ 6.500', '—', false, 'CR', 'Pedido 4.786 faturado')] },
+        { titulo: 'Ganhos', ganhos: true, cards: [card('Cadeiras fixas — reposição', 'Casa & Lar Móveis', 'R$ 6.500', '—', false, 'CR', 'Comissão lançada', [], { num: '4.786', st: 'Faturado' })] },
       ]},
       acompanhamento: { nome: 'Acompanhamento', etapas: [
         { titulo: 'Aguardando retorno indústria', cards: [card('Pedido 4.810 — Casa & Lar', 'Casa & Lar Móveis', 'R$ 3.120', '3 dias', false, 'CR', 'Cobrar a Vale por e-mail')] },
@@ -365,10 +422,51 @@ class Component extends DCLogic {
         ...c, etapa: e.titulo,
         idadeStyle: c.idadeStyle + ';font-variant-numeric:tabular-nums',
         abrir: abrirDet(c, e.titulo),
+        rowStyle: 'min-width:948px;display:grid;grid-template-columns:28px 1fr 180px 170px 120px 110px 140px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer' + (this.state.selNeg[c.titulo] ? ';background:#F8FAF1' : ''),
+        sel: !!this.state.selNeg[c.titulo],
+        pararClique: (e) => e.stopPropagation(),
+        marcar: (e) => { e.stopPropagation(); this.setState(s => ({ selNeg: { ...s.selNeg, [c.titulo]: !s.selNeg[c.titulo] } })); },
       }))),
+      ...(() => {
+        const todos = f.etapas.flatMap(e => e.cards.map(c => c.titulo));
+        const marcados = todos.filter(t => this.state.selNeg[t]);
+        const n = marcados.length;
+        const fecharDd = { bulkDd: null };
+        const agir = (msg) => { this.setState({ selNeg: {}, bulkDd: null }); this.avisar(msg); };
+        return {
+          selTodosNeg: n > 0 && n === todos.length,
+          toggleTodosNeg: () => this.setState(s => {
+            const liga = marcados.length < todos.length;
+            const m = {}; if (liga) todos.forEach(t => { m[t] = true; });
+            return { selNeg: m };
+          }),
+          temSelNeg: n > 0,
+          selNegRotulo: n + (n === 1 ? ' negócio selecionado' : ' negócios selecionados'),
+          limparSelNeg: () => this.setState({ selNeg: {}, bulkDd: null }),
+          bulkEtqAberto: this.state.bulkDd === 'etq',
+          bulkEtapaAberto: this.state.bulkDd === 'etapa',
+          bulkFunilAberto: this.state.bulkDd === 'funil',
+          toggleBulkEtq: () => this.setState(s => ({ bulkDd: s.bulkDd === 'etq' ? null : 'etq' })),
+          toggleBulkEtapa: () => this.setState(s => ({ bulkDd: s.bulkDd === 'etapa' ? null : 'etapa' })),
+          toggleBulkFunil: () => this.setState(s => ({ bulkDd: s.bulkDd === 'funil' ? null : 'funil' })),
+          bulkEtiquetas: Object.keys(TAG).map(nome => ({
+            nome, chip: tag(nome).style,
+            pegar: () => agir('Etiqueta "' + nome + '" aplicada a ' + n + (n === 1 ? ' negócio' : ' negócios')),
+          })),
+          bulkEtapas: f.etapas.map(e => ({
+            nome: e.titulo,
+            pegar: () => agir(n + (n === 1 ? ' negócio movido' : ' negócios movidos') + ' para ' + e.titulo),
+          })),
+          bulkFunis: ['Venda', 'Acompanhamento', 'Lista de espera', 'SAC / Cobrança'].filter(x => x !== FUNIS[this.state.funil].nome).map(nome => ({
+            nome,
+            pegar: () => agir(n + (n === 1 ? ' negócio movido' : ' negócios movidos') + ' para o funil ' + nome + ' — 1ª etapa'),
+          })),
+          bulkApagarNeg: () => agir(n + (n === 1 ? ' negócio apagado' : ' negócios apagados')),
+        };
+      })(),
       escolhaOpen: this.state.escolhaOpen,
       escolhas: [
-        { nome: 'Venda', icone: 'trending-up', sub: '11 etapas, do cadastro do cliente até Ganhos — o funil principal' },
+        { nome: 'Venda', icone: 'trending-up', sub: '12 etapas, do primeiro contato às recuperações e ao pedido — o funil principal' },
         { nome: 'Acompanhamento', icone: 'package-search', sub: '5 etapas para seguir o pedido dentro da indústria até faturar' },
         { nome: 'Lista de espera', icone: 'clock-3', sub: '6 etapas para produto sem estoque, do aviso à venda' },
         { nome: 'SAC / Cobrança', icone: 'life-buoy', sub: 'Tratativas de reclamação e título vencido até resolver' },

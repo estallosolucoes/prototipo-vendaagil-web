@@ -46,7 +46,8 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ goNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar representada</x-import>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:980px;display:grid;grid-template-columns:56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:1008px;display:grid;grid-template-columns:28px 56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todas as representadas" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Código</span>
@@ -56,7 +57,8 @@
 <span></span>
 </div>
 <sc-for list="{{ reps }}" as="r" hint-placeholder-count="4">
-<div style="min-width:980px;display:grid;grid-template-columns:56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC" onClick="{{ r.open }}">
+<div style="{{ r.rowStyle }}" style-hover="background:#FAFBFC" onClick="{{ r.open }}">
+<span onClick="{{ r.pare }}" style="display:grid;place-items:center"><input type="checkbox" checked="{{ r.sel }}" onChange="{{ r.marcar }}" aria-label="Selecionar {{ r.nome }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="width:40px;height:40px;border-radius:6px;background:#021226;color:#FFFFFF;display:grid;place-items:center;font:600 13px/1 'IBM Plex Sans'">{{ r.sigla }}</span>
 <span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ r.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ r.segmento }}</span></span>
 <span style="font:400 13px/1 'IBM Plex Mono',monospace;color:#454F5E">{{ r.codigo }}</span>
@@ -67,6 +69,18 @@
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<button onClick="{{ loteExportar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="download" style="font-size:13px"></i>Exportar seleção</button>
+<button onClick="{{ loteInativar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #7A3540;background:transparent;color:#F2A3AE;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="circle-off" style="font-size:13px"></i>Inativar</button>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toast }}</div>
+</sc-if>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ delOpen }}" onClose="{{ closeDel }}" title="Excluir representada" destructive="{{ true }}" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">Excluir <strong style="color:#021226">{{ delNome }}</strong> apaga também os produtos, tabelas de preço e o histórico de comissão dela. Os pedidos emitidos permanecem no arquivo. Esta ação não pode ser desfeita.</p>
@@ -83,7 +97,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { delOpen: false, delNome: '' };
+  state = { delOpen: false, delNome: '', sel: {}, toast: '' };
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -99,8 +118,31 @@ class Component extends DCLogic {
     ];
     return {
       btnProps: { style: { color: '#F3F3F3' } },
+      toast: this.state.toast,
+      ...(() => {
+        const chaves = data.map(r => r.nome);
+        const marcados = chaves.filter(k => this.state.sel[k]);
+        const n = marcados.length;
+        return {
+          selTodos: n > 0 && n === chaves.length,
+          toggleTodos: () => this.setState(() => {
+            const liga = marcados.length < chaves.length;
+            const m = {}; if (liga) chaves.forEach(k => { m[k] = true; });
+            return { sel: m };
+          }),
+          temSel: n > 0,
+          nSel: n + (n === 1 ? ' representada selecionada' : ' representadas selecionadas'),
+          limparSel: () => this.setState({ sel: {} }),
+          loteExportar: () => { this.setState({ sel: {} }); this.avisar('Exportação gerada com ' + n + (n === 1 ? ' representada' : ' representadas')); },
+          loteInativar: () => { this.setState({ sel: {} }); this.avisar(n + (n === 1 ? ' representada inativada' : ' representadas inativadas') + ' — some da emissão de pedidos'); },
+        };
+      })(),
       reps: data.map(r => ({
         ...r,
+        rowStyle: 'min-width:1008px;display:grid;grid-template-columns:28px 56px 1fr 120px 120px 150px 160px 48px;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer' + (this.state.sel[r.nome] ? ';background:#F8FAF1' : ''),
+        sel: !!this.state.sel[r.nome],
+        pare: (e) => e.stopPropagation(),
+        marcar: (e) => { e.stopPropagation(); this.setState(s => ({ sel: { ...s.sel, [r.nome]: !s.sel[r.nome] } })); },
         open: () => { location.href = 'representada-detalhe.dc.html'; },
         askDelete: (e) => { e.stopPropagation(); this.setState({ delOpen: true, delNome: r.nome }); },
       })),

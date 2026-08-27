@@ -53,8 +53,23 @@
 </div>
 <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
 <div style="flex:1;min-width:280px"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por nome ou código" value="{{ busca }}" onChange="{{ setBusca }}" hint-size="100%,40px"></x-import></div>
-<x-import component-from-global-scope="va-select" options="Todas as categorias|Cadeiras|Mesas|Armários|Gaveteiros" value="Todas as categorias" hint-size="220px,40px"></x-import>
-<x-import component-from-global-scope="va-select" options="Todos|Só visíveis|Só ocultos|Só promoções" value="Todos" hint-size="180px,40px"></x-import>
+<div style="position:relative">
+<button onClick="{{ toggleFiltros }}" aria-expanded="{{ filtrosOpen }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="sliders-horizontal" style="font-size:16px"></i>Filtros<sc-if value="{{ temFiltro }}" hint-placeholder-val="{{ false }}"><span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#78A614;color:#F3F3F3;font:600 11px/1 'IBM Plex Sans'">1</span></sc-if></button>
+<sc-if value="{{ filtrosOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:46px;right:0;z-index:120;width:280px;background:#FFFFFF;border-radius:10px;box-shadow:0 12px 32px rgba(2,18,38,.2);padding:14px;display:flex;flex-direction:column;gap:12px">
+<x-import component-from-global-scope="va-select" data-campo="cat" label="Categoria" options="Todas as categorias|Cadeiras|Mesas|Armários|Gaveteiros" value="{{ catFiltro }}" hint-size="100%,66px"></x-import>
+<div style="display:flex;justify-content:space-between;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" onClick="{{ limparFiltros }}" hint-size="auto,32px">Limpar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" onClick="{{ toggleFiltros }}" hint-size="auto,32px">Fechar</x-import>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+<sc-for list="{{ visFiltros }}" as="ft" hint-placeholder-count="4">
+<button onClick="{{ ft.pegar }}" style="{{ ft.style }}">{{ ft.nome }}</button>
+</sc-for>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
 <div style="min-width:900px;display:grid;grid-template-columns:56px 1fr 130px 140px 140px 120px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
@@ -88,8 +103,19 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { busca: '', off: { 7: true, 8: true } };
-  componentDidMount() { this.paint(); }
+  state = { busca: '', off: { 7: true, 8: true }, vis: 'Todos', cat: 'Todas as categorias', filtrosOpen: false };
+  componentDidMount() {
+    this.paint();
+    this._chg = (e) => {
+      const el = e.target;
+      if (!el || el.tagName !== 'VA-SELECT') return;
+      const campo = el.getAttribute('data-campo');
+      if (!campo) return;
+      this.setState({ [campo]: (e.detail && e.detail.value) || el.getAttribute('value') });
+    };
+    document.addEventListener('change', this._chg);
+  }
+  componentWillUnmount() { document.removeEventListener('change', this._chg); }
   componentDidUpdate() { this.paint(); }
   paint() {
     if (!window.lucide) { setTimeout(() => this.paint(), 120); return; }
@@ -110,11 +136,29 @@ class Component extends DCLogic {
       { id: 8, nome: 'Cadeira fixa interlocutor', codigo: 'MV-1105', icone: 'armchair', pack: 'cx 4 un', preco: 'R$ 189,90', promo: '—', destaque: false },
     ];
     const q = this.state.busca.trim().toLowerCase();
-    const lista = defs.filter(p => !q || p.nome.toLowerCase().includes(q) || p.codigo.toLowerCase().includes(q));
+    const CATS = { armchair: 'Cadeiras', 'table-2': 'Mesas', archive: 'Armários' };
+    const vis = this.state.vis;
+    const cat = this.state.cat;
+    const lista = defs.filter(p => (!q || p.nome.toLowerCase().includes(q) || p.codigo.toLowerCase().includes(q))
+      && (cat === 'Todas as categorias' || (CATS[p.icone] || 'Gaveteiros') === cat)
+      && (vis === 'Todos' || (vis === 'Só visíveis' && !this.state.off[p.id]) || (vis === 'Só ocultos' && this.state.off[p.id]) || (vis === 'Só promoções' && p.promo !== '—')));
     const ocultos = defs.filter(p => this.state.off[p.id]).length;
+    const chipOn = "display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;border:0;background:#021226;color:#F3F3F3;font:600 13px/1 'IBM Plex Sans';cursor:pointer";
+    const chipOff = "display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;border:1px solid #D6DCE5;background:#FFFFFF;color:#454F5E;font:500 13px/1 'IBM Plex Sans';cursor:pointer";
     return {
       busca: this.state.busca,
       setBusca: (v) => this.setState({ busca: typeof v === 'string' ? v : v.target.value }),
+      visFiltros: ['Todos', 'Só visíveis', 'Só ocultos', 'Só promoções'].map(nome => ({
+        nome,
+        style: vis === nome ? chipOn : chipOff,
+        pegar: () => this.setState({ vis: nome }),
+      })),
+      filtrosOpen: this.state.filtrosOpen,
+      toggleFiltros: () => this.setState(s => ({ filtrosOpen: !s.filtrosOpen })),
+      temFiltro: cat !== 'Todas as categorias',
+      catFiltro: cat,
+      setCat: (v) => this.setState({ cat: v && v.target ? v.target.value : v }),
+      limparFiltros: () => this.setState({ cat: 'Todas as categorias', filtrosOpen: false }),
       resumo: (defs.length - ocultos) + ' visíveis de ' + defs.length + ' produtos da tabela Varejo Sul 2026 · 2 em promoção',
       produtos: lista.map(p => {
         const on = !this.state.off[p.id];

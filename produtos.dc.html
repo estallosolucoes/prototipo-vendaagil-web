@@ -46,6 +46,39 @@
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <div style="position:relative">
+<button onClick="{{ toggleAcoes }}" aria-haspopup="true" aria-expanded="{{ acoesOpen }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="ellipsis" style="font-size:16px"></i>Mais ações<i data-lucide="chevron-down" style="font-size:14px;color:#7A8699"></i></button>
+<sc-if value="{{ acoesOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:46px;right:0;z-index:120;min-width:248px;background:#FFFFFF;border-radius:10px;box-shadow:0 12px 32px rgba(2,18,38,.2);padding:6px;display:flex;flex-direction:column;gap:1px">
+<sc-for list="{{ acoesMenu }}" as="am" hint-placeholder-count="5">
+<button onClick="{{ am.ir }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13.5px/1.2 'IBM Plex Sans';color:#021226;text-align:left" style-hover="background:#F2F8D4"><i data-lucide="{{ am.icone }}" style="font-size:16px;color:#5B6678"></i>{{ am.nome }}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="package-plus" onClick="{{ goNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar produto</x-import>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por código, nome, referência ou código de barras" hint-size="360px,40px"></x-import>
+<x-import component-from-global-scope="va-select" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="220px,40px"></x-import>
+<div style="position:relative">
+<button onClick="{{ toggleFiltrosProd }}" aria-expanded="{{ filtrosProdOpen }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="sliders-horizontal" style="font-size:16px"></i>Filtros<sc-if value="{{ temFiltroProd }}" hint-placeholder-val="{{ false }}"><span style="min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px;border-radius:999px;background:#78A614;color:#F3F3F3;font:600 11px/1 'IBM Plex Sans'">{{ nFiltrosProd }}</span></sc-if></button>
+<sc-if value="{{ filtrosProdOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:46px;left:0;z-index:120;width:280px;background:#FFFFFF;border-radius:10px;box-shadow:0 12px 32px rgba(2,18,38,.2);padding:14px;display:flex;flex-direction:column;gap:12px">
+<x-import component-from-global-scope="va-select" label="Categoria" options="Todas as categorias|Cadeiras|Mesas|Armários|Estações" value="{{ catFiltroProd }}" onChange="{{ setCatProd }}" hint-size="100%,66px"></x-import>
+<label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+<input type="checkbox" checked="{{ soPromoProd }}" onChange="{{ togglePromoProd }}" style="width:18px;height:18px;accent-color:#78A614">
+<span style="font:400 13.5px/1.3 'IBM Plex Sans'">Só produtos em promoção</span>
+</label>
+<div style="display:flex;justify-content:space-between;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="ghost" size="sm" onClick="{{ limparFiltrosProd }}" hint-size="auto,32px">Limpar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" onClick="{{ toggleFiltrosProd }}" hint-size="auto,32px">Fechar</x-import>
+</div>
+</div>
+</sc-if>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+<div style="position:relative">
 <button onClick="{{ toggleCols }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="columns-3" style="font-size:16px"></i>Colunas</button>
 <sc-if value="{{ colsOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;top:46px;right:0;z-index:120;width:264px;background:#FFFFFF;border-radius:10px;box-shadow:0 12px 32px rgba(2,18,38,.2);padding:10px;display:flex;flex-direction:column;gap:2px">
@@ -61,21 +94,10 @@
 </div>
 </sc-if>
 </div>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="percent" onClick="{{ abrirReajuste }}" hint-size="auto,40px">Reajustar preços</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="images" onClick="{{ abrirFotos }}" hint-size="auto,40px">Importar fotos</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="upload" onClick="{{ goImportar }}" hint-size="auto,40px">Importar produtos</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="package-plus" onClick="{{ goNovo }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Cadastrar produto</x-import>
-</div>
-</div>
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.SearchField" placeholder="Buscar por código, nome, referência ou código de barras" hint-size="360px,40px"></x-import>
-<x-import component-from-global-scope="va-select" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="220px,40px"></x-import>
-<button style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="factory" style="font-size:16px"></i>Móveis Vale<i data-lucide="chevron-down" style="font-size:14px;color:#7A8699"></i></button>
-<button style="display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:6px;border:1px solid #CFD6E1;background:#FFFFFF;cursor:pointer;font:500 13.5px/1 'IBM Plex Sans';color:#454F5E" style-hover="background:#F2F4F7"><i data-lucide="tag" style="font-size:16px"></i>Todas as categorias<i data-lucide="chevron-down" style="font-size:14px;color:#7A8699"></i></button>
-<div style="margin-left:auto;display:inline-flex;padding:2px;gap:2px;background:#E4E8EF;border-radius:6px">
+<div style="display:inline-flex;padding:2px;gap:2px;background:#E4E8EF;border-radius:6px">
 <button onClick="{{ verGrade }}" style="{{ gradeBtn }}"><i data-lucide="layout-grid" style="font-size:15px"></i>Grade</button>
 <button onClick="{{ verTabela }}" style="{{ tabelaBtn }}"><i data-lucide="rows-3" style="font-size:15px"></i>Tabela</button>
+</div>
 </div>
 </div>
 <sc-if value="{{ grade }}" hint-placeholder-val="{{ true }}">
@@ -128,7 +150,7 @@
 <x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Alcance" options="Todos os produtos (184)|Só a categoria Cadeiras e poltronas (34)|Só os em promoção (6)" value="Todos os produtos (184)" hint-size="100%,66px"></x-import>
 </div>
-<div style="display:flex;align-items:end;gap:12px;flex-wrap:wrap">
+<div style="display:flex;align-items:start;gap:12px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Reajuste" suffix="%" numeric="{{ true }}" value="{{ pct }}" onInput="{{ setPct }}" help="Use negativo para reduzir" hint-size="150px,88px"></x-import>
 <x-import component-from-global-scope="va-select" label="Arredondamento" options="Sem arredondar|Terminar em ,90|Terminar em ,00" value="Terminar em ,90" hint-size="200px,66px"></x-import>
 </div>
@@ -232,13 +254,49 @@
 </div>
 </div>
 </x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ confOpen }}" onClose="{{ fecharConfig }}" title="Configurações de produtos" subtitle="Categorias e grades da representada" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:flex;gap:4px;border-bottom:1px solid #CFD6E1">
+<button onClick="{{ verConfCategorias }}" style="{{ confCatTab }}">Categorias</button>
+<button onClick="{{ verConfGrades }}" style="{{ confGradeTab }}">Grades</button>
+</div>
+<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<sc-if value="{{ confEhCategorias }}" hint-placeholder-val="{{ true }}">
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Categorias são da representada — arraste para reordenar o catálogo.</span>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ confCategorias }}" as="cc" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid #EDF0F5">
+<span style="color:#B9C1CE;cursor:grab;display:grid;place-items:center"><i data-lucide="grip-vertical" style="font-size:15px"></i></span>
+<span style="flex:1;font:500 13.5px/1.3 'IBM Plex Sans'">{{ cc.nome }}</span>
+<span style="font:400 12.5px/1 'IBM Plex Sans';color:#5B6678;font-variant-numeric:tabular-nums">{{ cc.uso }}</span>
+<button aria-label="Editar categoria" title="Editar categoria" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Nova categoria</x-import>
+</sc-if>
+<sc-if value="{{ confEhGrades }}" hint-placeholder-val="{{ false }}">
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Grades de variação — tamanho e cor — usadas nos produtos da representada.</span>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ confGrades }}" as="cg" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid #EDF0F5">
+<span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ cg.nome }}</span><span style="font:400 12px/1.4 'IBM Plex Sans';color:#5B6678">{{ cg.sub }}</span></span>
+<span style="font:400 12.5px/1 'IBM Plex Sans';color:#5B6678;font-variant-numeric:tabular-nums">{{ cg.uso }}</span>
+<button aria-label="Editar grade" title="Editar grade" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Nova grade</x-import>
+</sc-if>
+</div>
+</x-import>
 </main>
 </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { grade: true, prevOpen: false, prev: null, sel: {}, toast: '', reajusteOpen: false, fotosOpen: false, fotosSoltas: false, pct: '6,50' };
+  state = { grade: true, confOpen: false, confAba: 'categorias', filtrosProdOpen: false, catF: 'Todas as categorias', soPromo: false, prevOpen: false, prev: null, sel: {}, toast: '', reajusteOpen: false, fotosOpen: false, fotosSoltas: false, pct: '6,50' };
   brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
   avisar(msg) {
     this.setState({ toast: msg });
@@ -268,6 +326,44 @@ class Component extends DCLogic {
     const nSel = Object.values(this.state.sel).filter(Boolean).length;
     return {
       btnProps: { style: { color: '#F3F3F3' } },
+      filtrosProdOpen: this.state.filtrosProdOpen,
+      toggleFiltrosProd: () => this.setState(s => ({ filtrosProdOpen: !s.filtrosProdOpen })),
+      temFiltroProd: this.state.catF !== 'Todas as categorias' || this.state.soPromo,
+      nFiltrosProd: (this.state.catF !== 'Todas as categorias' ? 1 : 0) + (this.state.soPromo ? 1 : 0),
+      catFiltroProd: this.state.catF,
+      setCatProd: (v) => this.setState({ catF: v && v.target ? v.target.value : v }),
+      soPromoProd: this.state.soPromo,
+      togglePromoProd: () => this.setState(s => ({ soPromo: !s.soPromo })),
+      limparFiltrosProd: () => this.setState({ catF: 'Todas as categorias', soPromo: false, filtrosProdOpen: false }),
+      acoesOpen: !!this.state.acoesOpen,
+      toggleAcoes: () => this.setState(s => ({ acoesOpen: !s.acoesOpen })),
+      acoesMenu: [
+        { nome: 'Configurações de produtos', icone: 'settings-2', abrir: () => this.setState({ confOpen: true, acoesOpen: false }) },
+        { nome: 'Exportar', icone: 'download', abrir: () => this.setState({ expOpen: true, acoesOpen: false }) },
+        { nome: 'Reajustar preços', icone: 'percent', abrir: () => this.setState({ reajusteOpen: true, acoesOpen: false }) },
+        { nome: 'Importar fotos', icone: 'images', abrir: () => this.setState({ fotosOpen: true, acoesOpen: false }) },
+        { nome: 'Importar produtos', icone: 'upload', abrir: () => { location.href = 'importacao-nova.dc.html'; } },
+      ].map(a => ({ nome: a.nome, icone: a.icone, ir: a.abrir })),
+      confOpen: this.state.confOpen,
+      abrirConfig: () => this.setState({ confOpen: true }),
+      fecharConfig: () => this.setState({ confOpen: false }),
+      confEhCategorias: this.state.confAba === 'categorias',
+      confEhGrades: this.state.confAba === 'grades',
+      verConfCategorias: () => this.setState({ confAba: 'categorias' }),
+      verConfGrades: () => this.setState({ confAba: 'grades' }),
+      confCatTab: "height:38px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:" + (this.state.confAba === 'categorias' ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:" + (this.state.confAba === 'categorias' ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (this.state.confAba === 'categorias' ? '#628A11' : 'transparent') + ';margin-bottom:-1px',
+      confGradeTab: "height:38px;padding:0 14px;border:0;background:transparent;cursor:pointer;font:" + (this.state.confAba === 'grades' ? '600' : '500') + " 13.5px/1 'IBM Plex Sans';color:" + (this.state.confAba === 'grades' ? '#021226' : '#5B6678') + ';border-bottom:3px solid ' + (this.state.confAba === 'grades' ? '#628A11' : 'transparent') + ';margin-bottom:-1px',
+      confCategorias: [
+        { nome: 'Cadeiras e poltronas', uso: '34 produtos' },
+        { nome: 'Mesas e estações', uso: '28 produtos' },
+        { nome: 'Armários e arquivos', uso: '19 produtos' },
+        { nome: 'Recepção e espera', uso: '11 produtos' },
+        { nome: 'Acessórios', uso: '7 produtos' },
+      ],
+      confGrades: [
+        { nome: 'Cadeiras — cor × braços', sub: 'cores Preta, Grafite, Azul royal · com/sem braços', uso: '12 produtos' },
+        { nome: 'Mesas — acabamento', sub: 'nogueira, carvalho, branco', uso: '9 produtos' },
+      ],
       expOpen: !!this.state.expOpen,
       abrirExportar: () => this.setState({ expOpen: true }),
       fecharExportar: () => this.setState({ expOpen: false }),
@@ -294,7 +390,7 @@ class Component extends DCLogic {
       tabelaBtn: !this.state.grade ? segOn : segOff,
       verGrade: () => this.setState({ grade: true }),
       verTabela: () => this.setState({ grade: false }),
-      produtos: data.map(p => ({
+      produtos: data.filter(p => (this.state.catF === 'Todas as categorias' || p.categoria === this.state.catF) && (!this.state.soPromo || p.promo)).map(p => ({
         ...p,
         sel: !!this.state.sel[p.codigo],
         pare: (e) => e.stopPropagation(),

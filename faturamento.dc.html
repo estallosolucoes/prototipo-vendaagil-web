@@ -46,8 +46,8 @@
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="file-plus-2" onClick="{{ abrirLancar }}" hint-size="auto,40px">Lançar um pedido</x-import>
-<a href="faturamento-lote.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="layers" dc-props="{{ btnProps }}" hint-size="auto,40px">Lançar em lote</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="file-plus-2" onClick="{{ abrirLancar }}" hint-size="auto,40px">Faturar um pedido</x-import>
+<a href="faturamento-lote.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="layers" dc-props="{{ btnProps }}" hint-size="auto,40px">Faturar em lote</x-import></a>
 </div>
 </div>
 <div data-va-kpis="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px">
@@ -59,7 +59,7 @@
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Emitido aguardando faturar</span>
 <span style="font:600 28px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 63.180,00</span>
-<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">7 pedidos na fila das indústrias · <a href="faturamento-lote.dc.html" style="font-weight:500;text-decoration:none">lançar em lote</a></span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">7 pedidos na fila das indústrias · <a href="faturamento-lote.dc.html" style="font-weight:500;text-decoration:none">faturar em lote</a></span>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Corte médio do mês</span>
@@ -73,7 +73,8 @@
 <x-import component-from-global-scope="va-select" options="Agosto de 2026|Julho de 2026|Junho de 2026" value="Agosto de 2026" hint-size="180px,40px"></x-import>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:1060px;display:grid;grid-template-columns:110px 90px 1fr 180px 130px 130px 90px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:1088px;display:grid;grid-template-columns:28px 110px 90px 1fr 180px 130px 130px 90px 110px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todas as notas" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Nota fiscal</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Pedido</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Cliente</span>
@@ -84,7 +85,8 @@
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Data</span>
 </div>
 <sc-for list="{{ notas }}" as="n" hint-placeholder-count="7">
-<div style="min-width:1060px;display:grid;grid-template-columns:110px 90px 1fr 180px 130px 130px 90px 110px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5">
+<div style="{{ n.rowStyle }}">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ n.sel }}" onChange="{{ n.marcar }}" aria-label="Selecionar nota {{ n.nf }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:500 13px/1 'IBM Plex Mono',monospace">{{ n.nf }}</span>
 <a href="pedido-detalhe.dc.html" style="font:500 13px/1 'IBM Plex Mono',monospace;text-decoration:none" style-hover="text-decoration:underline">{{ n.pedido }}</a>
 <span style="font:600 14px/1.3 'IBM Plex Sans';white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ n.cliente }}</span>
@@ -96,6 +98,18 @@
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<button onClick="{{ loteExportar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="download" style="font-size:13px"></i>Exportar seleção</button>
+<button onClick="{{ loteImprimir }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="printer" style="font-size:13px"></i>Imprimir notas</button>
+</div>
+</sc-if>
+<sc-if value="{{ toastLote }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastLote }}</div>
+</sc-if>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ lancarOpen }}" onClose="{{ fechar }}" title="Lançar faturamento — pedido 4.812" size="lg" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
@@ -128,27 +142,27 @@
 </div>
 </div>
 <sc-if value="{{ temCorte }}" hint-placeholder-val="{{ false }}">
-<div style="display:flex;gap:12px;padding:12px 14px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF;align-items:end;flex-wrap:wrap">
-<div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:200px">
-<span style="display:flex;align-items:center;gap:6px;font:600 13.5px/1.3 'IBM Plex Sans';color:#8A5B00"><i data-lucide="triangle-alert" style="font-size:15px"></i>Corte de {{ cortePct }} — {{ corteValor }}</span>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#021226">O motivo sai no relatório de cortes por representada.</span>
-</div>
-<x-import component-from-global-scope="va-select" label="Motivo do corte" options="Sem estoque na indústria|Crédito recusado|Item fora de linha|Erro no pedido|Outro" value="Sem estoque na indústria" hint-size="240px,66px"></x-import>
-</div>
-</sc-if>
-<div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid #E4E8EF;padding-top:12px">
+<div style="display:flex;flex-direction:column;gap:12px;padding:12px 14px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF">
+<span style="display:flex;align-items:center;gap:6px;font:600 13.5px/1.3 'IBM Plex Sans';color:#8A5B00"><i data-lucide="triangle-alert" style="font-size:15px"></i>Faturou {{ corteValor }} a menos que o pedido ({{ cortePct }}) — o que fazer com a diferença?</span>
+<div style="display:flex;flex-direction:column;gap:8px">
 <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
-<input type="checkbox" checked="{{ gerarCob }}" onChange="{{ toggleCob }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px">
-<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Gerar cobranças pela condição do pedido — 30/60/90 · boleto</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Três títulos criados em Contas a receber, sobre o valor faturado</span></span>
+<input type="radio" name="destino-dif" checked="{{ ehCorte }}" onChange="{{ pegarCorte }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Registrar como corte</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">O pedido encerra e o motivo sai no relatório de cortes por representada</span></span>
 </label>
-<sc-if value="{{ gerarCob }}" hint-placeholder-val="{{ true }}">
-<div style="display:flex;gap:8px;flex-wrap:wrap;padding-left:28px">
-<sc-for list="{{ parcelas }}" as="pc" hint-placeholder-count="3">
-<span style="display:inline-flex;flex-direction:column;gap:2px;border:1px solid #E4E8EF;border-radius:6px;padding:8px 12px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">{{ pc.venc }}</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ pc.valor }}</span></span>
-</sc-for>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="destino-dif" checked="{{ ehParcial }}" onChange="{{ pegarParcial }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Faturamento parcial — manter o saldo em aberto</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">O pedido continua em "Emitido aguardando faturar" com o saldo, para a próxima nota</span></span>
+</label>
 </div>
+<sc-if value="{{ ehCorte }}" hint-placeholder-val="{{ true }}">
+<x-import component-from-global-scope="va-select" label="Motivo do corte" options="Sem estoque na indústria|Crédito recusado|Item fora de linha|Erro no pedido|Outro" value="Sem estoque na indústria" hint-size="240px,66px"></x-import>
+</sc-if>
+<sc-if value="{{ ehParcial }}" hint-placeholder-val="{{ false }}">
+<span style="display:flex;align-items:center;gap:6px;font:400 12.5px/1.5 'IBM Plex Sans';color:#021226"><i data-lucide="info" style="font-size:14px;color:#0C477B"></i>Saldo de <strong>{{ corteValor }}</strong> fica aguardando faturar no pedido 4.812 — lance a próxima nota por aqui mesmo.</span>
 </sc-if>
 </div>
+</sc-if>
+<span style="display:flex;align-items:center;gap:6px;border-top:1px solid #E4E8EF;padding-top:12px;font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678"><i data-lucide="info" style="font-size:14px;color:#7A8699"></i>A cobrança do cliente é feita pela própria indústria — aqui você só registra o que foi faturado para apurar corte e comissão.</span>
 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #E4E8EF;padding-top:14px;flex-wrap:wrap">
 <span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Total faturado</span><span style="font:600 18px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ totalFat }}</span></span>
 <div style="display:flex;gap:8px">
@@ -184,7 +198,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { lancarOpen: false, gerarCob: true, qtds: { 0: 12, 1: 4, 2: 6 } };
+  state = { lancarOpen: false, gerarCob: true, destino: 'corte', qtds: { 0: 12, 1: 4, 2: 6 }, sel: {}, toastLote: '' };
+  avisar(msg) {
+    this.setState({ toastLote: msg });
+    clearTimeout(this._tl);
+    this._tl = setTimeout(() => this.setState({ toastLote: '' }), 2600);
+  }
   brl(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
@@ -229,12 +248,35 @@ class Component extends DCLogic {
             setQ: (e) => this.setState(s => ({ qtds: { ...s.qtds, [i]: Math.min(d.qPedido, Math.max(0, parseInt(e.target.value, 10) || 0)) } })),
           })),
           temCorte: corte > 0.005,
+          ehCorte: this.state.destino === 'corte',
+          ehParcial: this.state.destino === 'parcial',
+          pegarCorte: () => this.setState({ destino: 'corte' }),
+          pegarParcial: () => this.setState({ destino: 'parcial' }),
           cortePct: (corte / totPedido * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%',
           corteValor: this.brl(corte),
           totalFat: this.brl(totFat),
           gerarCob: this.state.gerarCob,
           toggleCob: () => this.setState(s => ({ gerarCob: !s.gerarCob })),
           parcelas: ['13/09', '13/10', '12/11'].map(venc => ({ venc, valor: this.brl(parcela) })),
+        };
+      })(),
+      toastLote: this.state.toastLote,
+      ...(() => {
+        const chaves = ['184.220', '184.187', '52.401', '184.102', '9.884', '52.377', '31.240'];
+        const marcados = chaves.filter(k => this.state.sel[k]);
+        const n = marcados.length;
+        return {
+          selTodos: n > 0 && n === chaves.length,
+          toggleTodos: () => this.setState(() => {
+            const liga = marcados.length < chaves.length;
+            const m = {}; if (liga) chaves.forEach(k => { m[k] = true; });
+            return { sel: m };
+          }),
+          temSel: n > 0,
+          nSel: n + (n === 1 ? ' nota selecionada' : ' notas selecionadas'),
+          limparSel: () => this.setState({ sel: {} }),
+          loteExportar: () => { this.setState({ sel: {} }); this.avisar('Exportação gerada com ' + n + (n === 1 ? ' nota' : ' notas')); },
+          loteImprimir: () => { this.setState({ sel: {} }); this.avisar('PDF de ' + n + (n === 1 ? ' nota gerado' : ' notas gerado') + ' para impressão'); },
         };
       })(),
       notas: [
@@ -245,7 +287,12 @@ class Component extends DCLogic {
         { nf: '9.884', pedido: '4.801', cliente: 'Depósito São Jorge', rep: 'Estofados Rio Claro', vPedido: 'R$ 22.150,00', vFat: 'R$ 20.377,00', corte: '8%', corteStyle: medio, data: '02/08/2026' },
         { nf: '52.377', pedido: '4.798', cliente: 'Comercial Vitória', rep: 'Colchões Andorra', vPedido: 'R$ 5.030,00', vFat: 'R$ 5.030,00', corte: '0%', corteStyle: ok, data: '01/08/2026' },
         { nf: '31.240', pedido: '4.796', cliente: 'Casa & Lar Móveis', rep: 'Metalúrgica Precisão', vPedido: 'R$ 7.480,00', vFat: 'R$ 7.106,00', corte: '5%', corteStyle: medio, data: '01/08/2026' },
-      ],
+      ].map(n => ({
+        ...n,
+        rowStyle: 'min-width:1088px;display:grid;grid-template-columns:28px 110px 90px 1fr 180px 130px 130px 90px 110px;gap:12px;align-items:center;padding:13px 20px;border-bottom:1px solid #EDF0F5' + (this.state.sel[n.nf] ? ';background:#F8FAF1' : ''),
+        sel: !!this.state.sel[n.nf],
+        marcar: () => this.setState(s => ({ sel: { ...s.sel, [n.nf]: !s.sel[n.nf] } })),
+      })),
     };
   }
 }

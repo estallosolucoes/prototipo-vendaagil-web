@@ -84,6 +84,50 @@
 </div>
 </div>
 </div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Modelo de preço</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Como esta indústria monta os preços — define o comportamento das tabelas na emissão</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="modelo-preco" checked="{{ ehTabelaUnica }}" onChange="{{ pegarUnica }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Tabela única</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Um preço só — o que varia é o desconto concedido</span></span>
+</label>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="modelo-preco" checked="{{ ehEscada }}" onChange="{{ pegarEscada }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Escada por valor de pedido</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Até 10 tabelas, cada uma com valor mínimo próprio — o mesmo produto fica mais barato a cada degrau</span></span>
+</label>
+</div>
+<sc-if value="{{ ehEscada }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #E4E8EF;padding-top:12px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Degraus da escada</span>
+<sc-for list="{{ degraus }}" as="d" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E8EF;border-radius:6px;padding:10px 14px;font:400 13.5px/1.4 'IBM Plex Sans'"><span>{{ d.nome }}</span><span style="font-variant-numeric:tabular-nums;color:#5B6678">{{ d.regra }}</span></div>
+</sc-for>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Adicionar degrau</x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">No modelo escada, o desconto por volume já está no preço da tabela — ele não entra na conta da comissão por faixa.</span>
+</div>
+</sc-if>
+</div>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Comissão por faixa de desconto concedido</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">A faixa é definida pelo desconto médio manual do pedido inteiro. A grade pode ser sobrescrita por tabela de preço e pela condição especial do cliente.</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 120px;gap:8px;align-items:center;max-width:520px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Desconto de</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">até</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Comissão</span>
+<sc-for list="{{ faixasComissao }}" as="f" hint-placeholder-count="4">
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ f.de }}</span>
+<span style="font:400 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ f.ate }}</span>
+<span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right;color:#365E10">{{ f.com }}</span>
+</sc-for>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" hint-size="auto,36px">Adicionar faixa</x-import>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Ordem de resolução: condição especial do cliente → faixa da tabela de preço → esta grade → % do vendedor → percentual padrão acima.</span>
+</div>
 <div data-va-half="" style="display:grid;grid-template-columns:var(--va-g2,1fr 1fr);gap:16px;align-items:start">
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px">
 <div style="display:flex;flex-direction:column;gap:2px">
@@ -124,7 +168,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { buscando: false, buscou: false, base: 'Líquido, sem IPI e sem ST', toast: '' };
+  state = { buscando: false, buscou: false, base: 'Líquido, sem IPI e sem ST', modeloPreco: 'escada', toast: '' };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -162,6 +206,22 @@ class Component extends DCLogic {
         on: this.state.base === x.nome,
         pegar: () => this.setState({ base: x.nome }),
       })),
+      ehTabelaUnica: this.state.modeloPreco === 'unica',
+      ehEscada: this.state.modeloPreco === 'escada',
+      pegarUnica: () => this.setState({ modeloPreco: 'unica' }),
+      pegarEscada: () => this.setState({ modeloPreco: 'escada' }),
+      degraus: [
+        { nome: 'Degrau 1 — a partir de R$ 500,00', regra: 'preço cheio' },
+        { nome: 'Degrau 2 — a partir de R$ 1.000,00', regra: '−2,00%' },
+        { nome: 'Degrau 3 — a partir de R$ 1.500,00', regra: '−3,50%' },
+        { nome: 'Degrau 10 — acima de R$ 20.000,00', regra: '−12,00%' },
+      ],
+      faixasComissao: [
+        { de: '0,0%', ate: '5,0%', com: '10%' },
+        { de: '5,1%', ate: '10,0%', com: '8%' },
+        { de: '10,1%', ate: '20,0%', com: '5%' },
+        { de: 'acima de 30,0%', ate: '—', com: '3%' },
+      ],
       subirLogo: () => this.avisar('Escolha o arquivo — o recorte quadrado é ajustado na hora'),
       voltar: () => { location.href = 'representadas.dc.html'; },
       toast: !!this.state.toast,

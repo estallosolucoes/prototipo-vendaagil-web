@@ -107,3 +107,31 @@ Referências comerciais/bancárias em cards 2 col (ícone, nome, sub, lixeira co
 
 ## 9. Breakpoints (módulo)
 Todas as listas seguem §F 3.6 (scroll no card, paginação 25). T: colunas laterais descem. M/L: formulários 1 coluna, grids de endereço empilham, modais bottom sheet. XS: tabelas mantêm scroll-x; botões de cabeçalho empilham full-width.
+
+## Adendo — 26/08/2026 (rodada de ajustes com o representante)
+### Cliente (cliente-cadastro)
+- **Transportadora do cliente** (select no card Comercial) — usada principalmente no FOB, pré-preenchida na emissão.
+- **Marcação B2B no cliente**: checkbox "Este cliente usa o catálogo B2B" junto às tabelas vinculadas — o link do catálogo mostra os preços da tabela dele.
+- **Desconto por condição de pagamento** (vínculo separado da tabela): cada condição marcada pode ter desconto sobre a tabela (ex.: À vista · PIX −3,00%). Não é faixa por volume; é desconto atrelado ao prazo.
+- **Condição especial negociada** (card + modal): por representada; desconto especial %, comissão %, prazo, quem autorizou, validade opcional. Sobrepõe tabela e grade de comissão.
+### Representada (representada-cadastro)
+- **Modelo de preço**: radio "Tabela única" (varia só o desconto) × "Escada por valor de pedido" (até 10 degraus com valor mínimo próprio; degraus listados + adicionar). No modelo escada o desconto por volume já está no preço.
+- **Comissão por faixa de desconto concedido**: grade 0–5%→10 · 5,1–10%→8 · 10,1–20%→5 · acima de 30%→3 (editável, + faixa). Sobrescrevível por tabela de preço e por condição especial do cliente.
+### Tabelas de preço
+- Estrutura por **curva × varejo/atacado × CIF/FOB é nomenclatura** (coluna Modalidade na lista; curva/público/modalidade no passo Nome da criação). **A escolha da tabela no pedido é manual — o frete nunca troca tabela.**
+- Edição da tabela: drawer **"Comissão por faixa"** com checkbox "Sobrescrever a grade da representada".
+### Produtos
+- Cabeçalho enxuto: só **Cadastrar produto** (primário) + botão **"⋯ Mais ações"** (menu: Configurações de produtos, Exportar, Reajustar preços, Importar fotos, Importar produtos). **Colunas** foi para a barra de filtros, junto do Grade/Tabela.
+- **Configurações de produtos** (drawer, abas Categorias e Grades, por representada) — movidas dos cadastros auxiliares.
+### Cadastros auxiliares
+- Ficam só **Segmentos e Rotas**. Categorias e Grades vivem em Produtos → Configurações de produtos.
+### Menu lateral
+- **Clientes saiu de Vendas e entrou em Cadastros** (após Representadas). Vendas: Pedidos e Catálogo B2B.
+### Importações
+- O modelo baixado acompanha o tipo: modelo-clientes / modelo-produtos / **modelo-tabela-de-preco** / modelo-faturamento (.xlsx).
+
+## Adendo — 27/08/2026 · Modelo de preço da representada (regra fechada)
+- representada-detalhe ganhou aba "Preço e comissão" com: (1) Modelo de preço — Tabela única (desconto por volume via faixas progressivas da tabela) OU Escada por valor de pedido (até 10 tabelas, cada uma com valor mínimo próprio; desconto por volume embutido no preço); (2) Grade padrão de comissão por desconto — vale para todas as tabelas da representada; a grade da tabela sobrescreve.
+- Faixas progressivas × escada são ALTERNATIVAS, nunca somam: modelo única → faixas progressivas; modelo escada → sem faixas (botão desabilitado na tabela-edicao com tooltip). Desconto embutido da escada não entra na faixa de comissão (só o desconto manual).
+- tabela-edicao: campo "Valor mínimo do pedido" visível quando a representada usa escada. tabelas-preco: coluna "Mínimo do pedido", escada ordenada do menor mínimo para o maior (Móveis Vale: Tabela 1 R$500 → Tabela 10 R$20.000).
+- pedidos-novo (escada): a tabela troca SOZINHA quando o pedido cruza o mínimo da seguinte — toast "Pedido passou de R$ 1.000 — agora na Tabela 2. Preços atualizados." (e o inverso ao cair) + indicador no contexto "Faltam R$ X para a Tabela N (−Y% no preço)". Única troca automática de tabela do sistema; frete nunca troca tabela.

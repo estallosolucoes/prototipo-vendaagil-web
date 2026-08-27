@@ -139,9 +139,9 @@ class Component extends DCLogic {
   }
   renderVals() {
     const P = {
-      pedidos: 'vendas', clientes: 'vendas', catalogo: 'vendas',
-      representadas: 'cadastros', produtos: 'cadastros', tabelas: 'cadastros', condicoes: 'cadastros', transportadoras: 'cadastros', auxiliares: 'cadastros',
-      faturamento: 'financeiro', comissoes: 'financeiro', receber: 'financeiro',
+      pedidos: 'vendas', catalogo: 'vendas',
+      representadas: 'cadastros', clientes: 'cadastros', produtos: 'cadastros', tabelas: 'cadastros', condicoes: 'cadastros', transportadoras: 'cadastros', auxiliares: 'cadastros',
+      faturamento: 'financeiro', comissoes: 'financeiro', despesas: 'financeiro',
       vendedores: 'equipe', equipes: 'equipe', metas: 'equipe',
       negocios: 'crm', contatos: 'crm', conversas: 'crm', tarefas: 'crm', crmconfig: 'crm',
     };
@@ -180,10 +180,10 @@ class Component extends DCLogic {
       { id: 'painel', icon: 'layout-dashboard', label: 'Painel', href: 'painel.dc.html' },
       { id: 'vendas', icon: 'clipboard-list', label: 'Vendas', badge: 3, items: [
         { id: 'pedidos', label: 'Pedidos', href: 'pedidos.dc.html', badge: 3 },
-        { id: 'clientes', label: 'Clientes', href: 'clientes.dc.html' },
         { id: 'catalogo', label: 'Catálogo B2B', href: 'catalogo.dc.html' } ] },
       { id: 'cadastros', icon: 'package', label: 'Cadastros', items: [
         { id: 'representadas', label: 'Representadas', href: 'representadas.dc.html' },
+        { id: 'clientes', label: 'Clientes', href: 'clientes.dc.html' },
         { id: 'produtos', label: 'Produtos', href: 'produtos.dc.html' },
         { id: 'tabelas', label: 'Tabelas de preço', href: 'tabelas-preco.dc.html' },
         { id: 'condicoes', label: 'Condições de pagamento', href: 'condicoes-pagamento.dc.html' },
@@ -192,7 +192,7 @@ class Component extends DCLogic {
       { id: 'financeiro', icon: 'receipt', label: 'Financeiro', items: [
         { id: 'faturamento', label: 'Faturamento', href: 'faturamento.dc.html' },
         { id: 'comissoes', label: 'Comissões', href: 'comissoes.dc.html' },
-        { id: 'receber', label: 'Contas a receber', href: 'contas-receber.dc.html' } ] },
+        { id: 'despesas', label: 'Despesas', href: 'despesas.dc.html' } ] },
       { id: 'equipe', icon: 'users-round', label: 'Equipe', items: [
         { id: 'vendedores', label: 'Vendedores', href: 'vendedores.dc.html' },
         { id: 'equipes', label: 'Equipes', href: 'equipes.dc.html' },

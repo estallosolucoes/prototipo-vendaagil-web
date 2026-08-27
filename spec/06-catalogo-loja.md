@@ -66,3 +66,6 @@ Base já é mobile (420px). ≥768px: coluna central mantém 420–480px centrad
 - Carrinho persiste por dispositivo (localStorage) até enviar ou 7 dias.
 - Preços sempre da tabela vinculada à loja; promoção expira sozinha na data.
 - Pedido enviado abaixo do mínimo é impossível pela UI; se a tabela mudar entre carrinho e envio, recalcula e avisa banner âmbar antes de enviar.
+
+## Adendo — 26/08/2026
+- Loja mobile: os chips de categoria **quebram linha** (flex-wrap) em vez de rolar na horizontal — corrige o embaralhamento em telas pequenas.

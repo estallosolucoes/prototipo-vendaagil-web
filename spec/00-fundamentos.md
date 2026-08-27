@@ -170,3 +170,32 @@ Ordem: Início · Pedidos · Cadastros · Financeiro · Equipe · CRM · Relató
 | Mover (etapa/funil/coluna) | Toast "Movido para {destino}" |
 | Ação em massa | Toast "{n} itens {ação}" |
 | Falha de rede | Toast de erro "Não foi possível concluir — tente novamente", estado anterior preservado |
+
+## Adendo — 26/08/2026
+- **Ícones em botões**: correção global (style-refix.js) — o span .va-icon do DS agora centraliza o svg verticalmente (align-items/justify-content center); vale para todos os botões com ícone do sistema.
+- **Padrão "Mais ações"**: quando o cabeçalho de uma lista acumula 4+ ações secundárias, colapsar em um botão "⋯ Mais ações" com chevron, mantendo só a ação primária aparente (aplicado em Produtos).
+- **Navegação**: Clientes movido do grupo Vendas para Cadastros; Cadastros auxiliares reduzido a Segmentos e Rotas.
+
+## Adendo — 26/08/2026 · Regra única de filtros (4 níveis)
+1. **Busca** — SearchField sempre à esquerda da barra.
+2. **Contexto** — no máximo 2 selects diretos na barra, só para Período/mês e Representada.
+3. **Status** — chips com contagem, mutuamente exclusivos (Todos + 2-4 estados). Ex.: Comissões, Acessos do catálogo, Templates, visibilidade no catálogo.
+4. **Todo o resto** — um único botão "Filtros" (ícone sliders-horizontal) com contador verde de ativos, abrindo painel com selects + Limpar/Fechar. Nunca selects categóricos soltos na barra.
+Aplicado em: catalogo-acessos, crm-templates, catalogo-produtos (chips + Filtros), transportadoras (UF → Filtros), crm-contatos (papel → Filtros), produtos (categoria/promoção → Filtros). Já conformes: pedidos, clientes, crm-negocios, faturamento, comissões, loja.
+
+## Adendo — 26/08/2026 · Campo monetário global
+- Todo input com prefixo **R$** (DS Input com prefix, span irmão "R$" ou marcador data-money) recebe máscara de centavos automática e delegada (implementada uma vez em style-refix.js, não por tela).
+- Comportamento: usuário digita **só números** — sem vírgula/ponto; o sistema formata em tempo real por centavos: 1→0,01 · 100→1,00 · 100000→1.000,00. Milhar e decimal automáticos.
+- Letras/símbolos bloqueados no keydown; colagem também é saneada (dígitos apenas, até 12).
+- Valor numérico para cálculo fica em data-valor-numerico (a máscara é só exibição).
+- Campos de percentual (sufixo %) NÃO usam esta máscara.
+
+## Adendo — 26/08/2026 · va-select em telas React
+- O va-select emite CustomEvent('change') que o React não escuta. Padrão: atributo **data-campo** no va-select + listener nativo delegado de 'change' no componentDidMount da tela, roteando e.detail.value para setState({[campo]: valor}). Nunca usar onChange direto no va-select.
+
+## Adendo — 26/08/2026 · Multi-seleção em dropdown
+- Escolha múltipla de entidades que crescem (vendedores etc.) usa dropdown com checkboxes, "Marcar todos"/"Limpar", contador verde no botão e rótulo "N selecionados" — nunca chips soltos de todas as opções (polui) nem selects únicos repetidos.
+
+## Adendo — 27/08/2026 · Seleção em massa universal
+- TODA lista do sistema tem coluna de checkbox (28px) + "selecionar todos" no cabeçalho + barra flutuante escura (data-va-bulk) com contagem, limpar e ações EM LOTE específicas do módulo; linha selecionada com fundo #F8FAF1; ação destrutiva em vermelho claro por último.
+- Ações por módulo: Pedidos (imprimir/exportar/...), Clientes (rota/vendedor/...), Produtos (categoria/...), Negócios (etiqueta, mover p/ etapa, mover p/ funil, apagar), Contatos (etiqueta, apagar), Comissões (registrar recebimento, exportar), Faturamento/notas (exportar, imprimir), Despesas (alterar categoria, apagar), Tabelas de preço (reajustar, exportar, arquivar), Representadas (exportar, inativar), Transportadoras (exportar, apagar), Acessos do catálogo (reenviar convite/senha, bloquear).

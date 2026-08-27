@@ -41,23 +41,29 @@
 <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px">
 <div style="display:flex;flex-direction:column;gap:4px">
 <h1 style="font:600 24px/1.25 'IBM Plex Sans';letter-spacing:-.01em;margin:0">Tabelas de preço</h1>
-<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">6 tabelas em 4 representadas</span>
+<span style="font:400 14px/1.55 'IBM Plex Sans';color:#454F5E">8 tabelas em 4 representadas · a Móveis Vale usa escada por valor (mínimo por tabela, do menor para o maior); as demais, tabela única — no pedido, a escolha da tabela é manual; só a escada troca sozinha, pelo valor do pedido</span>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="plus" onClick="{{ goNova }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar tabela de preço</x-import>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow-x:auto">
-<div style="min-width:900px;display:grid;grid-template-columns:1fr 190px 110px 150px 130px 96px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<div style="min-width:1168px;display:grid;grid-template-columns:28px 1fr 170px 110px 140px 110px 150px 130px 96px;gap:12px;align-items:center;padding:18px 20px 12px;border-bottom:1px solid #E4E8EF">
+<span style="display:grid;place-items:center"><input type="checkbox" checked="{{ selTodos }}" onChange="{{ toggleTodos }}" aria-label="Selecionar todas as tabelas" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Tabela</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Representada</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Modalidade</span>
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Mínimo do pedido</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Produtos</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678;text-align:right">Clientes vinculados</span>
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Catálogo</span>
 <span></span>
 </div>
 <sc-for list="{{ tabelas }}" as="t" hint-placeholder-count="6">
-<div onClick="{{ t.abrir }}" style="min-width:900px;display:grid;grid-template-columns:1fr 190px 110px 150px 130px 96px;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer" style-hover="background:#FAFBFC">
+<div onClick="{{ t.abrir }}" style="{{ t.rowStyle }}" style-hover="background:#FAFBFC">
+<span onClick="{{ t.pare }}" style="display:grid;place-items:center"><input type="checkbox" checked="{{ t.sel }}" onChange="{{ t.marcar }}" aria-label="Selecionar {{ t.nome }}" style="width:16px;height:16px;accent-color:#78A614;cursor:pointer"></span>
 <span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ t.nome }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ t.meta }}</span></span>
 <span style="font:400 13px/1.3 'IBM Plex Sans';color:#454F5E">{{ t.rep }}</span>
+<span><span style="{{ t.modStyle }}">{{ t.mod }}</span></span>
+<span style="font:400 13px/1.3 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ t.minimo }}</span>
 <span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ t.produtos }}</span>
 <span style="font:500 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;text-align:right">{{ t.clientes }}</span>
 <span><sc-if value="{{ t.catalogo }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:500 12px/1 'IBM Plex Sans'"><i data-lucide="store" style="font-size:12px"></i>Em uso</span></sc-if></span>
@@ -68,6 +74,19 @@
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ temSel }}" hint-placeholder-val="{{ false }}">
+<div data-va-bulk="" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:80;display:flex;align-items:center;gap:8px;background:#021226;color:#F3F3F3;border-radius:10px;padding:10px 14px;box-shadow:0 12px 32px rgba(2,18,38,.35);flex-wrap:wrap;max-width:calc(100vw - 32px)">
+<span style="font:600 13.5px/1 'IBM Plex Sans';white-space:nowrap">{{ nSel }}</span>
+<button onClick="{{ limparSel }}" style="border:0;background:transparent;color:#9AA4B4;font:500 13px/1 'IBM Plex Sans';cursor:pointer;padding:6px" style-hover="color:#F3F3F3">limpar</button>
+<span style="width:1px;height:20px;background:#243B59"></span>
+<button onClick="{{ loteReajuste }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="percent" style="font-size:13px"></i>Reajustar em lote</button>
+<button onClick="{{ loteExportar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #3D5578;background:transparent;color:#F3F3F3;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="download" style="font-size:13px"></i>Exportar seleção</button>
+<button onClick="{{ loteArquivar }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:6px;border:1px solid #7A3540;background:transparent;color:#F2A3AE;cursor:pointer;font:500 12.5px/1 'IBM Plex Sans'"><i data-lucide="archive" style="font-size:13px"></i>Arquivar</button>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;bottom:24px;right:24px;z-index:500;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:500 13.5px/1.3 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toast }}</div>
+</sc-if>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ dupOpen }}" onClose="{{ fechar }}" title="Duplicar tabela" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">A cópia de <strong style="color:#021226">{{ alvo }}</strong> nasce com os mesmos preços e sem clientes vinculados.</p>
@@ -94,7 +113,12 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { dupOpen: false, delOpen: false, alvo: '', alvoClientes: 0 };
+  state = { dupOpen: false, delOpen: false, alvo: '', alvoClientes: 0, sel: {}, toast: '' };
+  avisar(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -102,18 +126,47 @@ class Component extends DCLogic {
     try { window.lucide.createIcons({ nameAttr: 'data-lucide' }); } catch (e) {}
   }
   renderVals() {
+    // Móveis Vale usa modelo escada: tabelas ordenadas do menor mínimo para o maior
     const data = [
-      { nome: 'Tabela sul — varejo', meta: 'origem: preço de venda · atualizada em 28/07/2026', rep: 'Móveis Vale', produtos: 84, clientes: 96, catalogo: true },
-      { nome: 'Tabela sul — atacado', meta: 'origem: varejo −8,00% · atualizada em 28/07/2026', rep: 'Móveis Vale', produtos: 84, clientes: 22, catalogo: false },
-      { nome: 'Tabela geral 2026', meta: 'origem: preço de venda · atualizada em 15/07/2026', rep: 'Cerâmica Atlas', produtos: 212, clientes: 118, catalogo: true },
-      { nome: 'Tabela obra fechada', meta: 'origem: geral −12,00% · atualizada em 02/06/2026', rep: 'Cerâmica Atlas', produtos: 186, clientes: 9, catalogo: false },
-      { nome: 'Tabela revenda', meta: 'origem: preço de venda · atualizada em 21/07/2026', rep: 'Metalúrgica Horizonte', produtos: 148, clientes: 74, catalogo: false },
-      { nome: 'Tabela hotelaria', meta: 'origem: preço de venda · atualizada em 09/07/2026', rep: 'Tecelagem Iguaçu', produtos: 96, clientes: 31, catalogo: true },
-    ];
+      { nome: 'Tabela 1 — varejo', mod: 'CIF', minN: 500, minimo: 'R$ 500,00', meta: 'escada · preço cheio · atualizada em 28/07/2026', rep: 'Móveis Vale', produtos: 84, clientes: 96, catalogo: true },
+      { nome: 'Tabela 2 — varejo', mod: 'CIF', minN: 1000, minimo: 'R$ 1.000,00', meta: 'escada · −2,00% embutido no preço', rep: 'Móveis Vale', produtos: 84, clientes: 41, catalogo: false },
+      { nome: 'Tabela 3 — varejo', mod: 'CIF', minN: 1500, minimo: 'R$ 1.500,00', meta: 'escada · −3,50% embutido no preço', rep: 'Móveis Vale', produtos: 84, clientes: 22, catalogo: false },
+      { nome: 'Tabela 10 — varejo', mod: 'CIF', minN: 20000, minimo: 'R$ 20.000,00', meta: 'escada · −12,00% embutido no preço', rep: 'Móveis Vale', produtos: 84, clientes: 17, catalogo: false },
+      { nome: 'Tabela geral 2026', mod: 'CIF', minN: null, minimo: '—', meta: 'tabela única · faixas progressivas · atualizada em 15/07/2026', rep: 'Cerâmica Atlas', produtos: 212, clientes: 118, catalogo: true },
+      { nome: 'Tabela obra fechada', mod: 'FOB', minN: null, minimo: '—', meta: 'tabela única · geral −12,00% · atualizada em 02/06/2026', rep: 'Cerâmica Atlas', produtos: 186, clientes: 9, catalogo: false },
+      { nome: 'Tabela revenda', mod: 'CIF', minN: null, minimo: '—', meta: 'tabela única · atualizada em 21/07/2026', rep: 'Metalúrgica Horizonte', produtos: 148, clientes: 74, catalogo: false },
+      { nome: 'Tabela hotelaria', mod: 'FOB', minN: null, minimo: '—', meta: 'tabela única · atualizada em 09/07/2026', rep: 'Tecelagem Iguaçu', produtos: 96, clientes: 31, catalogo: true },
+    ].sort((a, b) => (a.rep === b.rep ? (a.minN || 0) - (b.minN || 0) : 0));
+    const modChip = (m) => 'display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;font:600 11.5px/1 \'IBM Plex Sans\';background:' + (m === 'CIF' ? '#EAF4FD;color:#0C477B' : '#EDF0F5;color:#454F5E');
     return {
       btnProps: { style: { color: '#F3F3F3' } },
+      toast: this.state.toast,
+      ...(() => {
+        const chaves = data.map(t => t.nome + t.mod);
+        const marcados = chaves.filter(k => this.state.sel[k]);
+        const n = marcados.length;
+        return {
+          selTodos: n > 0 && n === chaves.length,
+          toggleTodos: () => this.setState(() => {
+            const liga = marcados.length < chaves.length;
+            const m = {}; if (liga) chaves.forEach(k => { m[k] = true; });
+            return { sel: m };
+          }),
+          temSel: n > 0,
+          nSel: n + (n === 1 ? ' tabela selecionada' : ' tabelas selecionadas'),
+          limparSel: () => this.setState({ sel: {} }),
+          loteReajuste: () => { this.setState({ sel: {} }); this.avisar('Reajuste aplicado em ' + n + (n === 1 ? ' tabela' : ' tabelas')); },
+          loteExportar: () => { this.setState({ sel: {} }); this.avisar('Exportação gerada com ' + n + (n === 1 ? ' tabela' : ' tabelas')); },
+          loteArquivar: () => { this.setState({ sel: {} }); this.avisar(n + (n === 1 ? ' tabela arquivada' : ' tabelas arquivadas')); },
+        };
+      })(),
       tabelas: data.map(t => ({
         ...t,
+        modStyle: modChip(t.mod),
+        rowStyle: 'min-width:1168px;display:grid;grid-template-columns:28px 1fr 170px 110px 140px 110px 150px 130px 96px;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid #EDF0F5;cursor:pointer' + (this.state.sel[t.nome + t.mod] ? ';background:#F8FAF1' : ''),
+        sel: !!this.state.sel[t.nome + t.mod],
+        pare: (e) => e.stopPropagation(),
+        marcar: (e) => { e.stopPropagation(); this.setState(s => ({ sel: { ...s.sel, [t.nome + t.mod]: !s.sel[t.nome + t.mod] } })); },
         abrir: () => { location.href = 'tabela-edicao.dc.html'; },
         duplicar: (e) => { e.stopPropagation(); this.setState({ dupOpen: true, alvo: t.nome }); },
         excluir: (e) => { e.stopPropagation(); this.setState({ delOpen: true, alvo: t.nome, alvoClientes: t.clientes }); },

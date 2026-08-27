@@ -45,3 +45,11 @@ Modal de confirmação: congela o resultado (não recebe mais pedidos retroativo
 
 ## 6. Breakpoints (módulo)
 T: painéis de Metas empilham (GoalCard acima do gráfico). M/L: tabelas rolam no card; modais bottom sheet; grids "nome × input" mantêm 2 colunas (input 140px). XS: KPIs 1 coluna.
+
+## Adendo — 26/08/2026 · Metas refatoradas (metas.dc.html)
+- **Meta por vendedor × representada**: cada vendedor tem meta por representada; a meta global do vendedor é a SOMA delas. Painel com linha expansível por vendedor (chevron) mostrando meta/realizado/progresso por representada; linha principal traz meta global, realizado, projeção e tendência calculados.
+- **Filtro por representada** no painel (select de contexto): filtrando, meta global/progresso/tendência recalculam só daquela representada; vendedor sem meta na representada sai da lista.
+- **Modal Definir metas** (size lg): select "Mês das metas" no topo (rodapé e botão Salvar refletem o mês). Lançamento por seleção — nada de lista fixa de todos:
+  - Por vendedor: dropdown multi-seleção de vendedores (checkboxes, marcar todos/limpar, contador) + representada + valor → Adicionar lança a mesma meta para todos os marcados; repetir vendedor×representada substitui. Lançamentos agrupados por vendedor com meta global (soma) e remoção por linha.
+  - Por representada: representada + valor → Adicionar; mede positivação da indústria.
+  - Campo de valor: não-controlado + máscara monetária global; Enter adiciona. Resumo no rodapé: "N metas lançadas · mês · total R$ X" (singular/plural correto).
