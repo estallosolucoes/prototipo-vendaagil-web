@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -129,7 +130,7 @@
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O pedido entra na fila da Móveis Vale como os emitidos por você. Márcia Fontana recebe a confirmação com o PDF por e-mail.</p>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
-<x-import component-from-global-scope="va-select" label="Condição de pagamento" options="30/60/90|30/60|28 dias|À vista (desconto 3,00%)" value="30/60/90" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Condição de pagamento" options="30/60/90|30/60|28 dias|À vista (desconto 3,00%)" value="30/60/90" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Forma de cobrança" options="Boleto|Pix|Depósito" value="Boleto" hint-size="100%,66px"></x-import>
 </div>
 <div style="display:flex;justify-content:space-between;align-items:baseline;background:#F7F9FB;border-radius:8px;padding:12px 16px">

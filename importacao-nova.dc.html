@@ -137,6 +137,25 @@
 </x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ confOpen }}" onClose="{{ fecharConf }}" title="Confirmar importação" size="sm" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<sc-if value="{{ ehImportProdutos }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 13.5px/1.3 'IBM Plex Sans'">O que fazer com os produtos que a Móveis Vale já tem?</span>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="dest-import" checked="{{ impManter }}" onChange="{{ pegarImpManter }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Manter os antigos e adicionar os novos</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Produtos com o mesmo código são atualizados; o resto entra como novo</span></span>
+</label>
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+<input type="radio" name="dest-import" checked="{{ impSubstituir }}" onChange="{{ pegarImpSubstituir }}" style="width:18px;height:18px;accent-color:#78A614;margin-top:1px;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">Substituir os produtos da representada</span><span style="font:400 12.5px/1.45 'IBM Plex Sans';color:#5B6678">Os 84 produtos atuais da Móveis Vale são excluídos e só a planilha fica</span></span>
+</label>
+<sc-if value="{{ impSubstituir }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:8px;padding:10px 12px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF">
+<i data-lucide="triangle-alert" style="font-size:15px;color:#8A5B00;margin-top:1px;flex:none"></i>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#021226">Exclusão irreversível dos produtos antigos. Pedidos e histórico já emitidos não mudam.</span>
+</div>
+</sc-if>
+</div>
+</sc-if>
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E"><strong style="color:#021226">142 clientes</strong> serão criados na sua carteira. As 6 linhas com erro ficam de fora — você pode corrigi-las e importar depois.</p>
 <sc-if value="{{ progresso }}" hint-placeholder-val="{{ false }}">
 <div style="display:flex;flex-direction:column;gap:8px">
@@ -230,6 +249,11 @@ class Component extends DCLogic {
       voltar: () => this.setState({ passo: Math.max(1, p - 1) }),
       modeloNome: ({ Clientes: 'modelo-clientes.xlsx', Produtos: 'modelo-produtos.xlsx', 'Preços': 'modelo-tabela-de-preco.xlsx', Faturamento: 'modelo-faturamento.xlsx' })[this.state.tipo] || 'modelo-clientes.xlsx',
       goClientes: () => { location.href = 'clientes.dc.html'; },
+      ehImportProdutos: this.state.tipo === 'Produtos',
+      impManter: (this.state.impDest || 'manter') === 'manter',
+      impSubstituir: this.state.impDest === 'substituir',
+      pegarImpManter: () => this.setState({ impDest: 'manter' }),
+      pegarImpSubstituir: () => this.setState({ impDest: 'substituir' }),
     };
   }
 }

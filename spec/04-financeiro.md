@@ -1,6 +1,6 @@
 # Venda Ágil — Especificação 04 · Financeiro
 
-Telas: `faturamento.dc.html`, `faturamento-lote.dc.html`, `comissoes.dc.html`. Papel exigido: Financeiro, Gestor ou Administrador (vendedor não vê o grupo). Fundamentos: §F.
+Telas: `faturamento.dc.html`, `comissoes.dc.html`. Papel exigido: Financeiro, Gestor ou Administrador (vendedor não vê o grupo). Fundamentos: §F.
 
 ---
 
@@ -90,3 +90,14 @@ T: cartão-resumo em cima do gráfico (1 coluna). M/L: tabela rola no card; moda
 
 ## Adendo — 27/08/2026 · Apagar despesa recorrente (escopo)
 - Apagar uma despesa "Fixa mensal" abre modal de escopo: "Somente este lançamento" (recorrência continua) · "Este e os que estão por vir" (encerra dali em diante) · "Todos os lançamentos" (remove a fixa inteira). Despesa avulsa apaga direto. Mesmo padrão do apagar de tarefas recorrentes.
+
+## Adendo — 31/08/2026 · Rodada de ajustes
+- REMOVIDO o faturamento em lote (tela e botões) — só existe "Faturar um pedido" (§2 acima fica sem efeito).
+- Modal Faturar: o campo Pedido virou BUSCA (por número ou nome do cliente) com dropdown de resultados dos pedidos aguardando faturar.
+- Comissão por parcela: calculada sobre o faturamento conforme a condição de pagamento do pedido e distribuída proporcionalmente entre as parcelas; cada parcela tem baixa própria no vencimento. Visível no drawer "Faturar pedido" (pedidos.dc.html) e no modal Baixar comissão (checkbox por parcela; baixadas ficam travadas).
+- Despesas/tarefas recorrentes: apagar pergunta o escopo (só esta · esta e futuras · todas).
+
+## Adendo — 31/08/2026 · Correções da revisão
+- Modal Faturar: removido o select "Pedido" duplicado — só o campo de busca.
+- Linha de comissões mostra a parcela respectiva ("parcela 2/3 · vence 30/09") sob o nome da representada.
+- Drawer Faturar pedido: checkbox renomeado para "Gerar registros das comissões das parcelas no financeiro".

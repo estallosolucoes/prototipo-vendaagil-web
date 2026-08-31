@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -80,7 +81,7 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novoOpen }}" onClose="{{ fechar }}" title="{{ novoTitulo }}" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <sc-if value="{{ ehCategorias }}" hint-placeholder-val="{{ false }}">
-<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da categoria" required="{{ true }}" placeholder="Cadeiras e poltronas" hint-size="100%,66px"></x-import>
 </sc-if>
 <sc-if value="{{ ehSegmentos }}" hint-placeholder-val="{{ false }}">
@@ -91,7 +92,7 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Descrição" placeholder="Caxias, Bento, Farroupilha e região — visita quinzenal" hint-size="100%,66px"></x-import>
 </sc-if>
 <sc-if value="{{ ehGrades }}" hint-placeholder-val="{{ false }}">
-<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Tecelagem Iguaçu" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Tecelagem Iguaçu" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da grade" required="{{ true }}" placeholder="Camisetas — malha fria" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Tamanhos" placeholder="P, M, G, GG" help="Separe por vírgula, na ordem de exibição" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Cores" placeholder="Branco, Preto, Marinho" help="Deixe vazio para grade só de tamanho" hint-size="100%,88px"></x-import>

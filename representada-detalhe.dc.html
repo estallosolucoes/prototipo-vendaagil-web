@@ -130,15 +130,51 @@
 </div>
 </sc-if>
 <sc-if value="{{ vCondicoes }}" hint-placeholder-val="{{ false }}">
-<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px;max-width:640px">
-<span style="font:600 16px/1.3 'IBM Plex Sans'">Condições aceitas por esta representada</span>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="À vista (desconto 3,00%)" checked="{{ true }}" hint-size="auto,20px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="28 dias" checked="{{ true }}" hint-size="auto,20px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60" checked="{{ true }}" hint-size="auto,20px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60/90" checked="{{ true }}" hint-size="auto,20px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="30/60/90/120 (acréscimo 2,00%)" hint-size="auto,20px"></x-import>
-<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A condição desmarcada não aparece na emissão de pedido desta representada.</span>
+<div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:24px;display:flex;flex-direction:column;gap:14px;max-width:720px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;gap:2px">
+<span style="font:600 16px/1.3 'IBM Plex Sans'">Condições de pagamento desta representada</span>
+<span style="font:400 13px/1.5 'IBM Plex Sans';color:#5B6678">Lista própria da Móveis Vale — na emissão de um pedido dela, só estas aparecem</span>
 </div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ abrirNovaCond }}" hint-size="auto,36px">Nova condição</x-import>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ condsRep }}" as="cr" hint-placeholder-count="5">
+<div style="display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid #EDF0F5">
+<label style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;cursor:pointer">
+<input type="checkbox" checked="{{ cr.on }}" onChange="{{ cr.toggle }}" style="width:18px;height:18px;accent-color:#78A614;flex:none">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ cr.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ cr.prazos }}</span></span>
+</label>
+<sc-if value="{{ cr.temAjuste }}" hint-placeholder-val="{{ false }}"><span style="{{ cr.ajusteStyle }}">{{ cr.ajuste }}</span></sc-if>
+<sc-if value="{{ cr.padrao }}" hint-placeholder-val="{{ false }}"><span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'">padrão</span></sc-if>
+<button aria-label="Editar condição" title="Editar condição" onClick="{{ abrirNovaCond }}" style="width:30px;height:30px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:15px"></i></button>
+</div>
+</sc-for>
+</div>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A condição desmarcada fica inativa sem ser apagada. O desconto/acréscimo aplica sobre o preço de tabela na emissão.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaCondOpen }}" onClose="{{ fecharNovaCond }}" title="Condição de pagamento — Móveis Vale" size="sm" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da condição" required="{{ true }}" placeholder="Ex.: 30/60/90 · boleto" value="45/75 · boleto" hint-size="100%,66px"></x-import>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Prazos em dias" required="{{ true }}" value="45, 75" help="Separe por vírgula, a partir do faturamento — cada prazo vira uma parcela (2 parcelas: 45 e 75 dias). À vista = 0" hint-size="100%,108px"></x-import>
+<x-import component-from-global-scope="va-select" label="Forma de pagamento" options="Boleto|PIX|Transferência|Cheque" value="Boleto" hint-size="100%,66px"></x-import>
+</div>
+<div style="display:flex;gap:8px;padding:10px 12px;border-radius:6px;border:1px solid #9CCBF5;background:#EAF4FD">
+<i data-lucide="info" style="font-size:15px;color:#0C477B;margin-top:1px;flex:none"></i>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#021226">Os prazos definem as parcelas do pedido: valor e comissão são divididos igualmente entre elas, e cada parcela vence no dia do faturamento + prazo — é isso que agenda a baixa da comissão no período certo.</span>
+</div>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-select" label="Ajuste sobre a tabela" options="Nenhum|Desconto|Acréscimo" value="Nenhum" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Percentual" suffix="%" numeric="{{ true }}" placeholder="0,00" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Usar como condição padrão nos pedidos desta representada" hint-size="auto,20px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fecharNovaCond }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ salvarNovaCond }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Salvar condição</x-import>
+</div>
+</div>
+</x-import>
 </sc-if>
 <sc-if value="{{ vDesempenho }}" hint-placeholder-val="{{ false }}">
 <div style="display:grid;grid-template-columns:var(--va-g4,repeat(4,1fr));gap:16px">
@@ -201,6 +237,23 @@ class Component extends DCLogic {
         { de: 'acima de 30,0%', ate: '—', com: '3%' },
       ],
       vCondicoes: this.state.aba === 'condicoes',
+      condsRep: [
+        { nome: 'À vista · PIX', prazos: '1 parcela · 0 dias', ajuste: '−3,00% sobre a tabela', tipo: 'desc', padrao: false },
+        { nome: '28 dias · boleto', prazos: '1 parcela · 28 dias', ajuste: '−1,50% sobre a tabela', tipo: 'desc', padrao: false },
+        { nome: '30/60 · boleto', prazos: '2 parcelas · 30 e 60 dias', ajuste: '', tipo: '', padrao: false },
+        { nome: '30/60/90 · boleto', prazos: '3 parcelas · 30, 60 e 90 dias', ajuste: '', tipo: '', padrao: true },
+        { nome: '30/60/90/120 · boleto', prazos: '4 parcelas · 30 a 120 dias', ajuste: '+2,00% sobre a tabela', tipo: 'acr', padrao: false },
+      ].map((c, i) => ({
+        ...c,
+        temAjuste: !!c.ajuste,
+        ajusteStyle: 'height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;font:600 11px/1 \'IBM Plex Sans\';font-variant-numeric:tabular-nums;' + (c.tipo === 'desc' ? 'background:#E8F7F0;color:#0A6244' : 'background:#FCF3DF;color:#8A5B00'),
+        on: this.state.condsOff ? !this.state.condsOff[i] : true,
+        toggle: () => this.setState(s => ({ condsOff: { ...(s.condsOff || {}), [i]: !(s.condsOff || {})[i] } })),
+      })),
+      novaCondOpen: !!this.state.novaCondOpen,
+      abrirNovaCond: () => this.setState({ novaCondOpen: true }),
+      fecharNovaCond: () => this.setState({ novaCondOpen: false }),
+      salvarNovaCond: () => { this.setState({ novaCondOpen: false }); this.avisar ? this.avisar('Condição salva') : null; },
       vDesempenho: this.state.aba === 'desempenho',
       politicaOpen: this.state.politicaOpen,
       abrirPolitica: () => this.setState({ politicaOpen: true }),

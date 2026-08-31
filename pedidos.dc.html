@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -98,6 +99,9 @@
 <span style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font:600 14px/1.3 'IBM Plex Sans'">{{ p.cliente }}</span><span style="font:400 12.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ p.meta }}</span></span>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.StatusBadge" status="{{ p.status }}" hint-size="auto,22px"></x-import>
 <span style="display:flex;flex-direction:column;gap:2px;min-width:130px;text-align:right"><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ p.valor }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#365E10;font-variant-numeric:tabular-nums">com. {{ p.comissao }}</span></span>
+<button onClick="{{ p.editar }}" aria-label="Editar pedido {{ p.num }}" title="Editar pedido" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699;flex:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i></button>
+<button onClick="{{ p.duplicar }}" aria-label="Duplicar pedido {{ p.num }}" title="Duplicar pedido" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699;flex:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:16px"></i></button>
+<button onClick="{{ p.faturar }}" aria-label="Faturar pedido {{ p.num }}" title="Faturar pedido" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#628A11;flex:none" style-hover="background:#F2F8D4;color:#365E10"><i data-lucide="file-check" style="font-size:16px"></i></button>
 <button onClick="{{ p.prever }}" aria-label="Ver prévia do pedido" title="Ver prévia do pedido" style="width:32px;height:32px;border-radius:6px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#7A8699;flex:none" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="panel-right-open" style="font-size:16px"></i></button>
 </div>
 </sc-for>
@@ -119,14 +123,38 @@
 <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;bottom:24px;right:24px;z-index:90;display:flex;align-items:center;gap:10px;background:#021226;color:#F3F3F3;border-radius:10px;padding:12px 16px;box-shadow:0 8px 24px rgba(2,18,38,.3);font:400 13.5px/1.4 'IBM Plex Sans'"><i data-lucide="circle-check" style="font-size:16px;color:#C3D91E"></i>{{ toastMsg }}</div>
 </sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ fatOpen }}" onClose="{{ fechar }}" title="{{ fatTitulo }}" subtitle="Lançar a nota sem sair da lista" hint-size="0,0">
+<div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nota fiscal" code="{{ true }}" required="{{ true }}" placeholder="000.000" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Data do faturamento" mask="data" value="31/08/2026" hint-size="100%,66px"></x-import>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor faturado" prefix="R$" numeric="{{ true }}" value="{{ fatValor }}" help="Menor que o pedido? Escolha entre corte ou parcial na confirmação" hint-size="100%,88px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Parcelas e comissão — {{ fatCond }}</span>
+<sc-for list="{{ fatParcelas }}" as="fp" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #E4E8EF;border-radius:6px;padding:10px 12px">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:500 13.5px/1.3 'IBM Plex Sans'">{{ fp.nome }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">vence {{ fp.venc }}</span></span>
+<span style="display:flex;flex-direction:column;gap:1px;text-align:right"><span style="font:600 13.5px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ fp.valor }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#365E10;font-variant-numeric:tabular-nums">com. {{ fp.comissao }}</span></span>
+</div>
+</sc-for>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">A comissão é calculada sobre o faturamento e distribuída proporcionalmente entre as parcelas — cada baixa acontece no vencimento da respectiva parcela, em Comissões.</span>
+</div>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Gerar registros das comissões das parcelas no financeiro" checked="{{ true }}" hint-size="auto,20px"></x-import>
+<div style="display:flex;justify-content:flex-end;gap:8px">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="check" onClick="{{ confirmarFat }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Lançar faturamento</x-import>
+</div>
+</div>
+</x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Drawer" open="{{ filtrosOpen }}" onClose="{{ fechar }}" title="Filtros avançados" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
-<x-import component-from-global-scope="va-select" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Estágio" options="Todos|Emissão|Separação|Faturamento|Entrega" value="Todos" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Situação" options="Todas|Pedido|Orçamento|Cancelado" value="Todas" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Vendedor" options="Todos|Carlos Ribeiro|Ana Prado|João Peixoto" value="Todos" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Origem" options="Todas|Emitido no sistema|Catálogo B2B" value="Todas" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Transportadora" options="Todas|Expresso Serrano|TransVale Cargas|Rodoviário Planalto|LogSul Transportes|Cliente retira" value="Todas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Transportadora" options="Todas|Expresso Serrano|TransVale Cargas|Rodoviário Planalto|LogSul Transportes|Cliente retira" value="Todas" hint-size="100%,66px"></x-import>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor mínimo" prefix="R$" numeric="{{ true }}" placeholder="0,00" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Valor máximo" prefix="R$" numeric="{{ true }}" placeholder="0,00" hint-size="100%,66px"></x-import>
@@ -208,6 +236,9 @@ class Component extends DCLogic {
       pare: (e) => e.stopPropagation(),
       marcar: () => this.setState(s => ({ sel: { ...(s.sel || {}), [p.num]: !(s.sel || {})[p.num] } })),
       abrir: () => { location.href = 'pedido-detalhe.dc.html'; },
+      editar: (e) => { e.stopPropagation(); location.href = 'pedido-editar.dc.html'; },
+      duplicar: (e) => { e.stopPropagation(); this.avisar('Rascunho criado a partir do ' + p.num + ' — ajuste representada e dados no detalhe.'); setTimeout(() => { location.href = 'pedido-detalhe.dc.html'; }, 1000); },
+      faturar: (e) => { e.stopPropagation(); this.setState({ fatOpen: true, fatPed: p }); },
       prever: (e) => { e.stopPropagation(); this.setState({ prevOpen: true, prev: p }); },
     });
     const grupos = [
@@ -263,7 +294,27 @@ class Component extends DCLogic {
       prevComissao: prev.comissao,
       abrirFiltros: () => this.setState({ filtrosOpen: true, periodoOpen: false }),
       abrirExportar: () => this.setState({ expOpen: true, periodoOpen: false }),
-      fechar: () => this.setState({ filtrosOpen: false, prevOpen: false, expOpen: false }),
+      fechar: () => this.setState({ filtrosOpen: false, prevOpen: false, expOpen: false, fatOpen: false }),
+      ...(() => {
+        const p = this.state.fatPed || { num: '4.812', cliente: 'Depósito São Jorge', valor: 'R$ 12.798,45' };
+        const raw = parseFloat((p.valor || 'R$ 12.798,45').replace(/[R$\s.]/g, '').replace(',', '.')) || 12798.45;
+        const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const com = raw * 0.05;
+        const vencs = ['30/09/2026', '30/10/2026', '30/11/2026'];
+        return {
+          fatOpen: !!this.state.fatOpen,
+          fatTitulo: 'Faturar pedido ' + p.num + ' — ' + p.cliente,
+          fatValor: (p.valor || '').replace('R$ ', ''),
+          fatCond: '30/60/90 · boleto',
+          fatParcelas: vencs.map((venc, i) => ({
+            nome: 'Parcela ' + (i + 1) + ' de 3',
+            venc,
+            valor: brl(raw / 3),
+            comissao: brl(com / 3),
+          })),
+          confirmarFat: () => { this.setState({ fatOpen: false }); this.avisar('Pedido ' + p.num + ' faturado — comissão de ' + brl(com) + ' distribuída em 3 parcelas.'); },
+        };
+      })(),
       goNovo: () => { location.href = 'pedidos-novo.dc.html'; },
       goDetalhe: () => { location.href = 'pedido-detalhe.dc.html'; },
       ...this.bulk('pedido', 'pedidos'),

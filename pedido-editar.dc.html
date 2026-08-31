@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
 input.cel{height:36px;border:1px solid #CFD6E1;border-radius:6px;padding:0 10px;font:500 13px/1 'IBM Plex Sans';color:#021226;width:100%;min-width:0;font-variant-numeric:tabular-nums}
@@ -75,8 +76,8 @@ input.cel:focus{outline:none;border-color:#78A614;box-shadow:0 0 0 3px rgba(120,
 </div>
 </div>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px;background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:20px;margin-bottom:16px">
-<x-import component-from-global-scope="va-select" label="Condição de pagamento" options="30/60/90 · boleto|28 dias · boleto|À vista · PIX|30/60 · boleto" value="30/60/90 · boleto" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Transportadora" options="Expresso Serrano|TransVale Cargas|Rodoviário Planalto|LogSul Transportes|Cliente retira" value="Expresso Serrano" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Condição de pagamento" options="30/60/90 · boleto|28 dias · boleto|À vista · PIX|30/60 · boleto" value="30/60/90 · boleto" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Transportadora" options="Expresso Serrano|TransVale Cargas|Rodoviário Planalto|LogSul Transportes|Cliente retira" value="Expresso Serrano" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Textarea" label="Motivo da alteração" rows="{{ 2 }}" placeholder="Cliente pediu para trocar 4 cadeiras pela cor grafite" help="Sai no histórico do pedido, para a equipe e a representada" hint-size="100%,110px"></x-import>
 </div>
 <div data-va-dock="" style="position:sticky;bottom:0;background:#FFFFFF;border-radius:10px;box-shadow:0 -2px 12px rgba(2,18,38,.10);padding:14px 20px;display:flex;align-items:center;gap:16px;z-index:20;flex-wrap:wrap">

@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -102,10 +103,10 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ novaLojaOpen }}" onClose="{{ fecharModais }}" title="Criar loja" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <span style="font:400 13.5px/1.6 'IBM Plex Sans';color:#454F5E">Cada loja mostra os produtos de uma representada. A 3ª loja continua dentro da faixa de até 30 — a fatura não muda.</span>
-<x-import component-from-global-scope="va-select" label="Representada" options="Metalúrgica Horizonte|Tecelagem Iguaçu" value="Metalúrgica Horizonte" help="Móveis Vale e Cerâmica Atlas já têm loja" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Metalúrgica Horizonte|Tecelagem Iguaçu" value="Metalúrgica Horizonte" help="Móveis Vale e Cerâmica Atlas já têm loja" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome da loja" value="{{ nomeLoja }}" onChange="{{ setNomeLoja }}" help="É assim que os compradores vão ver a loja — o nome também define o link" hint-size="100%,88px"></x-import>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
-<x-import component-from-global-scope="va-select" label="Tabela de preço" options="Tabela industrial 2026|Tabela atacado" value="Tabela industrial 2026" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Tabela de preço" options="Tabela industrial 2026|Tabela atacado" value="Tabela industrial 2026" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Pedido mínimo" prefix="R$" numeric="{{ true }}" value="2.000,00" hint-size="100%,66px"></x-import>
 </div>
 <div style="background:#F7F9FB;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:2px">

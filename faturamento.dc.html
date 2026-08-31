@@ -46,8 +46,7 @@
 </div>
 <div style="display:flex;gap:8px;flex-wrap:wrap">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="download" onClick="{{ abrirExportar }}" hint-size="auto,40px">Exportar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="file-plus-2" onClick="{{ abrirLancar }}" hint-size="auto,40px">Faturar um pedido</x-import>
-<a href="faturamento-lote.dc.html" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="layers" dc-props="{{ btnProps }}" hint-size="auto,40px">Faturar em lote</x-import></a>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="file-plus-2" onClick="{{ abrirLancar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Faturar um pedido</x-import>
 </div>
 </div>
 <div data-va-kpis="" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px">
@@ -59,7 +58,7 @@
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Emitido aguardando faturar</span>
 <span style="font:600 28px/1.1 'IBM Plex Sans';font-variant-numeric:tabular-nums">R$ 63.180,00</span>
-<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">7 pedidos na fila das indústrias · <a href="faturamento-lote.dc.html" style="font-weight:500;text-decoration:none">faturar em lote</a></span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#7A8699">7 pedidos na fila das indústrias</span>
 </div>
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:18px 20px;display:flex;flex-direction:column;gap:6px">
 <span style="font:600 11px/1.2 'IBM Plex Sans';letter-spacing:.06em;text-transform:uppercase;color:#5B6678">Corte médio do mês</span>
@@ -113,7 +112,25 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ lancarOpen }}" onClose="{{ fechar }}" title="Lançar faturamento — pedido 4.812" size="lg" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
-<x-import component-from-global-scope="va-select" label="Pedido" options="4.812 · Depósito São Jorge|4.811 · Casa &amp; Lar Móveis|4.808 · Lojas Pinheiral" value="4.812 · Depósito São Jorge" hint-size="100%,66px"></x-import>
+<div style="display:flex;flex-direction:column;gap:6px;position:relative">
+<span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Pedido <span style="color:#B3202F">*</span></span>
+<div style="position:relative">
+<i data-lucide="search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:#7A8699;pointer-events:none"></i>
+<input value="{{ buscaPedido }}" onInput="{{ setBuscaPedido }}" onFocus="{{ abrirBuscaPed }}" placeholder="Busque pelo número ou pelo cliente" aria-label="Buscar pedido por número ou cliente" style="height:40px;width:100%;border:1px solid #CFD6E1;border-radius:6px;padding:0 12px 0 36px;font:400 14px/1 'IBM Plex Sans';background:#FFFFFF">
+</div>
+<sc-if value="{{ buscaPedAberta }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;top:70px;left:0;right:0;z-index:60;background:#FFFFFF;border-radius:8px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:4px;display:flex;flex-direction:column;max-height:220px;overflow-y:auto">
+<sc-for list="{{ pedidosBusca }}" as="pb" hint-placeholder-count="3">
+<button onClick="{{ pb.pegar }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#F2F4F7">
+<span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 13.5px/1.3 'IBM Plex Sans';color:#021226">{{ pb.num }} · {{ pb.cliente }}</span><span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ pb.rep }} · emitido {{ pb.data }}</span></span>
+<span style="font:500 13px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums;color:#454F5E">{{ pb.valor }}</span>
+</button>
+</sc-for>
+<sc-if value="{{ buscaPedVazia }}" hint-placeholder-val="{{ false }}"><span style="padding:12px;font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Nenhum pedido aguardando faturar com "<strong>{{ buscaPedido }}</strong>"</span></sc-if>
+</div>
+</sc-if>
+</div>
+
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nota fiscal" code="{{ true }}" placeholder="000.000" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Data" value="14/08/2026" hint-size="100%,66px"></x-import>
@@ -228,6 +245,27 @@ class Component extends DCLogic {
 
       lancarOpen: this.state.lancarOpen,
       abrirLancar: () => this.setState({ lancarOpen: true }),
+      ...(() => {
+        const PEDS = [
+          { num: '4.812', cliente: 'Depósito São Jorge', rep: 'Móveis Vale', data: '04/08', valor: 'R$ 12.798,45' },
+          { num: '4.811', cliente: 'Casa & Lar Móveis', rep: 'Móveis Vale', data: '03/08', valor: 'R$ 8.440,00' },
+          { num: '4.808', cliente: 'Lojas Pinheiral', rep: 'Colchões Andorra', data: '01/08', valor: 'R$ 21.960,00' },
+          { num: '4.805', cliente: 'Móveis Brasília Ltda', rep: 'Estofados Rio Claro', data: '30/07', valor: 'R$ 5.312,80' },
+        ];
+        const q = (this.state.buscaPedido || '').toLowerCase();
+        const achados = q ? PEDS.filter(p => p.num.replace('.', '').includes(q.replace('.', '')) || p.cliente.toLowerCase().includes(q)) : PEDS;
+        return {
+          buscaPedido: this.state.buscaPedido !== undefined ? this.state.buscaPedido : '4.812 · Depósito São Jorge',
+          setBuscaPedido: (e) => this.setState({ buscaPedido: e.target.value, buscaPedAberta: true }),
+          abrirBuscaPed: () => this.setState({ buscaPedido: '', buscaPedAberta: true }),
+          buscaPedAberta: !!this.state.buscaPedAberta,
+          buscaPedVazia: achados.length === 0,
+          pedidosBusca: achados.map(p => ({
+            ...p,
+            pegar: () => this.setState({ buscaPedido: p.num + ' · ' + p.cliente, buscaPedAberta: false }),
+          })),
+        };
+      })(),
       fechar: () => this.setState({ lancarOpen: false }),
       ...(() => {
         const DEFS = [

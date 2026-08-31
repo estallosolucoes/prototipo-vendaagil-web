@@ -60,3 +60,12 @@ Início: atalhos 3→1 coluna ≤900px; coluna lateral desce ≤1100px. Relatór
 ## Adendo — 27/08/2026 · Reordenação dos cards do painel (drag & drop)
 - TODOS os cards do painel são arrastáveis — KPIs, gráficos (Faturamento por mês, Evolução), Últimos pedidos, Meta, Positivação, Aprovações e Curvas ABC — cada um com alça grip-vertical no título: HTML5 drag + reordenação por CSS order no flex container; soltar sobre outro card insere na posição dele.
 - Dentro da fileira, cards trocam de posição entre si; arrastar um card SOBRE OUTRA FILEIRA move a fileira inteira dele para aquela posição (ex.: gráfico arrastado sobre os KPIs leva a fileira de gráficos ao topo) — o card sempre mantém o tamanho que ocupa. Ordem das fileiras em localStorage va_painel_filas. Ordem persistida em localStorage (va_painel_ordem); cursor grab; drill-down e remover (X) continuam funcionando.
+
+## Adendo — 31/08/2026 · Rodada de ajustes
+- Relatórios › Vendas: novo **"Ranking de clientes — melhores/piores"** (id ranking-clientes): top e piores por vendido 12m, tendência, gráfico top 5 × piores 5.
+- Painel: novo card-gráfico **"Fluxo de comissão"** (fileira de gráficos, arrastável): 3 faixas — Faturada (verde), A faturar (azul), Em atraso (vermelho) — com barra proporcional; clicar numa faixa abre o drill-down com os clientes por trás do valor (pedido/NF/representada) e cada cliente clicável → cliente-detalhe.
+- Sidebar/menus intocados nesta rodada.
+
+## Adendo — 31/08/2026 · Correções da revisão
+- Ranking dividido em DOIS relatórios no grupo Clientes: **Melhores clientes** (melhores-clientes) e **Piores clientes** (piores-clientes); saiu de Vendas.
+- Drill do Fluxo de comissão: rodapé virou aviso não clicável "Clique no cliente para mais detalhes" (os demais drills mantêm o link).

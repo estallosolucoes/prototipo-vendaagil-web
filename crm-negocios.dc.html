@@ -310,14 +310,12 @@ class Component extends DCLogic {
       venda: { nome: 'Venda', etapas: [
         { titulo: 'Primeiro contato', cards: [card('Mix de lançamento 2027', 'Depósito São Jorge', 'R$ 12.400', '2 dias', false, 'CR', 'Ligar quinta de manhã'), card('Reativação após 180 dias', 'Móveis Baltazar', 'R$ 9.100', '12 dias', true, 'JT', 'Visita na rota de terça', ['Reativação'])] },
         { titulo: 'Cadastro do cliente', cards: [card('Primeira compra — colchões', 'Bazar Monte Alto', 'R$ 6.800', '5 dias', false, 'AP', 'Aguardando CNPJ do comprador', ['Cliente novo'])] },
-        { titulo: 'Apresentação do mix', cards: [card('Linha de poltronas', 'Móveis Guarani', 'R$ 11.100', '6 dias', false, 'AP', 'Mandar catálogo em PDF')] },
+        { titulo: 'Envio de catálogo', cards: [card('Linha de poltronas', 'Móveis Guarani', 'R$ 11.100', '6 dias', false, 'AP', 'Mandar catálogo em PDF')] },
         { titulo: 'Proposta enviada', cards: [card('Reposição linha operacional', 'Casa & Lar Móveis', 'R$ 15.200', '3 dias', false, 'CR', 'Cobrar retorno amanhã'), card('Gaveteiros — promoção', 'Lojas Pinheiral', 'R$ 7.300', '15 dias', true, 'PS', 'Proposta vence sexta', ['Promoção'])] },
         { titulo: 'Negociação', cards: [card('Pedido trimestral', 'Depósito São Jorge', 'R$ 21.500', '4 dias', false, 'CR', 'Fechar desconto com gestor', ['Urgente'])] },
         { titulo: 'Recuperação 1', cards: [card('Sumiu após a proposta', 'Armazém Boa Vista', 'R$ 5.400', '7 dias', true, 'PS', 'Reforçar promoção por WhatsApp')] },
         { titulo: 'Recuperação 2', cards: [] },
         { titulo: 'Recuperação 3', cards: [] },
-        { titulo: 'Aguardando aprovação da representada', cards: [card('Kit escritório completo', 'Comercial Vitória', 'R$ 18.700', '1 dia', false, 'RC', 'Aguarda decisão da Vale', [], { num: '4.812', st: 'Aguardando aprovação' }), card('Mesas de reunião', 'Comercial Vitória', 'R$ 9.800', '2 dias', false, 'RC', 'Enviado à indústria ontem', [], { num: '4.809', st: 'Emitido' })] },
-        { titulo: 'Faturado parcial', cards: [card('Reposição de inverno', 'Comercial Vitória', 'R$ 12.450', '3 dias', false, 'RC', 'Corte de 8% — avisar cliente', [], { num: '4.797', st: 'Faturado parcial' })] },
         { titulo: 'Perdidos', perdidos: true, cards: [card('Cadeiras gamer — teste', 'Bazar Monte Alto', 'R$ 4.200', '—', false, 'AP', 'Preço acima do concorrente')] },
         { titulo: 'Ganhos', ganhos: true, cards: [card('Cadeiras fixas — reposição', 'Casa & Lar Móveis', 'R$ 6.500', '—', false, 'CR', 'Comissão lançada', [], { num: '4.786', st: 'Faturado' })] },
       ]},
@@ -325,7 +323,6 @@ class Component extends DCLogic {
         { titulo: 'Aguardando retorno indústria', cards: [card('Pedido 4.810 — Casa & Lar', 'Casa & Lar Móveis', 'R$ 3.120', '3 dias', false, 'CR', 'Cobrar a Vale por e-mail')] },
         { titulo: 'Em produção', cards: [card('Pedido 4.806 — Ferragens', 'Ferragens Colombo', 'R$ 11.240', '6 dias', false, 'JT', 'Previsão de coleta: 20/08')] },
         { titulo: 'Faturado parcial', cards: [card('Pedido 4.797 — Vitória', 'Comercial Vitória', 'R$ 12.450', '9 dias', false, 'RC', 'Corte de 8% — avisar cliente')] },
-        { titulo: 'Em transporte', cards: [] },
         { titulo: 'Pedido faturado total', cards: [card('Pedido 4.786 — São Jorge', 'Depósito São Jorge', 'R$ 9.640', '—', false, 'CR', 'Comissão lançada')] },
       ]},
       espera: { nome: 'Lista de espera', etapas: [

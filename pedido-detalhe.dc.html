@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -55,10 +56,9 @@
 <sc-if value="{{ maisOpen }}" hint-placeholder-val="{{ false }}">
 <div onClick="{{ fechar }}" style="position:fixed;inset:0;z-index:49"></div>
 <div style="position:absolute;right:0;top:46px;z-index:50;width:230px;background:#FFFFFF;border-radius:10px;box-shadow:0 8px 24px rgba(2,18,38,.18);padding:6px;display:flex;flex-direction:column;gap:1px">
-<button onClick="{{ irEditar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i>Alterar pedido</button>
+<button onClick="{{ irEditar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="pencil" style="font-size:16px"></i>Editar pedido</button>
 <button onClick="{{ copiarLink }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="link" style="font-size:16px"></i>Copiar link do pedido</button>
-<button onClick="{{ abrirEstagio }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="milestone" style="font-size:16px"></i>Alterar estágio</button>
-<button onClick="{{ fechar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:16px"></i>Duplicar pedido</button>
+<button onClick="{{ abrirDuplicar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#454F5E;text-align:left" style-hover="background:#EDF0F5;color:#021226"><i data-lucide="copy" style="font-size:16px"></i>Duplicar pedido</button>
 <button onClick="{{ abrirCancelar }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 10px;border:0;border-radius:6px;background:transparent;cursor:pointer;font:500 13px/1 'IBM Plex Sans';color:#85202C;text-align:left" style-hover="background:#FDF0F1"><i data-lucide="octagon-x" style="font-size:16px"></i>Cancelar pedido</button>
 </div>
 </sc-if>
@@ -69,12 +69,15 @@
 <div style="display:flex;align-items:center">
 <sc-for list="{{ trilha }}" as="t" hint-placeholder-count="4">
 <div style="display:flex;align-items:center;flex:1;gap:10px">
+<button onClick="{{ t.avancar }}" title="{{ t.dica }}" aria-label="{{ t.dica }}" style="{{ t.btnStyle }}">
 <span style="{{ t.bola }}"><i data-lucide="{{ t.icone }}" style="font-size:15px"></i></span>
-<span style="display:flex;flex-direction:column;gap:1px"><span style="{{ t.nomeStyle }}">{{ t.nome }}</span><span style="font:400 11.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ t.quando }}</span></span>
+<span style="display:flex;flex-direction:column;gap:1px;text-align:left"><span style="{{ t.nomeStyle }}">{{ t.nome }}</span><span style="font:400 11.5px/1.3 'IBM Plex Sans';color:#5B6678">{{ t.quando }}</span></span>
+</button>
 <sc-if value="{{ t.linha }}" hint-placeholder-val="{{ true }}"><span style="flex:1;height:2px;border-radius:2px;background:{{ t.linhaCor }};margin:0 12px"></span></sc-if>
 </div>
 </sc-for>
 </div>
+<span style="font:400 12px/1.4 'IBM Plex Sans';color:#7A8699;margin-top:8px;display:block">Clique num estágio para mover o pedido até ele — sem menus.</span>
 </div>
 <div data-va-cols="" style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
 <div style="display:grid;gap:16px">
@@ -150,13 +153,25 @@
 </div>
 </div>
 </x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ estagioOpen }}" onClose="{{ fechar }}" title="Alterar estágio" size="sm" hint-size="0,0">
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ dupOpen }}" onClose="{{ fechar }}" title="Duplicar pedido 4.812" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
-<x-import component-from-global-scope="va-select" label="Novo estágio" options="Separação|Faturamento|Entrega" value="Separação" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Data" mask="data" value="05/08/2026" hint-size="100%,66px"></x-import>
+<span style="font:400 13.5px/1.55 'IBM Plex Sans';color:#454F5E;margin:0">O novo pedido nasce como rascunho com os mesmos itens. Trocando a representada, os produtos são casados por código/referência — o que não existir nela sai da cópia, e preços, tabela e condições são os da nova representada.</span>
+<div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Móveis Vale (a mesma)|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale (a mesma)" onChange="{{ trocarRepDup }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Cliente" options="Depósito São Jorge (o mesmo)|Casa &amp; Lar Móveis|Lojas Pinheiral" value="Depósito São Jorge (o mesmo)" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Tabela de preço" options="Tabela 2 — varejo|Tabela 1 — varejo|Tabela 3 — varejo" value="Tabela 2 — varejo" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Condição de pagamento" options="30/60/90 · boleto|À vista · PIX (−3,00%)|30/60 · boleto" value="30/60/90 · boleto" hint-size="100%,66px"></x-import>
+</div>
+<sc-if value="{{ dupAviso }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;gap:8px;padding:10px 12px;border-radius:6px;border:1px solid #F2D28A;background:#FCF3DF">
+<i data-lucide="triangle-alert" style="font-size:15px;color:#8A5B00;margin-top:1px;flex:none"></i>
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#021226">2 dos 3 itens existem na Cerâmica Atlas (casados por referência). <strong>Cadeira Diretor Vale — nogueira</strong> não existe lá e sai da cópia. Os preços passam a ser da Tabela geral 2026.</span>
+</div>
+</sc-if>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Checkbox" label="Copiar observações e transportadora do pedido original" checked="{{ true }}" hint-size="auto,20px"></x-import>
 <div style="display:flex;justify-content:flex-end;gap:8px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" onClick="{{ fechar }}" hint-size="auto,40px">Cancelar</x-import>
-<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" onClick="{{ fechar }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Alterar estágio</x-import>
+<x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="primary" icon-left="copy" onClick="{{ confirmarDup }}" dc-props="{{ btnProps }}" hint-size="auto,40px">Criar rascunho duplicado</x-import>
 </div>
 </div>
 </x-import>
@@ -190,7 +205,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { maisOpen: false, whatsOpen: false, emailOpen: false, estagioOpen: false, cancelOpen: false, histOpen: false, toast: '' };
+  state = { maisOpen: false, whatsOpen: false, emailOpen: false, dupOpen: false, dupAviso: false, cancelOpen: false, histOpen: false, estagio: 1, toast: '' };
   componentDidMount() { this.paint(); }
   componentDidUpdate() { this.paint(); }
   paint() {
@@ -207,12 +222,30 @@ class Component extends DCLogic {
     const off = "width:30px;height:30px;border-radius:999px;background:#E4E8EF;color:#5B6678;display:grid;place-items:center;flex:none";
     return {
       btnProps: { style: { color: '#F3F3F3' } },
-      trilha: [
-        { nome: 'Emissão', quando: 'hoje, 10:24', icone: 'check', bola: ok, nomeStyle: "font:600 13px/1 'IBM Plex Sans';color:#021226", linha: true, linhaCor: '#78A614' },
-        { nome: 'Separação', quando: 'em andamento', icone: 'package', bola: atual, nomeStyle: "font:600 13px/1 'IBM Plex Sans';color:#021226", linha: true, linhaCor: '#E4E8EF' },
-        { nome: 'Faturamento', quando: 'aguardando', icone: 'file-text', bola: off, nomeStyle: "font:500 13px/1 'IBM Plex Sans';color:#5B6678", linha: true, linhaCor: '#E4E8EF' },
-        { nome: 'Entrega', quando: 'aguardando', icone: 'truck', bola: off, nomeStyle: "font:500 13px/1 'IBM Plex Sans';color:#5B6678", linha: false, linhaCor: '#E4E8EF' },
-      ],
+      trilha: (() => {
+        const est = this.state.estagio;
+        const icones = ['check', 'package', 'file-text', 'truck'];
+        const nomes = ['Emissão', 'Separação', 'Faturamento', 'Entrega'];
+        return nomes.map((nome, i) => {
+          const feito = i < est, ehAtual = i === est;
+          return {
+            nome,
+            quando: feito ? 'concluído' : ehAtual ? 'em andamento' : 'aguardando',
+            icone: feito ? 'check' : icones[i],
+            bola: feito ? ok : ehAtual ? atual : off,
+            nomeStyle: "font:" + (feito || ehAtual ? '600' : '500') + " 13px/1 'IBM Plex Sans';color:" + (feito || ehAtual ? '#021226' : '#5B6678'),
+            linha: i < 3,
+            linhaCor: i < est ? '#78A614' : '#E4E8EF',
+            dica: ehAtual ? nome + ' — estágio atual' : 'Mover o pedido para ' + nome,
+            btnStyle: 'display:flex;align-items:center;gap:10px;border:0;background:transparent;padding:4px 6px;border-radius:8px;font-family:inherit;cursor:' + (ehAtual ? 'default' : 'pointer'),
+            avancar: () => {
+              if (i === est) return;
+              this.setState({ estagio: i });
+              this.flash('Pedido movido para ' + nome + ' — registrado no histórico.');
+            },
+          };
+        });
+      })(),
       itens: [
         { nome: 'Cadeira Operacional Vale — preta', codigo: 'MV-1180', emb: 'cx 4 un', qtde: '48', preco: 'R$ 298,50', desc: '—', total: 'R$ 14.328,00' },
         { nome: 'Mesa executiva 1,60 m — nogueira', codigo: 'MV-2288', emb: 'un', qtde: '4', preco: 'R$ 1.386,00', desc: '—', total: 'R$ 5.544,00' },
@@ -228,7 +261,6 @@ class Component extends DCLogic {
       maisOpen: this.state.maisOpen,
       whatsOpen: this.state.whatsOpen,
       emailOpen: this.state.emailOpen,
-      estagioOpen: this.state.estagioOpen,
       cancelOpen: this.state.cancelOpen,
       histOpen: this.state.histOpen,
       toast: !!this.state.toast,
@@ -236,7 +268,11 @@ class Component extends DCLogic {
       toggleMais: () => this.setState(s => ({ maisOpen: !s.maisOpen })),
       abrirWhats: () => this.setState({ whatsOpen: true, maisOpen: false }),
       abrirEmail: () => this.setState({ emailOpen: true, maisOpen: false }),
-      abrirEstagio: () => this.setState({ estagioOpen: true, maisOpen: false }),
+      dupOpen: this.state.dupOpen,
+      dupAviso: this.state.dupAviso,
+      abrirDuplicar: () => this.setState({ dupOpen: true, dupAviso: false, maisOpen: false }),
+      trocarRepDup: (v) => this.setState({ dupAviso: v !== 'Móveis Vale (a mesma)' }),
+      confirmarDup: () => { this.setState({ dupOpen: false }); this.flash('Rascunho 4.815 criado a partir do 4.812 — abrindo para edição.'); setTimeout(() => { location.href = 'pedido-editar.dc.html'; }, 900); },
       abrirCancelar: () => this.setState({ cancelOpen: true, maisOpen: false }),
       abrirHistorico: () => this.setState({ histOpen: true, maisOpen: false }),
       irEditar: () => { location.href = 'pedido-editar.dc.html'; },
@@ -248,7 +284,7 @@ class Component extends DCLogic {
         const body = encodeURIComponent('Segue a cópia do pedido 4.812, emitido hoje, no valor de R$ 24.810,00 com condição 30/60/90.\n\nLink do pedido: https://app.vendaagil.com.br/p/4812');
         location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
       },
-      fechar: () => this.setState({ maisOpen: false, whatsOpen: false, emailOpen: false, estagioOpen: false, cancelOpen: false, histOpen: false }),
+      fechar: () => this.setState({ maisOpen: false, whatsOpen: false, emailOpen: false, dupOpen: false, cancelOpen: false, histOpen: false }),
     };
   }
 }

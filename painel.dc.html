@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>.pn-kpis>*{flex:1 1 250px;min-width:240px;box-sizing:border-box}.pn-baixo>*{flex:1 1 340px;min-width:300px;box-sizing:border-box}.pn-charts>*{flex:1 1 460px;min-width:min(100%,420px);box-sizing:border-box}.pn-charts>*:first-child{flex-grow:2}.pn-abc>*{flex:1 1 380px;min-width:min(100%,340px);box-sizing:border-box}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -51,7 +52,7 @@
 </div>
 </div>
 <div style="display:flex;gap:12px;margin-bottom:20px;max-width:280px">
-<x-import component-from-global-scope="va-select" label="Representada" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas as representadas" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Todas as representadas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Todas as representadas" hint-size="100%,66px"></x-import>
 </div>
 <div style="display:flex;flex-direction:column;gap:16px">
 <div class="pn-kpis" onDragOver="{{ filaDv_kpis }}" style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;order:{{ filaOrd_kpis }}">
@@ -137,6 +138,24 @@
 <span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Realizado sólido, previsto tracejado, objetivo em linha fina</span>
 </div>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.LineChart" realized="{{ realizado }}" forecast="{{ previsto }}" target="{{ alvo }}" labels="{{ meses }}" height="{{ h180 }}" hint-size="100%,220px"></x-import>
+</div>
+</sc-if>
+<sc-if value="{{ v_chart_com }}" hint-placeholder-val="{{ true }}">
+<div draggable="true" onDragStart="{{ dg_chart_com }}" onDragOver="{{ dv_chart_com }}" onDragEnd="{{ dgEnd }}" style="position:relative;background:#FFFFFF;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(2,18,38,.06);overflow:hidden;order:{{ ord_chart_com }};cursor:grab">
+<button onClick="{{ rm_chart_com }}" aria-label="Remover métrica" title="Remover do painel" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:6px;border:0;background:transparent;color:#98A2B3;cursor:pointer;display:grid;place-items:center" style-hover="background:#EDF0F5;color:#85202C"><i data-lucide="x" style="font-size:15px"></i></button>
+<div style="display:flex;flex-direction:column;gap:2px;margin-bottom:16px;padding-right:32px">
+<span style="display:inline-flex;align-items:center;gap:6px;font:600 16px/1.3 'IBM Plex Sans'"><i data-lucide="grip-vertical" style="font-size:14px;color:#B9C1CE;cursor:grab"></i>Fluxo de comissão</span>
+<span style="font:400 13px/1.4 'IBM Plex Sans';color:#5B6678">Clique numa faixa para ver os clientes por trás do valor</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ fluxoCom }}" as="fc" hint-placeholder-count="3">
+<button onClick="{{ fc.abrir }}" style="display:flex;flex-direction:column;gap:6px;border:0;background:transparent;padding:6px;margin:-6px;border-radius:8px;cursor:pointer;font-family:inherit;text-align:left" style-hover="background:#FAFBFC">
+<span style="display:flex;align-items:center;justify-content:space-between;width:100%"><span style="display:inline-flex;align-items:center;gap:8px;font:500 13.5px/1.3 'IBM Plex Sans'"><span style="{{ fc.ponto }}"></span>{{ fc.nome }}</span><span style="font:600 14px/1 'IBM Plex Sans';font-variant-numeric:tabular-nums">{{ fc.valor }}</span></span>
+<span style="width:100%;height:10px;border-radius:999px;background:#EDF0F5;overflow:hidden;display:block"><span style="{{ fc.barra }}"></span></span>
+<span style="font:400 12px/1.3 'IBM Plex Sans';color:#5B6678">{{ fc.sub }}</span>
+</button>
+</sc-for>
+</div>
 </div>
 </sc-if>
 </div>
@@ -290,7 +309,8 @@
 </sc-for>
 </div>
 <div style="border-top:1px solid #E4E8EF;padding:14px 20px">
-<a href="{{ detHref }}" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">{{ detHrefLabel }}<i data-lucide="arrow-right" style="font-size:14px"></i></a>
+<sc-if value="{{ detEhAviso }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:6px;font:400 12.5px/1.3 'IBM Plex Sans';color:#7A8699"><i data-lucide="info" style="font-size:13px"></i>{{ detHrefLabel }}</span></sc-if>
+<sc-if value="{{ detEhLink }}" hint-placeholder-val="{{ true }}"><a data-det-rodape="" href="{{ detHref }}" style="display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 'IBM Plex Sans';text-decoration:none" style-hover="text-decoration:underline">{{ detHrefLabel }}<i data-lucide="arrow-right" style="font-size:14px"></i></a></sc-if>
 </div>
 </div>
 </div>
@@ -333,6 +353,7 @@ class Component extends DCLogic {
     { id: 'corte', nome: 'Corte de pedido', cat: 'Pedido', icone: 'scissors', desc: 'Diferença entre pedido e faturado', col: 0 },
     { id: 'chart_fat', nome: 'Faturamento por mês', cat: 'Financeiro', icone: 'bar-chart-3', desc: 'Gráfico mensal e anual', col: 1 },
     { id: 'chart_evo', nome: 'Evolução e previsão', cat: 'Financeiro', icone: 'trending-up', desc: 'Realizado, previsto e objetivo', col: 1 },
+    { id: 'chart_com', nome: 'Fluxo de comissão', cat: 'Financeiro', icone: 'hand-coins', desc: 'Faturada, a faturar e em atraso', col: 1 },
     { id: 'ultimos', nome: 'Últimos pedidos', cat: 'Pedido', icone: 'clipboard-list', desc: 'Os pedidos mais recentes', col: 1 },
     { id: 'abc_clientes', nome: 'Curva ABC de clientes', cat: 'Clientes', icone: 'layers', desc: 'Quem concentra o faturamento da carteira', col: 0 },
     { id: 'abc_produtos', nome: 'Curva ABC de produtos', cat: 'Outros', icone: 'boxes', desc: 'Os itens que sustentam a venda', col: 2 },
@@ -364,6 +385,23 @@ class Component extends DCLogic {
     const chipOk = "flex:none;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#F2F8D4;color:#365E10;font:600 11px/1 'IBM Plex Sans'";
     const chipWarn = "flex:none;display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;background:#FCF3DF;color:#8A5B00;font:600 11px/1 'IBM Plex Sans'";
     this.DETALHES = {
+      com_faturada: { titulo: 'Comissão faturada — R$ 11.240,00', sub: 'Pedidos já faturados pelas indústrias em agosto — por cliente', href: 'cliente-detalhe.dc.html', aviso: true, hrefLabel: 'Clique no cliente para mais detalhes', itens: [
+        { nome: 'Depósito São Jorge', meta: 'pedido 4.786 · NF 118.204 · Móveis Vale', valor: 'R$ 3.180,00' },
+        { nome: 'Casa & Lar Móveis', meta: 'pedido 4.781 · NF 118.187 · Móveis Vale', valor: 'R$ 2.845,00' },
+        { nome: 'Lojas Pinheiral', meta: 'pedido 4.775 · NF 9.412 · Colchões Andorra', valor: 'R$ 2.410,00' },
+        { nome: 'Central do Construtor', meta: 'pedido 4.770 · NF 9.399 · Colchões Andorra', valor: 'R$ 1.680,00' },
+        { nome: 'Comercial Vitória', meta: 'pedido 4.768 · NF 44.102 · Estofados Rio Claro', valor: 'R$ 1.125,00' },
+      ] },
+      com_afaturar: { titulo: 'Comissão a faturar — R$ 6.320,00', sub: 'Pedidos emitidos aguardando a nota da indústria — por cliente', href: 'cliente-detalhe.dc.html', aviso: true, hrefLabel: 'Clique no cliente para mais detalhes', itens: [
+        { nome: 'Depósito São Jorge', meta: 'pedido 4.812 · emitido 04/08 · Móveis Vale', valor: 'R$ 2.560,00' },
+        { nome: 'Casa & Lar Móveis', meta: 'pedido 4.811 · emitido 03/08 · Móveis Vale', valor: 'R$ 1.690,00' },
+        { nome: 'Lojas Pinheiral', meta: 'pedido 4.808 · emitido 01/08 · Colchões Andorra', valor: 'R$ 1.420,00' },
+        { nome: 'Móveis Brasília Ltda', meta: 'pedido 4.805 · emitido 30/07 · Estofados Rio Claro', valor: 'R$ 650,00' },
+      ] },
+      com_atraso: { titulo: 'Comissão em atraso — R$ 2.180,00', sub: 'Repasse vencido e não recebido — por cliente do pedido', href: 'cliente-detalhe.dc.html', aviso: true, hrefLabel: 'Clique no cliente para mais detalhes', itens: [
+        { nome: 'Comercial Vitória', meta: 'pedido 4.797 · venceu 15/08 · Estofados Rio Claro', valor: 'R$ 1.240,00', chip: '16 dias', chipStyle: chipWarn },
+        { nome: 'Armazém Boa Vista', meta: 'pedido 4.760 · venceu 05/08 · Metalúrgica Precisão', valor: 'R$ 940,00', chip: '26 dias', chipStyle: chipWarn },
+      ] },
       cli_ativos: { sub: '104 clientes com pedido nos últimos 90 dias — os 10 maiores', href: 'clientes.dc.html', hrefLabel: 'Ver todos em Clientes', itens: [
         { nome: 'Depósito São Jorge', meta: 'último pedido 26/08', valor: 'R$ 24.036,00' },
         { nome: 'Casa & Lar Móveis', meta: 'último pedido 25/08', valor: 'R$ 8.420,00' },
@@ -433,7 +471,7 @@ class Component extends DCLogic {
   grupos() {
     return [
       this.CATALOGO.filter(m => m.col === 0 || m.col === undefined).map(m => m.id),
-      ['chart_fat', 'chart_evo'],
+      ['chart_fat', 'chart_evo', 'chart_com'],
       ['ultimos', 'meta', 'positivacao', 'aprovacoes'],
       ['abc_clientes', 'abc_produtos'],
     ];
@@ -499,7 +537,7 @@ class Component extends DCLogic {
       vals['v_' + m.id] = on(m.id);
       vals['rm_' + m.id] = () => this.setAtivo(m.id, false);
     });
-    ['comissao', 'faturado', 'corte', 'chart_fat', 'chart_evo', 'ultimos', 'meta', 'positivacao', 'aprovacoes', 'abc_clientes', 'abc_produtos'].forEach(id => {
+    ['comissao', 'faturado', 'corte', 'chart_fat', 'chart_evo', 'chart_com', 'ultimos', 'meta', 'positivacao', 'aprovacoes', 'abc_clientes', 'abc_produtos'].forEach(id => {
       vals['ord_' + id] = this.ordemDe(id);
       vals['dg_' + id] = () => { this._drag = id; };
       vals['dv_' + id] = (e) => { e.preventDefault(); this.arrastarSobre(id); };
@@ -528,10 +566,12 @@ class Component extends DCLogic {
     const det = this.state.detId ? this.DETALHES[this.state.detId] : null;
     const detMeta = this.state.detId ? this.CATALOGO.find(m => m.id === this.state.detId) : null;
     vals.detOpen = !!det;
-    vals.detTitulo = detMeta ? detMeta.nome : '';
+    vals.detTitulo = det && det.titulo ? det.titulo : (detMeta ? detMeta.nome : '');
     vals.detSub = det ? det.sub : '';
     vals.detHref = det ? det.href : '#';
     vals.detHrefLabel = det ? det.hrefLabel : '';
+    vals.detEhAviso = !!(det && det.aviso);
+    vals.detEhLink = !!(det && !det.aviso);
     vals.fecharDet = () => this.setState({ detId: null });
     vals.detItens = det ? det.itens.map(it => ({
       ...it,
@@ -560,6 +600,16 @@ class Component extends DCLogic {
       previsto: [248, 266],
       meses: ['Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set'],
       extras1: extras[0], extras2: extras[1], extras3: extras[2],
+      fluxoCom: [
+        { id: 'com_faturada', nome: 'Faturada', valor: 'R$ 11.240,00', pct: 57, cor: '#78A614', sub: '5 clientes · aguarda o repasse das indústrias' },
+        { id: 'com_afaturar', nome: 'A faturar', valor: 'R$ 6.320,00', pct: 32, cor: '#0C477B', sub: '4 pedidos emitidos na fila das indústrias' },
+        { id: 'com_atraso', nome: 'Em atraso', valor: 'R$ 2.180,00', pct: 11, cor: '#B3202F', sub: '2 repasses vencidos — cobre a indústria' },
+      ].map(f => ({
+        ...f,
+        ponto: 'width:10px;height:10px;border-radius:999px;background:' + f.cor + ';flex:none;display:inline-block',
+        barra: 'display:block;height:100%;border-radius:999px;width:' + f.pct + '%;background:' + f.cor,
+        abrir: () => this.setState({ detId: f.id }),
+      })),
       vazio: counts[0] + counts[1] + counts[2] === 0,
       abrirModal: () => this.setState({ modalOpen: true }),
       fecharModal: () => this.setState({ modalOpen: false }),

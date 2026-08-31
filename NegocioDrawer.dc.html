@@ -186,8 +186,8 @@ class Component extends DCLogic {
     const p = this.props;
     const cliente = p.cliente || 'Depósito São Jorge';
     const FUNIS = {
-      venda: { nome: 'Venda', etapas: ['Primeiro contato', 'Cadastro do cliente', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3', 'Aguardando aprovação da representada', 'Faturado parcial', 'Perdidos', 'Ganhos'] },
-      acompanhamento: { nome: 'Acompanhamento', etapas: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Em transporte', 'Pedido faturado total'] },
+      venda: { nome: 'Venda', etapas: ['Primeiro contato', 'Cadastro do cliente', 'Envio de catálogo', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3', 'Perdidos', 'Ganhos'] },
+      acompanhamento: { nome: 'Acompanhamento', etapas: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Pedido faturado total'] },
       espera: { nome: 'Lista de espera', etapas: ['Entrou na lista', 'Aguardando estoque', 'Estoque disponível', 'Cliente avisado', 'Perdidos', 'Ganhos'] },
       sac: { nome: 'SAC / Cobrança', etapas: ['Em tratativa — SAC', 'Em tratativa — Cobrança', 'Resolvido', 'Não resolvido'] },
     };

@@ -135,3 +135,16 @@ Todas as listas seguem §F 3.6 (scroll no card, paginação 25). T: colunas late
 - Faixas progressivas × escada são ALTERNATIVAS, nunca somam: modelo única → faixas progressivas; modelo escada → sem faixas (botão desabilitado na tabela-edicao com tooltip). Desconto embutido da escada não entra na faixa de comissão (só o desconto manual).
 - tabela-edicao: campo "Valor mínimo do pedido" visível quando a representada usa escada. tabelas-preco: coluna "Mínimo do pedido", escada ordenada do menor mínimo para o maior (Móveis Vale: Tabela 1 R$500 → Tabela 10 R$20.000).
 - pedidos-novo (escada): a tabela troca SOZINHA quando o pedido cruza o mínimo da seguinte — toast "Pedido passou de R$ 1.000 — agora na Tabela 2. Preços atualizados." (e o inverso ao cair) + indicador no contexto "Faltam R$ X para a Tabela N (−Y% no preço)". Única troca automática de tabela do sistema; frete nunca troca tabela.
+
+## Adendo — 31/08/2026 · Rodada de ajustes
+- Representada › Condições de pagamento: lista PRÓPRIA da representada (nome, ajuste desconto/acréscimo % sobre a tabela, padrão, ativa/inativa) + modal Nova condição. Na emissão, o select de condição mostra só as da representada do pedido (com o ajuste no rótulo).
+- Produto › Embalagem: "Caixa" substituída por **Caixa Inner** e **Caixa Master**; campos "Itens por Inner" e "Itens por Master" — disponíveis na emissão, catálogo B2B e relatórios (conversão un/inner/master).
+- Produto: **Subcategoria** opcional (filha da categoria); **Dimensões e peso** opcionais (L×A×P cm + peso bruto kg) para frete/cubagem.
+- Produtos › Configurações: telas de criação/edição de categoria (nome + subcategorias dinâmicas) e de grade (nome + eixo 1 + eixo 2 opcional) dentro do drawer.
+- Importação de produtos: na confirmação, escolher **manter os antigos e adicionar** (padrão; casa por código) ou **substituir os produtos da representada** (exclui os antigos; aviso destrutivo).
+- **Grupos de clientes** (Clientes › botão Grupos): cadastro com Nome, CNPJ/Razão do grupo, Transportadora, Endereço, Representadas do grupo (chips) e clientes membros; cada cliente participa de um grupo (select no cadastro do cliente). **Pedido do grupo**: gera um pedido por representada cadastrada no grupo, com os mesmos itens. Vinculado aos grupos de contatos do CRM.
+
+## Adendo — 31/08/2026 · Correções da revisão
+- Condição de pagamento da representada é ESTRUTURADA: nome + **prazos em dias separados por vírgula** (cada prazo = 1 parcela; à vista = 0) + forma de pagamento + ajuste %. Os prazos definem os vencimentos das parcelas (faturamento + prazo) — é o que agenda a baixa de cada parcela da comissão no período correto. Lista mostra "N parcelas · X, Y dias".
+- Grupo de clientes: representadas do grupo agora entram por **campo de busca** (digitar → sugestões → clicar adiciona ao grupo como chip removível); nunca lista todas.
+- **Padrão global <va-buscar>** (va-buscar.js): campos de dados de cadastro que crescem (representada, cliente, tabela de preço, condição de pagamento, transportadora, vendedor, grupo, produto) são CAMPOS DE BUSCA com sugestões conforme digita (máx. 8 + "continue digitando"), nunca dropdown select — trocado em 38 campos de 20 telas. <va-select> continua para listas fixas e curtas (situação, formato, mês etc.).

@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>@media (max-width:1100px){[data-va-cols]{grid-template-columns:minmax(0,1fr) !important}[data-va-kanban]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:1000px){[data-va-kpis]{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important}}@media (max-width:900px){[data-va-half]{grid-template-columns:minmax(0,1fr) !important}}@media (max-width:700px){[data-va-kanban]{grid-template-columns:minmax(0,1fr) !important}}*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -105,7 +106,8 @@
 <span style="font:600 16px/1.3 'IBM Plex Sans'">Comercial</span>
 <x-import component-from-global-scope="va-select" label="Rota" options="Serra Gaúcha|Litoral norte|Vale do Itajaí" value="Serra Gaúcha" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="va-select" label="Segmento" options="Material de construção|Papelaria e escritório|Atacado" value="Material de construção" hint-size="100%,66px"></x-import>
-<x-import component-from-global-scope="va-select" label="Transportadora do cliente" options="Patrus Transportes|Espécie Guanambi|Expresso Serrano|TransVale Cargas|Rodoviário Planalto" value="Patrus Transportes" help="No frete FOB quem escolhe a transportadora é o cliente — ela vem preenchida na emissão do pedido" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Transportadora do cliente" options="Patrus Transportes|Espécie Guanambi|Expresso Serrano|TransVale Cargas|Rodoviário Planalto" value="Patrus Transportes" help="No frete FOB quem escolhe a transportadora é o cliente — ela vem preenchida na emissão do pedido" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Grupo de clientes (opcional)" options="Sem grupo|Rede Constrular|Grupo Lar &amp; Cia" value="Rede Constrular" help="Cada cliente participa de um grupo — habilita o pedido do grupo, que sai por representada" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="va-select" label="Vendedor responsável" options="Carlos Rezende|Ana Paula Vieira|Jorge Tomasi" value="Carlos Rezende" help="Outros vendedores podem ser vinculados como carteira compartilhada" hint-size="100%,88px"></x-import>
 <div style="display:flex;flex-direction:column;gap:6px">
 <span style="font:500 13px/1.3 'IBM Plex Sans';color:#454F5E">Vendedores com acesso</span>
@@ -219,7 +221,7 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ condEspOpen }}" onClose="{{ fechar }}" title="Condição especial do cliente" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <span style="font:400 13.5px/1.55 'IBM Plex Sans';color:#454F5E;margin:0">Vale só para este cliente nesta representada, dentro do que a indústria permite. Na emissão, ela sobrepõe a tabela de preço e a grade de comissão.</span>
-<x-import component-from-global-scope="va-select" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Representada" options="Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu" value="Móveis Vale" hint-size="100%,66px"></x-import>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Desconto especial" suffix="%" numeric="{{ true }}" value="15,00" help="Além do que a tabela dá" hint-size="100%,88px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Comissão" suffix="%" numeric="{{ true }}" value="2,00" help="Substitui a grade por faixa" hint-size="100%,88px"></x-import>

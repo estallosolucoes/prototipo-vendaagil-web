@@ -14,6 +14,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}
 @media (max-width:1100px){[data-va-kpis]{grid-template-columns:1fr 1fr !important}}
@@ -44,7 +45,7 @@
 <div style="background:#FFFFFF;border-radius:10px;box-shadow:0 1px 2px rgba(2,18,38,.06);padding:16px 20px;margin-bottom:16px;display:flex;gap:12px;align-items:end;flex-wrap:wrap">
 <x-import component-from-global-scope="va-select" data-campo="fMes" label="Mês" options="Agosto|Julho|Junho|Este ano" value="{{ fMes }}" hint-size="150px,66px"></x-import>
 <x-import component-from-global-scope="va-select" data-campo="fCat" label="Categoria" options="Todas|Viagem|Combustível|Imposto|Contador|Mostruário|Outros" value="{{ fCat }}" hint-size="170px,66px"></x-import>
-<x-import component-from-global-scope="va-select" data-campo="fRep" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu|Sem vínculo" value="{{ fRep }}" hint-size="190px,66px"></x-import>
+<x-import component-from-global-scope="va-buscar" data-campo="fRep" label="Representada" options="Todas|Móveis Vale|Cerâmica Atlas|Metalúrgica Horizonte|Tecelagem Iguaçu|Sem vínculo" value="{{ fRep }}" hint-size="190px,66px"></x-import>
 <span style="flex:1"></span>
 <a href="relatorio.dc.html?r=despesas" style="text-decoration:none"><x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" icon-left="chart-bar" hint-size="auto,40px">Ver relatório</x-import></a>
 </div>

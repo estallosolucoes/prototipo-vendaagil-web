@@ -276,7 +276,7 @@
 </div>
 <sc-if value="{{ a.cfgMover }}" hint-placeholder-val="{{ false }}">
 <div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
-<x-import component-from-global-scope="va-select" data-campo="autoMoverEtapa" label="Mover o negócio para a etapa" options="Primeiro contato|Cadastro do cliente|Apresentação do mix|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Aguardando aprovação da representada|Faturado parcial|Ganhos" value="{{ autoMoverEtapa }}" help="Padrão sugerido — troque se o seu funil não tiver essa etapa" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="autoMoverEtapa" label="Mover o negócio para a etapa" options="Primeiro contato|Cadastro do cliente|Envio de catálogo|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Perdidos|Ganhos" value="{{ autoMoverEtapa }}" help="Padrão sugerido — troque se o seu funil não tiver essa etapa" hint-size="100%,88px"></x-import>
 </div>
 </sc-if>
 <sc-if value="{{ a.cfgAviso }}" hint-placeholder-val="{{ false }}">
@@ -345,6 +345,15 @@
 <sc-if value="{{ msgEtapaFormFechado }}" hint-placeholder-val="{{ true }}">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Button" variant="secondary" size="sm" icon-left="plus" onClick="{{ msgEtapaAbrirForm }}" hint-size="auto,36px">Nova mensagem por etapa</x-import>
 </sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ a.cfgCatalogo }}" hint-placeholder-val="{{ false }}">
+<div style="background:#FAFBFC;border:1px solid #EDF0F5;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:400 12.5px/1.5 'IBM Plex Sans';color:#5B6678">Quando um negócio entra na etapa escolhida, o sistema abre a escolha do catálogo na hora — você seleciona qual enviar e o contato recebe o link por WhatsApp.</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px">
+<x-import component-from-global-scope="va-select" data-campo="autoCatFunil" label="Funil" options="Venda|Acompanhamento|Lista de espera|SAC / Cobrança" value="{{ autoCatFunil }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="va-select" data-campo="autoCatEtapa" label="Etapa que dispara" options="{{ autoCatEtapaOpcoes }}" value="{{ autoCatEtapa }}" help="Padrão: Envio de catálogo — troque se o seu funil usar outra" hint-size="100%,88px"></x-import>
+</div>
 </div>
 </sc-if>
 <sc-if value="{{ a.cfgEstoque }}" hint-placeholder-val="{{ false }}">
@@ -442,13 +451,14 @@ class Component extends DCLogic {
     },
     pgVend: { 'Carlos Rezende': 'Gestor', 'Ana Paula Vieira': 'Vendedor sênior', 'Renata Cruz': 'Vendedor padrão', 'Jorge Tomasi': 'Vendedor padrão', 'Paulo Selau': 'Vendedor padrão' },
     etapasCustom: null, cores: {}, paletaAberta: null,
-    autos: { aviso: true, mover: true, msgetapa: true, estoque: true, aniversario: false, resumo: false },
+    autos: { aviso: true, mover: true, msgetapa: true, catalogo: true, estoque: true, aniversario: false, resumo: false },
+    autoCatFunil: 'Venda', autoCatEtapa: 'Envio de catálogo',
     msgsEtapa: [
       { funil: 'Venda', etapa: 'Proposta enviada', msg: '{nome}, sua proposta acabou de sair! Dá uma olhada e me diz o que achou.' },
     ],
     msgEtapaForm: false, msgEtapaFunil: 'Venda', msgEtapaNova: 'Negociação',
     anexoFat: null, anexoEtapa: null,
-    autoMoverEtapa: 'Aguardando aprovação da representada',
+    autoMoverEtapa: 'Negociação',
     autoEstoqueFunil: 'Lista de espera', autoEstoqueEtapa: 'Aguardando estoque',
     autoEstoqueQuem: { 'Responsável pelo negócio': true }, quemDdAberto: false,
     zap: true, qrOpen: false, qrLendo: false, toast: '',
@@ -550,8 +560,8 @@ class Component extends DCLogic {
   }
   etapasDe(funil) {
     const BASE = {
-      venda: ['Primeiro contato', 'Cadastro do cliente', 'Apresentação do mix', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3', 'Aguardando aprovação da representada', 'Faturado parcial'],
-      acompanhamento: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Em transporte', 'Pedido faturado total'],
+      venda: ['Primeiro contato', 'Cadastro do cliente', 'Envio de catálogo', 'Proposta enviada', 'Negociação', 'Recuperação 1', 'Recuperação 2', 'Recuperação 3'],
+      acompanhamento: ['Aguardando retorno indústria', 'Em produção', 'Faturado parcial', 'Pedido faturado total'],
       espera: ['Entrou na lista', 'Aguardando estoque', 'Estoque disponível', 'Cliente avisado'],
       sac: ['Em tratativa — SAC', 'Em tratativa — Cobrança', 'Resolvido'],
     };
@@ -580,6 +590,7 @@ class Component extends DCLogic {
       { id: 'mover', icone: 'arrow-right-circle', titulo: 'Mover negócio ao emitir pedido', sub: 'Quando o pedido vinculado é emitido, o negócio muda de etapa sozinho — você escolhe qual' },
       { id: 'aviso', icone: 'receipt', titulo: 'Avisar faturamento ao cliente', sub: 'Manda mensagem por WhatsApp quando o pedido do negócio é faturado' },
       { id: 'msgetapa', icone: 'message-square-text', titulo: 'Mensagem personalizada ao mover para etapa', sub: 'Negócio entra numa etapa → cliente recebe a mensagem daquela etapa; crie uma por etapa' },
+      { id: 'catalogo', icone: 'book-open', titulo: 'Envio de catálogo', sub: 'Negócio entra na etapa configurada → o sistema pede qual catálogo enviar ao contato' },
       { id: 'estoque', icone: 'package-check', titulo: 'Avisar retorno de estoque', sub: 'Produto de um negócio volta ao estoque → notifica quem você escolher, na etapa que você escolher' },
       { id: 'aniversario', icone: 'cake', titulo: 'Lembrar aniversário do contato', sub: 'Cria tarefa no dia, com modelo de mensagem pronto' },
       { id: 'resumo', icone: 'mail', titulo: 'Resumo semanal por e-mail', sub: 'Toda segunda, 7h: negócios parados, ganhos e perdidos da semana' },
@@ -683,9 +694,18 @@ class Component extends DCLogic {
         cfgAviso: a.id === 'aviso' && this.state.autos.aviso,
         cfgEstoque: a.id === 'estoque' && this.state.autos.estoque,
         cfgMsgEtapa: a.id === 'msgetapa' && this.state.autos.msgetapa,
+        cfgCatalogo: a.id === 'catalogo' && this.state.autos.catalogo,
         toggle: () => this.setState(s => ({ autos: { ...s.autos, [a.id]: !s.autos[a.id] } })),
       })),
       autoMoverEtapa: this.state.autoMoverEtapa,
+      autoCatFunil: this.state.autoCatFunil,
+      autoCatEtapa: this.state.autoCatEtapa,
+      autoCatEtapaOpcoes: ({
+        'Venda': 'Primeiro contato|Cadastro do cliente|Envio de catálogo|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3',
+        'Acompanhamento': 'Aguardando retorno indústria|Em produção|Faturado parcial|Pedido faturado total',
+        'Lista de espera': 'Entrou na lista|Aguardando estoque|Estoque disponível|Cliente avisado',
+        'SAC / Cobrança': 'Em tratativa — SAC|Em tratativa — Cobrança|Resolvido',
+      })[this.state.autoCatFunil] || 'Envio de catálogo',
       autoEstoqueFunil: this.state.autoEstoqueFunil,
       autoEstoqueEtapa: this.state.autoEstoqueEtapa,
       msgsEtapa: this.state.msgsEtapa.map((m, i) => ({
@@ -701,8 +721,8 @@ class Component extends DCLogic {
       msgEtapaFormFechado: !this.state.msgEtapaForm,
       msgEtapaFunil: this.state.msgEtapaFunil,
       msgEtapaOpcoes: ({
-        'Venda': 'Primeiro contato|Cadastro do cliente|Apresentação do mix|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Aguardando aprovação da representada|Faturado parcial|Ganhos',
-        'Acompanhamento': 'Aguardando retorno indústria|Em produção|Faturado parcial|Em transporte|Pedido faturado total',
+        'Venda': 'Primeiro contato|Cadastro do cliente|Envio de catálogo|Proposta enviada|Negociação|Recuperação 1|Recuperação 2|Recuperação 3|Perdidos|Ganhos',
+        'Acompanhamento': 'Aguardando retorno indústria|Em produção|Faturado parcial|Pedido faturado total',
         'Lista de espera': 'Entrou na lista|Aguardando estoque|Estoque disponível|Cliente avisado|Ganhos',
         'SAC / Cobrança': 'Em tratativa — SAC|Em tratativa — Cobrança|Resolvido|Não resolvido',
       })[this.state.msgEtapaFunil],

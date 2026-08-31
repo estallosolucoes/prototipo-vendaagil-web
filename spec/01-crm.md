@@ -272,3 +272,11 @@ Seção "TAREFAS DE HOJE E ATRASADAS" lista tarefas com `status ∈ {hoje, atras
 
 ## Adendo — 27/08/2026 · Apagar tarefa (com escopo de recorrência)
 - Card da tarefa tem botão apagar (lixeira, ao lado do editar). Tarefa avulsa apaga direto (toast). Tarefa de série abre modal de escopo destrutivo com 3 opções: "Somente esta tarefa" (série continua) · "Esta e as que estão por vir" (excluirSerie a partir da data; anteriores ficam) · "Todas as tarefas da série" (remove tudo). Store: VATarefas.excluirSerie(serie, deData|null).
+
+## Adendo — 31/08/2026 · Funil e automações
+- Funil de venda: etapa "Apresentação do mix" RENOMEADA para **"Envio de catálogo"**; etapas "Aguardando aprovação da representada" e "Faturado parcial" REMOVIDAS (funil com 10 etapas: 8 de trabalho + Perdidos + Ganhos). "Mover ao emitir pedido" agora tem padrão Negociação.
+- Nova automação **"Envio de catálogo"**: negócio entra na etapa configurada (funil + etapa selecionáveis; padrão Venda › Envio de catálogo) → o sistema pede qual catálogo enviar ao contato (link por WhatsApp); opção de sugerir o último enviado.
+
+## Adendo — 31/08/2026 · Correções da revisão
+- Automação Envio de catálogo: removida a opção "Sugerir o último catálogo enviado".
+- Funil Acompanhamento: etapa "Em transporte" removida.

@@ -148,3 +148,11 @@ Mesma tela da emissão (§2) pré-carregada com os itens do pedido; header "Alte
 - **Transportadora vem do cadastro do cliente** (ex.: "Patrus Transportes — do cliente") pré-selecionada; no FOB quem escolhe é o cliente.
 - **Comissão ao vivo** (card na coluna direita): desconto médio manual do pedido → faixa da grade → comissão % e R$; recalcula ao editar desconto; aviso quando a próxima faixa está a ≤1,2 p.p.: "Mais X% de desconto e sua comissão cai de A% para B% — R$ N a menos neste pedido". Grade exibida com a faixa ativa destacada. OrderTotalsBar usa o valor recalculado.
 - Ordem de resolução da comissão: condição especial do cliente → faixa da tabela → faixa da representada → % do vendedor → padrão da representada. Só o desconto manual entra na conta (no modelo escada, o desconto por volume já está no preço).
+
+## Adendo — 31/08/2026 · Rodada de ajustes
+- Detalhe do pedido: estágio muda com UM CLIQUE na trilha (Emissão → Separação → Faturamento → Entrega); modal "Alterar estágio" e item de menu removidos. Menu ⋯: "Alterar pedido" renomeado para **Editar pedido**.
+- **Duplicar pedido**: modal com representada/cliente/tabela/condição; trocar a representada casa itens por código/referência (aviso do que sai da cópia) e usa preços/condições da nova; cria rascunho.
+- Lista de pedidos: dois botões por linha — **Editar** (→ tela de edição) e **Faturar** (abre drawer com NF, data, valor, parcelas com comissão distribuída e gerar cobranças) — além da prévia.
+
+## Adendo — 31/08/2026 · Correções da revisão
+- Linha do pedido ganhou também o botão **Duplicar** (junto a Editar/Faturar/Prévia).

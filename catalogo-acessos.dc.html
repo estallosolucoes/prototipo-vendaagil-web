@@ -31,6 +31,7 @@
 <script src="va-chat.js"></script>
 <link rel="stylesheet" href="form-overrides.css">
 <script src="va-select.js"></script>
+<script src="va-buscar.js"></script>
 <script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
 <style>*{box-sizing:border-box}body{margin:0;background:#F2F4F7}i[data-lucide]{display:inline-flex}i[data-lucide] svg{width:1em;height:1em;stroke-width:1.75}a{color:#365E10}a:hover{color:#021226}</style>
 </helmet>
@@ -96,7 +97,7 @@
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Modal" open="{{ liberarOpen }}" onClose="{{ fechar }}" title="Liberar comprador" size="md" hint-size="0,0">
 <div style="display:flex;flex-direction:column;gap:14px;font-family:'IBM Plex Sans',system-ui,sans-serif">
 <p style="margin:0;font:400 14px/1.6 'IBM Plex Sans';color:#454F5E">O comprador recebe um convite por e-mail, cria a senha e vê o catálogo com a tabela de preço do cliente dele.</p>
-<x-import component-from-global-scope="va-select" label="Cliente" options="Depósito São Jorge|Casa &amp; Lar Móveis|Lojas Pinheiral|Móveis Guarani|Comercial Vitória" value="Depósito São Jorge" help="O comprador só vê preços e condições deste cliente" hint-size="100%,88px"></x-import>
+<x-import component-from-global-scope="va-buscar" label="Cliente" options="Depósito São Jorge|Casa &amp; Lar Móveis|Lojas Pinheiral|Móveis Guarani|Comercial Vitória" value="Depósito São Jorge" help="O comprador só vê preços e condições deste cliente" hint-size="100%,88px"></x-import>
 <div style="display:grid;grid-template-columns:var(--va-g2,minmax(0,1fr) minmax(0,1fr));gap:12px">
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="Nome do comprador" required="{{ true }}" placeholder="Márcia Fontana" hint-size="100%,66px"></x-import>
 <x-import component-from-global-scope="VendaGilDesignSystem_bb4846.Input" label="E-mail" type="email" required="{{ true }}" placeholder="compras@saojorge.com.br" hint-size="100%,66px"></x-import>
