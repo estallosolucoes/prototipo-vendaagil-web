@@ -22,12 +22,14 @@ Telas: `inicio.dc.html`, `painel.dc.html`, `relatorios.dc.html`, `relatorio.dc.h
 
 ## 3. Configurações (`configuracoes.dc.html`)
 
+> **No sistema (08–13/10/2026):** relatórios ganharam **Agendar envio** por e-mail (PRD RF-117a) — botão ao lado de Salvar filtro, lista "Envios agendados" no hub de Relatórios.
+
 Página única (máx. 980px) em seções; cada alteração salva no blur/toggle com toast "Alterações salvas":
 | Seção | Conteúdo e regras |
 |---|---|
 | **Escritório** | Razão social, CNPJ, Telefone, E-mail — "aparecem no PDF do pedido e nos e-mails" |
-| **Regras de venda** | Desconto máximo sem aprovação (%; acima disso o pedido vai para aprovação — ver 02 §2.4) · select "Quem aprova exceções" (Só o dono / Dono e gestores) · switches de regras (ex.: bloquear cliente com título vencido, exigir OC do cliente) |
-| **Notificações** | Switches por evento (pedido do catálogo, pedido aprovado/recusado, título vencido, meta atingida) — valem para e-mail e push |
+| **Regras de venda** | Desconto máximo sem aprovação (%; acima disso o pedido vai para aprovação — ver 02 §2.4) · select "Quem aprova exceções" (Só o dono / Dono e gestores) · switches **Exigir pedido mínimo da representada** (ligado bloqueia a emissão; desligado só avisa) e **Avisar quando o item estiver sem estoque** (estoque informado, só avisa). Sem "bloquear cliente com título vencido": a cobrança é da indústria (PRD RF-26 descartado, 08/10/2026) |
+| **Notificações** | No sistema ficam **por pessoa em Perfil → Notificações** (RF-04b), por e-mail: pedido recebido pelo catálogo B2B, pedido aguardando sua aprovação, resumo diário de faturamentos (dias úteis às 18h). Configurações mostra só o atalho. Sem "título vencido/vencendo" |
 | **Integrações** | WhatsApp Business: estado "Conectado · {número}" + **Desconectar** (confirmação; conversas param de sincronizar) ou **Conectar** (→ §3.1); Usuários do escritório → 05 §4; SMTP de e-mail (config + testar envio) |
 
 ### 3.1 Canais de WhatsApp (`configuracoes-canais.dc.html`)

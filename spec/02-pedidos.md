@@ -68,7 +68,7 @@ Card com label "Buscar produto por código, código de barras, referência ou no
 ### 2.4 Itens do pedido
 Indicador de faixas de desconto (`DiscountTierIndicator`): barras A ≥8.000→3% · B ≥15.000→5% · C ≥30.000→7%, com posição do subtotal atual.
 
-Tabela (card, header "Itens do pedido" + pill "{n} itens", `min-width:560px` scroll-x): cada item normal usa `OrderLineItem` (código, nome, embalagem, preço unit., qtde editável, desconto % editável, total, comissão; **erro de validação inline** — ex.: "O desconto de 18% passa do seu limite de 12% nesta tabela. Reduza para até 12% ou peça liberação ao gestor" — bloqueia emissão até resolver).
+Tabela (card, header "Itens do pedido" + pill "{n} itens", `min-width:560px` scroll-x): cada item normal usa `OrderLineItem` (código, nome, embalagem, preço unit., qtde editável, desconto % editável, total, comissão; **erro de validação inline** — ex.: "O desconto de 18% passa do seu limite de 12% nesta tabela…"). **Decisão de 08/10/2026 (PRD §7.5):** desconto acima do limite **não bloqueia** — aviso âmbar "Desconto acima do seu limite — ao emitir, o pedido vai para a aprovação do {dono | dono ou dos gestores}" com a lista; o botão de emitir vira **Enviar para aprovação** e o orçamento salva normalmente).
 
 **Item de grade** (produto com variações): linha com chevron (expande/colapsa lista "cor · variação — qtde"), pill verde "{n} variações", qtde total, total, lápis reabre o modal de grade para editar.
 
@@ -83,7 +83,7 @@ Matriz cores × variações (ex.: Preta/Grafite/Azul royal × Com/Sem braços): 
 ### 2.7 Coluna lateral (320px)
 - **Mix do cliente**: itens já comprados ("{qtde} · última em {data}"); clique adiciona ao pedido (hover `brand-green-bg`).
 - **Política comercial** (card-botão): abre drawer com o texto integral da política da representada.
-- Aviso azul "Pedido mínimo da {representada}: R$ {valor}. Este já passou." (vira alerta âmbar "Faltam R$ {x}" quando abaixo — bloqueia emissão).
+- Aviso azul "Pedido mínimo da {representada}: R$ {valor}. Este já passou." (vira alerta âmbar "Faltam R$ {x}" quando abaixo — bloqueia a emissão se Regras de venda → "Exigir pedido mínimo" estiver ligado; desligado, deixa emitir com confirmação).
 
 **Modal Alterar contexto**: selects Representada, Tabela de preço (help "Trocar a tabela recalcula os preços dos itens já lançados"), Condição, Forma de pagamento, input Ordem de compra (opcional). Aplicar recalcula e fecha; Cancelar descarta.
 
@@ -130,8 +130,9 @@ Mesma tela da emissão (§2) pré-carregada com os itens do pedido; header "Alte
 
 ---
 
-## 5. Aprovações do catálogo (`pedidos-aprovacoes.dc.html`, PED-05)
+## 5. Aprovações (`pedidos-aprovacoes.dc.html`, PED-05)
 
+- No sistema a fila recebe também os pedidos com **desconto acima do limite** (coluna Motivo: "Desconto acima do limite" + o texto, ou "Catálogo B2B"); botões só para quem tem alçada (Configurações → Regras de venda → Quem aprova exceções), os demais veem "Aguarda o dono…".
 - Breadcrumb "Pedidos › Aprovações do catálogo". Subtítulo "{n} pedidos do catálogo B2B aguardam sua decisão — o cliente é avisado na hora".
 - Card por pedido pendente: ícone loja, cliente + meta ("Loja {representada} · chegou {quando} · condição"), valor 18px + tempo de espera (âmbar), lista de itens (nome × total), ações:
 | Botão | Comportamento |
